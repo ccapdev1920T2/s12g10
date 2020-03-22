@@ -1,0 +1,26 @@
+{
+  "name": "s12g10",
+  "version": "1.0.0",
+  "description": "This submission is by: MACEDA, Dustin NILL, Byron UY, Geosef",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccapdev1920T2/s12g10.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ccapdev1920T2/s12g10/issues"
+  },
+  "homepage": "https://github.com/ccapdev1920T2/s12g10#readme",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

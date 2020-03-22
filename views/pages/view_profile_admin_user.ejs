@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <title>Mnemosis | Profile</title>
 
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-grid.css">
-    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/bootstrap-grid.css">
+    <link rel="stylesheet" href="../../css/bootstrap-reboot.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-    <script src="js/bootstrap.js"></script>
-    <script src="js/bootstrap.bundle.js"></script>
-    <script src="js/view_profile.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/bootstrap.bundle.js"></script>
+    <script src="../../js/view_profile.js"></script>
 
-    <link rel="stylesheet" href="css/general_styles.css">
-    <link rel="stylesheet" href="css/view_profile.css">
+    <link rel="stylesheet" href="../../css/general_styles.css">
+    <link rel="stylesheet" href="../../css/view_profile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Quantico">
 </head>
 <body>
 <div class="container mt-5" id="header">
     <a href="homepage.html" id="header-div">
-        <img src="media/Logo%20Circle.png" class="logo" id="over">
-        <img src="media/Logo.png" class="logo" id="under">
+        <img src="../../media/Logo%20Circle.png" class="logo" id="over">
+        <img src="../../media/Logo.png" class="logo" id="under">
         <div id="titles">
             <h1 id="web-title">Mnemosis</h1>
             <h4 id="web-subtitle">One Game at a Time</h4>
@@ -38,16 +38,17 @@
                     <input class="form-control subheading mr-3 mt-0" type="text" placeholder="Search for a game or category here" style="width: 400px">
                     <button class="btn btn-custom mr-3" type="submit">Search</button>
                     <div style="border-left: 2.5px solid; border-left-color: #3CACAE; height: 50px"></div>
-                    <a href="view_games_admin.html" class="btn btn-custom ml-3">View all games</a>
+                    <a href="view_games.html" class="btn btn-custom ml-3">View all games</a>
                 </form>
             </li>
         </ul>
         <div class="dropdown">
             <a href="#" data-toggle="dropdown">
-                <img src="media/Icon.png" id="user-icon">
+                <img src="../../media/Icon.png" id="user-icon">
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <h1 class="dropdown-header subheading">For logged-in users</h1> <!-- to be removed -->
+                <a href="view_profile_admin.html" class="dropdown-item subheading">View Profile</a>
                 <a href="create_game.html" class="dropdown-item subheading">Create A Game</a>
                 <a href="login_and_register.html" class="dropdown-item subheading">Log-out</a>
                 <h1 class="dropdown-header subheading">For guests</h1> <!-- to be removed -->
@@ -59,39 +60,29 @@
 </div>
 
 <div class="grid card heading mt-5 mb-5" style="padding-top: 10px; padding-bottom: 10px; ">
-    <div class="prof_title ">My Profile</div>
-    <div class="prof_pic"><img src="media/Icon.png" height="180px" width="180px"></div>
+    <div class="prof_title ">User Profile</div>
+    <div class="prof_pic"><img src="../../media/Icon.png" height="180px" width="180px"></div>
     <div class="prof_hemail">Email:</div>
     <div class="prof_hage">Age:</div>
     <div class="prof_hgender">Gender:</div>
-    <div class="prof_email subheading">byron_nill@dlsu.edu.ph</div>
+    <div class="prof_email subheading">dustin_maceda@dlsu.edu.ph</div>
     <div class="prof_age subheading">20</div>
     <div class="prof_gender subheading">Male</div>
     <div class="prof_text1 ">Total Games Created</div>
     <div class="prof_text2 ">Total Games Completed</div>
     <div class="prof_subtext1 subheading">7</div>
     <div class="prof_subtext2 subheading">9</div>
-    <div class="prof_name ">Byron Nill</div>
-    <div class="input-group mb-3 prof_file">
-        <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary btn-custom" type="button" id="upload">Upload</button>
-        </div>
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="file" aria-describedby="upload">
-          <label class=" custom-file-label" for="file">Choose file</label>
-        </div>
-    </div>
+    <div class="prof_name ">Dustin Maceda</div>
 </div>
 
 <div class="container mt-5 mb-5" id="1-main-box">
-    <button type="button" class="btn btn-custom btn-block" id="admin">Drop Admin Status</button>
-    <a href="create_game.html" class="btn btn-custom btn-block mb-5" id="create">Create Game</a>
-    <h2 class="heading" style="text-align: center">Byron Nill's Games</h2>
+    <button type="button" class="btn btn-custom btn-block mb-5" id="admin">Grant Admin Status</button>
+    <h2 class="heading" style="text-align: center">Dustin Maceda's Games</h2>
     <div class="row">
         <div class="col-sm-4 mb-4">
             <div class="card">
                 <div class="card-header bg-art"></div>
-                <img src="media/Sample Images/Desert%201-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/Desert%201-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -104,14 +95,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4">
             <div class="card">
                 <div class="card-header bg-others"></div>
-                <img src="media/Sample Images/Desert%202-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/Desert%202-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -124,14 +115,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4">
             <div class="card">
                 <div class="card-header bg-others"></div>
-                <img src="media/Sample Images/Desert%203-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/Desert%203-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -144,14 +135,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4  game-created">
             <div class="card">
                 <div class="card-header bg-general"></div>
-                <img src="media/Sample Images/Desert%205-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/Desert%205-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -164,14 +155,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4 game-created">
             <div class="card ">
                 <div class="card-header bg-trivia"></div>
-                <img src="media/Sample Images/Desert%207-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/Desert%207-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -184,14 +175,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4 game-created">
             <div class="card">
                 <div class="card-header bg-sports"></div>
-                <img src="media/Sample Images/El%20Capitan%202-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/El%20Capitan%202-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -204,14 +195,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4 game-created">
             <div class="card">
                 <div class="card-header bg-business"></div>
-                <img src="media/Sample Images/El%20Capitan-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/El%20Capitan-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -224,7 +215,7 @@
                     <button type="button" class="btn btn-custom2 btn-block delete2">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
@@ -239,7 +230,7 @@
         <div class="col-sm-4 mb-4">
             <div class="card">
                 <div class="card-header bg-trivia"></div>
-                <img src="media/Sample Images/Yosemite-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/Yosemite-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -259,7 +250,7 @@
         <div class="col-sm-4 mb-4">
             <div class="card">
                 <div class="card-header bg-business"></div>
-                <img src="media/Sample Images/El%20Capitan-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/El%20Capitan-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -272,14 +263,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete2">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4">
             <div class="card">
                 <div class="card-header bg-others"></div>
-                <img src="media/Sample Images/High%20Sierra-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/High%20Sierra-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -292,14 +283,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete2">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin_user.html">dustinmaceda</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4 game-completed">
             <div class="card">
                 <div class="card-header bg-art"></div>
-                <img src="media/Sample Images/Desert%201-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/Desert%201-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -312,14 +303,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete2">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4 game-completed">
             <div class="card">
                 <div class="card-header bg-others"></div>
-                <img src="media/Sample Images/Desert%202-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/Desert%202-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -332,14 +323,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete2">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4 game-completed">
             <div class="card">
                 <div class="card-header bg-others"></div>
-                <img src="media/Sample Images/Desert%203-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/Desert%203-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -352,14 +343,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete2">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4 game-completed">
             <div class="card">
                 <div class="card-header bg-general"></div>
-                <img src="media/Sample Images/Desert%205-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/Desert%205-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -372,14 +363,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete2">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4  game-completed">
             <div class="card">
                 <div class="card-header bg-trivia"></div>
-                <img src="media/Sample Images/Desert%207-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/Desert%207-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -392,14 +383,14 @@
                     <button type="button" class="btn btn-custom2 btn-block delete2">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
         <div class="col-sm-4 mb-4 game-completed">
             <div class="card">
                 <div class="card-header bg-sports"></div>
-                <img src="media/Sample Images/El%20Capitan%202-min.jpg" class="card-img-top card-img-custom">
+                <img src="../../media/Sample%20Images/El%20Capitan%202-min.jpg" class="card-img-top card-img-custom">
                 <div class="card-body">
                     <div class="grid-small card-title heading">
                         <div class="accuracy">100%</div>
@@ -412,7 +403,7 @@
                     <button type="button" class="btn btn-custom2 btn-block delete2">Delete Game</button>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted subheading">Created by <a href="view_profile_admin.html">byronnill</a></small>
+                    <small class="text-muted subheading">Created by <a href="view_profile_user.html">dustinmaceda</a></small>
                 </div>
             </div>
         </div>
