@@ -1,0 +1,287 @@
+viewbody {
+    background-color: #C8F4F9;
+}
+
+#header-div:hover {
+    text-decoration: none;
+}
+
+#header {
+    /*position: fixed;*/
+    top: 0;
+    width: 100%;
+    align-items: center;
+}
+
+.logo {
+    max-height: 300px;
+    float: left;
+}
+
+#over {
+    z-index: 2;
+    position: relative;
+    animation: crotation 8s infinite linear;
+}
+
+#under {
+    z-index: 1;
+    position: relative;
+    left: -300px;
+    animation: ccrotation 8s infinite linear;
+}
+
+@keyframes crotation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(359deg); }
+}
+
+@keyframes ccrotation {
+    from { transform: rotate(359deg); }
+    to { transform: rotate(0deg); }
+}
+
+#titles {
+    color: black;
+    position: relative;
+    left: -250px;
+    padding-top: 50px;
+    padding-bottom: 0px;
+}
+
+#web-title {
+    font-size: 100px;
+    font-family: 'Quantico', sans-serif;
+}
+
+#web-subtitle {
+    font-size: 40px;
+    font-family: 'Jura', sans-serif;
+}
+
+#user-icon {
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+    float: right;
+}
+
+.heading {
+    font-family: 'Quantico', sans-serif;
+    font-weight: bold;
+}
+
+.subheading {
+    font-family: 'Jura', sans-serif;
+}
+
+#navbar-main {
+    margin-top: 100px;
+}
+
+.navbar-custom {
+    background-color: #EEB5EB;
+    height: 75px;
+}
+
+.card-img-custom {
+    min-height: 200px;
+    max-height: 200px;
+    height: 200px;
+    width: auto;
+}
+
+/*#main-box {*/
+/*    margin-top: 42+313;*/
+/*}*/
+
+.btn, .btn-custom {
+    background-color: #3CACAE;
+    border-color: #3CACAE;
+    font-family: 'Jura', sans-serif;
+    color: white;
+}
+
+.btn-custom:hover,
+.btn-custom:active,
+.btn-custom:hover:active,
+a.btn:hover {
+    background-color: #236A6B;
+    border-color: #236A6B;
+    color: white;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #236A6B;
+    color: white;
+    text-align: center;
+}
+
+.grid {
+    margin: auto;
+    width: 1100px;
+    height: 400px;
+    display:grid;
+    grid-template-columns: 3fr 1fr 1fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+            "prof_title prof_title prof_title prof_title"
+            "prof_pic prof_hemail prof_email prof_email"
+            "prof_pic prof_hage prof_age prof_age"
+            "prof_pic prof_hgender prof_gender prof_gender"
+            "prof_name prof_text1 prof_text1 prof_text2"
+            "prof_file prof_subtext1 prof_subtext1 prof_subtext2";
+    grid-gap: 0px;
+}
+
+.prof_title{
+    grid-area:prof_title ;
+    margin: auto;
+
+    font-size: 40px;
+
+}
+
+.prof_pic{
+    grid-area:prof_pic ;
+    text-align: center;
+    padding-top: 0;
+
+}
+
+.prof_text1{
+    grid-area:prof_text1 ;
+    align-self: center;
+    justify-self: center;
+    font-size: 25px;
+
+    /* background-color: green; */
+}
+
+.prof_text2{
+    grid-area:prof_text2 ;
+    align-self: center;
+    justify-self: center;
+    font-size: 25px;
+    /* background-color: yellow; */
+}
+
+.prof_subtext1{
+    grid-area:prof_subtext1 ;
+    align-self: top;
+    justify-self: center;
+    font-size: 25px;
+    /* background-color: violet; */
+}
+
+.prof_subtext2{
+    grid-area:prof_subtext2 ;
+    align-self: top;
+    justify-self: center;
+    font-size: 25px;
+    /* background-color: orange; */
+}
+
+.prof_name{
+    grid-area:prof_name ;
+    text-align: center;
+    font-size: 25px;
+}
+
+.prof_email{
+    grid-area:prof_email ;
+    align-self: center;
+    justify-self: start;
+    font-size: 25px;
+    /* background-color: brown; */
+}
+
+.prof_age{
+    grid-area:prof_age ;
+    align-self: center;
+    justify-self: start;
+    font-size: 25px;
+    /* background-color: yellow; */
+}
+
+.prof_gender{
+    grid-area:prof_gender ;
+    align-self: center;
+    justify-self: start;
+    font-size: 25px;
+    /* background-color: green; */
+}
+
+.prof_hemail{
+    grid-area:prof_hemail ;
+    align-self: center;
+    justify-self: start;
+    font-size: 25px;
+    /* background-color: brown; */
+}
+
+.prof_hage{
+    grid-area:prof_hage ;
+    align-self: center;
+    justify-self: start;
+    font-size: 25px;
+    /* background-color: yellow; */
+}
+
+.prof_hgender{
+    grid-area:prof_hgender ;
+    align-self: center;
+    justify-self: start;
+    font-size: 25px;
+    /* background-color: green; */
+}
+
+.prof_file{
+    grid-area:prof_file ;
+    text-align: center;
+    justify-self: center;
+}
+
+.grid-small{
+    margin: auto;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+            "accuracy time";
+
+}
+
+.accuracy{
+    grid-area:accuracy ;
+    text-align: center;
+    padding-bottom: 10px;
+    color: green;
+}
+
+.time{
+    grid-area:time ;
+    text-align: center;
+    padding-bottom: 10px;
+
+}
+
+.game-created{
+    display: none;
+}
+
+.game-completed{
+    display: none;
+}
+
+#upload{
+    height: 38px;
+    margin-left: 18px;
+}
+
+.custom-file-label{
+    width: 280px;
+}

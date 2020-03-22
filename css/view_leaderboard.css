@@ -1,0 +1,13 @@
+.table-custom {
+    background-color: #EEB5EB;
+}
+
+.table-custom .question-holder {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px 0px;
+}
+
+.table-custom .answer-holder {
+    padding: 10px 10px;
+}

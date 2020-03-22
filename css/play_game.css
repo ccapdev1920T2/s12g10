@@ -1,0 +1,32 @@
+.table-custom {
+    background-color: #EEB5EB;
+    width: 100%;
+}
+
+.table-custom .question-holder {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px 0px;
+    width: 60%;
+}
+
+.table-custom .answer-holder {
+    padding: 10px 10px;
+    width: 100%;
+    text-align: center;
+}
+
+#start-btn button, #give-up button, #pause button {
+    height: 50px;
+    font-size: 25px;
+}
+
+#give-up, #pause {
+    display: none;
+}
+
+@keyframes gameIsEnding {
+    0% {color: #C16C6C}
+    50% {color: red}
+    100% {color: #C16C6C}
+}

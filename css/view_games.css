@@ -1,0 +1,66 @@
+#filter-buttons {
+    margin-bottom: 25px;
+}
+
+#filter-by-art:hover,
+#filter-by-art.active {
+    background-color: #800000;
+    border-color: #800000;
+    color: white;
+}
+
+#filter-by-business:hover,
+#filter-by-business.active {
+    background-color: #804000;
+    border-color: #804000;
+    color: white;
+}
+
+#filter-by-scitech:hover,
+#filter-by-scitech.active {
+    background-color: #808000;
+    border-color: #808000;
+    color: white;
+}
+
+#filter-by-general:hover,
+#filter-by-general.active {
+    background-color: #208000;
+    border-color: #208000;
+    color: white;
+}
+
+#filter-by-trivia:hover,
+#filter-by-trivia.active {
+    background-color: #002080;
+    border-color: #002080;
+    color: white;
+}
+
+#filter-by-sports:hover,
+#filter-by-sports.active {
+    background-color: #600080;
+    border-color: #600080;
+    color: white;
+}
+
+#filter-by-others:hover,
+#filter-by-others.active {
+    background-color: #800060;
+    border-color: #800060;
+    color: white;
+}
+
+#filter-by-art.active:hover,
+#filter-by-business.active:hover,
+#filter-by-scitech.active:hover,
+#filter-by-general.active:hover,
+#filter-by-trivia.active:hover,
+#filter-by-sports.active:hover,
+#filter-by-others.active:hover{
+    cursor: default;
+}
+
+body {
+    transition: 2s;
+}
