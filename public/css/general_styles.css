@@ -7,27 +7,25 @@ body {
 }
 
 #header {
-    /*position: fixed;*/
     top: 0;
+    /*left: 250px;*/
     width: 100%;
-    align-items: center;
+    /*position: fixed;*/
 }
 
 .logo {
     max-height: 300px;
-    float: left;
 }
 
 #over {
     z-index: 2;
-    position: relative;
+    position: absolute;
     animation: crotation 8s infinite linear;
 }
 
 #under {
     z-index: 1;
-    position: relative;
-    left: -300px;
+    position: absolute;
     animation: ccrotation 8s infinite linear;
 }
 
@@ -43,10 +41,8 @@ body {
 
 #titles {
     color: black;
-    position: relative;
-    left: -250px;
     padding-top: 50px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 
 #web-title {
@@ -95,39 +91,113 @@ body {
     width: auto;
 }
 
-.bg-art {
+.bg-art,
+#filter-by-art {
     background-color: #FFCCCC;
     border-color: #FFCCCC;
 }
 
-.bg-business {
+.bg-business,
+#filter-by-business {
     background-color: #FFE6CC;
     border-color: #FFE6CC;
 }
 
-.bg-scitech {
+.bg-scitech,
+#filter-by-scitech {
     background-color: #FFFFCC;
     border-color: #FFFFCC;
 }
 
-.bg-general {
+.bg-general,
+#filter-by-general {
     background-color: #D9FFCC;
     border-color: #D9FFCC;
 }
 
-.bg-trivia {
+.bg-trivia,
+#filter-by-trivia {
     background-color: #CCFFFF;
     border-color: #CCFFFF;
 }
 
-.bg-sports {
+.bg-sports,
+#filter-by-sports {
     background-color: #D9CCFF;
     border-color: #D9CCFF;
 }
 
-.bg-others {
+.bg-others,
+#filter-by-others {
     background-color: #FFCCF2;
     border-color: #FFCCF2;
+}
+
+.bg-art-dark,
+#filter-by-art:hover,
+#filter-by-art.active {
+    background-color: #800000;
+    border-color: #800000;
+    color: white;
+}
+
+.bg-business-dark,
+#filter-by-business:hover,
+#filter-by-business.active {
+    background-color: #804000;
+    border-color: #804000;
+    color: white;
+}
+
+.bg-scitech-dark,
+#filter-by-scitech:hover,
+#filter-by-scitech.active {
+    background-color: #808000;
+    border-color: #808000;
+    color: white;
+}
+
+
+.bg-general-dark,
+#filter-by-general:hover,
+#filter-by-general.active {
+    background-color: #208000;
+    border-color: #208000;
+    color: white;
+}
+
+.bg-trivia-dark,
+#filter-by-trivia:hover,
+#filter-by-trivia.active {
+    background-color: #002080;
+    border-color: #002080;
+    color: white;
+}
+
+.bg-sports-dark,
+#filter-by-sports:hover,
+#filter-by-sports.active {
+    background-color: #600080;
+    border-color: #600080;
+    color: white;
+}
+
+.bg-others-dark,
+#filter-by-others:hover,
+#filter-by-others.active {
+    background-color: #800060;
+    border-color: #800060;
+    color: white;
+}
+
+#filter-by-art.active:hover,
+#filter-by-business.active:hover,
+#filter-by-scitech.active:hover,
+#filter-by-general.active:hover,
+#filter-by-trivia.active:hover,
+#filter-by-sports.active:hover,
+#filter-by-others.active:hover{
+    cursor: default;
 }
 
 .btn-custom {
@@ -183,4 +253,12 @@ a.btn:hover {
     background-color: #236A6B;
     color: white;
     text-align: center;
+}
+
+.card-header {
+    height: 30px;
+}
+
+.card-body {
+    height: 200px;
 }

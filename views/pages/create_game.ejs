@@ -1,24 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%- include ("../partials/head.ejs") %>
+
     <title>Mnemosis | Create Game</title>
-
-    <link rel="stylesheet" href="../../css/bootstrap.css">
-    <link rel="stylesheet" href="../../css/bootstrap-grid.css">
-    <link rel="stylesheet" href="../../css/bootstrap-reboot.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="//cdn.jsdelivr.net/jquery.color-animation/1/mainfile"></script>
-
-    <script src="../../js/bootstrap.js"></script>
-    <script src="../../js/bootstrap.bundle.js"></script>
-
-    <link rel="stylesheet" href="../../css/general_styles.css">
     <link rel="stylesheet" href="../../css/create_game.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Quantico">
 </head>
 <body>
     <script>
@@ -108,21 +94,8 @@
             });
         });
     </script>
-    <div class="container mt-5" id="header">
-        <div class="alert alert-custom alert-dismissible subheading" id="exit-alert">
-            Exiting this page will not save your game. Do you want to <a href="#" class="heading" id="exit-alert-link">proceed</a>
-            or <a href="#" class="heading" id="exit-alert-stay">continue editing</a> ?
-        </div>
-
-        <a href="homepage.html" id="header-div">
-            <img src="../../media/Logo%20Circle.png" class="logo" id="over">
-            <img src="../../media/Logo.png" class="logo" id="under">
-            <div id="titles">
-                <h1 id="web-title">Mnemosis</h1>
-                <h4 id="web-subtitle">One Game at a Time</h4>
-            </div>
-        </a>
-
+    <%- include ("../partials/header.ejs") %>
+    <div class="container">
         <div class="navbar navbar-custom" id="navbar-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -131,7 +104,7 @@
                         <input class="form-control subheading mr-3 mt-0" type="text" placeholder="Search for a game or category here" style="width: 400px" id="search-box">
                         <button type="button" class="btn btn-custom mr-3" id="search-btn">Search</button>
                         <div style="border-left: 2.5px solid; border-left-color: #3CACAE; height: 50px"></div>
-                        <a href="view_games.html" class="btn btn-custom ml-3" id="view-games">View all games</a>
+                        <a href="view_games" class="btn btn-custom ml-3" id="view-games">View all games</a>
 
                     </form>
                 </li>
@@ -142,11 +115,11 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <h1 class="dropdown-header subheading">For logged-in users</h1> <!-- to be removed -->
-                    <a href="view_profile_self.html" class="dropdown-item subheading">View Profile</a>
-                    <a href="login_and_register.html" class="dropdown-item subheading">Log-out</a>
+                    <a href="view_profile_self" class="dropdown-item subheading">View Profile</a>
+                    <a href="login_and_register" class="dropdown-item subheading">Log-out</a>
                     <h1 class="dropdown-header subheading">For guests</h1> <!-- to be removed -->
-                    <a href="login_and_register.html" class="dropdown-item subheading">Log-in</a>
-                    <a href="login_and_register.html" class="dropdown-item subheading">Register</a>
+                    <a href="login_and_register" class="dropdown-item subheading">Log-in</a>
+                    <a href="login_and_register" class="dropdown-item subheading">Register</a>
                 </div>
             </div>
         </div>
@@ -166,6 +139,20 @@
             <div class="form-group">
                 <label for="game_duration" class="subheading">Game Duration (minutes):</label>
                 <input class="subheading" type="number" id="game_duration" min="3" max="10">
+            </div>
+            <div class="form-group">
+                <label for="genre-buttons" class="subheading">Genre(s):</label>
+                <div id="genre-buttons" class="text-center">
+                    <div class="btn-group" style="display: block; margin: auto">
+                        <button type="button" id="filter-by-art" class="btn subheading bg-art">Art</button>
+                        <button type="button" id="filter-by-business" class="btn subheading bg-business">Business</button>
+                        <button type="button" id="filter-by-scitech" class="btn subheading bg-scitech">Science and Technology</button>
+                        <button type="button" id="filter-by-general" class="btn subheading bg-general">General Knowledge</button>
+                        <button type="button" id="filter-by-trivia" class="btn subheading bg-trivia">Trivia</button>
+                        <button type="button" id="filter-by-sports" class="btn subheading bg-sports">Sports</button>
+                        <button type="button" id="filter-by-others" class="btn subheading bg-others">Others</button>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="game_description" class="subheading">Image:</label>
@@ -237,14 +224,12 @@
                 </div>
             </div>
             <div class="row"><div class="col-sm-12"><br></div></div>
-            <button type="submit" class="btn btn-block subheading" id="create_game" disabled>Create Game</button>
+            <button type="submit" class="btn btn-custom btn-block subheading" id="create_game" disabled>Create Game</button>
             <div class="row"><div class="col-sm-12"><br></div></div>
         </form>
     </div>
 
-    <div class="container-fluid subheading" id="footer">
-        all rights reserved 2020
-    </div>
+    <%- include ("../partials/footer.ejs") %>
 
     <script src="../../js/create_game.js"></script>
 </body>

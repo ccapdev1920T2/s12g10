@@ -153,7 +153,7 @@ $(".delete").click(function (){
 })
 
 $("#myModal").on("show.bs.modal", function (event) {
-    let button = $(event.relatedTarget);
+    let button = $(event.relatedTarget).parent();
 
     let title = button.parent().find(".card-title").text();
     let desc = button.parent().find(".card-text").text();

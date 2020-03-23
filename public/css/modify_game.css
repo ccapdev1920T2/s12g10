@@ -1,15 +1,3 @@
-#exit-alert-link, #exit-alert-stay {
-    color: white;
-}
-
-#exit-alert {
-    display: none;
-}
-
-#exit-alert {
-    transition: 2s;
-}
-
 #game_image {
     height: auto;
 }

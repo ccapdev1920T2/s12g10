@@ -1,0 +1,35 @@
+<% games.forEach( function(game) { %>
+<div class="col-sm-4 mb-4">
+    <div class="card card-<%= game.genre %>">
+        <div class="card-header bg-<%= game.genre %>"></div>
+        <img src="<%= game.game_image %>" class="card-img-top card-img-custom">
+        <div class="card-body">
+            <h5 class="card-title heading"><%= game.title %></h5>
+            <p class="card-text subheading"><%= game.description %></p>
+            <a href="play_game/<%= game._id %>" class="btn btn-custom btn-block ">Play Game</a>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted subheading">Created by <a href="view_profile_user/<%= game.creator_id %>"><%= game.creator.name %></a></small>
+        </div>
+    </div>
+</div>
+<% }) %>
+
+<% games.forEach( function(game) { %>
+<div class="col-sm-4 mb-4">
+    <div class="card card-<%= game.genre %>">
+        <div class="card-header bg-<%= game.genre %>"></div>
+        <img src="<%= game.game_image %>" class="card-img-top card-img-custom">
+        <div class="card-body">
+            <h5 class="card-title heading"><%= game.title %></h5>
+            <p class="card-text subheading"><%= game.description %></p>
+            <a href="play_game/<%= game._id %>" class="btn btn-custom btn-block ">Play Game</a>
+            <a href="modify_game/<%= game._id %>" class="btn btn-custom btn-block">Modify Game</a>
+            <button type="button" class="btn btn-custom2 btn-block delete">Delete Game</button>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted subheading">Created by <a href="view_profile_user/<%= game.creator_id %>"><%= game.creator.name %></a></small>
+        </div>
+    </div>
+</div>
+<% }) %>

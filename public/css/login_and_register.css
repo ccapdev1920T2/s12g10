@@ -1,13 +1,11 @@
 #titles {
     color: black;
-    position: relative;
-    left: 50px;
     padding-top: 50px;
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 
 #startup-box {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 #login-box {

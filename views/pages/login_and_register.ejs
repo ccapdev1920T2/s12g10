@@ -1,31 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Mnemosis: One Game at a Time</title>
+    <%- include ("../partials/head.ejs") %>
 
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/bootstrap-grid.css">
-    <link rel="stylesheet" href="/css/bootstrap-reboot.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/bootstrap.bundle.js"></script>
-
-    <link rel="stylesheet" href="/css/general_styles.css">
-    <link rel="stylesheet" href="/css/login_and_register.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Quantico">
+    <title>Mnemosis | One Game at a Time</title>
+    <link rel="stylesheet" href="../../css/login_and_register.css">
 </head>
 <body>
     <div class="container mt-5" id="header">
-        <a href="login_and_register.ejs" id="header-div">
-            <img src="/media/Logo%20Full.png" class="logo">
-            <div id="titles">
-                <h1 id="web-title">Mnemosis</h1>
-                <h4 id="web-subtitle">One Game at a Time</h4>
+        <a href="homepage" id="header-div">
+            <div class="row">
+                <div class="col-4">
+                    <img src="../../media/Logo%20Full.png" class="logo">
+                </div>
+                <div class="col-8" id="titles">
+                    <h1 id="web-title">Mnemosis</h1>
+                    <h4 id="web-subtitle">One Game at a Time</h4>
+                </div>
             </div>
         </a>
     </div>
@@ -56,7 +47,7 @@
                     <p class="subheading" style="text-align: center; margin-bottom: 0">----------- or -----------</p>
                     <div class="row"><div class="col-sm-12"><br></div></div>
                 </form>
-                <a href="homepage.html" class="btn btn-custom btn-block subheading" role="button">Continue as guest</a>
+                <a href="homepage" class="btn btn-custom btn-block subheading" role="button">Continue as guest</a>
             </div>
             <div class="col-sm-7" id="register-box">
                 <h2 class="heading">register</h2>
@@ -117,9 +108,7 @@
         </div>
     </div>
 
-    <div class="container-fluid subheading" id="footer">
-        all rights reserved 2020
-    </div>
+    <%- include ("../partials/footer.ejs") %>
 
     <script src="../../js/login_and_register.js"></script>
 </body>
