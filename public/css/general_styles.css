@@ -1,5 +1,6 @@
 body {
     background-color: #C8F4F9;
+    overscroll-behavior: none;
 }
 
 #header {
@@ -11,6 +12,10 @@ body {
 
 .logo {
     max-height: 300px;
+    transition: 0.2s;
+}
+
+#logo-col {
     transition: 0.2s;
 }
 
@@ -26,19 +31,20 @@ body {
     animation: ccrotation 8s infinite linear;
 }
 
-/*@keyframes crotation {*/
-/*    from { transform: rotate(0deg); }*/
-/*    to { transform: rotate(359deg); }*/
-/*}*/
+@keyframes crotation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(359deg); }
+}
 
-/*@keyframes ccrotation {*/
-/*    from { transform: rotate(359deg); }*/
-/*    to { transform: rotate(0deg); }*/
-/*}*/
+@keyframes ccrotation {
+    from { transform: rotate(359deg); }
+    to { transform: rotate(0deg); }
+}
 
 #title-col {
     color: black;
     padding-top: 50px;
+    transition: 0.2s;
 }
 
 #title-col:hover {

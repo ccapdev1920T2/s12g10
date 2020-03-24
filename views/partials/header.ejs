@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../../css/header.css">
 </head>
 <body>
     <div class="container fixed-top" id="header">
@@ -45,47 +46,10 @@
                 </div>
             </div>
         </div>
+        <div style="height:100px; background-color: #C8F4F9" id="separator"></div>
     </div>
     <div style="height:450px"></div>
 
-    <script>
-        window.onscroll = function () {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                $(".logo").css("max-height", "150px");
-                $("#web-title").css("font-size", "50px");
-                $("#web-subtitle").css("font-size", "20px");
-
-                $("#nav-col").css("top", "20px");
-                $("#title-col").css("padding-top", "20px");
-                $("#title-col").css("padding-bottom", "20px");
-
-                $("#logo-col").removeClass("col-4");
-                $("#logo-col").addClass("col-2");
-
-                $("#title-col").removeClass("col-8");
-                $("#title-col").addClass("col-3");
-
-                // $("#nav-col").removeClass("col-12");
-                // $("#nav-col").addClass("col-6");
-            } else {
-                $(".logo").css("max-height", "300px");
-                $("#web-title").css("font-size", "100px");
-                $("#web-subtitle").css("font-size", "40px");
-
-                $("#nav-col").css("top", "100px");
-                $("#title-col").css("padding-top", "50px");
-                $("#title-col").css("padding-bottom", "0");
-
-                $("#logo-col").removeClass("col-2");
-                $("#logo-col").addClass("col-4");
-
-                $("#title-col").removeClass("col-3");
-                $("#title-col").addClass("col-8");
-
-                // $("#nav-col").removeClass("col-6");
-                // $("#nav-col").addClass("col-12");
-            }
-        };
-    </script>
+    <script src="../../js/header.js"></script>
 </body>
 </html>
