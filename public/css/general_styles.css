@@ -2,19 +2,16 @@ body {
     background-color: #C8F4F9;
 }
 
-#header-div:hover {
-    text-decoration: none;
-}
-
 #header {
     top: 0;
-    /*left: 250px;*/
     width: 100%;
-    /*position: fixed;*/
+    background-color: #C8F4F9;
+    transition: 0.2s;
 }
 
 .logo {
     max-height: 300px;
+    transition: 0.2s;
 }
 
 #over {
@@ -29,30 +26,35 @@ body {
     animation: ccrotation 8s infinite linear;
 }
 
-@keyframes crotation {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(359deg); }
-}
+/*@keyframes crotation {*/
+/*    from { transform: rotate(0deg); }*/
+/*    to { transform: rotate(359deg); }*/
+/*}*/
 
-@keyframes ccrotation {
-    from { transform: rotate(359deg); }
-    to { transform: rotate(0deg); }
-}
+/*@keyframes ccrotation {*/
+/*    from { transform: rotate(359deg); }*/
+/*    to { transform: rotate(0deg); }*/
+/*}*/
 
-#titles {
+#title-col {
     color: black;
     padding-top: 50px;
-    padding-bottom: 0;
+}
+
+#title-col:hover {
+    text-decoration: none;
 }
 
 #web-title {
     font-size: 100px;
     font-family: 'Quantico', sans-serif;
+    transition: 0.2s;
 }
 
 #web-subtitle {
     font-size: 40px;
     font-family: 'Jura', sans-serif;
+    transition: 0.2s;
 }
 
 #user-icon {
@@ -71,8 +73,13 @@ body {
     font-family: 'Jura', sans-serif;
 }
 
-#navbar-main {
-    margin-top: 100px;
+#search-bar {
+    transition: 0.2s;
+}
+
+#nav-col {
+    top: 100px;
+    transition: 0.2s;
 }
 
 .navbar-custom {
