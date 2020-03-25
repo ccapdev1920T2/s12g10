@@ -1,4 +1,4 @@
-const port = 9090;
+const port = 3000;
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
@@ -8,18 +8,18 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const createRoute = require("./controller/create_game");
-const homeRoute = require("./controller/homepage");
-const loginRoute = require("./controller/login_and_register");
-const modifyRoute = require("./controller/modify_game");
-const playRoute = require("./controller/play_game");
-const viewGamesRoute = require("./controller/view_games");
-const viewGamesAdminRoute = require("./controller/view_games_admin");
-const viewLeaderboard = require("./controller/view_leaderboard");
-const viewProfileAdminRoute = require("./controller/view_profile_self_admin");
-const viewProfileAdminUserRoute = require("./controller/view_profile_user_admin");
-const viewProfileSelf = require("./controller/view_profile_self");
-const viewProfileUserRoute = require("./controller/view_profile_user");
+const createRoute = require("./routes/create_game");
+const homeRoute = require("./routes/homepage");
+const loginRoute = require("./routes/login_and_register");
+const modifyRoute = require("./routes/modify_game");
+const playRoute = require("./routes/play_game");
+const viewGamesRoute = require("./routes/view_games");
+const viewGamesAdminRoute = require("./routes/view_games_admin");
+const viewLeaderboard = require("./routes/view_leaderboard");
+const viewProfileAdminRoute = require("./routes/view_profile_self_admin");
+const viewProfileAdminUserRoute = require("./routes/view_profile_user_admin");
+const viewProfileSelf = require("./routes/view_profile_self");
+const viewProfileUserRoute = require("./routes/view_profile_user");
 
 app.use("/create_game", createRoute);
 app.use("/homepage", homeRoute);
