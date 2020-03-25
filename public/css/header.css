@@ -2,44 +2,43 @@
     top: 0;
     width: 100%;
     background-color: #C8F4F9;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .logo {
     max-height: 300px;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 #logo-col {
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 #over {
     z-index: 2;
     position: absolute;
-    animation: crotation 8s infinite linear;
+    animation: rotation 4s linear infinite ;
+    animation-play-state: running;
+    transition: 0.3s;
 }
 
 #under {
     z-index: 1;
     position: absolute;
-    animation: ccrotation 8s infinite linear;
+    animation: rotation 4s linear infinite reverse;
+    animation-play-state: running;
+    transition: 0.3s;
 }
 
-@keyframes crotation {
+@keyframes rotation {
     from { transform: rotate(0deg); }
     to { transform: rotate(359deg); }
-}
-
-@keyframes ccrotation {
-    from { transform: rotate(359deg); }
-    to { transform: rotate(0deg); }
 }
 
 #title-col {
     color: black;
     padding-top: 50px;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 #title-col:hover {
@@ -49,13 +48,13 @@
 #web-title {
     font-size: 100px;
     font-family: 'Quantico', sans-serif;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 #web-subtitle {
     font-size: 40px;
     font-family: 'Jura', sans-serif;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 #user-icon {
@@ -66,15 +65,15 @@
 }
 
 #search-bar {
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 #nav-col {
     top: 100px;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .navbar-custom {
-    background-color: #EEB5EB;
+    background-color: rgba(238, 181, 235, 0.7);
     height: 75px;
 }

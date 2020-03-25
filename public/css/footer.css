@@ -1,0 +1,14 @@
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #236A6B;
+    color: white;
+    text-align: center;
+    transition: all 0.3s;
+    font-size: 10px;
+}
+
+#footer:hover {
+    text-decoration: none;
+}
