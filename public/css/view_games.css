@@ -5,3 +5,7 @@
 body {
     transition: 2s;
 }
+
+.card-body {
+    height: 200px;
+}

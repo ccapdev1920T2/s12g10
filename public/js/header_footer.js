@@ -5,6 +5,7 @@ window.onscroll = function () {
         $("#web-subtitle").css("font-size", "13.33px");
         $("#separator").css("height", "0");
         $("#over, #under").css("animation-duration", "8s");
+        $("#top").css("height", "21px");
 
         $("#nav-col").css("top", "0");
         $("#title-col").css({
@@ -19,6 +20,7 @@ window.onscroll = function () {
         $("#web-subtitle").css("font-size", "40px");
         $("#separator").css("height", "100px");
         $("#over, #under").css("animation-duration", "4s");
+        $("#top").css("height", "42px");
 
         $("#nav-col").css("top", "100px");
         $("#title-col").css({

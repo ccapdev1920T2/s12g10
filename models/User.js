@@ -1,5 +1,5 @@
 const mongoose = require("./db.js");
-const data = require("./data")
+const data = require("./data");
 
 const addUsers =  function () {
     User.collection.insertMany(data.users, function (err, docs) {
