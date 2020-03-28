@@ -38,6 +38,8 @@ User.find({}).then(function (users) {
 
     if (count === 0) {
         addUsers();
+    } else {
+        console.log("User data found");
     }
 });
 
