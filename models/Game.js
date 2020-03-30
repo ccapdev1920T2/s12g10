@@ -1,11 +1,58 @@
 const mongoose = require("mongoose");
+const User = require("./User");
+const Item = require("./Item");
+const Attempt = require("./Attempt");
 
 const schema = {
     genres: [String],
-    image: String,
     title: String,
     description: String,
+    image: String,
     creator: String
+
+    // title: {
+    //     type: String,
+    //     required: true,
+    //     minlength: 10,
+    //     maxlength: 50
+    // },
+    // description: {
+    //     type: String,
+    //     required: true,
+    //     minlength: 10,
+    //     maxlength: 500
+    // },
+    // game_image: {
+    //     type: String,
+    //     required: false
+    // },
+    // genres: {
+    //     type: [String],
+    //     required: true,
+    //     enum: ["art", "business", "scitech", "general", "trivia", "sports", "others"]
+    // },
+    // creator: {
+    //     type: User,
+    //     required: true
+    // },
+    // items: {
+    //     type: [Item],
+    //     required: true,
+    //     validate:
+    //         function (val) {
+    //             return val.length >= 10 && val.length <= 50;
+    //         }
+    // },
+    // time: {
+    //     type: Number,
+    //     required: true,
+    //     min: 3,
+    //     max: 10
+    // },
+    // attempts: {
+    //     type: [Attempt],
+    //     required: true
+    // }
 };
 const collection = "games";
 
