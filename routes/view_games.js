@@ -1,14 +1,8 @@
 const express = require("express");
 const app = express();
 
-let games;
-const Game = require("../models/Game");
-Game.find({}).then(function (docs) {
-    games = docs;
-});
+const controller = require("../controllers/view_games");
 
-app.get("/", function(req, res) {
-    res.render("../views/pages/view_games", {games: games});
-});
+app.get("/", controller.getGames);
 
 module.exports = app;

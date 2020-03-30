@@ -8,14 +8,6 @@
 </head>
 <body>
     <%- include ("../partials/header.ejs") %>
-    <div class="container">
-        <% users.forEach(function (user) { %>
-            <h1> <%= user.fName %> <%= user.lName %> </h1>
-            <h2> <%= user.username %> </h2>
-            <p> <%= user.bio %> </p>
-            <br> <br>
-        <% }) %>
-    </div>
     <div class="container mt-5 mb-5" id="main-box">
         <h2 class="subheading" style="text-align: center">Top Games</h2>
         <div class="row">
