@@ -20,7 +20,7 @@ const db = {
         function (model, doc) {
             model.create(doc, function (err, res) {
                 if (err) throw err;
-                console.log("1 document successfully added to collection")
+                console.log("Added: " + res);
             });
         },
 
@@ -28,7 +28,7 @@ const db = {
         function (model, docs) {
             model.insertMany(docs, function (err, res) {
               if (err) throw err;
-              console.log(res.nInserted + " documents successfully added to collection")
+              console.log("Added: " + res);
             });
         },
 
@@ -41,7 +41,7 @@ const db = {
         },
 
     findMany:
-        function (model, query, projection = null, callback) {
+        function (model, query, projection, callback) {
             model.find(query, projection, function (err, res) {
                 if (err) throw err;
                 return callback(res);

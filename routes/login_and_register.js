@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 
-app.get("/", function(req, res) {
-    res.render("../views/pages/login_and_register");
-});
+const controller = require("../controllers/login_and_register");
+
+app.get("/", controller.addData);
 
 module.exports = app;
