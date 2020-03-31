@@ -82,7 +82,6 @@ none.on("click", function () {
     $(".card").parent().show();
 });
 
-
 art.on("click", function () {
     if (art.hasClass("active")) {
         art.removeClass("active");
@@ -148,16 +147,13 @@ others.on("click", function () {
     check();
 });
 
-$(".delete").click(function (){
-    $(this).parent().parent().parent().hide();
-})
-
-$("#myModal").on("show.bs.modal", function (event) {
+$("#playModal").on("show.bs.modal", function (event) {
     let button = $(event.relatedTarget);
 
     let title = button.parent().find(".card-title").text();
     let desc = button.parent().find(".card-text").text();
-    let author = button.parent().parent().find(".card-footer").text();
+    let id = button.parent().parent().find("#game_id").text();
+    let author = button.parent().parent().find("#author").text();
     let img = button.parent().parent().find("img").attr("src");
 
     let cats = button.parent().parent().attr("class");
@@ -188,8 +184,9 @@ $("#myModal").on("show.bs.modal", function (event) {
     let modal = $(this);
 
     modal.find(".modal-title").text(title);
+    modal.find("#modal-id").text("Game ID: " + id);
     modal.find("#modal-desc").text(desc);
-    modal.find(".modal-author").text(author);
+    modal.find("#modal-author").text(author);
     modal.find("#modal-img").attr("src", img);
     modal.find("#modal-cats").html(holder);
 

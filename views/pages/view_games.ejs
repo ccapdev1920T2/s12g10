@@ -4,7 +4,7 @@
     <%- include ("../partials/head.ejs") %>
 
     <title>Mnemosis | All Games</title>
-    <link rel="stylesheet" href="../../css/view_gamews.css">
+    <link rel="stylesheet" href="../../css/view_games.css">
 </head>
 <body>
     <%- include ("../partials/header.ejs") %>
@@ -53,10 +53,11 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title heading"><%= game.title %></h5>
                             <p class="card-text subheading" style="display: none"><%= game.description %></p>
-                            <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#myModal">Play Game</button>
+                            <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#playModal">Play Game</button>
                         </div>
 
                         <div class="card-footer">
+                            <p id="game_id" style="display: none"><%= game._id %></p>
                             <small class="text-muted subheading">Created by <a href="view_profile_self"><%= game.creator %></a></small>
                         </div>
 
