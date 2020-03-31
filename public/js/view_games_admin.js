@@ -19,18 +19,6 @@ let trivia = $("#filter-by-trivia");
 let sports = $("#filter-by-sports");
 let others = $("#filter-by-others");
 
-let search = $("#search-btn");
-
-search.on("click", function () {
-    let keywords = $("#search-box").val();
-
-    if ($(".container").find(".card-text:not(:contains(" + keywords + "))").length !== 0)
-        $(".container").find(".card-text:not(:contains(" + keywords + "))").parent().parent().parent().css("display", "none");
-    else{
-        $("#search-box").attr("placeholder", "no strings found");
-    }
-});
-
 function check () {
 
     $(".card").parent().hide();

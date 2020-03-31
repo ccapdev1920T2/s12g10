@@ -3,17 +3,40 @@ const Game = require("../models/Game");
 
 const controller = {
     getGames: function (req, res) {
-        db.findMany(Game, {}, null, function (result) {
-            if (result != null) {
+        let searchQuery = req.query.query;
+        console.log(searchQuery);
+        if (!searchQuery) {
 
-                res.render("pages/view_games", {games: result});
+            db.findMany(Game, {}, null, function (result) {
+                if (result != null) {
 
-            } else {
+                    res.render("pages/view_games", {games: result});
 
-                res.render("pages/error");
+                } else {
 
-            }
-        });
+                    res.render("pages/error");
+
+                }
+            });
+
+        } else {
+            db.findMany(Game, { $or: [
+                    {title: {$regex: searchQuery, $options: "i"}},
+                    {description: {$regex: searchQuery, $options: "i"}},
+                    {genres: {$regex: searchQuery, $options: "i"}},
+                ]}, null, function (result) {
+                if (result != null) {
+
+                    res.render("pages/view_games", {games: result});
+
+                } else {
+
+                    res.render("pages/error");
+
+                }
+            });
+
+        }
     }
 };
 
