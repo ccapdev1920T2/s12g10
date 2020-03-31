@@ -14,6 +14,11 @@ const controller = {
 
             }
         });
+    },
+
+    deleteGame: function (req, res) {
+        db.deleteOne(Game, {_id: req.params.id});
+        res.redirect("back");
     }
 };
 

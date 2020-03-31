@@ -210,5 +210,6 @@ $("#deleteModal").on("show.bs.modal", function (event) {
         "<div class='subheading' style='font-size: 20px'>" + title + "</div>" +
         "Proceed? <br>");
     modal.find("#modal-id").text("Game ID: " + id);
+    modal.find("a.btn").attr("href", "view_games_admin/" + id + "/delete");
 
 });

@@ -239,7 +239,8 @@ a.btn:hover {
     cursor: default;
 }
 
-.btn-custom2:hover {
+.btn-custom2:hover,
+a.btn-custom2:hover {
     background-color: #CA3433;
     border-color: #CA3433;
     font-family: 'Jura', sans-serif;
