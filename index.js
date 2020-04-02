@@ -1,9 +1,10 @@
 const port = 3000;
 const express = require("express");
 const bodyParser = require("body-parser");
-const app = express();
-
+const session = require("express-session");
 const db = require("./models/db");
+
+const app = express();
 
 app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
