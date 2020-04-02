@@ -4,18 +4,7 @@ const Game = require("../models/Game");
 const data = require("../models/data");
 
 const controller = {
-    addData: function (req, res) {
-        db.findMany(Game, {}, null, function (result) {
-            if (result.length === 0) {
-
-                db.insertMany(Game, data.games);
-
-            } else {
-
-                console.log("Game data found")
-
-            }
-        });
+    loadPage: function (req, res) {
         res.render("pages/login_and_register")
     },
     authenticateUser: function(req, res){

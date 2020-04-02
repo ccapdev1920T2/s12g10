@@ -3,6 +3,6 @@ const app = express();
 
 const controller = require("../controllers/CONTROLLER_login_and_register");
 
-app.get("/", controller.addData);
+app.get("/", controller.loadPage);
 
 module.exports = app;

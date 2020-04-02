@@ -20,7 +20,7 @@ const db = {
         function (model, doc) {
             model.create(doc, function (err, res) {
                 if (err) throw err;
-                console.log("Added: " + res);
+                console.log("Added 1 document to " + model.collection.collectionName);
             });
         },
 
@@ -28,7 +28,7 @@ const db = {
         function (model, docs) {
             model.insertMany(docs, function (err, res) {
               if (err) throw err;
-              console.log("Added: " + res);
+              console.log("Added " + res.length + " documents to " + model.collection.collectionName);
             });
         },
 

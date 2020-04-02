@@ -1,4 +1,11 @@
-module.exports = {
+const db = require("./db");
+
+const Game = require("./Game");
+const User = require("./User");
+const Item = require("./Item");
+const Attempt = require("./Attempt");
+
+data = {
 
     users: [
         {
@@ -158,5 +165,17 @@ module.exports = {
     ],
     attempts: [],
     items: []
+
+};
+
+module.exports = function () {
+
+    db.findMany(Game, {}, null, function (result) {
+        if (result.length === 0) {
+            db.insertMany(Game, data.games);
+        } else {
+            console.log("Game data found");
+        }
+    });
 
 };

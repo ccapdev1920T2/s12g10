@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const db = require("./models/db");
 
+const addData = require("./models/data");
+
 const app = express();
 
 app.use(express.static(__dirname + '/public'));
@@ -43,7 +45,8 @@ app.use(function (req, res) {
 });
 
 db.connect();
+addData();
 
 app.listen(port, function() {
-    console.log("listening at http://localhost:" + port);
+    console.log("Listening at http://localhost:" + port);
 });
