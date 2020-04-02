@@ -31,26 +31,14 @@ const schema = {
     //     required: true,
     //     enum: ["art", "business", "scitech", "general", "trivia", "sports", "others"]
     // },
-    // creator: {
-    //     type: User,
-    //     required: true
-    // },
-    // items: {
-    //     type: [Item],
-    //     required: true,
-    //     validate:
-    //         function (val) {
-    //             return val.length >= 10 && val.length <= 50;
-    //         }
-    // },
     // time: {
     //     type: Number,
     //     required: true,
     //     min: 3,
     //     max: 10
     // },
-    // attempts: {
-    //     type: [Attempt],
+    // creator: {
+    //     type: User,
     //     required: true
     // }
 };

@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+var Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
+
 const schema = {
     question: {
         type: String,
@@ -7,6 +10,10 @@ const schema = {
     },
     answer: {
         type: String,
+        required: true
+    },
+    game_id: {
+        type: ObjectId,
         required: true
     }
 };

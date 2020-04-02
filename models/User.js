@@ -27,14 +27,6 @@ const schema = {
     //     type: String,
     //     required: false
     // },
-    // attempts: {
-    //     type: [Attempt],
-    //     required: false,
-    // },
-    // games: {
-    //     type: [Game],
-    //     required: false
-    // },
     // is_admin: {
     //     type: Boolean,
     //     required: true,

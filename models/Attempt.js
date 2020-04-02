@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+var Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
+
 const schema = {
     attempt_time: {
         type: Number,
@@ -12,6 +15,14 @@ const schema = {
         required: true,
         min: 0,
         max: 50
+    },
+    game_id: {
+        type: ObjectId,
+        required: true
+    },
+    user_id: {
+        type: ObjectId,
+        required: true
     }
 };
 const collection = "attempts";
