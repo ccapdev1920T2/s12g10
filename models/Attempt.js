@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-let Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+// let Schema = mongoose.Schema,
+//     ObjectId = Schema.ObjectId;
 
 const schema = {
     attempt_time: {
@@ -17,11 +17,11 @@ const schema = {
         max: 50
     },
     game_id: {
-        type: ObjectId,
+        type: mongoose.ObjectId,
         required: true
     },
     user_id: {
-        type: ObjectId,
+        type: mongoose.ObjectId,
         required: true
     }
 };

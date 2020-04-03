@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-let Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+// let Schema = mongoose.Schema,
+//     ObjectId = Schema.ObjectId;
 
 const schema = {
     question: {
@@ -13,7 +13,7 @@ const schema = {
         required: true
     },
     game_id: {
-        type: ObjectId,
+        type: mongoose.ObjectId,
         required: true
     }
 };
