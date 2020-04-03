@@ -1,16 +1,25 @@
 const db = require("../models/db");
 const Game = require("../models/Game");
+const User = require("../models/User");
 
 const controller = {
     getGames: function (req, res) {
         let searchQuery = req.query.query;
-        console.log(searchQuery);
+
+        let isAdmin;
+        db.findOne(User, { email : req.session.username }, null, function (result) {
+            isAdmin = result.is_admin;
+        });
+
         if (!searchQuery) {
 
             db.findMany(Game, {}, null, function (result) {
                 if (result != null) {
 
-                    res.render("pages/view_games", {games: result});
+                    if (isAdmin)
+                        res.render("pages/view_games_admin", {games: result});
+                    else
+                        res.render("pages/view_games", {games: result});
 
                 } else {
 
@@ -27,7 +36,10 @@ const controller = {
                 ]}, null, function (result) {
                 if (result != null) {
 
-                    res.render("pages/view_games", {games: result});
+                    if (isAdmin)
+                        res.render("pages/view_games_admin", {games: result});
+                    else
+                        res.render("pages/view_games", {games: result});
 
                 } else {
 
@@ -37,6 +49,11 @@ const controller = {
             });
 
         }
+    },
+
+    deleteGame: function (req, res) {
+        db.deleteOne(Game, {_id: req.params.id});
+        res.redirect("back");
     }
 };
 
