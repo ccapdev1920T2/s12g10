@@ -4,7 +4,11 @@
     <%- include ("../partials/head.ejs") %>
 
     <title>Mnemosis | All Games</title>
-    <link rel="stylesheet" href="../../css/view_games.css">
+    <% if (admin) { %>
+        <link rel="stylesheet" href="css/view_games_admin.css">
+    <% } else { %>
+        <link rel="stylesheet" href="css/view_games.css">
+    <% } %>
 </head>
 <body>
     <%- include ("../partials/header.ejs") %>
@@ -53,7 +57,15 @@
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title heading"><%= game.title %></h5>
                             <p class="card-text subheading" style="display: none"><%= game.description %></p>
-                            <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#playModal">Play Game</button>
+                            <% if (admin) { %>
+                                <div class="mt-auto">
+                                    <button type="button" class="btn btn-custom btn-block" data-toggle="modal" data-target="#playModal">Play Game</button>
+                                    <a href="modify_game" class="btn btn-custom btn-block">Modify Game</a>
+                                    <button type="button" class="btn btn-custom2 btn-block" data-toggle="modal" data-target="#deleteModal">Delete Game</button>
+                                </div>
+                            <% } else { %>
+                                <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#playModal">Play Game</button>
+                            <% } %>
                         </div>
 
                         <div class="card-footer">
@@ -68,9 +80,16 @@
     </div>
 
     <%- include ("../partials/modal.ejs") %>
+    <%- include ("../partials/delete_modal.ejs") %>
 
     <%- include ("../partials/footer.ejs") %>
 
-    <script src="../../js/view_games.js"></script>
+    <% if (admin) { %>
+        <script src="js/view_games_admin.js"></script>
+    <% } else { %>
+        <script src="js/view_games.js"></script>
+    <% } %>
+
+<!--    <script src="../../js/view_games.js"></script>-->
 </body>
 </html>

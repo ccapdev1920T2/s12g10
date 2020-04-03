@@ -11,10 +11,10 @@ const controller = {
             db.findMany(Game, {}, null, function (result) {
                 if (result != null) {
 
-                    if (req.session.admin)
-                        res.render("pages/view_games_admin", {games: result});
-                    else
-                        res.render("pages/view_games", {games: result});
+                    // if (req.session.admin)
+                    //     res.render("pages/view_games_admin", {games: result});
+                    // else
+                    res.render("pages/view_games", {games: result, admin: req.session.admin});
 
                 } else {
 
@@ -31,10 +31,7 @@ const controller = {
                 ]}, null, function (result) {
                 if (result != null) {
 
-                    if (req.session.admin)
-                        res.render("pages/view_games_admin", {games: result});
-                    else
-                        res.render("pages/view_games", {games: result});
+                    res.render("pages/view_games", {games: result, admin: req.session.admin});
 
                 } else {
 
