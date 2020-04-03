@@ -31,10 +31,19 @@ const viewProfileAdminUserRoute = require("./routes/ROUTE_view_profile_user_admi
 const viewProfileSelf = require("./routes/ROUTE_view_profile_self");
 const viewProfileUserRoute = require("./routes/ROUTE_view_profile_user");
 
+app.use("/login", loginRoute);
+app.use("/", loginRoute);
+
+app.use(function(req, res, next) {
+    if(!req.session.loggedin) {
+        res.redirect('/login');
+    } else {
+        next();
+    }
+});
+
 app.use("/create_game", createRoute);
 app.use("/homepage", homeRoute);
-app.use("/login_and_register", loginRoute);
-app.use("/", loginRoute);
 app.use("/modify_game", modifyRoute);
 app.use("/play_game", playRoute);
 app.use("/view_games", viewGamesRoute);
