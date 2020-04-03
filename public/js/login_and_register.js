@@ -19,7 +19,13 @@ $("#fname, #lname, #bday, #gender, #email-register, #password-register, #cpass")
     valid.push($("#email-register").val().length > 0 && $("#email-register").is(":valid"));
     valid.push($("#password-register").val().length > 0);
     valid.push($("#cpass").val().length > 0);
-    valid.push($("#password-register").val() === $("#cpass").val());
+    if ($("#password-register").val() === $("#cpass").val()) {
+        valid.push(true);
+        $("#xmatch").css("visibility", "hidden");
+    } else {
+        valid.push(false);
+        $("#xmatch").css("visibility", "visible");
+    }
 
     if (valid.indexOf(false) === -1) {
         $("#submit-register").prop("disabled", false);

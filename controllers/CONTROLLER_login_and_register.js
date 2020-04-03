@@ -12,9 +12,7 @@ const controller = {
         let email = req.body.email;
         let password = req.body.password;
 
-        db.findOne(User, {
-            email: email
-        }, null, function (result) {
+        db.findOne(User, { email: email }, null, function (result) {
             if (result) {
                 let status = result.password === password ? 1 : 0;
                 if (status === 1) {
@@ -40,15 +38,25 @@ const controller = {
         let gender = req.body.gender;
         let email = req.body.email;
         let pass = req.body.pass;
-        db.insertOne(User, {
-            fname: fname,
-            lname: lname,
-            bday: bday,
-            gender: gender,
-            email: email,
-            pass: pass
+
+        db.findOne(User, { email: email }, null, function(result) {
+            if (result) {
+                res.redirect("back"); //email already exists
+            } else {
+                db.insertOne(User, {
+                    name: fname + " " + lname,
+                    birthday: bday,
+                    gender: gender,
+                    email: email,
+                    password: pass,
+                    user_image: "media/icon",
+                    is_admin: false,
+                });
+                req.session.loggedin = true;
+                req.session.username = email;
+                res.redirect("/homepage");
+            }
         });
-        res.render('../views/pages/homepage?fname=' + fname + '&lname=' + lname);
     },
 
     logout: function (req, res) {

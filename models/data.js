@@ -10,20 +10,26 @@ data = {
     users: [
         {
             name: 'Sean Doe',
+            birthday: new Date ("January 1, 1990"),
+            gender: "Male",
             email: 'seandoe@mnemosis.com',
             password: 'admin',
             user_image: 'media/Logo Full',
             is_admin: true
         },
         {
-            name: 'Rocky Gervais',
+            name: 'Tina Pay',
+            birthday: new Date ("February 2, 1990"),
+            gender: "Female",
             email: 'rocky@hfpa.com',
             password: 'goldenglobes',
             user_image: 'media/icon',
             is_admin: false
         },
         {
-            name: 'Helen Degenerez',
+            name: 'Amy Puller',
+            birthday: new Date ("March 3, 1990"),
+            gender: "Female",
             email: 'ellen@ellen.com',
             password: 'iloveporti@',
             user_image: 'media/icon',
@@ -31,6 +37,8 @@ data = {
         },
         {
             name: 'Nyron Bill',
+            birthday: new Date ("April 4, 1990"),
+            gender: "Male",
             email: 'nyronbill@gmail.com',
             password: 'p@55w0rd',
             user_image: 'media/icon',
@@ -38,6 +46,8 @@ data = {
         },
         {
             name: 'Joseph Uy',
+            birthday: new Date ("May 5, 1990"),
+            gender: "Male",
             email: 'joseph_uy@gmail.com',
             password: 'zyxwvutsrqp',
             user_image: 'media/icon',
@@ -45,6 +55,8 @@ data = {
         },
         {
             name: 'Dustin Blumentritt',
+            birthday: new Date ("June 6, 1990"),
+            gender: "Male",
             email: 'dustin.blumentritt@gmail.com',
             password: '6!is120',
             user_image: 'media/icon',

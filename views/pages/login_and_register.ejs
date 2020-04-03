@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="container" id="startup-box">
+    <div class="container mt-3" id="startup-box">
         <div class="row">
             <div class="col-sm-5" id="login-box">
                 <h2 class="heading">log-in</h2>
@@ -54,7 +54,7 @@
 
                 <div class="row"><div class="col-sm-12"><br></div></div>
 
-                <form>
+                <form action="register" method="post">
                     <div class="form-row form-group">
                         <div class="col">
                             <label for="fname" class="subheading">First name:</label>
@@ -94,6 +94,7 @@
                             <input type="password" class="form-control subheading" placeholder="Password confirmation" id="cpass">
                         </div>
                     </div>
+                    <small style="visibility: hidden" id="xmatch" class="subheading">Passwords do not match</small>
 
                     <div class="row"><div class="col-sm-12"><br></div></div>
 

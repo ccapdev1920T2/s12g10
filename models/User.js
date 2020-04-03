@@ -5,6 +5,14 @@ const schema = {
         type: String,
         required: true
     },
+    birthday: {
+        type: Date,
+        required: true
+    },
+    gender: {
+        type: String,
+        enum: ["Male", "Female", "Prefer not to say"]
+    },
     email: {
         type: String,
         required: true,

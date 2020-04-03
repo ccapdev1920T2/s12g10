@@ -7,6 +7,8 @@ app.get("/", controller.loadPage);
 
 app.post("/auth", controller.authenticateUser);
 
+app.post("/register", controller.addUser);
+
 app.get("/logout", controller.logout);
 
 module.exports = app;
