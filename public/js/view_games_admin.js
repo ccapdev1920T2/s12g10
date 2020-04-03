@@ -199,5 +199,4 @@ $("#deleteModal").on("show.bs.modal", function (event) {
         "Proceed? <br>");
     modal.find("#modal-id").text("Game ID: " + id);
     modal.find("a.btn").attr("href", "view_games/" + id + "/delete");
-
 });

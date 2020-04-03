@@ -19,6 +19,7 @@ const controller = {
                     console.log("login successful");
                     req.session.loggedin = true;
                     req.session.username = email;
+                    req.session.admin = result.is_admin;
                     res.redirect("/homepage");
                 } else {
                     console.log("user found but password incorrect");
@@ -54,6 +55,7 @@ const controller = {
                 });
                 req.session.loggedin = true;
                 req.session.username = email;
+                req.session.admin = false;
                 res.redirect("/homepage");
             }
         });
@@ -62,6 +64,7 @@ const controller = {
     logout: function (req, res) {
         req.session.loggedin = false;
         req.session.username = null;
+        req.session.admin = null;
         res.render("pages/login_and_register");
     }
 };
