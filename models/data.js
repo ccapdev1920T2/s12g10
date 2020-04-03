@@ -9,52 +9,47 @@ data = {
 
     users: [
         {
-            fName: 'Ned',
-            lName: 'Stark',
-            username: 'LordHandStark',
-            bio: 'You think my life is some precious thing to me? That I would trade my honour for a few more years of...of what?! You grew up with actors; you learned their craft and you learnt it well. But I grew up with soldiers. I learned how to die a long time ago.'
-        }, {
-            fName: 'Bran',
-            lName: 'Stark',
-            username: 'BranTheBroken',
-            bio: "It wasn't for the murder that the Gods cursed the Rat Cook, or for serving the King's son in a pie. He killed a guest beneath his roof. That's something the Gods can't forgive."
+            name: 'Sean Doe',
+            email: 'seandoe@mnemosis.com',
+            password: 'admin',
+            user_image: 'media/Logo Full',
+            is_admin: true
         },
         {
-            fName: 'Jon',
-            lName: 'Snow',
-            username: 'TheWhiteWolf',
-            bio: "I'm not going to swear an oath I can't uphold. When enough people make false promises, words stop meaning anything. Then there are no more answers, only better and better lies."
+            name: 'Rocky Gervais',
+            email: 'rocky@hfpa.com',
+            password: 'goldenglobes',
+            user_image: 'media/icon',
+            is_admin: false
         },
         {
-            fName: 'Sansa',
-            lName: 'Stark',
-            username: 'QueenInTheNorth',
-            bio: "I'm A Slow Learner, It's True. But I Learn."
+            name: 'Helen Degenerez',
+            email: 'ellen@ellen.com',
+            password: 'iloveporti@',
+            user_image: 'media/icon',
+            is_admin: false
         },
         {
-            fName: 'Arya',
-            lName: 'Stark',
-            username: 'FacelessMan',
-            bio: "Not today."
+            name: 'Nyron Bill',
+            email: 'nyronbill@gmail.com',
+            password: 'p@55w0rd',
+            user_image: 'media/icon',
+            is_admin: false
         },
         {
-            fName: 'Cersei',
-            lName: 'Lannister',
-            username: 'QueenMother',
-            bio: "When you play the Game of Thrones you win, or you die. There is no middle ground."
+            name: 'Joseph Uy',
+            email: 'joseph_uy@gmail.com',
+            password: 'zyxwvutsrqp',
+            user_image: 'media/icon',
+            is_admin: false
         },
         {
-            fName: 'Tyrion',
-            lName: 'Lannister',
-            username: 'TheHalfman',
-            bio: "Never forget what you are. The rest of the world will not. Wear it like armor, and it can never be used to hurt you"
+            name: 'Dustin Blumentritt',
+            email: 'dustin.blumentritt@gmail.com',
+            password: '6!is120',
+            user_image: 'media/icon',
+            is_admin: false
         },
-        {
-            fName: 'Daenerys',
-            lName: 'Targaryen',
-            username: 'BreakerOfChains',
-            bio: "Lannister, Targaryen, Baratheon, Stark, Tyrell – they’re all just spokes on a wheel. This one’s on top, then that one’s on top, and on and on it spins, crushing those on the ground. I’m not going to stop the wheel. I’m going to break the wheel."
-        }
     ],
     games: [
         {
@@ -175,6 +170,14 @@ module.exports = function () {
             db.insertMany(Game, data.games);
         } else {
             console.log("Game data found");
+        }
+    });
+
+    db.findMany(User, {}, null, function (result) {
+        if (result.length === 0) {
+            db.insertMany(User, data.users);
+        } else {
+            console.log("User data found");
         }
     });
 
