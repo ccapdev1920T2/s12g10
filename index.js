@@ -8,8 +8,13 @@ const addData = require("./models/data");
 
 const app = express();
 
-app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
+app.use(express.static(__dirname + '/public'));
+app.use(session({
+    secret: "topsecret",
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

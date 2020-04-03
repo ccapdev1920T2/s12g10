@@ -30,14 +30,14 @@
 
                 <div class="row"><div class="col-sm-12"><br></div></div>
 
-                <form>
+                <form action="auth" method="post">
                     <div class="form-group">
                         <label for="email-login" class="subheading">Email address:</label>
-                        <input type="email" class="form-control subheading" placeholder="Your email address" id="email-login">
+                        <input type="email" class="form-control subheading" name="email" placeholder="Your email address" id="email-login">
                     </div>
                     <div class="form-group">
                         <label for="password-login" class="subheading">Password:</label>
-                        <input type="password" class="form-control subheading" placeholder="Your password" id="password-login">
+                        <input type="password" class="form-control subheading" name="password" placeholder="Your password" id="password-login">
                     </div>
 
                     <div class="row"><div class="col-sm-12"><br></div></div>
@@ -46,8 +46,8 @@
 
                     <p class="subheading" style="text-align: center; margin-bottom: 0">----------- or -----------</p>
                     <div class="row"><div class="col-sm-12"><br></div></div>
+                    <a href="homepage" class="btn btn-custom btn-block subheading" role="button">Continue as guest</a>
                 </form>
-                <a href="homepage" class="btn btn-custom btn-block subheading" role="button">Continue as guest</a>
             </div>
             <div class="col-sm-7" id="register-box">
                 <h2 class="heading">register</h2>
