@@ -138,12 +138,14 @@
     text-align: center;
     padding-bottom: 10px;
     color: green;
+    font-size: 20px;
 }
 
 .time{
     grid-area:time ;
     text-align: center;
     padding-bottom: 10px;
+    font-size: 20px;
 
 }
 

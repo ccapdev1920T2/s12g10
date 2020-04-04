@@ -37,7 +37,7 @@ const controller = {
                     } else {
                         res.render("pages/error", {guest: req.session.guest});
                     }  
-                    db.findMany(Attempt, {user_id: req.param.idNum}, null, function (result) {
+                    db.findMany(Attempt, {} , null, function (result) {
                         if (result != null) {
                             details.attempts = result;
                             

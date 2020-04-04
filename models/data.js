@@ -16,7 +16,7 @@ data = {
             gender: "Male",
             email: "seandoe@mnemosis.com",
             password: "admin",
-            user_image: "media/Logo Full",
+            user_image: "/media/Logo Full.png",
             is_admin: true
         },
         {
@@ -26,7 +26,7 @@ data = {
             gender: "Female",
             email: "rocky@hfpa.com",
             password: "goldenglobes",
-            user_image: "media/icon.png",
+            user_image: "/media/Icon.png",
             is_admin: false
         },
         {
@@ -36,7 +36,7 @@ data = {
             gender: "Female",
             email: "ellen@ellen.com",
             password: "iloveporti@",
-            user_image: "media/icon.png",
+            user_image: "/media/Icon.png",
             is_admin: false
         },
         {
@@ -46,7 +46,7 @@ data = {
             gender: "Male",
             email: "nyronbill@gmail.com",
             password: "p@55w0rd",
-            user_image: "media/icon.png",
+            user_image: "/media/Icon.png",
             is_admin: false
         },
         {
@@ -56,7 +56,7 @@ data = {
             gender: "Male",
             email: "joseph_uy@gmail.com",
             password: "zyxwvutsrqp",
-            user_image: "media/icon.png",
+            user_image: "/media/Icon.png",
             is_admin: false
         },
         {
@@ -66,7 +66,7 @@ data = {
             gender: "Male",
             email: "dustin.blumentritt@gmail.com",
             password: "6!is120",
-            user_image: "media/icon.png",
+            user_image: "/media/Icon.png",
             is_admin: false
         },
     ],
@@ -75,7 +75,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000001"),
             title: "20 Things We Learned in 2019",
             description: "Can you fill in the blanks for the things we learned in 2019?",
-            game_image: "media/coversamples/1.jpg",
+            game_image: "/media/coversamples/1.jpg",
             genres: ["history", "trivia"],
             time: 6,
             creator: new mongoose.Types.ObjectId("000000000000000000000001")
@@ -84,7 +84,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000002"),
             title: "Unique Harry Potter Film Characters",
             description: "Can you pick which Harry Potter film each of these characters appeared in?",
-            game_image: "media/coversamples/2.jpg",
+            game_image: "/media/coversamples/2.jpg",
             genres: ["trivia", "others"],
             time: 4,
             creator: new mongoose.Types.ObjectId("000000000000000000000001")
@@ -93,7 +93,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000003"),
             title: "Odd But True Facts",
             description: "Can you match the two parts of these odd facts?",
-            game_image: "media/coversamples/3.jpg",
+            game_image: "/media/coversamples/3.jpg",
             genres: ["trivia"],
             time: 5,
             creator: new mongoose.Types.ObjectId("000000000000000000000002")
@@ -102,7 +102,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000004"),
             title: "Pokedex Party (easy)",
             description: "Name all the pokemon who come first and last on their regional pokedex",
-            game_image: "media/coversamples/4.jpg",
+            game_image: "/media/coversamples/4.jpg",
             genres: ["trivia", "others"],
             time: 5,
             creator: new mongoose.Types.ObjectId("000000000000000000000001")
@@ -111,7 +111,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000005"),
             title: "Pokedex Party (hard)",
             description: "Name all the pokemon who come first and last on their pokedex. This harder version of Pokedex Party includes pokedex expansions and subsets introduced in the games as well as the Pokemon Ranger pokedex!",
-            game_image: "media/coversamples/5.jpg",
+            game_image: "/media/coversamples/5.jpg",
             genres: ["trivia", "others"],
             time: 10,
             creator: new mongoose.Types.ObjectId("000000000000000000000003")
@@ -120,7 +120,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000006"),
             title: "From ABC to History in 8 minutes",
             description: "Get some world history trivia with all answers starting from a unique letter of the alphabet. Take note that if the answer is a name, only one of the names (first name, surname, etc.) may start with the unique letter.",
-            game_image: "media/coversamples/6.jpg",
+            game_image: "/media/coversamples/6.jpg",
             genres: ["history"],
             time: 8,
             creator: new mongoose.Types.ObjectId("000000000000000000000003")
@@ -130,7 +130,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000007"),
             title: "The Alphabet of Business",
             description: "Can you name the trademarked products of famous brands that you commonly use everyday? Clue! Answers start in A, E, J, S, and Z!",
-            game_image: "media/coversamples/7.jpg",
+            game_image: "/media/coversamples/7.jpg",
             genres: ["business"],
             time: 3,
             creator: new mongoose.Types.ObjectId("000000000000000000000003")
@@ -139,7 +139,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000008"),
             title: "Artist by Painting",
             description: "Can you name the artist based only from a painting's name?",
-            game_image: "media/coversamples/8.jpg",
+            game_image: "/media/coversamples/8.jpg",
             genres: ["art", "trivia", "others"],
             time: 10,
             creator: new mongoose.Types.ObjectId("000000000000000000000001")
@@ -148,7 +148,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000009"),
             title: "Finish the Athlete",
             description: "Can you choose the word that completes the name of each athlete?",
-            game_image: "media/coversamples/9.jpg",
+            game_image: "/media/coversamples/9.jpg",
             genres: ["sports"],
             time: 4,
             creator: new mongoose.Types.ObjectId("000000000000000000000003")
@@ -157,7 +157,7 @@ data = {
             _id: new mongoose.Types.ObjectId("11111111111100000000000a"),
             title: "'E' TV Character Match",
             description: "Did you know that E is the most used vowel in the English language? I didn't either! Can you guess the first name of the characters from these TV shows? Hint! They all start with E!",
-            game_image: "media/coversamples/10.jpg",
+            game_image: "/media/coversamples/10.jpg",
             genres: ["others"],
             time: 5,
             creator: new mongoose.Types.ObjectId("000000000000000000000001")
@@ -166,7 +166,7 @@ data = {
             _id: new mongoose.Types.ObjectId("11111111111100000000000b"),
             title: "Art Movements",
             description: "Artist much?! Name the art movements given the the notable artist!",
-            game_image: "media/coversamples/11.jpg",
+            game_image: "/media/coversamples/11.jpg",
             genres: ["art"],
             time: 7,
             creator: new mongoose.Types.ObjectId("000000000000000000000002")
@@ -175,7 +175,7 @@ data = {
             _id: new mongoose.Types.ObjectId("11111111111100000000000c"),
             title: "Complete the Sentence: Science Edition!",
             description: "No research allowed! Channel your inner Becquerel and answer the following science questions!",
-            game_image: "media/coversamples/12.jpg",
+            game_image: "/media/coversamples/12.jpg",
             genres: ["scitech", "history", "trivia", "others"],
             time: 7,
             creator: new mongoose.Types.ObjectId("000000000000000000000001")
@@ -184,7 +184,7 @@ data = {
             _id: new mongoose.Types.ObjectId("11111111111100000000000d"),
             title: "Let's get chemical!",
             description: "Can you name every 10th chemical element from the periodic table?",
-            game_image: "media/coversamples/13.jpg",
+            game_image: "/media/coversamples/13.jpg",
             genres: ["scitech"],
             time: 4,
             creator: new mongoose.Types.ObjectId("000000000000000000000003")
@@ -193,7 +193,7 @@ data = {
             _id: new mongoose.Types.ObjectId("11111111111100000000000e"),
             title: "Volleyball Superstars by the Country",
             description: "Spikers up! Can you name the famous volleyball superstars given their country, initials, and position?",
-            game_image: "media/coversamples/14.jpg",
+            game_image: "/media/coversamples/14.jpg",
             genres: ["sports"],
             time: 9,
             creator: new mongoose.Types.ObjectId("000000000000000000000003")
@@ -202,7 +202,7 @@ data = {
             _id: new mongoose.Types.ObjectId("11111111111100000000000f"),
             title: "Big Four Sports: True or False!",
             description: "Can you guess if this US city has their own team for hockey, baseball, basketball, and football?",
-            game_image: "media/coversamples/15.jpg",
+            game_image: "/media/coversamples/15.jpg",
             genres: ["sports", "others"],
             time: 6,
             creator: new mongoose.Types.ObjectId("000000000000000000000002")
@@ -211,7 +211,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000010"),
             title: "Band or Law Firm",
             description: "In a battle of brains and brawns, can you figure out which of the following groups are American bands or American law firms?",
-            game_image: "media/coversamples/10.jpg",
+            game_image: "/media/coversamples/10.jpg",
             genres: ["business", "others"],
             time: 8,
             creator: new mongoose.Types.ObjectId("000000000000000000000001")
@@ -220,7 +220,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000011"),
             title: "2000s Billboard Top 100",
             description: "Can you guess the artist whose song(s) reached number 1 on the Billboard Hot 100 in the 2000s?",
-            game_image: "media/coversamples/11.jpg",
+            game_image: "/media/coversamples/11.jpg",
             genres: ["art", "others"],
             time: 4,
             creator: new mongoose.Types.ObjectId("000000000000000000000002")
@@ -229,7 +229,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000012"),
             title: "Say Hello in 10 Languages",
             description: "Time to get your geek on and determine which programming language prints the iconic \"Hello World\" this way!",
-            game_image: "media/coversamples/12.jpg",
+            game_image: "/media/coversamples/12.jpg",
             genres: ["scitech", "others"],
             time: 6,
             creator: new mongoose.Types.ObjectId("000000000000000000000001")
@@ -238,7 +238,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000013"),
             title: "To the Top!",
             description: "Can you name the team in Haikyuu based on their color scheme?",
-            game_image: "media/coversamples/13.jpg",
+            game_image: "/media/coversamples/13.jpg",
             genres: ["sports", "others"],
             time: 4,
             creator: new mongoose.Types.ObjectId("000000000000000000000003")
@@ -247,7 +247,7 @@ data = {
             _id: new mongoose.Types.ObjectId("111111111111000000000014"),
             title: "Just Before the Finish Line",
             description: "The following presidents all did not finish their terms. Can you guess whether they (A) died in office, (B) were assassinated, or (C) resigned? Enter the letter of your choice only.",
-            game_image: "media/coversamples/14.jpg",
+            game_image: "/media/coversamples/14.jpg",
             genres: ["history"],
             time: 9,
             creator: new mongoose.Types.ObjectId("000000000000000000000003")
