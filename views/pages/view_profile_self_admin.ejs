@@ -68,9 +68,11 @@
         <a href="/create_game" class="btn btn-custom btn-block mb-5" id="create">Create Game</a>
         <h2 class="heading" style="text-align: center"><%= details.user.name %>'s Games</h2>
         <div class="row">
+            <%var see = 0 %>
             <% details.games.forEach(function (game) { %>
                 <% if (game.creator.equals(details.user._id)){%>
-                    <div class="col-sm-4 mb-4">
+                    <%see = see+1 %>
+                    <div class="col-sm-4 mb-4 <%if (see >= 4){%> game-created <%}%>">
                         <div class="card
                             <% for (let i = 0; i < game.genres.length; i++ ) { %>
                             <%= 'card-' + game.genres[i] %>
@@ -135,7 +137,13 @@
     
                             <div class="card-footer">
                                 <p id="game_id" style="display: none"><%= game._id %></p>
-                                <small id="author" class="text-muted subheading">Created by <a href="/view_profile"><%= game.creator %></a></small>
+                                <small id="author" class="text-muted subheading">Created by <a href="/view_profile/<%= game.creator %>">
+                                    <% details.users.forEach(function (user) { %>
+                                        <%if (game.creator.equals(user._id)){%>
+                                            <%=user.name%>
+                                        <%}%>    
+                                    <% }) %>    
+                                </a></small>
                             </div>
                         </div>
                     </div>
@@ -151,7 +159,7 @@
     <div class="container mt-5 mb-5" id="2-main-box">
         <h2 class="heading" style="text-align: center">Games Completed</h2>
         <div class="row">
-            
+            <%var see2 = 0 %>
             <% details.games.forEach(function (game) { %>
                 <% details.attempts.forEach(function (attempt) { %>
                     <% if (attempt.user_id.equals(details.user._id)){%> 
@@ -163,7 +171,7 @@
                             <%}%>
                         <% }) %>
                         <% if (attempt.answered == count){%>
-                            <div class="col-sm-4 mb-4">
+                            <div class="col-sm-4 mb-4 <%if (see2 >= 4){%> game-completed <%}%>">
                                 <div class="card
                                     <% for (let i = 0; i < game.genres.length; i++ ) { %>
                                     <%= 'card-' + game.genres[i] %>
@@ -205,7 +213,13 @@
             
                                     <div class="card-footer">
                                         <p id="game_id" style="display: none"><%= game._id %></p>
-                                        <small id="author" class="text-muted subheading">Created by <a href="view_profile_self"><%= game.creator %></a></small>
+                                        <small id="author" class="text-muted subheading">Created by <a href="/view_profile/<%= game.creator %>">
+                                            <% details.users.forEach(function (user) { %>
+                                                <%if (game.creator.equals(user._id)){%>
+                                                    <%=user.name%>
+                                                <%}%>    
+                                            <% }) %>    
+                                        </a></small>
                                     </div>
                                 </div>
                             </div>

@@ -1,27 +1,27 @@
 $( document ).ready(function() {
-    // $("#button").click(function (){
-    //     if ($('.game-created').css("display")== "none" ){
-    //         $('.game-created').show();
-    //         $('#button').html('Show Less')
-    //     }
-    //     else {
-    //         $('.game-created').hide();
-    //         $('#button').html('Show More')
+    $("#button").click(function (){
+        if ($('.game-created').css("display")== "none" ){
+            $('.game-created').show();
+            $('#button').html('Show Less')
+        }
+        else {
+            $('.game-created').hide();
+            $('#button').html('Show More')
 
-    //     }
-    // })
-    // $("#button2").click(function (){
-    //     if ($('.game-completed').css("display")== "none" ){
-    //         $('.game-completed').show();
-    //         $('#button2').html('Show Less')
+        }
+    })
+    $("#button2").click(function (){
+        if ($('.game-completed').css("display")== "none" ){
+            $('.game-completed').show();
+            $('#button2').html('Show Less')
 
-    //     }
-    //     else {
-    //         $('.game-completed').hide();
-    //         $('#button2').html('Show More')
+        }
+        else {
+            $('.game-completed').hide();
+            $('#button2').html('Show More')
 
-    //     }
-    // })
+        }
+    })
     // $(".delete").click(function (){
     //     $(".prof_subtext1").text(parseInt($(".prof_subtext1").text())-1);
     //     if ($(this).parent().parent().parent().hasClass('game-created')){

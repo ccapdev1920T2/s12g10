@@ -5,6 +5,7 @@ const Attempt = require("../models/Attempt");
 const Item = require("../models/Item");
 var details = {
             user:null,
+            users:null,
             games:null,
             attempts:null,
             items:null
@@ -24,53 +25,61 @@ const controller = {
             } else {
                 res.render("pages/error", {guest: req.session.guest});
             }
-            db.findMany(Game, {}, null, function (result) {
+            db.findMany(User, {}, null, function (result) {
                 if (result != null) {
-                    details.games = result;
+                    details.users = result;
                     
                 } else {
                     res.render("pages/error", {guest: req.session.guest});
                 }
-                db.findMany(Item, {}, null, function (result) {
+                db.findMany(Game, {}, null, function (result) {
                     if (result != null) {
-                        details.items = result;
+                        details.games = result;
+                        
                     } else {
                         res.render("pages/error", {guest: req.session.guest});
-                    }  
-                    db.findMany(Attempt, {} , null, function (result) {
+                    }
+                    db.findMany(Item, {}, null, function (result) {
                         if (result != null) {
-                            details.attempts = result;
-                            
+                            details.items = result;
                         } else {
                             res.render("pages/error", {guest: req.session.guest});
-                        }
-                        if (details.user!= null && details.games!=null){
-                            if (req.session.username == email){
-                                if ( req.session.admin == true )
-                                    res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest});
-                                else 
-                                    res.render("pages/view_profile_self", {details:details, guest: req.session.guest});
+                        }  
+                        db.findMany(Attempt, {} , null, function (result) {
+                            if (result != null) {
+                                details.attempts = result;
+                                
+                            } else {
+                                res.render("pages/error", {guest: req.session.guest});
+                            }
+                            if (details.user!= null && details.games!=null){
+                                if (req.session.username == email){
+                                    if ( req.session.admin == true )
+                                        res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest});
+                                    else 
+                                        res.render("pages/view_profile_self", {details:details, guest: req.session.guest});
+                                }
+                                else {
+                                    if ( req.session.admin == true )
+                                        res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest});
+                                    else 
+                                        res.render("pages/view_profile_user", {details:details, guest: req.session.guest});
+                                }
                             }
                             else {
-                                if ( req.session.admin == true )
-                                    res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest});
-                                else 
-                                    res.render("pages/view_profile_user", {details:details, guest: req.session.guest});
+                                res.render("pages/error", {guest: req.session.guest});
                             }
-                        }
-                        else {
-                            res.render("pages/error", {guest: req.session.guest});
-                        }
-                    }); 
+                        }); 
+                    });
                 });
             });
         });
     },
     getProfile: function (req, res) {
         
-        let email= req.param("email");
+        let id= req.param("id");
 
-        db.findOne(User, {email: email}, null, function (result) {
+        db.findOne(User, {_id: id}, null, function (result) {
 
             if (result != null) {
                 
@@ -80,44 +89,52 @@ const controller = {
             } else {
                 res.render("pages/error", {guest: req.session.guest});
             }
-            db.findMany(Game, {}, null, function (result) {
+            db.findMany(User, {}, null, function (result) {
                 if (result != null) {
-                    details.games = result;
+                    details.users = result;
                     
                 } else {
                     res.render("pages/error", {guest: req.session.guest});
                 }
-                db.findMany(Item, {}, null, function (result) {
+                db.findMany(Game, {}, null, function (result) {
                     if (result != null) {
-                        details.items = result;
+                        details.games = result;
+                        
                     } else {
                         res.render("pages/error", {guest: req.session.guest});
-                    }  
-                    db.findMany(Attempt, {user_id: req.param.idNum}, null, function (result) {
+                    }
+                    db.findMany(Item, {}, null, function (result) {
                         if (result != null) {
-                            details.attempts = result;
-                            
+                            details.items = result;
                         } else {
                             res.render("pages/error", {guest: req.session.guest});
-                        }
-                        if (details.user!= null && details.games!=null){
-                            if (req.session.username == email){
-                                if ( req.session.admin == true )
-                                    res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest});
-                                else 
-                                    res.render("pages/view_profile_self", {details:details, guest: req.session.guest});
+                        }  
+                        db.findMany(Attempt, {user_id: req.param.idNum}, null, function (result) {
+                            if (result != null) {
+                                details.attempts = result;
+                                
+                            } else {
+                                res.render("pages/error", {guest: req.session.guest});
+                            }
+                            if (details.user!= null && details.games!=null){
+                                if (req.session.username == details.user.email){
+                                    if ( req.session.admin == true )
+                                        res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest});
+                                    else 
+                                        res.render("pages/view_profile_self", {details:details, guest: req.session.guest});
+                                }
+                                else {
+                                    if ( req.session.admin == true )
+                                        res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest});
+                                    else 
+                                        res.render("pages/view_profile_user", {details:details, guest: req.session.guest});
+                                }
                             }
                             else {
-                                if ( req.session.admin == true )
-                                    res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest});
-                                else 
-                                    res.render("pages/view_profile_user", {details:details, guest: req.session.guest});
+                                res.render("pages/error", {guest: req.session.guest});
                             }
-                        }
-                        else {
-                            res.render("pages/error", {guest: req.session.guest});
-                        }
-                    }); 
+                        }); 
+                    });
                 });
             });
         });
