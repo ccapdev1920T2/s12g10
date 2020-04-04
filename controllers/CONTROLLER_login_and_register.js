@@ -8,6 +8,18 @@ const controller = {
         res.render("pages/login_and_register");
     },
 
+    loginGuest: function (req, res) {
+
+        req.session.loggedin = true;
+        req.session.username = null;
+        req.session.admin = false;
+        req.session.guest = true;
+
+        console.log("logged in as guest: " + req.session.guest);
+        res.redirect("/homepage");
+
+    },
+
     authenticateUser: function (req, res) {
         let email = req.body.email;
         let password = req.body.password;
@@ -20,6 +32,7 @@ const controller = {
                     req.session.loggedin = true;
                     req.session.username = email;
                     req.session.admin = result.is_admin;
+                    req.session.guest = false;
                     res.redirect("/homepage");
                 } else {
                     console.log("user found but password incorrect");
@@ -56,6 +69,7 @@ const controller = {
                 req.session.loggedin = true;
                 req.session.username = email;
                 req.session.admin = false;
+                req.session.guest = false;
                 res.redirect("/homepage");
             }
         });
@@ -65,6 +79,7 @@ const controller = {
         req.session.loggedin = false;
         req.session.username = null;
         req.session.admin = null;
+        req.session.guest = null;
         res.render("pages/login_and_register");
     }
 };
