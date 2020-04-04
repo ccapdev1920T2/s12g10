@@ -14,7 +14,7 @@ let none = $("#filter-by-none");
 let art = $("#filter-by-art");
 let business = $("#filter-by-business");
 let scitech = $("#filter-by-scitech");
-let general = $("#filter-by-general");
+let history = $("#filter-by-history");
 let trivia = $("#filter-by-trivia");
 let sports = $("#filter-by-sports");
 let others = $("#filter-by-others");
@@ -30,8 +30,8 @@ function check () {
         $(".container").find(".card-business").parent().show();
     if (scitech.hasClass("active"))
         $(".container").find(".card-scitech").parent().show();
-    if (general.hasClass("active"))
-        $(".container").find(".card-general").parent().show();
+    if (history.hasClass("active"))
+        $(".container").find(".card-history").parent().show();
     if (trivia.hasClass("active"))
         $(".container").find(".card-trivia").parent().show();
     if (sports.hasClass("active"))
@@ -39,14 +39,14 @@ function check () {
     if (others.hasClass("active"))
         $(".container").find(".card-others").parent().show();
 
-    if ((art.hasClass("active") && business.hasClass("active") && scitech.hasClass("active") && general.hasClass("active") && trivia.hasClass("active") && sports.hasClass("active") && others.hasClass("active")) ||
-        !(art.hasClass("active") || business.hasClass("active") || scitech.hasClass("active") || general.hasClass("active") || trivia.hasClass("active") || sports.hasClass("active") || others.hasClass("active"))) {
+    if ((art.hasClass("active") && business.hasClass("active") && scitech.hasClass("active") && history.hasClass("active") && trivia.hasClass("active") && sports.hasClass("active") && others.hasClass("active")) ||
+        !(art.hasClass("active") || business.hasClass("active") || scitech.hasClass("active") || history.hasClass("active") || trivia.hasClass("active") || sports.hasClass("active") || others.hasClass("active"))) {
         none.addClass("active");
 
         art.removeClass("active");
         business.removeClass("active");
         scitech.removeClass("active");
-        general.removeClass("active");
+        history.removeClass("active");
         trivia.removeClass("active");
         sports.removeClass("active");
         others.removeClass("active");
@@ -62,7 +62,7 @@ none.on("click", function () {
     art.removeClass("active");
     business.removeClass("active");
     scitech.removeClass("active");
-    general.removeClass("active");
+    history.removeClass("active");
     trivia.removeClass("active");
     sports.removeClass("active");
     others.removeClass("active");
@@ -99,11 +99,11 @@ scitech.on("click", function () {
 });
 
 
-general.on("click", function () {
-    if (general.hasClass("active")) {
-        general.removeClass("active");
+history.on("click", function () {
+    if (history.hasClass("active")) {
+        history.removeClass("active");
     } else {
-        general.addClass("active");
+        history.addClass("active");
     }
     check();
 });
@@ -161,8 +161,8 @@ $("#playModal").on("show.bs.modal", function (event) {
     if (cats.includes("card-scitech")) {
         holder += '<div class="col bg-scitech border"><small>Science and Technology</small></div>';
     }
-    if (cats.includes("card-general")) {
-        holder += '<div class="col bg-general border"><small>General Knowledge</small></div>';
+    if (cats.includes("card-history")) {
+        holder += '<div class="col bg-history border"><small>History</small></div>';
     }
     if (cats.includes("card-trivia")) {
         holder += '<div class="col bg-trivia border"><small>Trivia</small></div>';

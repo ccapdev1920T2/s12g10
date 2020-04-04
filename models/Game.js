@@ -14,7 +14,7 @@ const schema = {
         type: String,
         required: true,
         minlength: 10,
-        maxlength: 500
+        maxlength: 1000
     },
     game_image: {
         type: String,
@@ -23,7 +23,7 @@ const schema = {
     genres: {
         type: [String],
         required: true,
-        enum: ["art", "business", "scitech", "general", "trivia", "sports", "others"]
+        enum: ["art", "business", "scitech", "history", "trivia", "sports", "others"]
     },
     time: {
         type: Number,

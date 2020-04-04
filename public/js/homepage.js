@@ -18,8 +18,8 @@ $("#myModal").on("show.bs.modal", function (event) {
     if (cats.includes("card-scitech")) {
         holder += '<div class="col bg-scitech border"><small>Science and Technology</small></div>';
     }
-    if (cats.includes("card-general")) {
-        holder += '<div class="col bg-general border"><small>General Knowledge</small></div>';
+    if (cats.includes("card-history")) {
+        holder += '<div class="col bg-history border"><small>History</small></div>';
     }
     if (cats.includes("card-trivia")) {
         holder += '<div class="col bg-trivia border"><small>Trivia</small></div>';

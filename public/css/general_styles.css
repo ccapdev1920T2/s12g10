@@ -122,8 +122,8 @@ body {
     border-color: #FFFFCC;
 }
 
-.bg-general,
-#filter-by-general {
+.bg-history,
+#filter-by-history {
     background-color: #D9FFCC;
     border-color: #D9FFCC;
 }
@@ -171,9 +171,9 @@ body {
 }
 
 
-.bg-general-dark,
-#filter-by-general:hover,
-#filter-by-general.active {
+.bg-history-dark,
+#filter-by-history:hover,
+#filter-by-history.active {
     background-color: #208000;
     border-color: #208000;
     color: white;
@@ -206,7 +206,7 @@ body {
 #filter-by-art.active:hover,
 #filter-by-business.active:hover,
 #filter-by-scitech.active:hover,
-#filter-by-general.active:hover,
+#filter-by-history.active:hover,
 #filter-by-trivia.active:hover,
 #filter-by-sports.active:hover,
 #filter-by-others.active:hover{

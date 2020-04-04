@@ -1,4 +1,4 @@
-$("#filter-by-art, #filter-by-business, #filter-by-scitech, #filter-by-general, #filter-by-trivia, #filter-by-sports, #filter-by-others").on("click", function () {
+$("#filter-by-art, #filter-by-business, #filter-by-scitech, #filter-by-history, #filter-by-trivia, #filter-by-sports, #filter-by-others").on("click", function () {
     let bool = $(this).hasClass("active");
 
     if (bool === true) {
