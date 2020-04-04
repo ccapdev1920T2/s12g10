@@ -6,15 +6,20 @@ const controller = {
     getGames: function (req, res) {
         let searchQuery = req.query.query;
 
+        let isAdmin;
+        db.findOne(User, { email : req.session.username }, null, function (result) {
+            isAdmin = result.is_admin;
+        });
+
         if (!searchQuery) {
 
             db.findMany(Game, {}, null, function (result) {
                 if (result != null) {
 
-                    // if (req.session.admin)
-                    //     res.render("pages/view_games_admin", {games: result});
-                    // else
-                    res.render("pages/view_games", {games: result, admin: req.session.admin});
+                    if (isAdmin)
+                        res.render("pages/view_games_admin", {games: result});
+                    else
+                        res.render("pages/view_games", {games: result});
 
                 } else {
 
@@ -31,7 +36,10 @@ const controller = {
                 ]}, null, function (result) {
                 if (result != null) {
 
-                    res.render("pages/view_games", {games: result, admin: req.session.admin});
+                    if (isAdmin)
+                        res.render("pages/view_games_admin", {games: result});
+                    else
+                        res.render("pages/view_games", {games: result});
 
                 } else {
 
