@@ -150,7 +150,7 @@
             <% }) %>
                 
         </div>
-        <button type="button" class="btn btn-custom btn-block subheading" id="button">Show More</button>
+        <%if (see >= 4){%> <button type="button" class="btn btn-custom btn-block subheading" id="button">Show More</button> <%}%>
     </div>
 
 
@@ -227,7 +227,7 @@
                 <% }) %>
             <% }) %>
         </div>
-        <button type="button" class="btn btn-custom btn-block subheading" id="button2">Show More</button>
+        <%if (see2 >= 4){%> <button type="button" class="btn btn-custom btn-block subheading" id="button2">Show More</button> <%}%>
     </div>
     
     <%- include ("../partials/modal.ejs") %>
