@@ -32,7 +32,7 @@ const schema = {
         max: 10
     },
     creator: {
-        type: String, //mongoose.ObjectId,
+        type: mongoose.ObjectId,
         required: true
     }
 };

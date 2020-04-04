@@ -66,7 +66,7 @@ data = {
     ],
     games: [
         {
-            title: "25 Things We Learned in 2019",
+            title: "20 Things We Learned in 2019",
             description: "Can you fill in the blanks for the things we learned in 2019?",
             game_image: "media/coversamples/1.jpg",
             genres: ["trivia"],
@@ -95,7 +95,7 @@ data = {
             game_image: "media/coversamples/4.jpg",
             genres: ["art", "others"],
             time: 8,
-            creator: "Sean Doe"
+            creator: new mongoose.Types.ObjectId('5e886efb1c9d5f1d0c6c26d5')
         },
         {
             title: "Italian Soccer Players",
@@ -187,11 +187,104 @@ data = {
         }
     ],
     attempts: [
-        {
-
-        }
+        
     ],
     items: [
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "________ munching caterpillars may do so to prevent being eaten.",
+            answer: "arsenic",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "Low gravity in space made some astronauts' _______ flow backwards.",
+            answer: "blood",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "_______ before doing something may make you better at it.",
+            answer: "breathing in",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "Monkeys seem to prefer ________ after a scary experience.",
+            answer: "company",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "Blasting lead with 160 lasers makes it incredibly strong before _______.",
+            answer: "exploding",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "Rabbits that don't eat their _______ are small and weak",
+            answer: "feces",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "Exposing cheese to _______ could give it more flavor.",
+            answer: "hip hop",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
+        {
+            question: "A gene linked to _______ habits may influence who you choose to marry.",
+            answer: "alcohol",
+            game_id: new mongoose.Types.ObjectId("5e8871830bfd4642bc76cd35")
+        },
         {
             question: "A gene linked to _______ habits may influence who you choose to marry.",
             answer: "alcohol",
@@ -203,14 +296,6 @@ data = {
 
 module.exports = function () {
 
-    db.findMany(Game, {}, null, function (result) {
-        if (result.length === 0) {
-            db.insertMany(Game, data.games);
-        } else {
-            console.log("Game data found");
-        }
-    });
-
     db.findMany(User, {}, null, function (result) {
         if (result.length === 0) {
             db.insertMany(User, data.users);
@@ -219,4 +304,27 @@ module.exports = function () {
         }
     });
 
+    db.findMany(Game, {}, null, function (result) {
+        if (result.length === 0) {
+            db.insertMany(Game, data.games);
+        } else {
+            console.log("Game data found");
+        }
+    });
+
+    db.findMany(Item, {}, null, function (result) {
+        if (result.length === 0) {
+            db.insertMany(Item, data.items);
+        } else {
+            console.log("Item data found");
+        }
+    });
+
+    db.findMany(Attempt, {}, null, function (result) {
+        if (result.length === 0) {
+            db.insertMany(Attempt, data.attempts);
+        } else {
+            console.log("Attempt data found");
+        }
+    });
 };
