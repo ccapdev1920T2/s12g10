@@ -140,7 +140,7 @@ data = {
             title: "Artist by Painting",
             description: "Can you name the artist based only from a painting's name?",
             game_image: "media/coversamples/8.jpg",
-            genres: ["trivia", "others"],
+            genres: ["art", "trivia", "others"],
             time: 10,
             creator: new mongoose.Types.ObjectId('000000000000000000000001')
         },
@@ -149,104 +149,104 @@ data = {
             title: "Finish the Athlete",
             description: "Can you choose the word that completes the name of each athlete?",
             game_image: "media/coversamples/9.jpg",
-            genres: ["history", "trivia"],
-            time: 10,
+            genres: ["sports"],
+            time: 4,
             creator: new mongoose.Types.ObjectId('000000000000000000000003')
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000a"),
             title: "'E' TV Character Match",
-            description: "Can you match the TV shows with their 'E' characters?",
+            description: "Did you know that E is the most used vowel in the English language? I didn't either! Can you guess the first name of the characters from these TV shows? Hint! They all start with E!",
             game_image: "media/coversamples/10.jpg",
-            genres: ["art", "others"],
-            time: 6,
+            genres: ["others"],
+            time: 5,
             creator: new mongoose.Types.ObjectId('000000000000000000000001')
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000b"),
             title: "Art Movements",
-            description: "Can you name the art movements?",
+            description: "Artist much?! Name the art movements given the the notable artist!",
             game_image: "media/coversamples/11.jpg",
-            genres: ["sports"],
+            genres: ["art"],
             time: 7,
             creator: new mongoose.Types.ObjectId('000000000000000000000002')
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000c"),
-            title: "True or False: Science",
-            description: "Can you name the correct answers to these statements related to science?",
+            title: "Complete the Sentence: Science Edition!",
+            description: "No research allowed! Channel your inner Becquerel and answer the following science questions!",
             game_image: "media/coversamples/12.jpg",
-            genres: ["history"],
-            time: 5,
+            genres: ["scitech", "history", "trivia", "others"],
+            time: 7,
             creator: new mongoose.Types.ObjectId('000000000000000000000001')
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000d"),
-            title: "Animals by Emoji",
-            description: "Can you name these animals by their emoji representations?",
+            title: "Let's get chemical!",
+            description: "Can you name every 10th chemical element from the periodic table?",
             game_image: "media/coversamples/13.jpg",
-            genres: ["history"],
-            time: 10,
+            genres: ["scitech"],
+            time: 4,
             creator: new mongoose.Types.ObjectId('000000000000000000000003')
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000e"),
-            title: "Who Wants to Be a Millionaire?",
-            description: "Can you choose the correct answers to each question from John Carpenter's winning game of 'Who Wants to Be a Millionaire'?",
+            title: "Volleyball Superstars by the Country",
+            description: "Spikers up! Can you name the famous volleyball superstars given their country, initials, and position?",
             game_image: "media/coversamples/14.jpg",
-            genres: ["history"],
+            genres: ["sports"],
             time: 9,
             creator: new mongoose.Types.ObjectId('000000000000000000000003')
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000f"),
-            title: "Let's do some history!",
-            description: "Test your history knowledge with with questions from the 1900s!",
+            title: "Big Four Sports: True or False!",
+            description: "Can you guess if this US city has their own team for hockey, baseball, basketball, and football?",
             game_image: "media/coversamples/15.jpg",
-            genres: ["history"],
-            time: 10,
+            genres: ["sports", "others"],
+            time: 6,
             creator: new mongoose.Types.ObjectId('000000000000000000000002')
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000010"),
-            title: "'E' TV Character Match",
-            description: "Can you match the TV shows with their 'E' characters?",
+            title: "Band or Law Firm",
+            description: "In a battle of brains and brawns, can you figure out which of the following groups are American bands or American law firms?",
             game_image: "media/coversamples/10.jpg",
-            genres: ["art", "others"],
-            time: 6,
+            genres: ["business", "others"],
+            time: 8,
             creator: new mongoose.Types.ObjectId('000000000000000000000001')
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000011"),
-            title: "Art Movements",
-            description: "Can you name the art movements?",
+            title: "2000s Billboard Top 100",
+            description: "Can you guess the artist whose song(s) reached number 1 on the Billboard Hot 100 in the 2000s?",
             game_image: "media/coversamples/11.jpg",
-            genres: ["sports"],
-            time: 7,
+            genres: ["art", "others"],
+            time: 4,
             creator: new mongoose.Types.ObjectId('000000000000000000000002')
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000012"),
-            title: "True or False: Science",
-            description: "Can you name the correct answers to these statements related to science?",
+            title: "Say Hello in 10 Languages",
+            description: "Time to get your geek on and determine which programming language prints the iconic \"Hello World\" this way!",
             game_image: "media/coversamples/12.jpg",
-            genres: ["history"],
-            time: 5,
+            genres: ["scitech", "others"],
+            time: 6,
             creator: new mongoose.Types.ObjectId('000000000000000000000001')
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000013"),
-            title: "Animals by Emoji",
-            description: "Can you name these animals by their emoji representations?",
+            title: "To the Top!",
+            description: "Can you name the team in Haikyuu based on their color scheme?",
             game_image: "media/coversamples/13.jpg",
-            genres: ["history"],
-            time: 10,
+            genres: ["sports", "others"],
+            time: 4,
             creator: new mongoose.Types.ObjectId('000000000000000000000003')
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000014"),
-            title: "Who Wants to Be a Millionaire?",
-            description: "Can you choose the correct answers to each question from John Carpenter's winning game of 'Who Wants to Be a Millionaire'?",
+            title: "Just Before the Finish Line",
+            description: "The following presidents all did not finish their terms. Can you guess whether they (A) died in office, (B) were assassinated, or (C) resigned? Enter the letter of your choice only.",
             game_image: "media/coversamples/14.jpg",
             genres: ["history"],
             time: 9,
@@ -832,33 +832,719 @@ data = {
         {
             question: "Sumerian pyramid",
             answer: "Ziggurat",
-            game_id: new mongoose.Types . ObjectId("111111111111000000000006")
+            game_id: new mongoose.Types.ObjectId("111111111111000000000006")
         },
         {
             question: "Painkiller, believed to prevent heart attacks",
             answer: "Aspirin",
-            game_id: new mongoose.Types . ObjectId("111111111111000000000007")
+            game_id: new mongoose.Types.ObjectId("111111111111000000000007")
         },
         {
             question: "A transport device for carrying people between floors of a building",
             answer: "Escalator",
-            game_id: new mongoose.Types . ObjectId("111111111111000000000007")
+            game_id: new mongoose.Types.ObjectId("111111111111000000000007")
         },
         {
             question: "Hot tub or whirlpool bath",
             answer: "Jacuzzi",
-            game_id: new mongoose.Types . ObjectId("111111111111000000000007")
+            game_id: new mongoose.Types.ObjectId("111111111111000000000007")
         },
         {
             question: "Tightly fitting swimming briefs",
             answer: "Speedo",
-            game_id: new mongoose.Types . ObjectId("111111111111000000000007")
+            game_id: new mongoose.Types.ObjectId("111111111111000000000007")
         },
         {
             question: "Fastener, found on clothing, luggage, and other items",
             answer: "Zipper",
-            game_id: new mongoose.Types . ObjectId("111111111111000000000007")
+            game_id: new mongoose.Types.ObjectId("111111111111000000000007")
         },
+        {
+            question: "Allegorical Portrait of Dante",
+            answer: "Bronzino",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000008")
+        },
+        {
+            question: "Judith Beheading Holofernes",
+            answer: "Caravaggio",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000008")
+        },
+        {
+            question: "The School of Athens",
+            answer: "Raphael",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000008")
+        },
+        {
+            question: "Mona Lisa",
+            answer: "Leonardo",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000008")
+        },
+        {
+            question: "Pietà",
+            answer: "Titian",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000008")
+        },
+        {
+            question: "The Birth of Venus",
+            answer: "Botticelli",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000008")
+        },
+        {
+            question: "The Last Judgment",
+            answer: "Michelangelo",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000008")
+        },
+        {
+            question: "The Entrance to the Grand Canal, Venice",
+            answer: "Canaletto",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000008")
+        },
+        {
+            question: "The Crucifixion of St. Peter",
+            answer: "Lippi",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000008")
+        },
+        {
+            question: "Agony in the Garden",
+            answer: "Bellini",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000008")
+        },
+        {
+            question: "Muhammad _______",
+            answer: "Ali",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000009")
+        },
+        {
+            question: "_______ Biles",
+            answer: "Simone",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000009")
+        },
+        {
+            question: "_______ Nadal",
+            answer: "Rafael",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000009")
+        },
+        {
+            question: "Margaret _______",
+            answer: "Court",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000009")
+        },
+        {
+            question: "Usain _______",
+            answer: "Bolt",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000009")
+        },
+        {
+            question: "_______ Phelps",
+            answer: "Michael",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000009")
+        },
+        {
+            question: "Emmanuel _______",
+            answer: "Pacquiao",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000009")
+        },
+        {
+            question: "Criminal Minds : _______ Prentiss",
+            answer: "Emily",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000a")
+        },
+        {
+            question: "Glee : _______ Pillsbury",
+            answer: "Emma",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000a")
+        },
+        {
+            question: "Game of Thrones : _______ Stark",
+            answer: "Eddard",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000a")
+        },
+        {
+            question: "Stranger Things : _______",
+            answer: "Eleven",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000a")
+        },
+        {
+            question: "Southpark : _______ Cartman",
+            answer: "Eric",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000a")
+        },
+        {
+            question: "Downton Abbey : _______ Crawley",
+            answer: "Edith",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000a")
+        },
+        {
+            question: "Two and a Half Men : _______ Harper",
+            answer: "Evelyn",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000a")
+        },
+        {
+            question: "Scrubbs : _______ Reid",
+            answer: "Elliot",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000a")
+        },
+        {
+            question: "The Simpsons : _______ Krabappel",
+            answer: "Edna",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000a")
+        },
+        {
+            question: "Desperate Housewives : _______ Britt",
+            answer: "Edie",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000a")
+        },
+        {
+            question: "Simone Martini",
+            answer: "Gothic Art",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "Leonardo da Vinci",
+            answer: "High Renaissance",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "Parmigianino",
+            answer: "Mannerism",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "Rembrandt van Rijn",
+            answer: "Baroque",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "François Boucher",
+            answer: "Rococo",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "Angelica Kauffmann",
+            answer: "Neoclassicism",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "William Blake",
+            answer: "Romanticism",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "Thomas Eakins",
+            answer: "Realism",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "Georges Seurat",
+            answer: "Pointillism",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "Claude Monet",
+            answer: "Impressionism",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "Vincent van Gogh",
+            answer: "Post-Impressionism",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "Frederick Leighton",
+            answer: "Victorian Classicism",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000b")
+        },
+        {
+            question: "At ~19 inches long, the _______ is the longest bone in the human body.",
+            answer: "femur",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "The Earth's atmosphere is 1% Argon, 21% Oxygen, and 78% _______.",
+            answer: "Nitrogen",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "_______ is an alloy of Copper and Zinc.",
+            answer: "Brass",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "The light year, a measure of distance, is approximately 6 _______ miles.",
+            answer: "trillion",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "CH3COOH is _______ acid.",
+            answer: "acetic",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "For any x, sin^2(x) + cos^2(x) = _______.",
+            answer: "1",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "The largest artery in the human body is the _______.",
+            answer: "aorta",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "An alpha particle is made up of 2 neutrons and 2 _______.",
+            answer: "protons",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "_______ has a chemical symbol of W",
+            answer: "Tungsten",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "In binary, 101 + 101 = _______.",
+            answer: "1010",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "The most recently discovered elementary particle is the _______ boson",
+            answer: "Higgs",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "_______ are scientists who study and record earthquakes.",
+            answer: "Seismologists",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "The Big Bang was not an _______, not an explosion.",
+            answer: "expansion",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "While chemistry deals with the composition of matter, _______ deals with its movement.",
+            answer: "physics",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "In math, the derivative of a constant is equal to _______.",
+            answer: "zero",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "_______ is the only person to have a won a Nobel Prize in chemistry and physics.",
+            answer: "Marie Curie",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "If up : down and top : bottom, then charm : _______.",
+            answer: "strange",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "The _______ is the antimatter counterpart of the electron.",
+            answer: "positron",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "The hydrocarbon represented by the chemical formula _______ is known as propyne.",
+            answer: "C3H4",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "Sound _______ is measured in decibels",
+            answer: "intensity",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000c")
+        },
+        {
+            question: "10",
+            answer: "Neon",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d")
+        },
+        {
+            question: "20",
+            answer: "Calcium",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d")
+        },
+        {
+            question: "30",
+            answer: "Zinc",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d")
+        },
+        {
+            question: "40",
+            answer: "Zirconium",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d")
+        },
+        {
+            question: "50",
+            answer: "Tin",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d")
+        },
+        {
+            question: "60",
+            answer: "Neodymium",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d")
+        },
+        {
+            question: "70",
+            answer: "Ytterbium",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d")
+        },
+        {
+            question: "80",
+            answer: "Mercury",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d")
+        },
+        {
+            question: "90",
+            answer: "Thorium",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d")
+        },
+        {
+            question: "100",
+            answer: "Fermium",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d")
+        },
+        {
+            question: "110",
+            answer: "Darmstadtium",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d")
+        },
+        {
+            question: "China - outside hitter - Z.T.",
+            answer: "Zhu Ting",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "South Korea - outside hitter - K.Y.K.",
+            answer: "Kim Yeon-koung",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "China - middle blocker - Y.Z.",
+            answer: "Yuan Xinyue",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "Italy - middle blocker - C.C.",
+            answer: "Cristina Chirichella",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "USA - opposite hitter - D.H.",
+            answer: "Destinee Hooker",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "Serbia - setter - M.O.",
+            answer: "Maja Ognjenovic",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "Japan - libero - A.S.",
+            answer: "Arisa Sato",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "USA - outside hitter - T.S.",
+            answer: "Taylor Sander",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "France - outside hitter - E.N.",
+            answer: "Earvin N'Gapeth",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "Brazil - middle blocker - L.S.",
+            answer: "Lucas Saatkamp",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "Poland - middle blocker - M.B.",
+            answer: "Mateusz Bieniek",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "Japan - opposite hitter - Y.N.",
+            answer: "Yuji Nishida",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "USA - setter - M.C.",
+            answer: "Micah Christenson",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "France - libero - J.G.",
+            answer: "Jenia Grebennikov",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e")
+        },
+        {
+            question: "Denver, Colorado",
+            answer: "true",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000f")
+        },
+        {
+            question: "Phoenix, Arizona",
+            answer: "true",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000f")
+        },
+        {
+            question: "Providence, Rhode Island",
+            answer: "false",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000f")
+        },
+        {
+            question: "Los Angeles, California",
+            answer: "true",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000f")
+        },
+        {
+            question: "San Diego, California",
+            answer: "false",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000f")
+        },
+        {
+            question: "Las Vegas, Nevada",
+            answer: "false",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000f")
+        },
+        {
+            question: "Chicago, Illinois",
+            answer: "true",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000f")
+        },
+        {
+            question: "Boston, Massachusetts",
+            answer: "true",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000f")
+        },
+        {
+            question: "Washington, District of Columbia",
+            answer: "true",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000f")
+        },
+        {
+            question: "Oklahoma City, Oklahoma",
+            answer: "false",
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000f")
+        },
+        {
+            question: "Allen & Overy",
+            answer: "Law Firm",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000010")
+        },
+        {
+            question: "Wilcox, Sullivan, Wilcox",
+            answer: "Band",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000010")
+        },
+        {
+            question: "The Hues Corporation",
+            answer: "Band",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000010")
+        },
+        {
+            question: "Anderson Bruford Wakeman Howe",
+            answer: "Band",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000010")
+        },
+        {
+            question: "Gibson, Dunn & Crutcher",
+            answer: "Law Firm",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000010")
+        },
+        {
+            question: "Morgan Lewis & Bockius",
+            answer: "Law Firm",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000010")
+        },
+        {
+            question: "Medeski, Martin & Wood",
+            answer: "Band",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000010")
+        },
+        {
+            question: "Say My Name, Independent Women Part I, Bootylicious",
+            answer: "Destiny's Child",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000011")
+        },
+        {
+            question: "What A Girl Wants, Come on Over Baby, Lasy Marmalade",
+            answer: "Christina Aguilera",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000011")
+        },
+        {
+            question: "Girlfriend",
+            answer: "Avril Lavigne",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000011")
+        },
+        {
+            question: "Fireflies",
+            answer: "Owl City",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000011")
+        },
+        {
+            question: "In Da Club, 21 Questions, Candy Shop",
+            answer: "50 Cent",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000011")
+        },
+        {
+            question: "Gold Digger, Stronger",
+            answer: "Kanye West",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000011")
+        },
+        {
+            question: "London Bridge, Glamorous, Big Girls Don't Cry",
+            answer: "Fergie",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000011")
+        },
+        {
+            question: "Crazy In Love, Baby Boy, Check on It, Irreplaceable, Single Ladies",
+            answer: "Beyonce",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000011")
+        },
+        {
+            question: "printf('Hello World!');",
+            answer: "C",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000012")
+        },
+        {
+            question: "hello :-display('Hello World') , nl .",
+            answer: "Prolog",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000012")
+        },
+        {
+            question: "System.Console.WriteLine('Hello World');",
+            answer: "C#",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000012")
+        },
+        {
+            question: "ECHO Hello World",
+            answer: "bash",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000012")
+        },
+        {
+            question: "puts 'Hello World'",
+            answer: "Ruby",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000012")
+        },
+        {
+            question: "print 'Hello World'",
+            answer: "Python",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000012")
+        },
+        {
+            question: "System.out.println('Hello World');",
+            answer: "Java",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000012")
+        },
+        {
+            question: "(display 'Hello World')",
+            answer: "Scheme",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000012")
+        },
+        {
+            question: "SELECT 'Hello World'",
+            answer: "SQL",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000012")
+        },
+        {
+            question: "WriteLn('Hello World')",
+            answer: "Pascal",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000012")
+        },
+        {
+            question: "Black / Red",
+            answer: "Nekoma",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000013")
+        },
+        {
+            question: "Black / Gold / White",
+            answer: "Fukurodani",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000013")
+        },
+        {
+            question: "White / Maroon",
+            answer: "Shiratorizawa",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000013")
+        },
+        {
+            question: "White / Turquoise",
+            answer: "Seijoh",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000013")
+        },
+        {
+            question: "White / Orange / Black",
+            answer: "Karasuno",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000013")
+        },
+        {
+            question: "White / Teal",
+            answer: "Dateko",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000013")
+        },
+        {
+            question: "White / Blue",
+            answer: "Ohgiminami",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000013")
+        },
+        {
+            question: "Pink / White",
+            answer: "Wakutani",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000013")
+        },
+        {
+            question: "Yellow / White / Black",
+            answer: "Johzenji",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000013")
+        },
+        {
+            question: "William H. Harrision",
+            answer: "A",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000014")
+        },
+        {
+            question: "Zachary Taylor",
+            answer: "A",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000014")
+        },
+        {
+            question: "Abraham Lincoln",
+            answer: "B",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000014")
+        },
+        {
+            question: "James Garfield",
+            answer: "B",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000014")
+        },
+        {
+            question: "William McKinley",
+            answer: "B",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000014")
+        },
+        {
+            question: "Warren G. Harding",
+            answer: "A",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000014")
+        },
+        {
+            question: "Franklin D. Roosevelt",
+            answer: "A",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000014")
+        },
+        {
+            question: "John F. Kennedy",
+            answer: "B",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000014")
+        },
+        {
+            question: "Richard Nixon",
+            answer: "C",
+            game_id: new mongoose.Types.ObjectId("111111111111000000000014")
+        }
+
     ],
     attempts: [
 
