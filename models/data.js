@@ -1,5 +1,5 @@
 const db = require("./db");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Game = require("./Game");
 const User = require("./User");
@@ -10,63 +10,63 @@ data = {
 
     users: [
         {
-            _id: new mongoose.Types.ObjectId('000000000000000000000001'),
-            name: 'Sean Doe',
+            _id: new mongoose.Types.ObjectId("000000000000000000000001"),
+            name: "Sean Doe",
             birthday: new Date ("January 1, 1990"),
             gender: "Male",
-            email: 'seandoe@mnemosis.com',
-            password: 'admin',
-            user_image: 'media/Logo Full',
+            email: "seandoe@mnemosis.com",
+            password: "admin",
+            user_image: "media/Logo Full",
             is_admin: true
         },
         {
-            _id: new mongoose.Types.ObjectId('000000000000000000000002'),
-            name: 'Tina Pay',
+            _id: new mongoose.Types.ObjectId("000000000000000000000002"),
+            name: "Tina Pay",
             birthday: new Date ("February 2, 1990"),
             gender: "Female",
-            email: 'rocky@hfpa.com',
-            password: 'goldenglobes',
-            user_image: 'media/icon.png',
+            email: "rocky@hfpa.com",
+            password: "goldenglobes",
+            user_image: "media/icon.png",
             is_admin: false
         },
         {
-            _id: new mongoose.Types.ObjectId('000000000000000000000003'),
-            name: 'Amy Puller',
+            _id: new mongoose.Types.ObjectId("000000000000000000000003"),
+            name: "Amy Puller",
             birthday: new Date ("March 3, 1990"),
             gender: "Female",
-            email: 'ellen@ellen.com',
-            password: 'iloveporti@',
-            user_image: 'media/icon.png',
+            email: "ellen@ellen.com",
+            password: "iloveporti@",
+            user_image: "media/icon.png",
             is_admin: false
         },
         {
-            _id: new mongoose.Types.ObjectId('000000000000000000000004'),
-            name: 'Nyron Bill',
+            _id: new mongoose.Types.ObjectId("000000000000000000000004"),
+            name: "Nyron Bill",
             birthday: new Date ("April 4, 1990"),
             gender: "Male",
-            email: 'nyronbill@gmail.com',
-            password: 'p@55w0rd',
-            user_image: 'media/icon.png',
+            email: "nyronbill@gmail.com",
+            password: "p@55w0rd",
+            user_image: "media/icon.png",
             is_admin: false
         },
         {
-            _id: new mongoose.Types.ObjectId('000000000000000000000005'),
-            name: 'Joseph Uy',
+            _id: new mongoose.Types.ObjectId("000000000000000000000005"),
+            name: "Joseph Uy",
             birthday: new Date ("May 5, 1990"),
             gender: "Male",
-            email: 'joseph_uy@gmail.com',
-            password: 'zyxwvutsrqp',
-            user_image: 'media/icon.png',
+            email: "joseph_uy@gmail.com",
+            password: "zyxwvutsrqp",
+            user_image: "media/icon.png",
             is_admin: false
         },
         {
-            _id: new mongoose.Types.ObjectId('000000000000000000000006'),
-            name: 'Dustin Blumentritt',
+            _id: new mongoose.Types.ObjectId("000000000000000000000006"),
+            name: "Dustin Blumentritt",
             birthday: new Date ("June 6, 1990"),
             gender: "Male",
-            email: 'dustin.blumentritt@gmail.com',
-            password: '6!is120',
-            user_image: 'media/icon.png',
+            email: "dustin.blumentritt@gmail.com",
+            password: "6!is120",
+            user_image: "media/icon.png",
             is_admin: false
         },
     ],
@@ -78,7 +78,7 @@ data = {
             game_image: "media/coversamples/1.jpg",
             genres: ["history", "trivia"],
             time: 6,
-            creator: new mongoose.Types.ObjectId('000000000000000000000001')
+            creator: new mongoose.Types.ObjectId("000000000000000000000001")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000002"),
@@ -87,7 +87,7 @@ data = {
             game_image: "media/coversamples/2.jpg",
             genres: ["trivia", "others"],
             time: 4,
-            creator: new mongoose.Types.ObjectId('000000000000000000000001')
+            creator: new mongoose.Types.ObjectId("000000000000000000000001")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000003"),
@@ -96,7 +96,7 @@ data = {
             game_image: "media/coversamples/3.jpg",
             genres: ["trivia"],
             time: 5,
-            creator: new mongoose.Types.ObjectId('000000000000000000000002')
+            creator: new mongoose.Types.ObjectId("000000000000000000000002")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000004"),
@@ -105,7 +105,7 @@ data = {
             game_image: "media/coversamples/4.jpg",
             genres: ["trivia", "others"],
             time: 5,
-            creator: new mongoose.Types.ObjectId('000000000000000000000001')
+            creator: new mongoose.Types.ObjectId("000000000000000000000001")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000005"),
@@ -114,7 +114,7 @@ data = {
             game_image: "media/coversamples/5.jpg",
             genres: ["trivia", "others"],
             time: 10,
-            creator: new mongoose.Types.ObjectId('000000000000000000000003')
+            creator: new mongoose.Types.ObjectId("000000000000000000000003")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000006"),
@@ -123,7 +123,7 @@ data = {
             game_image: "media/coversamples/6.jpg",
             genres: ["history"],
             time: 8,
-            creator: new mongoose.Types.ObjectId('000000000000000000000003')
+            creator: new mongoose.Types.ObjectId("000000000000000000000003")
         },
         {
             
@@ -133,7 +133,7 @@ data = {
             game_image: "media/coversamples/7.jpg",
             genres: ["business"],
             time: 3,
-            creator: new mongoose.Types.ObjectId('000000000000000000000003')
+            creator: new mongoose.Types.ObjectId("000000000000000000000003")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000008"),
@@ -142,7 +142,7 @@ data = {
             game_image: "media/coversamples/8.jpg",
             genres: ["art", "trivia", "others"],
             time: 10,
-            creator: new mongoose.Types.ObjectId('000000000000000000000001')
+            creator: new mongoose.Types.ObjectId("000000000000000000000001")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000009"),
@@ -151,7 +151,7 @@ data = {
             game_image: "media/coversamples/9.jpg",
             genres: ["sports"],
             time: 4,
-            creator: new mongoose.Types.ObjectId('000000000000000000000003')
+            creator: new mongoose.Types.ObjectId("000000000000000000000003")
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000a"),
@@ -160,7 +160,7 @@ data = {
             game_image: "media/coversamples/10.jpg",
             genres: ["others"],
             time: 5,
-            creator: new mongoose.Types.ObjectId('000000000000000000000001')
+            creator: new mongoose.Types.ObjectId("000000000000000000000001")
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000b"),
@@ -169,7 +169,7 @@ data = {
             game_image: "media/coversamples/11.jpg",
             genres: ["art"],
             time: 7,
-            creator: new mongoose.Types.ObjectId('000000000000000000000002')
+            creator: new mongoose.Types.ObjectId("000000000000000000000002")
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000c"),
@@ -178,7 +178,7 @@ data = {
             game_image: "media/coversamples/12.jpg",
             genres: ["scitech", "history", "trivia", "others"],
             time: 7,
-            creator: new mongoose.Types.ObjectId('000000000000000000000001')
+            creator: new mongoose.Types.ObjectId("000000000000000000000001")
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000d"),
@@ -187,7 +187,7 @@ data = {
             game_image: "media/coversamples/13.jpg",
             genres: ["scitech"],
             time: 4,
-            creator: new mongoose.Types.ObjectId('000000000000000000000003')
+            creator: new mongoose.Types.ObjectId("000000000000000000000003")
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000e"),
@@ -196,7 +196,7 @@ data = {
             game_image: "media/coversamples/14.jpg",
             genres: ["sports"],
             time: 9,
-            creator: new mongoose.Types.ObjectId('000000000000000000000003')
+            creator: new mongoose.Types.ObjectId("000000000000000000000003")
         },
         {
             _id: new mongoose.Types.ObjectId("11111111111100000000000f"),
@@ -205,7 +205,7 @@ data = {
             game_image: "media/coversamples/15.jpg",
             genres: ["sports", "others"],
             time: 6,
-            creator: new mongoose.Types.ObjectId('000000000000000000000002')
+            creator: new mongoose.Types.ObjectId("000000000000000000000002")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000010"),
@@ -214,7 +214,7 @@ data = {
             game_image: "media/coversamples/10.jpg",
             genres: ["business", "others"],
             time: 8,
-            creator: new mongoose.Types.ObjectId('000000000000000000000001')
+            creator: new mongoose.Types.ObjectId("000000000000000000000001")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000011"),
@@ -223,7 +223,7 @@ data = {
             game_image: "media/coversamples/11.jpg",
             genres: ["art", "others"],
             time: 4,
-            creator: new mongoose.Types.ObjectId('000000000000000000000002')
+            creator: new mongoose.Types.ObjectId("000000000000000000000002")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000012"),
@@ -232,7 +232,7 @@ data = {
             game_image: "media/coversamples/12.jpg",
             genres: ["scitech", "others"],
             time: 6,
-            creator: new mongoose.Types.ObjectId('000000000000000000000001')
+            creator: new mongoose.Types.ObjectId("000000000000000000000001")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000013"),
@@ -241,7 +241,7 @@ data = {
             game_image: "media/coversamples/13.jpg",
             genres: ["sports", "others"],
             time: 4,
-            creator: new mongoose.Types.ObjectId('000000000000000000000003')
+            creator: new mongoose.Types.ObjectId("000000000000000000000003")
         },
         {
             _id: new mongoose.Types.ObjectId("111111111111000000000014"),
@@ -250,7 +250,7 @@ data = {
             game_image: "media/coversamples/14.jpg",
             genres: ["history"],
             time: 9,
-            creator: new mongoose.Types.ObjectId('000000000000000000000003')
+            creator: new mongoose.Types.ObjectId("000000000000000000000003")
         },
     ],
     items: [
@@ -400,7 +400,7 @@ data = {
             game_id: new mongoose.Types.ObjectId("111111111111000000000003")
         },
         {
-            question: "The 1960s US TV show 'Lost in Space ' was set in...",
+            question: "The 1960s US TV show 'Lost in Space' was set in...",
             answer: "1997",
             game_id: new mongoose.Types.ObjectId("111111111111000000000003")
         },
@@ -1547,7 +1547,126 @@ data = {
 
     ],
     attempts: [
-
+        {
+            attempt_time: 1.5,
+            answered: 20,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000001"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000001")
+        },
+        {
+            attempt_time: 5.8,
+            answered: 20,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000001"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000002")
+        },
+        {
+            attempt_time: 1,
+            answered: 8,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000002"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000003")
+        },
+        {
+            attempt_time: 4,
+            answered: 4,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000002"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000004")
+        },
+        {
+            attempt_time: 4.7,
+            answered: 16,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000004"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000005")
+        },
+        {
+            attempt_time: 10,
+            answered: 30,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000005"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000006")
+        },
+        {
+            attempt_time: 5.3,
+            answered: 26,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000006"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000001")
+        },
+        {
+            attempt_time: 1.2,
+            answered: 5,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000007"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000002")
+        },
+        {
+            attempt_time: 3.1,
+            answered: 7,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000009"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000003")
+        },
+        {
+            attempt_time: 4,
+            answered: 6,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000009"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000004")
+        },
+        {
+            attempt_time: 4.8,
+            answered: 10,
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000a"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000005")
+        },
+        {
+            attempt_time: 2.3,
+            answered: 11,
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000006")
+        },
+        {
+            attempt_time: 4,
+            answered: 2,
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000d"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000001")
+        },
+        {
+            attempt_time: 5.21,
+            answered: 14,
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000e"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000002")
+        },
+        {
+            attempt_time: 6,
+            answered: 1,
+            game_id: new mongoose.Types.ObjectId("11111111111100000000000f"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000003")
+        },
+        {
+            attempt_time: 3.19,
+            answered: 8,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000011"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000004")
+        },
+        {
+            attempt_time: 2.24,
+            answered: 8,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000011"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000005")
+        },
+        {
+            attempt_time: 4,
+            answered: 4,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000013"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000006")
+        },
+        {
+            attempt_time: 5.47,
+            answered: 9,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000014"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000001")
+        },
+        {
+            attempt_time: 6.32,
+            answered: 9,
+            game_id: new mongoose.Types.ObjectId("111111111111000000000014"),
+            user_id: new mongoose.Types.ObjectId("000000000000000000000002")
+        },
     ]
     
 };

@@ -46,7 +46,6 @@ $("#start-btn").on("click", function () {
     $("#pause").show();
     $("#give-up").show();
 
-
-    startCountdown(new Date(), 3);
+    startCountdown(new Date(), 1);
 
 });
