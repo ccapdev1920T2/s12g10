@@ -14,15 +14,15 @@
         <form>
             <div class="form-group">
                 <label for="game_title" class="subheading">Game Title:</label>
-                <input class="form-control subheading" type="text" placeholder="Your title" id="game_title">
+                <input class="form-control subheading" type="text" placeholder="Your title" id="game_title" name="title">
             </div>
             <div class="form-group">
                 <label for="game_description" class="subheading">Description:</label>
-                <textarea class="form-control subheading" placeholder="Your description" id="game_description"></textarea>
+                <textarea class="form-control subheading" placeholder="Your description" id="game_description" name="description"></textarea>
             </div>
             <div class="form-group">
                 <label for="game_duration" class="subheading">Game Duration (minutes):</label>
-                <input class="subheading" type="number" id="game_duration" min="3" max="10">
+                <input class="subheading" type="number" id="game_duration" min="3" max="10" name="time">
             </div>
             <div class="form-group">
                 <label for="genre-buttons" class="subheading">Genre(s):</label>
@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label for="game_description" class="subheading">Image:</label>
-                <input class="form-control subheading" type="file" id="game_image">
+                <input class="form-control subheading" type="file" id="game_image" name="game_image">
             </div>
             <div id="questions_form">
                 <div class="form-inline row mb-1" id="form1">

@@ -7,7 +7,7 @@ const schema = {
     title: {
         type: String,
         required: true,
-        minlength: 10,
+        minlength: 5,
         maxlength: 50
     },
     description: {
@@ -32,7 +32,7 @@ const schema = {
         max: 10
     },
     creator: {
-        type: mongoose.ObjectId,
+        type: String, //mongoose.ObjectId,
         required: true
     }
 };
