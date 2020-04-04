@@ -15,41 +15,41 @@ body {
     transition: 0.2s;
 }
 
-#logo-col {
-    transition: 0.2s;
-}
+/*#logo-col {*/
+/*    transition: 0.2s;*/
+/*}*/
 
-#over {
-    z-index: 2;
-    position: absolute;
-    animation: crotation 8s infinite linear;
-}
+/*#over {*/
+/*    z-index: 2;*/
+/*    position: absolute;*/
+/*    animation: crotation 8s infinite linear;*/
+/*}*/
 
-#under {
-    z-index: 1;
-    position: absolute;
-    animation: ccrotation 8s infinite linear;
-}
+/*#under {*/
+/*    z-index: 1;*/
+/*    position: absolute;*/
+/*    animation: ccrotation 8s infinite linear;*/
+/*}*/
 
-@keyframes crotation {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(359deg); }
-}
+/*@keyframes crotation {*/
+/*    from { transform: rotate(0deg); }*/
+/*    to { transform: rotate(359deg); }*/
+/*}*/
 
-@keyframes ccrotation {
-    from { transform: rotate(359deg); }
-    to { transform: rotate(0deg); }
-}
+/*@keyframes ccrotation {*/
+/*    from { transform: rotate(359deg); }*/
+/*    to { transform: rotate(0deg); }*/
+/*}*/
 
-#title-col {
-    color: black;
-    padding-top: 50px;
-    transition: 0.2s;
-}
+/*#title-col {*/
+/*    color: black;*/
+/*    padding-top: 50px;*/
+/*    transition: 0.2s;*/
+/*}*/
 
-#title-col:hover {
-    text-decoration: none;
-}
+/*#title-col:hover {*/
+/*    text-decoration: none;*/
+/*}*/
 
 #web-title {
     font-size: 100px;
@@ -63,12 +63,12 @@ body {
     transition: 0.2s;
 }
 
-#user-icon {
-    height: 50px;
-    width: 50px;
-    padding: 5px;
-    float: right;
-}
+/*#user-icon {*/
+/*    height: 50px;*/
+/*    width: 50px;*/
+/*    padding: 5px;*/
+/*    float: right;*/
+/*}*/
 
 .heading {
     font-family: 'Quantico', sans-serif;
@@ -79,19 +79,19 @@ body {
     font-family: 'Jura', sans-serif;
 }
 
-#search-bar {
-    transition: 0.2s;
-}
+/*#search-bar {*/
+/*    transition: 0.2s;*/
+/*}*/
 
-#nav-col {
-    top: 100px;
-    transition: 0.2s;
-}
+/*#nav-col {*/
+/*    top: 100px;*/
+/*    transition: 0.2s;*/
+/*}*/
 
-.navbar-custom {
-    background-color: #EEB5EB;
-    height: 75px;
-}
+/*.navbar-custom {*/
+/*    background-color: #EEB5EB;*/
+/*    height: 75px;*/
+/*}*/
 
 .card {
     border-color: white;

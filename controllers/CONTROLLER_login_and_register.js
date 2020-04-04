@@ -5,6 +5,10 @@ const User = require("../models/User");
 const controller = {
 
     loadPage: function (req, res) {
+        req.session.loggedin = false;
+        req.session.username = null;
+        req.session.admin = null;
+        req.session.guest = null;
         res.render("pages/login_and_register");
     },
 

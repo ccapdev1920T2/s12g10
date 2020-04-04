@@ -1,0 +1,38 @@
+#header {
+    top: 0;
+    width: 100%;
+    background-color: #C8F4F9;
+}
+
+.logo {
+    max-height: 300px;
+}
+
+#over {
+    z-index: 2;
+    position: absolute;
+}
+
+#under {
+    z-index: 1;
+    position: absolute;
+}
+
+#title-col {
+    color: black;
+    padding-top: 50px;
+}
+
+#title-col:hover {
+    text-decoration: none;
+}
+
+#web-title {
+    font-size: 100px;
+    font-family: 'Quantico', sans-serif;
+}
+
+#web-subtitle {
+    font-size: 40px;
+    font-family: 'Jura', sans-serif;
+}

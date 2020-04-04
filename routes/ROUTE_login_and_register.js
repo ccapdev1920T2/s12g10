@@ -11,6 +11,6 @@ app.post("/auth", controller.authenticateUser);
 
 app.post("/register", controller.addUser);
 
-app.get("/logout", controller.logout);
+app.get("/logout", controller.loadPage);
 
 module.exports = app;
