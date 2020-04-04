@@ -22,9 +22,10 @@
         <div class="prof_text1 ">Total Games Created</div>
         <div class="prof_text2 ">Total Games Completed</div>
         <div class="prof_subtext1 subheading">
+            
             <%var created=0%> 
             <% details.games.forEach(function (game) { %>
-                <% if (game.creator == details.user.name){%>
+                <% if (game.creator.equals(details.user._id)){%>
                     <%created= created +1 %>
                 <%}%>
             <% }) %>
@@ -33,10 +34,10 @@
             <%var completed = 0%>
             <% details.games.forEach(function (game) { %>
                 <% details.attempts.forEach(function (attempt) { %>
-                    <% if (game._id == attempt._id){%>
+                    <% if (game._id.equals(attempt.game_id)){%>
                         <% var count = 0 %>
                         <% details.items.forEach(function (item) { %>
-                            <% if (item.game_id == game._id)%>
+                            <% if (item.game_id.equals(game._id))%>
                                 <%count = count+1 %>
                         <% }) %>
                         <% if (attempt.answered == count){%>
@@ -65,7 +66,7 @@
         <h2 class="heading" style="text-align: center"><%= details.user.name %>'s Games</h2>
         <div class="row">
             <% details.games.forEach(function (game) { %>
-                <% if (game.creator == details.user.name){%>
+                <% if (game.creator.equals(details.user._id)){%>
                     <div class="col-sm-4 mb-4">
                         <div class="card
                             <% for (let i = 0; i < game.genres.length; i++ ) { %>
@@ -118,10 +119,10 @@
             
             <% details.games.forEach(function (game) { %>
                 <% details.attempts.forEach(function (attempt) { %>
-                    <% if (game._id == attempt._id){%>
+                    <% if (game._id.equals(attempt.game_id)){%>
                         <% var count = 0 %>
                         <% details.items.forEach(function (item) { %>
-                            <% if (item.game_id == game._id)%>
+                            <% if (item.game_id.equals( game._id))%>
                                 <%count = count+1 %>
                         <% }) %>
                         <% if (attempt.answered == count){%>

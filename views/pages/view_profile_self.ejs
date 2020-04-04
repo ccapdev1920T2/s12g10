@@ -24,7 +24,7 @@
         <div class="prof_subtext1 subheading">
             <%var created=0%> 
             <% details.games.forEach(function (game) { %>
-                <% if (game.creator == details.user.name){%>
+                <% if (game.creator == details.user._id){%>
                     <%created= created +1 %>
                 <%}%>
             <% }) %>
@@ -64,7 +64,7 @@
         <h2 class="heading" style="text-align: center"><%= details.user.name %>'s Games</h2>
         <div class="row">
             <% details.games.forEach(function (game) { %>
-                <% if (game.creator == details.user.name){%>
+                <% if (game.creator == details.user._id){%>
                     <div class="col-sm-4 mb-4">
                         <div class="card
                             <% for (let i = 0; i < game.genres.length; i++ ) { %>
