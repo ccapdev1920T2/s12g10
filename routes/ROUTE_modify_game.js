@@ -2,7 +2,10 @@ const express = require("express");
 const app = express();
 
 app.get("/", function(req, res) {
-    res.render("../views/pages/modify_game");
+    if (req.session.guest)
+        res.redirect("/homepage");
+    else
+        res.render("../views/pages/modify_game", {guest: false});
 });
 
 module.exports = app;

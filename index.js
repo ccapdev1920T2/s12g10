@@ -46,7 +46,7 @@ app.use("/view_games", viewGamesRoute);
 app.use("/view_leaderboard", viewLeaderboard);
 app.use("/view_profile", viewProfile);
 app.use(function (req, res) {
-    res.render("pages/error");
+    res.render("pages/error", {guest: req.session.guest});
 });
 
 db.connect();

@@ -25,7 +25,7 @@ const controller = {
                 console.log("user "+ details.user.email);
                 
             } else {
-                res.render("pages/error");
+                res.render("pages/error", {guest: req.session.guest});
             }
             db.findMany(Game, {}, null, function (result) {
                 if (result != null) {
@@ -34,20 +34,20 @@ const controller = {
                     console.log(details.user);
                     
                 } else {
-                    res.render("pages/error");
+                    res.render("pages/error", {guest: req.session.guest});
                 }
                 db.findMany(Item, {}, null, function (result) {
                     if (result != null) {
                         details.items = result;
                     } else {
-                        res.render("pages/error");
+                        res.render("pages/error", {guest: req.session.guest});
                     }  
                     db.findMany(Attempt, {user_id: req.param.idNum}, null, function (result) {
                         if (result != null) {
                             details.attempts = result;
                             
                         } else {
-                            res.render("pages/error");
+                            res.render("pages/error", {guest: req.session.guest});
                         }
                         if (details.user!= null && details.games!=null){
                             if (req.session.username == email){
@@ -64,7 +64,7 @@ const controller = {
                             }
                         }
                         else {
-                            res.render("pages/error");
+                            res.render("pages/error", {guest: req.session.guest});
                         }
                     }); 
                 });
@@ -86,7 +86,7 @@ const controller = {
                 console.log("user "+ details.user.email);
                 
             } else {
-                res.render("pages/error");
+                res.render("pages/error", {guest: req.session.guest});
             }
             db.findMany(Game, {}, null, function (result) {
                 if (result != null) {
@@ -95,37 +95,37 @@ const controller = {
                     console.log(details.user);
                     
                 } else {
-                    res.render("pages/error");
+                    res.render("pages/error", {guest: req.session.guest});
                 }
                 db.findMany(Item, {}, null, function (result) {
                     if (result != null) {
                         details.items = result;
                     } else {
-                        res.render("pages/error");
+                        res.render("pages/error", {guest: req.session.guest});
                     }  
                     db.findMany(Attempt, {user_id: req.param.idNum}, null, function (result) {
                         if (result != null) {
                             details.attempts = result;
                             
                         } else {
-                            res.render("pages/error");
+                            res.render("pages/error", {guest: req.session.guest});
                         }
                         if (details.user!= null && details.games!=null){
                             if (req.session.username == email){
                                 if ( req.session.admin == true )
-                                    res.render("pages/view_profile_self_admin",{details:details});
+                                    res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest});
                                 else 
-                                    res.render("pages/view_profile_self", {details:details});
+                                    res.render("pages/view_profile_self", {details:details, guest: req.session.guest});
                             }
                             else {
                                 if ( req.session.admin == true )
-                                    res.render("pages/view_profile_user_admin", {details:details});
+                                    res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest});
                                 else 
-                                    res.render("pages/view_profile_user", {details:details});
+                                    res.render("pages/view_profile_user", {details:details, guest: req.session.guest});
                             }
                         }
                         else {
-                            res.render("pages/error");
+                            res.render("pages/error", {guest: req.session.guest});
                         }
                     }); 
                 });

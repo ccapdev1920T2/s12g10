@@ -11,7 +11,7 @@ const controller = {
             db.findMany(Game, {}, null, function (result) {
                 if (result != null) {
 
-                    res.render("pages/view_games", {games: result, admin: req.session.admin});
+                    res.render("pages/view_games", {games: result, admin: req.session.admin, guest: req.session.guest});
 
                 } else {
 
@@ -28,7 +28,7 @@ const controller = {
                 ]}, null, function (result) {
                 if (result != null) {
 
-                    res.render("pages/view_games", {games: result, admin: req.session.admin});
+                    res.render("pages/view_games", {games: result, admin: req.session.admin, guest: req.session.guest});
 
                 } else {
 

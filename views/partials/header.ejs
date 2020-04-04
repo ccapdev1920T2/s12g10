@@ -32,12 +32,17 @@
                     </ul>
                     <div class="dropdown">
                         <a href="#" data-toggle="dropdown">
-                            <img src="../../media/Icon.png" id="user-icon">
+                            <img src="media/Icon.png" id="user-icon">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="/view_profile" class="dropdown-item subheading">View Profile</a>
-                            <a href="/create_game" class="dropdown-item subheading">Create a Game</a>
-                            <a href="/logout" class="dropdown-item subheading">Log-out</a>
+                            <% if (guest) { %>
+                                <a href="/logout" class="dropdown-item subheading">Log-in</a>
+                                <a href="/logout" class="dropdown-item subheading">Register an account</a>
+                            <% } else { %>
+                                <a href="/view_profile" class="dropdown-item subheading">View Profile</a>
+                                <a href="/create_game" class="dropdown-item subheading">Create a Game</a>
+                                <a href="/logout" class="dropdown-item subheading">Log-out</a>
+                            <% } %>
                         </div>
                     </div>
                 </div>
