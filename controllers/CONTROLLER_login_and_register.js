@@ -64,7 +64,7 @@ const controller = {
                     gender: gender,
                     email: email,
                     password: pass,
-                    user_image: "media/icon",
+                    user_image: "/media/Icon.png",
                     is_admin: false,
                 });
                 req.session.loggedin = true;

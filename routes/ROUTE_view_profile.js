@@ -1,13 +1,15 @@
 const express = require("express");
 const app = express();
+
 const controller = require("../controllers/CONTROLLER_view_profile");
+
 app.get("/",controller.getOwn);
 
 app.get("/:id", controller.getProfile);
 
-app.get("/mkadmin", controller.makeAdmin);
+app.get("/remove/admin/access", controller.removeAdmin);
 
-app.get("/rmvadmin", controller.removeAdmin);
+app.get("/:id/make/admin/access", controller.makeAdmin);
 
 app.get("/:id/delete", controller.deleteGame);
 

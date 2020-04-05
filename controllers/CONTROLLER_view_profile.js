@@ -53,14 +53,14 @@ const controller = {
                                 res.render("pages/error", {guest: req.session.guest});
                             }
                             if (details.user!= null && details.games!=null){
-                                if (req.session.username == email){
-                                    if ( req.session.admin == true )
+                                if (details.user.email == email){
+                                    if ( details.user.is_admin == true )
                                         res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest});
                                     else 
                                         res.render("pages/view_profile_self", {details:details, guest: req.session.guest});
                                 }
                                 else {
-                                    if ( req.session.admin == true )
+                                    if (  details.user.is_admin == true )
                                         res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest});
                                     else 
                                         res.render("pages/view_profile_user", {details:details, guest: req.session.guest});
@@ -78,7 +78,7 @@ const controller = {
     getProfile: function (req, res) {
         
         let id= req.param("id");
-
+        let curr = null;
         db.findOne(User, {_id: id}, null, function (result) {
 
             if (result != null) {
@@ -89,51 +89,59 @@ const controller = {
             } else {
                 res.render("pages/error", {guest: req.session.guest});
             }
-            db.findMany(User, {}, null, function (result) {
+            db.findOne(User, {email: req.session.username}, null, function (result) {
+
                 if (result != null) {
-                    details.users = result;
-                    
+                    curr = result;
                 } else {
                     res.render("pages/error", {guest: req.session.guest});
                 }
-                db.findMany(Game, {}, null, function (result) {
+                db.findMany(User, {}, null, function (result) {
                     if (result != null) {
-                        details.games = result;
+                        details.users = result;
                         
                     } else {
                         res.render("pages/error", {guest: req.session.guest});
                     }
-                    db.findMany(Item, {}, null, function (result) {
+                    db.findMany(Game, {}, null, function (result) {
                         if (result != null) {
-                            details.items = result;
+                            details.games = result;
+                            
                         } else {
                             res.render("pages/error", {guest: req.session.guest});
-                        }  
-                        db.findMany(Attempt, {}, null, function (result) {
+                        }
+                        db.findMany(Item, {}, null, function (result) {
                             if (result != null) {
-                                details.attempts = result;
-                                
+                                details.items = result;
                             } else {
                                 res.render("pages/error", {guest: req.session.guest});
-                            }
-                            if (details.user!= null && details.games!=null){
-                                if (req.session.username == details.user.email){
-                                    if ( req.session.admin == true )
-                                        res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest});
-                                    else 
-                                        res.render("pages/view_profile_self", {details:details, guest: req.session.guest});
+                            }  
+                            db.findMany(Attempt, {}, null, function (result) {
+                                if (result != null) {
+                                    details.attempts = result;
+                                    
+                                } else {
+                                    res.render("pages/error", {guest: req.session.guest});
+                                }
+                                if (details.user!= null && details.games!=null){
+                                    if (req.session.username == details.user.email){
+                                        if ( details.user.is_admin == true )
+                                            res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest});
+                                        else 
+                                            res.render("pages/view_profile_self", {details:details, guest: req.session.guest});
+                                    }
+                                    else {
+                                        if ( curr.is_admin == true )
+                                            res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest});
+                                        else 
+                                            res.render("pages/view_profile_user", {details:details, guest: req.session.guest});
+                                    }
                                 }
                                 else {
-                                    if ( req.session.admin == true )
-                                        res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest});
-                                    else 
-                                        res.render("pages/view_profile_user", {details:details, guest: req.session.guest});
+                                    res.render("pages/error", {guest: req.session.guest});
                                 }
-                            }
-                            else {
-                                res.render("pages/error", {guest: req.session.guest});
-                            }
-                        }); 
+                            }); 
+                        });
                     });
                 });
             });
@@ -145,13 +153,13 @@ const controller = {
     },
 
     removeAdmin: function(req,res){
-        req.session.admin== false;
+        console.log("before update");
         db.updateOne(User, {email: req.session.username},{is_admin:false});
         res.redirect("back");
     },
 
     makeAdmin: function(req,res){
-        db.updateOne(User, {email: req.param("email")},{is_admin:true});
+        db.updateOne(User, {_id: req.param("id")},{is_admin:true});
         res.redirect("back");
 
     }

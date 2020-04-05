@@ -55,7 +55,9 @@
     </div>
 
     <div class="container mt-5 mb-5" id="1-main-box">
-        <button type="button" class="btn btn-custom btn-block mb-5" id="admin">Grant Admin Status</button>
+        <%if (details.user.is_admin==false){%>
+            <button type="button" class="btn btn-custom btn-block mb-5" id="admin" onclick="window.location.href = '/view_profile/<%= details.user._id%>/make/admin/access';">Grant Admin Status</button>
+        <%}%>
         <h2 class="heading" style="text-align: center"><%= details.user.name %>'s Games</h2>
         <div class="row">
             <%var see = 0 %>
