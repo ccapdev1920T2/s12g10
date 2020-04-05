@@ -1,6 +1,16 @@
 const db = require("../models/db");
 const Game = require("../models/Game");
 const User = require("../models/User");
+const Item = require("../models/Item");
+
+function shuffle (array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let rnd = Math.floor(Math.random() * (i + 1));
+        [array[i], array[rnd]] = [array[rnd], array[i]];
+    }
+
+    return array;
+}
 
 const controller = {
     findGame: function (req, res) {
@@ -15,22 +25,29 @@ const controller = {
 
                     if (user !== null) {
 
-                        res.render("pages/play_game", {
-                            guest: req.session.guest,
-                            game: game,
-                            creator: user.name,
-                        });
+                        db.findMany(Item, { game_id : game_id }, null, function (items) {
 
+                            if (items != null) {
+                                items = shuffle(items);
+
+                                res.render("pages/play_game", {
+                                    items: items,
+                                    guest: req.session.guest,
+                                    game: game,
+                                    creator: user.name,
+                                });
+
+                            } else {
+                                res.render("pages/error", {guest: req.session.guest});
+                            }
+                        });
                     } else {
                         res.render("pages/error", {guest: req.session.guest});
                     }
-
                 });
-
             } else {
                 res.render("pages/error", {guest: req.session.guest});
             }
-
         });
     }
 };

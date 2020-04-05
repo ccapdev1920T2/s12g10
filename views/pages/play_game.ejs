@@ -19,66 +19,46 @@
             <div class="col-sm-8" id="start-btn">
                 <button class="btn btn-custom btn-block subheading">Start Game</button>
             </div>
+            <div class="col-sm-4" id="resume">
+                <button class="btn btn-custom btn-block subheading" id="resume-btn">Resume</button>
+            </div>
             <div class="col-sm-4" id="pause">
-                <button class="btn btn-custom btn-block subheading">Pause</button>
+                <button class="btn btn-custom btn-block subheading" id="pause-btn">Pause</button>
             </div>
             <div class="col-sm-4" id="give-up">
-                <button class="btn btn-custom btn-block subheading">Give up</button>
+                <button class="btn btn-custom btn-block subheading" id="quit-btn">Give up</button>
             </div>
             <div class="col-sm-4">
-                <div class="heading" id="clock-holder" style="text-align: center; font-size: 100px"><%= game.time %>:00</div>
+                <div class="heading" id="clock-holder" data-time="<%= game.time %>" style="text-align: center; font-size: 100px">
+                    <% if (game.time < 10) { %>
+                        0<%= game.time %>:00
+                    <% } else { %>
+                        <%= game.time %>:00
+                    <% } %>
+                </div>
             </div>
         </div>
 
-        <table class="table table-custom subheading mt-4 mb-4" style="text-align: center" id="game">
-            <thead>
-                <th>Questions</th>
-                <th>Answers</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="question-holder">#001</td>
-                    <td><input type="text" size="100%" class="form-control answer-holder" disabled placeholder="Your answer"></td>
-                </tr>
-                <tr>
-                    <td class="question-holder">#002</td>
-                    <td><input type="text" class="form-control answer-holder" disabled placeholder="Your answer"></td>
-                </tr>
-                <tr>
-                    <td class="question-holder">#003</td>
-                    <td><input type="text" class="form-control answer-holder" disabled placeholder="Your answer"></td>
-                </tr>
-                <tr>
-                    <td class="question-holder">#004</td>
-                    <td><input type="text" class="form-control answer-holder" disabled placeholder="Your answer"></td>
-                </tr>
-                <tr>
-                    <td class="question-holder">#005</td>
-                    <td><input type="text" class="form-control answer-holder" disabled placeholder="Your answer"></td>
-                </tr>
-                <tr>
-                    <td class="question-holder">#006</td>
-                    <td><input type="text" class="form-control answer-holder" disabled placeholder="Your answer"></td>
-                </tr>
-                <tr>
-                    <td class="question-holder">#007</td>
-                    <td><input type="text" class="form-control answer-holder" disabled placeholder="Your answer"></td>
-                </tr>
-                <tr>
-                    <td class="question-holder">#008</td>
-                    <td><input type="text" class="form-control answer-holder" disabled placeholder="Your answer"></td>
-                </tr>
-                <tr>
-                    <td class="question-holder">#009</td>
-                    <td><input type="text" class="form-control answer-holder" disabled placeholder="Your answer"></td>
-                </tr>
-                <tr>
-                    <td class="question-holder">#010</td>
-                    <td><input type="text" class="form-control answer-holder" disabled placeholder="Your answer"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="row" id="quiz" data-score="0">
+            <div class="col-8 pb-2 pt-2 mb-2 subheading question-holder"> Question </div>
+            <div class="col-4 pb-2 pt-2 mb-2 subheading" style="text-align: center; background-color: #C26DBC"> Answer </div>
 
+            <% items.forEach(function (item, index) { %>
+
+                <div class="col-1 pb-2 pt-2 border subheading" style="background-color: #EEB5EB; display: flex">
+                    <div class="question-holder"> <%= index + 1 %> </div>
+                </div>
+                <div class="col-7 pb-2 pt-2 border subheading question-wrapper" id="question-<%=index%>">
+                    <div class="question-holder"> <%= item.question %> </div>
+                </div>
+                <div class="col-4 pb-2 pt-2 border subheading answer-wrapper">
+                    <input type="text" class="form-control answer-holder" id="answer-<%=index%>" data-answer="<%=item.answer%>" placeholder="press start to enable" disabled>
+                </div>
+
+            <% }) %>
+        </div>
+
+        <div style="height: 20px"></div>
         <a href="/leaderboard/<%= game._id %>" class="btn btn-custom btn-block" id="leaderboard">View leaderboard</a>
     </div>
 

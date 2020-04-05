@@ -1,27 +1,32 @@
-.table-custom {
+.question-wrapper {
+    display: flex;
     background-color: #EEB5EB;
-    width: 100%;
+    filter: blur(25px);
 }
 
-.table-custom .question-holder {
+.question-holder {
+    margin: auto;
     text-align: center;
-    vertical-align: middle;
-    padding: 10px 0px;
-    width: 60%;
+    background-color: #EEB5EB;
+    font-size: 15px;
 }
 
-.table-custom .answer-holder {
-    padding: 10px 10px;
-    width: 100%;
+.answer-wrapper {
+    display: flex;
+    background-color: #C26DBC;
+}
+
+.answer-holder {
+    margin: auto;
     text-align: center;
 }
 
-#start-btn button, #give-up button, #pause button {
+#start-btn button, #quit-btn, #pause-btn, #resume-btn {
     height: 50px;
     font-size: 25px;
 }
 
-#give-up, #pause {
+#give-up, #pause, #resume {
     display: none;
 }
 
