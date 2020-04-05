@@ -35,7 +35,7 @@ const controller = {
                             } else {
                                 res.render("pages/error", {guest: req.session.guest});
                             }
-                        })
+                        });
                     } else {
                         res.render("pages/error", {guest: req.session.guest});
                     }

@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 
-app.get("/", function(req, res) {
-    res.render("../views/pages/view_leaderboard", {guest: req.session.guest});
-});
+const controller = require("../controllers/CONTROLLER_view_leaderboard");
+
+app.get("/:id", controller.loadPage);
 
 module.exports = app;

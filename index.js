@@ -43,7 +43,7 @@ app.use("/homepage", homeRoute);
 app.use("/modify_game", modifyRoute);
 app.use("/play_game", playRoute);
 app.use("/view_games", viewGamesRoute);
-app.use("/view_leaderboard", viewLeaderboard);
+app.use("/leaderboard", viewLeaderboard);
 app.use("/view_profile", viewProfile);
 app.use(function (req, res) {
     res.render("pages/error", {guest: req.session.guest});
