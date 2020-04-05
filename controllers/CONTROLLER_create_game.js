@@ -6,16 +6,10 @@ const controller = {
 
     createGame: function (req, res){
         console.log("in createGame")
-        // var title;
-        // var description;
-        // var time;
-        // console.log(req.body.art);
-        // console.log(req.body.business);
-        // console.log(req.body.scitech);
-        // console.log(req.body.history);
-        // console.log(req.body.trivia);
-        // console.log(req.body.sports);
-        // console.log(req.body.others);
+        var title = req.body.title;
+        var description = req.body.description;
+        var time = req.body.time;
+        
         res.redirect("/homepage");
     }
 
