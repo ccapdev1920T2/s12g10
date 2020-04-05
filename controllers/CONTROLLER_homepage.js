@@ -26,22 +26,16 @@ const controller = {
 
                         });
 
-                        Game.
-                            find({}).
-                            limit(9).
-                            sort({num_attempts: -1}).
-                            exec(function (err, topGames) {
-                                if (err)
-                                    res.render("pages/error", {guest: req.session.guest});
-                                else
-                                    // console.log(topGames);
-                                    res.render("pages/homepage", {
-                                        games: topGames,
-                                        admin: true,
-                                        users: allUsers,
-                                        guest: req.session.guest});
-                        });
-
+                        db.findLimitSort(Game, {}, null, 9, {num_attempts: -1}, function (topGames) {
+                            if (topGames !== null) {
+                                res.render("pages/homepage", {
+                                            games: topGames,
+                                            users: allUsers,
+                                            guest: req.session.guest});
+                            } else {
+                                res.render("pages/error", {guest: req.session.guest});
+                            }
+                        })
                     } else {
                         res.render("pages/error", {guest: req.session.guest});
                     }

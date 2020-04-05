@@ -17,20 +17,20 @@
 #over {
     z-index: 2;
     position: absolute;
-    animation: rotation 4s ease-in-out infinite alternate;
+    animation: rotation 8s ease-in-out infinite alternate;
     transition: 0.3s;
 }
 
 #under {
     z-index: 1;
     position: absolute;
-    animation: rotation 4s ease-in-out infinite alternate-reverse;
+    animation: rotation 8s ease-in-out infinite alternate-reverse;
     transition: 0.3s;
 }
 
 @keyframes rotation {
     from { transform: rotate(0deg); }
-    to { transform: rotate(359deg); }
+    to { transform: rotate(720deg); }
 }
 
 #title-col {
