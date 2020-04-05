@@ -134,6 +134,4 @@ $( document ).ready(function() {
         modal.find("#modal-id").text("Game ID: " + id);
         modal.find("a.btn").attr("href","/view_profile/"+ id + "/delete");
     });
-
-
 });

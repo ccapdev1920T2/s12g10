@@ -162,6 +162,22 @@ const controller = {
         db.updateOne(User, {_id: req.param("id")},{is_admin:true});
         res.redirect("back");
 
+    },
+    uploadPic:function(req,res){
+        var image = req.files.pic;
+        image.mv("public/media/profile_pictures/"+ image.name, function(error){
+            if (error) {
+                
+                console.log("file unsuccessfully uploaded");
+                res.render("pages/error", {guest: req.session.guest});
+            } 
+            else {
+                db.updateOne(User, {email: req.session.username},{user_image:"/media/profile_pictures/"+image.name}); 
+                console.log("file successfully uploaded");
+                res.redirect("back");
+            } 
+        });
+        
     }
 };
 

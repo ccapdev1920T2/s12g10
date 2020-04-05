@@ -52,15 +52,17 @@
             <%= completed%>
         </div>
         <div class="prof_name "><%= details.user.name %></div>
-        <div class="input-group mb-3 prof_file">
-            <div class="input-group-prepend">
-              <button class="btn btn-outline-secondary btn-custom" type="button" id="upload">Upload</button>
+        <form action = "view_profile/upload/pic" method = "POST" enctype = "multipart/form-data">
+            <div class="input-group mb-3 prof_file">
+                <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary btn-custom" type="submit" id="upload">Upload</button>
+                </div>
+                <div class="custom-file">
+                <input type="file" class="custom-file-input" id="file" aria-describedby="upload" name = "pic">
+                <label class=" custom-file-label" for="file">Choose file</label>
+                </div>
             </div>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="file" aria-describedby="upload">
-              <label class=" custom-file-label" for="file">Choose file</label>
-            </div>
-        </div>
+        </form>
     </div>
 
     <div class="container mt-5 mb-5" id="1-main-box">
