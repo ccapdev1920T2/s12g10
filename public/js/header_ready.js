@@ -8,11 +8,11 @@ $(function () {
         mouseleave: function () {
             if (document.body.scrollTop > 175 || document.documentElement.scrollTop > 175) {
                 $("#over, #under").css({
-                    "animation-duration": "8s",
+                    "animation-duration": "12s",
                 });
             } else {
                 $("#over, #under").css({
-                    "animation-duration": "4s",
+                    "animation-duration": "8s",
                 });
             }
         }

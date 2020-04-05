@@ -49,6 +49,14 @@ const db = {
             });
         },
 
+    findLimitSort:
+        function (model, query, projection, limit, sort, callback) {
+            model.find(query).limit(limit).sort(sort).exec(function (err, res) {
+                if (err) throw err;
+                return callback(res);
+            })
+        },
+
     updateOne:
         function (model, filter, update) {
             model.updateOne(filter, update, function (err, res) {
