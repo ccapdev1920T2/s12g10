@@ -43,12 +43,12 @@
                 <input class="form-control subheading" type="file" id="game_image">
             </div>
             <div id="questions_form">
-                <% questions.forEach(function(question, index) { %>
-                <div class="form-inline row mb-1" id="form1">
-                    <div class="col-2"><label class="subheading">Question 1:</label></div>
-                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Sample current question" id="question1" value="#001"></div>
-                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Sample current answer" id="answer1" value="Bulbasaur"></div>
-                    <div class="col"><button type="button" class="btn btn-danger delete" id="delete1">&times;</button></div>
+                <% items.forEach(function(item, index) { %>
+                <div class="form-inline row mb-1" id="form<%= index + 1 %>">
+                    <div class="col-2"><label class="subheading">Question <%= index %>:</label></div>
+                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Sample current question" id="question<%= index %>" value="<%= item.question %>"></div>
+                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Sample current answer" id="answer<%= index %>" value="<%= item.answer %>"></div>
+                    <div class="col"><button type="button" class="btn btn-danger delete" id="delete<%= index %>">&times;</button></div>
                 </div>
                 <% }) %>
                 <div class="form-inline row mb-1" id="form2">
