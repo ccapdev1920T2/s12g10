@@ -37,7 +37,7 @@ const controller = {
 
                             res.render("pages/view_games", {
                                 games: games,
-                                admin: req.session.admin,
+                                admin: isAdmin.is_admin,
                                 guest: req.session.guest
                             });
 
