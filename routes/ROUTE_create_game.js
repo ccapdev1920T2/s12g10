@@ -7,6 +7,6 @@ app.get("/", function(req, res) {
     res.render("../views/pages/create_game", {guest: req.session.guest});
 });
 
-app.post("/create_game", controller.createGame);
+app.post("/create", controller.createGame);
 
 module.exports = app;

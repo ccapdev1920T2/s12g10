@@ -83,7 +83,7 @@ const db = {
 
     count:
         function (model, query, callback) {
-            model.count(query, function (err, count) {
+            model.countDocuments(query, function (err, count) {
                 if (err) throw err;
                 return callback(count);
             });
