@@ -70,7 +70,13 @@
 
                         <div class="card-footer">
                             <p id="game_id" style="display: none"><%= game._id %></p>
-                            <small class="text-muted subheading">Created by <a href="view_profile_self"><%= game.creator %></a></small>
+                            <small class="text-muted subheading" id="author">Created by <a href="view_profile/<%= game.creator %>">
+                                <% users.forEach(function (user) { %>
+                                    <% if (game.creator.equals(user._id)) { %>
+                                        <%= user.name %>
+                                    <% } %>
+                                <% }) %>
+                            </a></small>
                         </div>
 
                     </div>

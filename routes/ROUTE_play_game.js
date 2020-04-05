@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 
-app.get("/", function(req, res) {
-    res.render("../views/pages/play_game", {guest: req.session.guest});
-});
+const controller = require("../controllers/CONTROLLER_play_game")
+
+app.get("/:id", controller.findGame);
 
 module.exports = app;

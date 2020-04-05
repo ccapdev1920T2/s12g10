@@ -9,10 +9,10 @@
 <body>
     <%- include ("../partials/header.ejs") %>
     <div class="container mt-5 mb-5" id="main-box">
-        <h2 class="heading">First 10 Pokemon</h2>
-        <img src="../../media/Sample%20Images/High%20Sierra-min.jpg" style="width: 100%; height: auto">
-        <h3 class="subheading">Can you name the first 10 Kanto Pokemons in 3 minutes?</h3>
-        <p class="subheading">Created by: <a href="view_profile_user">ashketchup</a></p>
+        <h2 class="heading"><%= title %></h2>
+        <img src="../<%= img %>" style="width: 100%; height: auto">
+        <h3 class="subheading"><%= description %></h3>
+        <p class="subheading">Created by: <a href="view_profile_user"><%= creator %></a></p>
 
         <div class="row" id="controls" style="display: flex; justify-content: center; align-items: center">
             <div class="col-sm-8" id="start-btn">
@@ -25,7 +25,7 @@
                 <button class="btn btn-custom btn-block subheading">Give up</button>
             </div>
             <div class="col-sm-4">
-                <div class="heading" id="clock-holder" style="text-align: center; font-size: 100px">03:00</div>
+                <div class="heading" id="clock-holder" style="text-align: center; font-size: 100px"><%= time %>:00</div>
             </div>
         </div>
 

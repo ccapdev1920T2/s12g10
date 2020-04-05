@@ -10,170 +10,49 @@
     <%- include ("../partials/header.ejs") %>
     <div class="container mt-5 mb-5" id="main-box">
         <h2 class="subheading" style="text-align: center">Top Games</h2>
-        <div class="row">
-            <div class="col-sm-4 mb-4">
-                <div class="card card-art card-others">
-                    <div class="card-header pt-2 pb-1">
-                        <div class="container row m-0" style="height:15px;">
-                            <div class="col bg-art border mr-1"></div>
-                            <div class="col bg-others border"></div>
+        <div class="row mt-4">
+            <% games.forEach(function (game) { %>
+                <div class="col-sm-4 mb-4">
+                    <div class="card
+                        <% for (let i = 0; i < game.genres.length; i++ ) { %>
+                        <%= 'card-' + game.genres[i] %>
+                        <% } %>" >
+
+                        <div class="card-header pt-2 pb-1">
+                            <div class="container row m-0" style="height:15px;">
+                                <% var len = game.genres.length %>
+                                <% for (i = 0; i < len; i++ ) { %>
+                                    <div class="col border <%= 'bg-' + game.genres[i] %>
+                                        <% if (i < len - 1) { %>
+                                        <%= 'mr-1' %>
+                                        <% } %>">
+                                    </div>
+                                <% } %>
+                            </div>
                         </div>
-                    </div>
-                    <img src="../../media/coversamples/7.jpg" class="card-img-top card-img-custom">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title heading">The Last Supper</h5>
-                        <p class="card-text subheading">Name the people in Leonardo da Vinci's 'The Last Supper'.</p>
-                        <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#myModal">Play Game</button>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted subheading">Created by <a href="view_profile_user">dustinmaceda</a></small>
+
+                        <img class="card-img-top card-img-custom" src="<%= game.game_image %>">
+
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title heading"><%= game.title %></h5>
+                            <p class="card-text subheading" style="display: none"><%= game.description %></p>
+                            <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#playModal">Play Game</button>
+                        </div>
+
+                        <div class="card-footer">
+                            <p id="game_id" style="display: none"><%= game._id %></p>
+                            <small class="text-muted subheading" id="author">Created by <a href="view_profile/<%= game.creator %>">
+                                    <% users.forEach(function (user) { %>
+                                        <% if (game.creator.equals(user._id)) { %>
+                                            <%= user.name %>
+                                        <% } %>
+                                    <% }) %>
+                                </a></small>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4 mb-4">
-                <div class="card card-others">
-                    <div class="card-header pt-2 pb-1">
-                        <div class="container row m-0" style="height:15px;">
-                            <div class="col bg-others border"></div>
-                        </div>
-                    </div>
-                    <img src="../../media/Sample%20Images/2.jpg" class="card-img-top card-img-custom">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title heading">'Leap' Years</h5>
-                        <p class="card-text subheading">Name the the answers described in these LEAP year clues.</p>
-                        <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#myModal">Play Game</button>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted subheading">Created by <a href="view_profile_admin">byronnill</a></small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-4">
-                <div class="card card-others">
-                    <div class="card-header pt-2 pb-1">
-                        <div class="container row m-0" style="height:15px;">
-                            <div class="col bg-others border"></div>
-                        </div>
-                    </div>
-                    <img src="../../media/Sample%20Images/15.jpg" class="card-img-top card-img-custom">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title heading">Missing Word: Mobile Games</h5>
-                        <p class="card-text subheading">Name the missing words from these mobile games.</p>
-                        <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#myModal">Play Game</button>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted subheading">Created by <a href="view_profile_self">geosefuy</a></small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-4">
-                <div class="card card-history">
-                    <div class="card-header pt-2 pb-1">
-                        <div class="container row m-0" style="height:15px;">
-                            <div class="col bg-history border"></div>
-                        </div>
-                    </div>
-                    <img src="../../media/Sample%20Images/10.jpg" class="card-img-top card-img-custom">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title heading">Multi-Category Letter Board VI</h5>
-                        <p class="card-text subheading">For each column, can you name the items that fit the category and begin with the given letters?</p>
-                        <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#myModal">Play Game</button>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted subheading">Created by <a href="view_profile_user">mattlua</a></small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-4">
-                <div class="card card-trivia">
-                    <div class="card-header pt-2 pb-1">
-                        <div class="container row m-0" style="height:15px;">
-                            <div class="col bg-trivia border"></div>
-                        </div>
-                    </div>
-                    <img src="../../media/Sample%20Images/1.jpg" class="card-img-top card-img-custom">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title heading">Odd but True Facts</h5>
-                        <p class="card-text subheading">Can you match the two parts of these odd facts?</p>
-                        <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#myModal">Play Game</button>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted subheading">Created by <a href="view_profile_user">regex22</a></small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-4">
-                <div class="card card-sports">
-                    <div class="card-header pt-2 pb-1">
-                        <div class="container row m-0" style="height:15px;">
-                            <div class="col bg-sports border"></div>
-                        </div>
-                    </div>
-                    <img src="../../media/Sample%20Images/6.jpg" class="card-img-top card-img-custom">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title heading">Finish the Athlete</h5>
-                        <p class="card-text subheading">Can you choose the image that completes the name of each athlete?</p>
-                        <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#myModal">Play Game</button>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted subheading">Created by <a href="view_profile_user">user123</a></small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-4">
-                <div class="card card-trivia">
-                    <div class="card-header pt-2 pb-1">
-                        <div class="container row m-0" style="height:15px;">
-                            <div class="col bg-trivia border"></div>
-                        </div>
-                    </div>
-                    <img src="../../media/Sample%20Images/14.jpg" class="card-img-top card-img-custom">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title heading">Criteria Wars</h5>
-                        <p class="card-text subheading">And here we thought "bad" would be the only criteria that mattered.</p>
-                        <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#myModal">Play Game</button>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted subheading">Created by <a href="view_profile_user">xX_wow_Xx</a></small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-4">
-                <div class="card card-business">
-                    <div class="card-header pt-2 pb-1">
-                        <div class="container row m-0" style="height:15px;">
-                            <div class="col bg-business border"></div>
-                        </div>
-                    </div>
-                    <img src="../../media/Sample%20Images/9.jpg" class="card-img-top card-img-custom">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title heading">Artist by Painting</h5>
-                        <p class="card-text subheading">Can you name the artist from a close-up of their famous painting?</p>
-                        <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#myModal">Play Game</button>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted subheading">Created by <a href="view_profile_user">chuamark</a></small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-4">
-                <div class="card card-others">
-                    <div class="card-header pt-2 pb-1">
-                        <div class="container row m-0" style="height:15px;">
-                            <div class="col bg-others border"></div>
-                        </div>
-                    </div>
-                    <img src="../../media/Sample%20Images/3.jpg" class="card-img-top card-img-custom">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title heading">Literary Couples</h5>
-                        <p class="card-text subheading">Can you pick the couples that originated in works of literature without picking any that originated on TV shows?</p>
-                        <button type="button" class="btn btn-custom btn-block mt-auto" data-toggle="modal" data-target="#myModal">Play Game</button>
-                    </div>
-                    <div class="card-footer">
-                        <small class="text-muted subheading">Created by <a href="view_profile_user">meteorgardenislife</a></small>
-                    </div>
-                </div>
-            </div>
+            <% }) %>
         </div>
     </div>
 

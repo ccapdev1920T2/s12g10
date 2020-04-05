@@ -178,4 +178,6 @@ $("#playModal").on("show.bs.modal", function (event) {
     modal.find("#modal-img").attr("src", img);
     modal.find("#modal-cats").html(holder);
 
+    modal.find("#play-btn").attr("href", "play_game/" + id);
+
 });

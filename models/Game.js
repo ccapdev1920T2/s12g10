@@ -34,6 +34,10 @@ const schema = {
     creator: {
         type: mongoose.ObjectId,
         required: true
+    },
+    num_attempts: {
+        type: Number,
+        required: false
     }
 };
 const collection = "games";

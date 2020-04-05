@@ -1,7 +1,11 @@
-.card-header {
-    height: 30px;
+#filter-buttons {
+    margin-bottom: 25px;
+}
+
+body {
+    transition: 2s;
 }
 
 .card-body {
-    height: 200px;
+    height: 100px;
 }
