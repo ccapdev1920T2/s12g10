@@ -11,18 +11,18 @@
     <%- include ("../partials/header.ejs") %>
     <div class="container mt-5 mb-5" id="main-box">
         <h2 class="subheading" style="text-align: center">Modifying a Game</h2>
-        <form>
+        <form action="modify_game/modify" method="post">
             <div class="form-group">
                 <label for="game_title" class="subheading">Game Title:</label>
-                <input class="form-control subheading" type="text" placeholder="Sample current title" id="game_title" value="First 10 Pokemon">
+                <input class="form-control subheading" type="text" placeholder="Sample current title" id="game_title" value="<%= game.title %>">
             </div>
             <div class="form-group">
                 <label for="game_description" class="subheading">Description:</label>
-                <textarea class="form-control subheading" placeholder="Sample current description" id="game_description">Can you name the first 10 Kanto Pokemons in 3 minutes?</textarea>
+                <textarea class="form-control subheading" placeholder="Sample current description" id="game_description"><%= game.description %></textarea>
             </div>
             <div class="form-group">
                 <label for="game_duration" class="subheading">Game Duration (minutes):</label>
-                <input class="subheading" type="number" id="game_duration" min="3" max="10" placeholder="*" value="3">
+                <input class="subheading" type="number" id="game_duration" min="3" max="10" placeholder="*" value="<%= game.time %>">
             </div>
             <div class="form-group">
                 <label for="genre-buttons" class="subheading">Genre(s):</label>
@@ -43,12 +43,14 @@
                 <input class="form-control subheading" type="file" id="game_image">
             </div>
             <div id="questions_form">
+                <% questions.forEach(function(question, index) { %>
                 <div class="form-inline row mb-1" id="form1">
                     <div class="col-2"><label class="subheading">Question 1:</label></div>
                     <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Sample current question" id="question1" value="#001"></div>
                     <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Sample current answer" id="answer1" value="Bulbasaur"></div>
                     <div class="col"><button type="button" class="btn btn-danger delete" id="delete1">&times;</button></div>
                 </div>
+                <% }) %>
                 <div class="form-inline row mb-1" id="form2">
                     <div class="col-2"><label class="subheading">Question 2:</label></div>
                     <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Sample current question" id="question2" value="#002"></div>

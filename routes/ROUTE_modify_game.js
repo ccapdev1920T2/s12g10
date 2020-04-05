@@ -8,4 +8,6 @@ app.get("/", function(req, res) {
         res.render("../views/pages/modify_game", {guest: false});
 });
 
+app.post("/create", controller.createGame);
+
 module.exports = app;
