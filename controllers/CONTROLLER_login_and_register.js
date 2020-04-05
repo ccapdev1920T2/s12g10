@@ -7,7 +7,6 @@ const controller = {
     loadPage: function (req, res) {
         req.session.loggedin = false;
         req.session.username = null;
-        req.session.admin = null;
         req.session.guest = null;
         res.render("pages/login_and_register");
     },
@@ -16,7 +15,6 @@ const controller = {
 
         req.session.loggedin = true;
         req.session.username = null;
-        req.session.admin = false;
         req.session.guest = true;
 
         console.log("logged in as guest: " + req.session.guest);
@@ -35,7 +33,6 @@ const controller = {
                     console.log("login successful");
                     req.session.loggedin = true;
                     req.session.username = email;
-                    req.session.admin = result.is_admin;
                     req.session.guest = false;
                     res.redirect("/homepage");
                 } else {
@@ -72,7 +69,6 @@ const controller = {
                 });
                 req.session.loggedin = true;
                 req.session.username = email;
-                req.session.admin = false;
                 req.session.guest = false;
                 res.redirect("/homepage");
             }
@@ -82,7 +78,6 @@ const controller = {
     logout: function (req, res) {
         req.session.loggedin = false;
         req.session.username = null;
-        req.session.admin = null;
         req.session.guest = null;
         res.render("pages/login_and_register");
     }
