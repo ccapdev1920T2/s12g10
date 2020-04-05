@@ -10,6 +10,11 @@ $("#filter-by-art, #filter-by-business, #filter-by-scitech, #filter-by-history, 
     }
 });
 
-window.onbeforeunload = function (event) {
-    return "Changes made will not be saved. Are you sure you want to leave?";
-};
+// window.onbeforeunload = function (event) {
+//     // let button = $(event.relatedTarget);
+//     //
+//     // if (button.isEqualNode($("#create_game"))) {}
+//     // else {
+//         return "Changes made will not be saved. Are you sure you want to leave?";
+//     // }
+// };
