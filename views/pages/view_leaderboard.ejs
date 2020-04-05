@@ -9,73 +9,46 @@
 <body>
     <%- include ("../partials/header.ejs") %>
     <div class="container mt-5 mb-5" id="main-box">
-        <h2 class="heading">First 10 Pokemon</h2>
-        <img src="../../media/Sample%20Images/1.jpg" style="width: 100%; height: auto">
-        <h3 class="subheading">Can you name the first 10 Kanto Pokemons in 3 minutes?</h3>
-        <p class="subheading">Created by: <a href="view_profile_user">ashketchup</a></p>
+        <h2 class="heading"><%= game.title %></h2>
+        <img src="../<%= game.game_image %>" style="width: 100%; height: auto">
+        <div style="height: 20px"></div>
+        <h3 class="subheading"><%= game.description %></h3>
+        <p class="subheading">Created by: <a href="view_profile_user"><%= creator %></a></p>
 
-        <h2 class="subheading" style="text-align: center">Leaderboard</h2>
+        <% if (noLead) { %>
 
-        <table class="table table-custom table-striped subheading mt-4 mb-4" style="text-align: center" id="game">
-            <thead>
-            <th colspan="7">Users</th>
-            <th colspan="2">Accuracy</th>
-            <th colspan="2">Time</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td colspan="7" class="users"><a href="view_profile_user">thebrock</a></td>
-                    <td colspan="2" class="accuracy">100%</td>
-                    <td colspan="2" class="time">1:30</td>
-                </tr>
-                <tr>
-                    <td colspan="7" class="users"><a href="view_profile_user">chari12</a></td>
-                    <td colspan="2" class="accuracy">100%</td>
-                    <td colspan="2" class="time">2:28</td>
-                </tr>
-                <tr>
-                    <td colspan="7" class="users"><a href="view_profile_user">binatog00</a></td>
-                    <td colspan="2" class="accuracy">100%</td>
-                    <td colspan="2" class="time">2:58</td>
-                </tr>
-                <tr>
-                    <td colspan="7" class="users"><a href="view_profile_user">byronnill</a></td>
-                    <td colspan="2" class="accuracy">90%</td>
-                    <td colspan="2" class="time">3:00</td>
-                </tr>
-                <tr>
-                    <td colspan="7" class="users"><a href="view_profile_user">niellua</a></td>
-                    <td colspan="2" class="accuracy">70%</td>
-                    <td colspan="2" class="time">3:00</td>
-                </tr>
-                <tr>
-                    <td colspan="7" class="users"><a href="view_profile_user">poochy</a></td>
-                    <td colspan="2" class="accuracy">70%</td>
-                    <td colspan="2" class="time">3:00</td>
-                </tr>
-                <tr>
-                    <td colspan="7" class="users"><a href="view_profile_user">gamora66</a></td>
-                    <td colspan="2" class="accuracy">60%</td>
-                    <td colspan="2" class="time">3:00</td>
-                </tr>
-                <tr>
-                    <td colspan="7" class="users"><a href="view_profile_user">n4k0p0</a></td>
-                    <td colspan="2" class="accuracy">50%</td>
-                    <td colspan="2" class="time">3:00</td>
-                </tr>
-                <tr>
-                    <td colspan="7" class="users"><a href="view_profile_user">locodoc</a></td>
-                    <td colspan="2" class="accuracy">50%</td>
-                    <td colspan="2" class="time">3:00</td>
-                </tr>
-                <tr>
-                    <td colspan="7" class="users"><a href="view_profile_user">gyges443</a></td>
-                    <td colspan="2" class="accuracy">50%</td>
-                    <td colspan="2" class="time">3:00</td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="play_game"class="btn btn-custom btn-block">Back to Game</a>
+            <h4 class="subheading" style="text-align: center">There have been no attempts for this game yet.</h4>
+            <h6 class="subheading" style="text-align: center">Try it now!</h6>
+
+        <% } else { %>
+
+            <h2 class="subheading" style="text-align: center">Leaderboard</h2><div style="height: 10px"></div>
+
+            <div class="row">
+                <div class="col-2 pb-2 pt-2 mb-2 subheading rank"> Rank </div>
+                <div class="col-6 pb-2 pt-2 mb-2 subheading user"> User </div>
+                <div class="col-2 pb-2 pt-2 mb-2 subheading accuracy"> Accuracy </div>
+                <div class="col-2 pb-2 pt-2 mb-2 subheading time"> Time </div>
+
+                <% leaderboard.forEach(function (attempt, index) { %>
+
+                    <div class="col-2 pb-2 pt-2 subheading rank"> <%= index + 1%> </div>
+                    <a class="col-6 pb-2 pt-2 subheading user" href="/view_profile/<%= attempt.user_id %>">
+                        <% users.forEach(function (user) { %>
+                            <% if (user._id.equals(attempt.user_id)) { %>
+                                <%= user.name %>
+                            <% } %>
+                        <% }) %>
+                    </a>
+                    <div class="col-2 pb-2 pt-2 subheading accuracy"> <%= attempt.answered / total * 100%>% </div>
+                    <div class="col-2 pb-2 pt-2 subheading time"> <%= attempt.attempt_time %> min </div>
+
+                <% }) %>
+            </div>
+
+        <% } %>
+        <div style="height: 20px"></div>
+        <a href="/play_game/<%= game._id %>"class="btn btn-custom btn-block">Back to Game</a>
 
     </div>
 

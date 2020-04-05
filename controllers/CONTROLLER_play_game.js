@@ -17,11 +17,8 @@ const controller = {
 
                         res.render("pages/play_game", {
                             guest: req.session.guest,
-                            title: game.title,
-                            description: game.description,
-                            img: game.game_image,
+                            game: game,
                             creator: user.name,
-                            time: game.time
                         });
 
                     } else {

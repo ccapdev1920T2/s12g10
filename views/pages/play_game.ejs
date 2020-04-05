@@ -9,9 +9,10 @@
 <body>
     <%- include ("../partials/header.ejs") %>
     <div class="container mt-5 mb-5" id="main-box">
-        <h2 class="heading"><%= title %></h2>
-        <img src="../<%= img %>" style="width: 100%; height: auto">
-        <h3 class="subheading"><%= description %></h3>
+        <h2 class="heading"><%= game.title %></h2>
+        <img src="../<%= game.game_image %>" style="width: 100%; height: auto">
+        <div style="height: 20px"></div>
+        <h3 class="subheading"><%= game.description %></h3>
         <p class="subheading">Created by: <a href="view_profile_user"><%= creator %></a></p>
 
         <div class="row" id="controls" style="display: flex; justify-content: center; align-items: center">
@@ -25,7 +26,7 @@
                 <button class="btn btn-custom btn-block subheading">Give up</button>
             </div>
             <div class="col-sm-4">
-                <div class="heading" id="clock-holder" style="text-align: center; font-size: 100px"><%= time %>:00</div>
+                <div class="heading" id="clock-holder" style="text-align: center; font-size: 100px"><%= game.time %>:00</div>
             </div>
         </div>
 
@@ -78,7 +79,7 @@
             </tbody>
         </table>
 
-        <a href="view_leaderboard" class="btn btn-custom btn-block" id="leaderboard">View leaderboard</a>
+        <a href="/leaderboard/<%= game._id %>" class="btn btn-custom btn-block" id="leaderboard">View leaderboard</a>
     </div>
 
     <%- include ("../partials/footer.ejs") %>
