@@ -16,20 +16,13 @@
         <p class="subheading">Created by: <a href="view_profile_user"><%= creator %></a></p>
 
         <div class="row" id="controls" style="display: flex; justify-content: center; align-items: center">
-            <div class="col-sm-8" id="start-btn">
-                <button class="btn btn-custom btn-block subheading">Start Game</button>
-            </div>
-            <div class="col-sm-4" id="resume">
-                <button class="btn btn-custom btn-block subheading" id="resume-btn">Resume</button>
-            </div>
-            <div class="col-sm-4" id="pause">
-                <button class="btn btn-custom btn-block subheading" id="pause-btn">Pause</button>
-            </div>
-            <div class="col-sm-4" id="give-up">
-                <button class="btn btn-custom btn-block subheading" id="quit-btn">Give up</button>
-            </div>
-            <div class="col-sm-4">
-                <div class="heading" id="clock-holder" data-time="<%= game.time %>" style="text-align: center; font-size: 100px">
+            <button class="col-8 btn btn-custom btn-block subheading" id="start-btn">Start Game</button>
+            <button class="col-4 btn btn-custom btn-block subheading" id="resume-btn">Resume</button>
+            <button class="col-4 btn btn-custom btn-block subheading" id="pause-btn">Pause</button>
+            <button class="col-4 btn btn-custom btn-block subheading" id="quit-btn">Give Up</button>
+            <div class="col-4 heading" id="accuracy-holder" style="text-align: center; font-size: 75px"></div>
+            <div class="col-4">
+                <div class="heading" id="clock-holder" data-time="<%= game.time %>" style="text-align: center; font-size: 75px">
                     <% if (game.time < 10) { %>
                         0<%= game.time %>:00
                     <% } else { %>
@@ -39,9 +32,9 @@
             </div>
         </div>
 
-        <div class="row" id="quiz" data-score="0">
+        <div class="row" id="quiz" data-score="0" data-length="<%= items.length %>">
             <div class="col-8 pb-2 pt-2 mb-2 subheading question-holder"> Question </div>
-            <div class="col-4 pb-2 pt-2 mb-2 subheading" style="text-align: center; background-color: #C26DBC"> Answer </div>
+            <div class="col-4 pb-2 pt-2 mb-2 subheading" style="text-align: center; background-color: #C26DBC; color:white"> Answer </div>
 
             <% items.forEach(function (item, index) { %>
 

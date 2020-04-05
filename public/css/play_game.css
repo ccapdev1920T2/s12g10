@@ -16,17 +16,17 @@
     background-color: #C26DBC;
 }
 
-.answer-holder {
+.answer-holder, .answer-holder-final {
     margin: auto;
     text-align: center;
 }
 
-#start-btn button, #quit-btn, #pause-btn, #resume-btn {
+#start-btn, #quit-btn, #pause-btn, #resume-btn {
     height: 50px;
     font-size: 25px;
 }
 
-#give-up, #pause, #resume {
+#quit-btn, #pause-btn, #resume-btn, #accuracy-holder {
     display: none;
 }
 
