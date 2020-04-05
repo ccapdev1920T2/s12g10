@@ -45,6 +45,7 @@ $("#start-btn").on("click", function () {
     $("#start-btn").css("display", "none");
     $("#pause").show();
     $("#give-up").show();
+    $("#leaderboard").prop('disabled', true);
 
     startCountdown(new Date(), 1);
 
