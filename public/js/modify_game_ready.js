@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var questions = [];
     var list = $(".form-inline.row.mb-1");
-    for (i = 0; i < 10; i++){
+    for (i = 0; i < list.length; i++){
         questions.push(list[i]);
     }
     $(document).on("click", "#add_question", function(){
@@ -36,11 +36,15 @@ $(document).ready(function(){
         input1.attr("placeholder", "Your question");
         input1.attr("size", "60");
         input1.attr("id", "question" + (questions.length + 1));
+        input1.attr("name", "question" + (questions.length + 1));
+        input1.prop('required', true);
         input2.addClass("form-control subheading");
         input2.attr("type", "text");
         input2.attr("placeholder", "Your answer");
         input2.attr("size", "25");
         input2.attr("id", "answer" + (questions.length + 1));
+        input2.attr("name", "answer" + (questions.length + 1));
+        input2.prop('required', true);
         button.addClass("btn btn-danger delete");
         button.attr("type", "button");
         button.text("x");
@@ -63,7 +67,7 @@ $(document).ready(function(){
         $("#add_question").attr("disabled", false);
         var id = $(this).attr("id");
         var number = id.substring(6);
-        if (questions.length == 10){
+        if (questions.length == 5){
             $("#question" + number).val("");
             $("#answer" + number).val("");
         }

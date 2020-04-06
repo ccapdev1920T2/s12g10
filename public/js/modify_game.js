@@ -51,19 +51,19 @@ $('input[type="checkbox"]').on("mouseenter",function(){
         $("#filter-by-others").addClass("active");
 });
 $('input[type="checkbox"]').on("mouseleave",function(){
-    if ($(this).attr("id") == "check-art")
+    if ($(this).attr("id") == "check-art" && !$(this).is(":checked"))
         $("#filter-by-art").removeClass("active");
-    if ($(this).attr("id") == "check-business")
+    if ($(this).attr("id") == "check-business" && !$(this).is(":checked"))
         $("#filter-by-business").removeClass("active");
-    if ($(this).attr("id") == "check-scitech")
+    if ($(this).attr("id") == "check-scitech" && !$(this).is(":checked"))
         $("#filter-by-scitech").removeClass("active");
-    if ($(this).attr("id") == "check-history")
+    if ($(this).attr("id") == "check-history" && !$(this).is(":checked"))
         $("#filter-by-history").removeClass("active");
-    if ($(this).attr("id") == "check-trivia")
+    if ($(this).attr("id") == "check-trivia" && !$(this).is(":checked"))
         $("#filter-by-trivia").removeClass("active");
-    if ($(this).attr("id") == "check-sports")
+    if ($(this).attr("id") == "check-sports" && !$(this).is(":checked"))
         $("#filter-by-sports").removeClass("active");
-    if ($(this).attr("id") == "check-others")
+    if ($(this).attr("id") == "check-others" && !$(this).is(":checked"))
         $("#filter-by-others").removeClass("active");
 });
 $('input[type="checkbox"]').on("click",function(){

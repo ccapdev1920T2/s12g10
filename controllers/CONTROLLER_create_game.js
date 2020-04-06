@@ -12,7 +12,7 @@ const controller = {
         var description = req.body.description;
         var time = req.body.time;
         if (req.body.game_image)
-            var image = req.body.game_image;
+            var image = req.files.game_image;
         //     image.mv("public/media/game_images/"+ image.name, function(error){
         //         if (error) {
                     
