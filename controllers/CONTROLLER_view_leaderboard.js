@@ -8,6 +8,20 @@ function round (num) {
     return num.toFixed(4);
 }
 
+function toMinSec (mins) {
+
+    let str = mins.toString();
+    let pcs = str.split(".");
+
+    if (pcs[1] === undefined) {
+        return pcs[0] + ":00"
+    } else {
+        let sec = (pcs[1] / 10 * 60).toString().substring(0, 2);
+        return pcs[0] + ":" + sec;
+    }
+
+}
+
 const controller = {
     loadPage: function (req, res) {
 
@@ -42,7 +56,8 @@ const controller = {
                                                     creator : user.name,
                                                     noLead : false,
                                                     guest : req.session.guest,
-                                                    round : round
+                                                    round : round,
+                                                    toMinSec : toMinSec
                                                 });
                                             } else {
                                                 res.render("pages/view_leaderboard", {

@@ -157,7 +157,6 @@ $("#start-btn").on("click", function () {
     $("#start-btn").css("display", "none");
     $("#pause-btn").show();
     $("#quit-btn").show();
-    $("#leaderboard").prop('disabled', true);
     $(".question-wrapper").css("filter", "blur(0px)");
     $(".answer-holder").removeAttr("disabled").attr("placeholder", "your answer here");
 

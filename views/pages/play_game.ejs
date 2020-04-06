@@ -17,18 +17,18 @@
 
         <div class="row" id="controls" style="display: flex; justify-content: center; align-items: center">
             <button class="col-8 btn btn-custom btn-block subheading" id="start-btn">Start Game</button>
-            <a data-time="<%= game.time %>" data-id="<%= game._id %>" id="record-btn" class="col-4 btn btn-custom btn-block subheading
+            <a data-time="<%= game.time %>" data-id="<%= game._id %>" id="record-btn" class="col btn btn-custom btn-block subheading
                 <% if (guest) { %>
                     disabled"> Login / Register to Record
                 <% } else { %>
                     "> Record this Run
                 <% } %>
             </a>
-            <button class="col-4 btn btn-custom btn-block subheading" id="resume-btn">Resume</button>
-            <button class="col-4 btn btn-custom btn-block subheading" id="pause-btn">Pause</button>
-            <button class="col-4 btn btn-custom btn-block subheading" id="quit-btn">Give Up</button>
-            <div class="col-4 heading" id="accuracy-holder" style="text-align: center; font-size: 75px"></div>
-            <div class="col-4">
+            <button class="col btn btn-custom btn-block subheading mr-2" id="resume-btn">Resume</button>
+            <button class="col btn btn-custom btn-block subheading mr-2" id="pause-btn">Pause</button>
+            <button class="col btn btn-custom btn-block subheading" id="quit-btn">Give Up</button>
+            <div class="col heading" id="accuracy-holder" style="text-align: center; font-size: 75px"></div>
+            <div class="col">
                 <div class="heading" id="clock-holder" data-time="<%= game.time %>" style="text-align: center; font-size: 75px">
                     <% if (game.time < 10) { %>
                         0<%= game.time %>:00
