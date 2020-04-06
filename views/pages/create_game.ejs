@@ -14,27 +14,27 @@
         <form action="create_game/create" method="post">
             <div class="form-group">
                 <label for="game_title" class="subheading">Game Title:</label>
-                <input class="form-control subheading" type="text" placeholder="Your title" id="game_title" name="title">
+                <input class="form-control subheading" type="text" placeholder="Your title" min="5" max="50" id="game_title" name="title" required>
             </div>
             <div class="form-group">
                 <label for="game_description" class="subheading">Description:</label>
-                <textarea class="form-control subheading" placeholder="Your description" id="game_description" name="description"></textarea>
+                <textarea class="form-control subheading" placeholder="Your description" minlength="10" maxlength="1000" id="game_description" name="description" required></textarea>
             </div>
             <div class="form-group">
                 <label for="game_duration" class="subheading">Game Duration (minutes):</label>
-                <input class="subheading" type="number" id="game_duration" min="3" max="10" name="time">
+                <input class="subheading" type="number" id="game_duration" min="3" max="10" name="time" required>
             </div>
             <div class="form-group">
                 <label for="genre-buttons" class="subheading">Genre(s):</label>
                 <div id="genre-buttons" class="text-center">
                     <div class="btn-group" style="display: block; margin: auto">
-                        <button type="button" id="filter-by-art" class="btn subheading bg-art" value="art">Art</button>
-                        <button type="button" id="filter-by-business" class="btn subheading bg-business" value="business">Business</button>
-                        <button type="button" id="filter-by-scitech" class="btn subheading bg-scitech" value="scitech">Science and Technology</button>
-                        <button type="button" id="filter-by-history" class="btn subheading bg-history" value="history">History</button>
-                        <button type="button" id="filter-by-trivia" class="btn subheading bg-trivia" value="trivia">Trivia</button>
-                        <button type="button" id="filter-by-sports" class="btn subheading bg-sports" value="sports">Sports</button>
-                        <button type="button" id="filter-by-others" class="btn subheading bg-others" value="others">Others</button>
+                        <input type="checkbox" id="check-art" class="btn subheading bg-art" name="art" value="art"><label for="art" class="btn subheading bg-art mr-4" id="filter-by-art" >Art</label>
+                        <input type="checkbox" id="check-business" class="btn subheading bg-business" name="business" value="business"><label for="business" class="btn subheading bg-business mr-4" id="filter-by-business">Business</label>
+                        <input type="checkbox" id="check-scitech" class="btn subheading bg-scitech" name="scitech" value="scitech"><label for="scitech" class="btn subheading bg-scitech mr-4" id="filter-by-scitech">Science and Technology</label>
+                        <input type="checkbox" id="check-history" class="btn subheading bg-history" name="history" value="history"><label for="history" class="btn subheading bg-history mr-4" id="filter-by-history">History</label>
+                        <input type="checkbox" id="check-trivia" class="btn subheading bg-trivia" name="trivia" value="trivia"><label for="trivia" class="btn subheading bg-trivia mr-4" id="filter-by-trivia">Trivia</label>
+                        <input type="checkbox" id="check-sports" class="btn subheading bg-sports" name="sports" value="sports"><label for="sports" class="btn subheading bg-sports mr-4" id="filter-by-sports">Sports</label>
+                        <input type="checkbox" id="check-others" class="btn subheading bg-others" name="others" value="others"><label for="others" class="btn subheading bg-others mr-4" id="filter-by-others">Others</label>
                     </div>
                 </div>
             </div>
@@ -45,32 +45,32 @@
             <div id="questions_form">
                 <div class="form-inline row mb-1" id="form1">
                     <div class="col-2"><label class="subheading">Question 1:</label></div>
-                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question1" name="question1"></div>
-                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer1" name="answer1"></div>
+                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question1" name="question1" required></div>
+                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer1" name="answer1" required></div>
                     <div class="col"><button type="button" class="btn btn-danger delete" id="delete1">&times;</button></div>
                 </div>
                 <div class="form-inline row mb-1" id="form2">
                     <div class="col-2"><label class="subheading">Question 2:</label></div>
-                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question2" name="question2"></div>
-                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer2" name="answer2"></div>
+                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question2" name="question2" required></div>
+                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer2" name="answer2" required></div>
                     <div class="col"><button type="button" class="btn btn-danger delete" id="delete2">&times;</button></div>
                 </div>
                 <div class="form-inline row mb-1" id="form3">
                     <div class="col-2"><label class="subheading">Question 3:</label></div>
-                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question3" name="question3"></div>
-                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer3" name="answer3"></div>
+                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question3" name="question3" required></div>
+                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer3" name="answer3" required></div>
                     <div class="col"><button type="button" class="btn btn-danger delete" id="delete3">&times;</button></div>
                 </div>
                 <div class="form-inline row mb-1" id="form4">
                     <div class="col-2"><label class="subheading">Question 4:</label></div>
-                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question4" name="question4"></div>
-                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer4" name="answer4"></div>
+                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question4" name="question4" required></div>
+                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer4" name="answer4" required></div>
                     <div class="col"><button type="button" class="btn btn-danger delete" id="delete4">&times;</button></div>
                 </div>
                 <div class="form-inline row mb-1" id="form5">
                     <div class="col-2"><label class="subheading">Question 5:</label></div>
-                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question5" name="question5"></div>
-                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer5" name="answer5"></div>
+                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question5" name="question5" required></div>
+                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer5" name="answer5" required></div>
                     <div class="col"><button type="button" class="btn btn-danger delete" id="delete5">&times;</button></div>
                 </div>
                 <div class="form-inline row justify-content-center">

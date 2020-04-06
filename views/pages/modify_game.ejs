@@ -14,27 +14,27 @@
         <form action="modify_game/modify" method="post">
             <div class="form-group">
                 <label for="game_title" class="subheading">Game Title:</label>
-                <input class="form-control subheading" type="text" placeholder="Sample current title" id="game_title" value="<%= game.title %>">
+                <input class="form-control subheading" type="text" placeholder="Sample current title" id="game_title" value="<%= game.title %>" required>
             </div>
             <div class="form-group">
                 <label for="game_description" class="subheading">Description:</label>
-                <textarea class="form-control subheading" placeholder="Sample current description" id="game_description"><%= game.description %></textarea>
+                <textarea class="form-control subheading" placeholder="Sample current description" id="game_description" required><%= game.description %></textarea>
             </div>
             <div class="form-group">
                 <label for="game_duration" class="subheading">Game Duration (minutes):</label>
-                <input class="subheading" type="number" id="game_duration" min="3" max="10" placeholder="*" value="<%= game.time %>">
+                <input class="subheading" type="number" id="game_duration" min="3" max="10" placeholder="*" value="<%= game.time %>" required>
             </div>
             <div class="form-group">
                 <label for="genre-buttons" class="subheading">Genre(s):</label>
                 <div id="genre-buttons" class="text-center">
                     <div class="btn-group" style="display: block; margin: auto">
-                        <button type="button" id="filter-by-art" class="btn subheading bg-art">Art</button>
-                        <button type="button" id="filter-by-business" class="btn subheading bg-business">Business</button>
-                        <button type="button" id="filter-by-scitech" class="btn subheading bg-scitech">Science and Technology</button>
-                        <button type="button" id="filter-by-history" class="btn subheading bg-history">History</button>
-                        <button type="button" id="filter-by-trivia" class="btn subheading bg-trivia active">Trivia</button>
-                        <button type="button" id="filter-by-sports" class="btn subheading bg-sports">Sports</button>
-                        <button type="button" id="filter-by-others" class="btn subheading bg-others active">Others</button>
+                        <input type="checkbox" id="check-art" class="btn subheading bg-art" name="art" value="art"><label for="art" class="btn subheading bg-art mr-4" id="filter-by-art" >Art</label>
+                        <input type="checkbox" id="check-business" class="btn subheading bg-business" name="business" value="business"><label for="business" class="btn subheading bg-business mr-4" id="filter-by-business">Business</label>
+                        <input type="checkbox" id="check-scitech" class="btn subheading bg-scitech" name="scitech" value="scitech"><label for="scitech" class="btn subheading bg-scitech mr-4" id="filter-by-scitech">Science and Technology</label>
+                        <input type="checkbox" id="check-history" class="btn subheading bg-history" name="history" value="history"><label for="history" class="btn subheading bg-history mr-4" id="filter-by-history">History</label>
+                        <input type="checkbox" id="check-trivia" class="btn subheading bg-trivia" name="trivia" value="trivia"><label for="trivia" class="btn subheading bg-trivia mr-4" id="filter-by-trivia">Trivia</label>
+                        <input type="checkbox" id="check-sports" class="btn subheading bg-sports" name="sports" value="sports"><label for="sports" class="btn subheading bg-sports mr-4" id="filter-by-sports">Sports</label>
+                        <input type="checkbox" id="check-others" class="btn subheading bg-others" name="others" value="others"><label for="others" class="btn subheading bg-others mr-4" id="filter-by-others">Others</label>
                     </div>
                 </div>
             </div>
@@ -46,8 +46,8 @@
                 <% items.forEach(function(item, index) { %>
                 <div class="form-inline row mb-1" id="form<%= index+1 %>">
                     <div class="col-2"><label class="subheading">Question <%= index+1 %>:</label></div>
-                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Sample current question" id="question<%= index+1 %>" value="<%= item.question %>"></div>
-                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Sample current answer" id="answer<%= index+1 %>" value="<%= item.answer %>"></div>
+                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Sample current question" id="question<%= index+1 %>" value="<%= item.question %>" required></div>
+                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Sample current answer" id="answer<%= index+1 %>" value="<%= item.answer %>" required></div>
                     <div class="col"><button type="button" class="btn btn-danger delete" id="delete<%= index+1 %>">&times;</button></div>
                 </div>
                 <% }) %>

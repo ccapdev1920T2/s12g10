@@ -37,12 +37,14 @@ $(document).ready(function(){
         input1.attr("size", "60");
         input1.attr("id", "question" + (questions.length + 1));
         input1.attr("name", "question" + (questions.length + 1));
+        input1.prop('required', true);
         input2.addClass("form-control subheading");
         input2.attr("type", "text");
         input2.attr("placeholder", "Your answer");
         input2.attr("size", "25");
         input2.attr("id", "answer" + (questions.length + 1));
         input2.attr("name", "answer" + (questions.length + 1));
+        input2.prop('required', true);
         button.addClass("btn btn-danger delete");
         button.attr("type", "button");
         button.text("x");

@@ -37,7 +37,7 @@ const schema = {
     },
     num_attempts: {
         type: Number,
-        required: false
+        required: true
     }
 };
 const collection = "games";
