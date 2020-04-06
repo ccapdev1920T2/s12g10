@@ -4,6 +4,11 @@ const User = require("../models/User");
 
 const controller = {
 
+    getGame: function(req, res){
+        var id = req.params.id;
+        var guest = false;
+    },
+
     modifyGame: function (req, res){
         console.log("in modifyGame")
         // var title;

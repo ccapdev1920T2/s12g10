@@ -1,15 +1,18 @@
 const express = require("express");
+const fileUpload = require("express-fileupload");
 const app = express();
 
-const controller = require("../controllers/CONTROLLER_create_game");
+const controller = require("../controllers/CONTROLLER_modify_game");
 
-app.get("/", function(req, res) {
+app.use(fileUpload());
+
+app.get("/:id", function(req, res) {
     if (req.session.guest)
         res.redirect("/homepage");
     else
-        res.render("../views/pages/modify_game", {guest: false});
+        res.render("../views/pages/modify_game", controller.getGame);
 });
 
-// app.post("/create", controller.createGame);
+ app.post("/modify", controller.modifyGame);
 
 module.exports = app;
