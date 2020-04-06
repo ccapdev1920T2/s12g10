@@ -22,6 +22,18 @@ $( document ).ready(function() {
 
         }
     })
+    $("#button3").click(function (){
+        if ($('.recently-played').css("display")== "none" ){
+            $('.recently-played').show();
+            $('#button3').html('Show Less')
+
+        }
+        else {
+            $('.recently-played').hide();
+            $('#button3').html('Show More')
+
+        }
+    })
     // $(".delete").click(function (){
     //     $(".prof_subtext1").text(parseInt($(".prof_subtext1").text())-1);
     //     if ($(this).parent().parent().parent().hasClass('game-created')){
@@ -116,7 +128,8 @@ $( document ).ready(function() {
         modal.find("#modal-author").text(author);
         modal.find("#modal-img").attr("src", img);
         modal.find("#modal-cats").html(holder);
-    
+
+        modal.find("#play-btn").attr("href", "/play_game/" + id);
     });
     
     $("#deleteModal").on("show.bs.modal", function (event) {
