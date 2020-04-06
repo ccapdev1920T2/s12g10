@@ -40,8 +40,8 @@
                             <% } %>
                         <% }) %>
                     </a>
-                    <div class="col-2 pb-2 pt-2 subheading accuracy"> <%= attempt.answered / total * 100%>% </div>
-                    <div class="col-2 pb-2 pt-2 subheading time"> <%= attempt.attempt_time %> min </div>
+                    <div class="col-2 pb-2 pt-2 subheading accuracy"> <%= round(attempt.answered / total * 100) %>% </div>
+                    <div class="col-2 pb-2 pt-2 subheading time"> <%= round(attempt.attempt_time) %> min </div>
 
                 <% }) %>
             </div>

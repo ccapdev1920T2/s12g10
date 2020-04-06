@@ -17,6 +17,13 @@
 
         <div class="row" id="controls" style="display: flex; justify-content: center; align-items: center">
             <button class="col-8 btn btn-custom btn-block subheading" id="start-btn">Start Game</button>
+            <a data-time="<%= game.time %>" data-id="<%= game._id %>" id="record-btn" class="col-4 btn btn-custom btn-block subheading
+                <% if (guest) { %>
+                    disabled"> Login / Register to Record
+                <% } else { %>
+                    "> Record this Run
+                <% } %>
+            </a>
             <button class="col-4 btn btn-custom btn-block subheading" id="resume-btn">Resume</button>
             <button class="col-4 btn btn-custom btn-block subheading" id="pause-btn">Pause</button>
             <button class="col-4 btn btn-custom btn-block subheading" id="quit-btn">Give Up</button>
@@ -61,25 +68,6 @@
 
             <% }) %>
         </div>
-
-<!--        <div class="row" id="quiz" data-score="0" data-length="<%= items.length %>">-->
-<!--            <div class="col-8 pb-2 pt-2 mb-2 subheading question-holder"> Question </div>-->
-<!--            <div class="col-4 pb-2 pt-2 mb-2 subheading" style="text-align: center; background-color: #C26DBC; color:white"> Answer </div>-->
-
-<!--            <% items.forEach(function (item, index) { %>-->
-
-<!--                <div class="col-1 pb-2 pt-2 border subheading" style="background-color: #EEB5EB; display: flex">-->
-<!--                    <div class="question-holder"> <%= index + 1 %> </div>-->
-<!--                </div>-->
-<!--                <div class="col-7 pb-2 pt-2 border subheading question-wrapper">-->
-<!--                    <div class="question-holder"> <%= item.question %> </div>-->
-<!--                </div>-->
-<!--                <div class="col-4 pb-2 pt-2 border subheading answer-wrapper">-->
-<!--                    <input type="text" class="form-control answer-holder" data-answer="<%=item.answer%>" placeholder="press start to enable" disabled>-->
-<!--                </div>-->
-
-<!--            <% }) %>-->
-<!--        </div>-->
 
         <div style="height: 20px"></div>
         <a href="/leaderboard/<%= game._id %>" class="btn btn-custom btn-block" id="leaderboard">View leaderboard</a>

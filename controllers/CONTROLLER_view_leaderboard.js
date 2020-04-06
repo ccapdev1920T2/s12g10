@@ -4,6 +4,10 @@ const User = require("../models/User");
 const Attempt = require("../models/Attempt");
 const Item = require("../models/Item");
 
+function round (num) {
+    return num.toFixed(4);
+}
+
 const controller = {
     loadPage: function (req, res) {
 
@@ -37,7 +41,8 @@ const controller = {
                                                     total : itemCount,
                                                     creator : user.name,
                                                     noLead : false,
-                                                    guest : req.session.guest
+                                                    guest : req.session.guest,
+                                                    round : round
                                                 });
                                             } else {
                                                 res.render("pages/view_leaderboard", {

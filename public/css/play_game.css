@@ -31,12 +31,13 @@
     font-size: 15px;
 }
 
-#start-btn, #quit-btn, #pause-btn, #resume-btn {
+#start-btn, #quit-btn, #pause-btn, #resume-btn, #record-btn {
     height: 50px;
     font-size: 25px;
+    color: white;
 }
 
-#quit-btn, #pause-btn, #resume-btn, #accuracy-holder {
+#quit-btn, #pause-btn, #resume-btn, #record-btn, #accuracy-holder {
     display: none;
 }
 

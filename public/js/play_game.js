@@ -1,93 +1,47 @@
-let isRunning = true;
-let target;
-let currTime;
 let interval;
+let correctAnswers = [];
+
+const COMPLETE_ANSWERS = 1;
+const GIVE_UP = 2;
+const TIMER_END = 3;
 
 function startCountdown (date, mins) {
 
-    target = new Date(date.getTime() + mins * 60000);
+    let target = new Date(date.getTime() + mins * 60000);
 
     interval = setInterval(function() {
 
-        if (isRunning) {
+        let currTime = new Date().getTime();
+        let distance = target - currTime;
 
-            currTime = new Date().getTime();
-            let distance = target - currTime;
+        let m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let s = Math.floor((distance % (1000 * 60)) / 1000);
 
-            let m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            let s = Math.floor((distance % (1000 * 60)) / 1000);
+        $("#clock-holder").attr("data-time", (m + s / 60).toString());
+        m = m.toString().padStart(2, "0");
+        s = s.toString().padStart(2, "0");
 
-            m = m.toString().padStart(2, "0");
-            s = s.toString().padStart(2, "0");
+        $("#clock-holder").html(m + ":" + s);
 
-            $("#clock-holder").html(m + ":" + s);
+        if (distance < 60000) {
+            $("#clock-holder").css("color", "#C26DBC");
+        }
 
-            if (distance < 60000) {
-                $("#clock-holder").css("color", "#C26DBC");
-            }
+        if (distance < 30000) {
+            $("#clock-holder").css("color", "#C16C96");
+        }
 
-            if (distance < 30000) {
-                $("#clock-holder").css("color", "#C16C96");
-            }
+        if (distance < 10000) {
+            $("#clock-holder").css("animation", "gameIsEnding 0.5s infinite");
+        }
 
-            if (distance < 10000) {
-                $("#clock-holder").css("animation", "gameIsEnding 0.5s infinite");
-            }
-
-            if (distance < 0) {
-                clearInterval(interval);
-                $("#clock-holder").html("00:00");
-                $("#clock-holder").css("color", "black");
-                $("#clock-holder").css("animation", "");
-                $(".answer-holder").prop("disabled", true);
-            }
-
-        } else {
-
+        if (distance < 0) {
+            endGame(TIMER_END);
         }
 
     }, 1000);
 
 }
-
-let correctAnswers = [];
-
-$("#start-btn").on("click", function () {
-
-    $("#start-btn").css("display", "none");
-    $("#pause-btn").show();
-    $("#quit-btn").show();
-    $("#leaderboard").prop('disabled', true);
-    $(".question-wrapper").css("filter", "blur(0px)");
-    $(".answer-holder").removeAttr("disabled").attr("placeholder", "your answer here");
-
-    $("#quiz").children("[data-answer]").each(function () {
-        let holder = $(this).attr("data-answer");
-        holder = holder.toString().toLowerCase();
-        correctAnswers.push(holder);
-    });
-
-    let time = $("#clock-holder").attr("data-time");
-
-    startCountdown(new Date(), time);
-
-});
-
-$("#pause-btn").on("click", function () {
-    $(".question-wrapper").css("filter", "blur(25px)");
-    $("#answer").prop("disabled", true).attr("placeholder", "press resume to enable");
-    $("#pause-btn").hide();
-    $("#resume-btn").show();
-    isRunning = false;
-});
-
-$("#resume-btn").on("click", function () {
-    $(".question-wrapper").css("filter", "blur(0px)");
-    $("#answer").removeAttr("disabled").attr("placeholder", "your answer here");
-    $("#pause-btn").show();
-    $("#resume-btn").hide();
-    isRunning = true;
-});
 
 function editDistance(s1, s2) {
     s1 = s1.toLowerCase();
@@ -130,6 +84,118 @@ function similarity(s1, s2) {
     return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
 }
 
+function endGame (status) {
+
+    clearInterval(interval);
+
+    let count = parseInt($("#quiz").attr("data-score"), 10);
+    let total = parseInt($("#quiz").attr("data-length"), 10);
+
+    let accuracy = (count / total * 100) === 100 ? 100 : (count / total * 100).toFixed(2);
+
+    $("#answer-header").removeClass("answer-wrapper").addClass("answer-wrapper-final");
+    $("#answer").prop("disabled", true).attr("placeholder", "game over");
+    $("#quit-btn, #pause-btn").hide();
+    $(window).scrollTop(900);
+
+    let timeFinished = $("#record-btn").attr("data-time") - $("#clock-holder").attr("data-time");
+    let game_id = $("#record-btn").attr("data-id");
+
+    $("#record-btn").show().attr(
+        "href", "/play_game/" + game_id + "/" + timeFinished + "/" + count,
+    );
+
+    $("#quiz").children("[data-answer]").each(function (index) {
+
+        let idString = "#answer-" + index;
+        let wrapper = $(idString);
+
+        let selector = "div" + idString + " > div.answer-holder";
+        let holder = $(selector);
+
+        if (holder.text() === "") {
+            holder.text(wrapper.attr("data-answer"));
+        }
+
+    });
+
+    switch (status) {
+
+        case COMPLETE_ANSWERS:
+            $("#clock-holder").css("color", "#3CACAE");
+            $("#accuracy-holder").show().text(accuracy + "%").css("color", "#3CACAE");
+            break;
+
+        case GIVE_UP:
+            if (accuracy >= 75) {
+                $("#clock-holder").css("color", "#3CACAE");
+                $("#accuracy-holder").show().text(accuracy + "%").css("color", "#3CACAE");
+            } else {
+                $("#clock-holder").css("color", "#C16C6C");
+                $("#accuracy-holder").show().text(accuracy + "%").css("color", "#C16C6C");
+            }
+            break;
+
+        case TIMER_END:
+            $("#clock-holder").css("animation", "");
+            $("#clock-holder").html("00:00");
+            if (accuracy >= 75) {
+                $("#clock-holder").css("color", "#3CACAE");
+                $("#accuracy-holder").show().text(accuracy + "%").css("color", "#3CACAE");
+            } else {
+                $("#clock-holder").css("color", "#C16C6C");
+                $("#accuracy-holder").show().text(accuracy + "%").css("color", "#C16C6C");
+            }
+            break;
+    }
+
+
+}
+
+$("#start-btn").on("click", function () {
+
+    $("#start-btn").css("display", "none");
+    $("#pause-btn").show();
+    $("#quit-btn").show();
+    $("#leaderboard").prop('disabled', true);
+    $(".question-wrapper").css("filter", "blur(0px)");
+    $(".answer-holder").removeAttr("disabled").attr("placeholder", "your answer here");
+
+    $("#quiz").children("[data-answer]").each(function () {
+        let holder = $(this).attr("data-answer");
+        holder = holder.toString().toLowerCase();
+        correctAnswers.push(holder);
+    });
+
+    let time = $("#clock-holder").attr("data-time");
+
+    startCountdown(new Date(), time);
+
+});
+
+$("#pause-btn").on("click", function () {
+    $(".question-wrapper").css("filter", "blur(25px)");
+    $("#answer").prop("disabled", true).attr("placeholder", "press resume to enable");
+    $("#pause-btn").hide();
+    $("#resume-btn").show();
+
+    clearInterval(interval);
+});
+
+$("#resume-btn").on("click", function () {
+    $(".question-wrapper").css("filter", "blur(0px)");
+    $("#answer").removeAttr("disabled").attr("placeholder", "your answer here");
+    $("#pause-btn").show();
+    $("#resume-btn").hide();
+
+    let time = $("#clock-holder").attr("data-time");
+
+    startCountdown(new Date(), time);
+});
+
+$("#quit-btn").on("click", function () {
+    endGame(GIVE_UP);
+});
 
 $("#answer").on("keyup", function (event) {
 
@@ -169,39 +235,13 @@ $("#answer").on("keyup", function (event) {
 
             count++;
             $("#quiz").attr("data-score", count.toString());
-            console.log("accuracy: " + (count / total * 100) + "%");
 
         }
 
         if (count === total) {
-            clearInterval(interval);
-            $("#answer-header").removeClass("answer-wrapper").addClass("answer-wrapper-final");
-            $("#clock-holder").css("color", "#3CACAE");
-            $("#accuracy-holder").show().text("100%").css("color", "#3CACAE");
-            $("#answer").prop("disabled", true).attr("placeholder", "game over");
-            $("#quit-btn, #pause-btn").hide();
-            $(window).scrollTop(900);
+            endGame(COMPLETE_ANSWERS);
         }
 
     });
 
-});
-
-$("#quit-btn").on("click", function () {
-    let count = parseInt($("#quiz").attr("data-score"), 10);
-    let total = parseInt($("#quiz").attr("data-length"), 10);
-
-    let accuracy = (count / total * 100).toFixed(2);
-
-    clearInterval(interval);
-    if (accuracy >= 75) {
-        $("#clock-holder").css("color", "#3CACAE");
-        $("#accuracy-holder").show().text(accuracy + "%").css("color", "#3CACAE");
-    } else {
-        $("#clock-holder").css("color", "#C16C6C");
-        $("#accuracy-holder").show().text(accuracy + "%").css("color", "#C16C6C");
-    }
-    $("#answer").prop("disabled", true).attr("placeholder", "game over");
-    $("#quit-btn, #pause-btn").hide();
-    $(window).scrollTop(900);
 });
