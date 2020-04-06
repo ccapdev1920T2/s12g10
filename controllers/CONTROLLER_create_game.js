@@ -11,21 +11,26 @@ const controller = {
         var title = req.body.title;
         var description = req.body.description;
         var time = req.body.time;
-        if (req.body.game_image)
-            var image = req.files.game_image;
-        //     image.mv("public/media/game_images/"+ image.name, function(error){
-        //         if (error) {
-                    
-        //             console.log("file unsuccessfully uploaded");
-        //             res.render("pages/error", {guest: req.session.guest});
-        //         } 
-        //         else {
-        //             db.updateOne(Game, {email: req.session.username},{user_image:"/media/game_images/"+image.name}); 
-        //             console.log("file successfully uploaded");
-        //             res.redirect("back");
-        //         } 
-        //     });
-        // }
+        var image;
+        console.log(req.file);
+        if (req.file){
+            console.log("in");
+            image = req.file;
+            image.mv("public/media/game_images/"+ image.name, function(error){
+                if (error) {
+                    console.log("file unsuccessfully uploaded");
+                    image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".png";
+                } 
+                else {
+                    console.log("file successfully uploaded");
+                } 
+            });
+        }
+        else{
+            image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".png";
+        }
+            
+        
         var genres = [];
         if (req.body.art) genres.splice(genres.length, 0, req.body.art);
         if (req.body.business) genres.splice(genres.length, 0, req.body.business);
@@ -35,7 +40,7 @@ const controller = {
         if (req.body.sports) genres.splice(genres.length, 0, req.body.sports);
         if (req.body.others) genres.splice(genres.length, 0, req.body.others);
         db.findOne(User, {email: req.session.username}, '_id', function(creator){
-            if (req.body.game_image)
+            if (req.file)
                 db.insertOne(Game, {_id: id, title: title, description: description, game_image: game_image, genres: genres, time: time, creator: creator._id, num_attempts: 0});
             else
                 db.insertOne(Game, {_id: id, title: title, description: description, genres: genres, time: time, creator: creator._id, num_attempts: 0});
