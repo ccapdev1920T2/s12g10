@@ -33,23 +33,53 @@
         </div>
 
         <div class="row" id="quiz" data-score="0" data-length="<%= items.length %>">
-            <div class="col-8 pb-2 pt-2 mb-2 subheading question-holder"> Question </div>
-            <div class="col-4 pb-2 pt-2 mb-2 subheading" style="text-align: center; background-color: #C26DBC; color:white"> Answer </div>
+            <div class="col-3 pb-3 pt-3 mb-4 subheading answer-wrapper">
+                <div class="answer-holder" style="color: white">Enter answer here:</div>
+            </div>
+            <div class="col-9 pb-3 pt-3 mb-4 subheading answer-wrapper">
+                <input type="text" class="form-control answer-holder" id="answer" placeholder="press start to enable" disabled>
+            </div>
+
+            <div class="col-9 pb-2 pt-2 mb-2 border subheading" style="background-color: #EEB5EB; display: flex">
+                <div class="question-holder">Questions</div>
+            </div>
+            <div class="col-3 pb-2 pt-2 mb-2 border subheading answer-wrapper" id="answer-header">
+                <div class="answer-holder">Answers</div>
+            </div>
 
             <% items.forEach(function (item, index) { %>
 
                 <div class="col-1 pb-2 pt-2 border subheading" style="background-color: #EEB5EB; display: flex">
                     <div class="question-holder"> <%= index + 1 %> </div>
                 </div>
-                <div class="col-7 pb-2 pt-2 border subheading question-wrapper" id="question-<%=index%>">
+                <div class="col-8 pb-2 pt-2 border subheading question-wrapper">
                     <div class="question-holder"> <%= item.question %> </div>
                 </div>
-                <div class="col-4 pb-2 pt-2 border subheading answer-wrapper">
-                    <input type="text" class="form-control answer-holder" id="answer-<%=index%>" data-answer="<%=item.answer%>" placeholder="press start to enable" disabled>
+                <div class="col-3 pb-2 pt-2 border subheading answer-wrapper" id="answer-<%=index%>" data-answer="<%=item.answer%>">
+                    <div class="answer-holder"></div>
                 </div>
 
             <% }) %>
         </div>
+
+<!--        <div class="row" id="quiz" data-score="0" data-length="<%= items.length %>">-->
+<!--            <div class="col-8 pb-2 pt-2 mb-2 subheading question-holder"> Question </div>-->
+<!--            <div class="col-4 pb-2 pt-2 mb-2 subheading" style="text-align: center; background-color: #C26DBC; color:white"> Answer </div>-->
+
+<!--            <% items.forEach(function (item, index) { %>-->
+
+<!--                <div class="col-1 pb-2 pt-2 border subheading" style="background-color: #EEB5EB; display: flex">-->
+<!--                    <div class="question-holder"> <%= index + 1 %> </div>-->
+<!--                </div>-->
+<!--                <div class="col-7 pb-2 pt-2 border subheading question-wrapper">-->
+<!--                    <div class="question-holder"> <%= item.question %> </div>-->
+<!--                </div>-->
+<!--                <div class="col-4 pb-2 pt-2 border subheading answer-wrapper">-->
+<!--                    <input type="text" class="form-control answer-holder" data-answer="<%=item.answer%>" placeholder="press start to enable" disabled>-->
+<!--                </div>-->
+
+<!--            <% }) %>-->
+<!--        </div>-->
 
         <div style="height: 20px"></div>
         <a href="/leaderboard/<%= game._id %>" class="btn btn-custom btn-block" id="leaderboard">View leaderboard</a>

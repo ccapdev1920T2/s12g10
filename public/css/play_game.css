@@ -14,11 +14,21 @@
 .answer-wrapper {
     display: flex;
     background-color: #C26DBC;
+    color: whitesmoke;
+    transition: 0.3s;
 }
 
-.answer-holder, .answer-holder-final {
+.answer-wrapper-final {
+    display: flex;
+    background-color: #EEB5EB;
+    color: black;
+    transition: 0.3s;
+}
+
+.answer-holder {
     margin: auto;
     text-align: center;
+    font-size: 15px;
 }
 
 #start-btn, #quit-btn, #pause-btn, #resume-btn {

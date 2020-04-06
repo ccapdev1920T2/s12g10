@@ -50,6 +50,8 @@ function startCountdown (date, mins) {
 
 }
 
+let correctAnswers = [];
+
 $("#start-btn").on("click", function () {
 
     $("#start-btn").css("display", "none");
@@ -59,6 +61,12 @@ $("#start-btn").on("click", function () {
     $(".question-wrapper").css("filter", "blur(0px)");
     $(".answer-holder").removeAttr("disabled").attr("placeholder", "your answer here");
 
+    $("#quiz").children("[data-answer]").each(function () {
+        let holder = $(this).attr("data-answer");
+        holder = holder.toString().toLowerCase();
+        correctAnswers.push(holder);
+    });
+
     let time = $("#clock-holder").attr("data-time");
 
     startCountdown(new Date(), time);
@@ -67,7 +75,7 @@ $("#start-btn").on("click", function () {
 
 $("#pause-btn").on("click", function () {
     $(".question-wrapper").css("filter", "blur(25px)");
-    $(".answer-holder").prop("disabled", true).attr("placeholder", "press resume to enable");
+    $("#answer").prop("disabled", true).attr("placeholder", "press resume to enable");
     $("#pause-btn").hide();
     $("#resume-btn").show();
     isRunning = false;
@@ -75,7 +83,7 @@ $("#pause-btn").on("click", function () {
 
 $("#resume-btn").on("click", function () {
     $(".question-wrapper").css("filter", "blur(0px)");
-    $(".answer-holder").removeAttr("disabled").attr("placeholder", "your answer here");
+    $("#answer").removeAttr("disabled").attr("placeholder", "your answer here");
     $("#pause-btn").show();
     $("#resume-btn").hide();
     isRunning = true;
@@ -123,50 +131,59 @@ function similarity(s1, s2) {
 }
 
 
-$(".answer-holder").on("keyup", function (event) {
+$("#answer").on("keyup", function (event) {
 
     let field = $(this);
+    let parent = $("#quiz");
+
     let answer = field.val().toLowerCase();
-    let correct = field.attr("data-answer").toLowerCase();
-    let count = parseInt($("#quiz").attr("data-score"), 10);
-    let total = parseInt($("#quiz").attr("data-length"), 10);
+    let count = parseInt(parent.attr("data-score"), 10);
+    let total = parseInt(parent.attr("data-length"), 10);
 
-    let accepted;
+    correctAnswers.forEach(function (correct, index) {
 
-    if (correct.length > 15) {
-        let sim = similarity(answer, correct);
-        if (sim >= 0.75) {
-            accepted = true;
+        let accepted;
+
+        if (correct.length > 15) {
+            let sim = similarity(answer, correct);
+            if (sim >= 0.75) {
+                accepted = true;
+            } else {
+                accepted = false;
+            }
         } else {
-            accepted = false;
+            accepted = answer === correct;
         }
-    } else {
-        accepted = answer === correct;
-    }
 
-    if (accepted) {
-        field   .val(field.attr("data-answer"))
-                .removeClass("answer-holder")
-                .addClass("answer-holder-final")
-                .prop("disabled", "true")
-                .css({
-                    "background-color" : "#C26DBC",
-                    "color" : "white"
-                });
+        if (accepted) {
 
-        count++;
+            let idString = "#answer-" + index;
+            let wrapper = $(idString);
 
-        $("#quiz").attr("data-score", count.toString());
-        console.log("accuracy: " + (count / total * 100) + "%");
-    }
+            let selector = "div" + idString + " > div.answer-holder";
+            let holder = $(selector);
 
-    if (count === total) {
-        clearInterval(interval);
-        $("#clock-holder").css("color", "#3CACAE");
-        $("#accuracy-holder").show().text("100%").css("color", "#3CACAE");
-        $("#quit-btn, #pause-btn").hide();
-        $(window).scrollTop(900);
-    }
+            holder.text(wrapper.attr("data-answer"));
+            wrapper.removeClass("answer-wrapper").addClass("answer-wrapper-final");
+            field.val("");
+
+            count++;
+            $("#quiz").attr("data-score", count.toString());
+            console.log("accuracy: " + (count / total * 100) + "%");
+
+        }
+
+        if (count === total) {
+            clearInterval(interval);
+            $("#answer-header").removeClass("answer-wrapper").addClass("answer-wrapper-final");
+            $("#clock-holder").css("color", "#3CACAE");
+            $("#accuracy-holder").show().text("100%").css("color", "#3CACAE");
+            $("#answer").prop("disabled", true).attr("placeholder", "game over");
+            $("#quit-btn, #pause-btn").hide();
+            $(window).scrollTop(900);
+        }
+
+    });
 
 });
 
@@ -177,8 +194,14 @@ $("#quit-btn").on("click", function () {
     let accuracy = (count / total * 100).toFixed(2);
 
     clearInterval(interval);
-    $("#clock-holder").css("color", "#C16C6C");
-    $("#accuracy-holder").show().text(accuracy + "%").css("color", "#C16C6C");
+    if (accuracy >= 75) {
+        $("#clock-holder").css("color", "#3CACAE");
+        $("#accuracy-holder").show().text(accuracy + "%").css("color", "#3CACAE");
+    } else {
+        $("#clock-holder").css("color", "#C16C6C");
+        $("#accuracy-holder").show().text(accuracy + "%").css("color", "#C16C6C");
+    }
+    $("#answer").prop("disabled", true).attr("placeholder", "game over");
     $("#quit-btn, #pause-btn").hide();
     $(window).scrollTop(900);
 });
