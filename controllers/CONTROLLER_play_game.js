@@ -4,6 +4,8 @@ const User = require("../models/User");
 const Item = require("../models/Item");
 const Attempt = require("../models/Attempt");
 
+const mongoose = require("mongoose");
+
 function shuffle (array) {
     for (let i = array.length - 1; i > 0; i--) {
         let rnd = Math.floor(Math.random() * (i + 1));
@@ -58,7 +60,10 @@ const controller = {
 
             if (user !== null) {
 
+                let objID = new mongoose.Types.ObjectId();
+
                 let obj = {
+                    _id: objID,
                     attempt_time: req.params.time,
                     answered: req.params.ans,
                     game_id: req.params.id,
@@ -66,7 +71,7 @@ const controller = {
                 };
 
                 db.insertOne(Attempt, obj);
-                res.redirect("/leaderboard/" + req.params.id);
+                res.redirect("/leaderboard/" + req.params.id + "/" + objID);
 
             } else {
                 res.render("pages/error", {guest: req.session.guest});

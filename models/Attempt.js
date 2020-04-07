@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
 
-// let Schema = mongoose.Schema,
-//     ObjectId = Schema.ObjectId;
-
 const schema = {
     attempt_time: {
         type: Number,

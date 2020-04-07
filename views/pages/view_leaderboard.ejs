@@ -10,7 +10,7 @@
     <%- include ("../partials/header.ejs") %>
     <div class="container mt-5 mb-5" id="main-box">
         <h2 class="heading"><%= game.title %></h2>
-        <img src="../<%= game.game_image %>" style="width: 100%; height: auto">
+        <img src="<%= game.game_image %>" style="width: 100%; height: auto">
         <div style="height: 20px"></div>
         <h3 class="subheading"><%= game.description %></h3>
         <p class="subheading">Created by: <a href="view_profile_user"><%= creator %></a></p>
@@ -22,33 +22,100 @@
 
         <% } else { %>
 
+            <% if (currIndex >= 0) { %>
+
+                <h2 class="subheading" style="text-align: center">Current Attempt</h2><div style="height: 10px"></div>
+
+                <div class="row">
+
+                    <div class="col-2 pb-2 pt-2 mb-2 subheading rank"> Rank <%= currIndex + 1%> </div>
+                    <a class="col-6 pb-2 pt-2 mb-2 subheading user" href="/view_profile/<%= currAttempt.user_id %>">
+                        &#127937;&#127937;&#127937;
+                        <% users.forEach(function (user) { %>
+                            <% if (user._id.equals(currAttempt.user_id)) { %>
+                                <%= user.name %>
+                            <% } %>
+                        <% }) %>
+                        &#127937;&#127937;&#127937;
+                    </a>
+                    <div class="col-2 pb-2 pt-2 mb-2 subheading accuracy"> <%= round(currAttempt.answered / total * 100) %>% </div>
+                    <div class="col-2 pb-2 pt-2 mb-2 subheading time"> <%= toMinSec(currAttempt.attempt_time) %> </div>
+
+                    <div class="col-12" style="height: 20px"></div>
+
+                </div>
+
+            <% } %>
+
+            <% if (bestIndex >= 0) { %>
+
+                <h2 class="subheading" style="text-align: center">Best Attempt</h2><div style="height: 10px"></div>
+
+                <div class="row">
+
+                    <div class="col-2 pb-2 pt-2 mb-2 subheading rank"> Rank <%= bestIndex + 1%> </div>
+                    <a class="col-6 pb-2 pt-2 mb-2 subheading user" href="/view_profile/<%= bestAttempt.user_id %>">
+                        &#11088;&#11088;&#11088;
+                        <% users.forEach(function (user) { %>
+                            <% if (user._id.equals(bestAttempt.user_id)) { %>
+                                <%= user.name %>
+                            <% } %>
+                        <% }) %>
+                        &#11088;&#11088;&#11088;
+                    </a>
+                    <div class="col-2 pb-2 pt-2 mb-2 subheading accuracy"> <%= round(bestAttempt.answered / total * 100) %>% </div>
+                    <div class="col-2 pb-2 pt-2 mb-2 subheading time"> <%= toMinSec(bestAttempt.attempt_time) %> </div>
+
+                    <div class="col-12" style="height: 20px"></div>
+
+                </div>
+
+            <% } %>
+
             <h2 class="subheading" style="text-align: center">Leaderboard</h2><div style="height: 10px"></div>
 
             <div class="row">
+
                 <div class="col-2 pb-2 pt-2 mb-2 subheading rank"> Rank </div>
                 <div class="col-6 pb-2 pt-2 mb-2 subheading user"> User </div>
                 <div class="col-2 pb-2 pt-2 mb-2 subheading accuracy"> Accuracy </div>
                 <div class="col-2 pb-2 pt-2 mb-2 subheading time"> Time </div>
 
-                <% leaderboard.forEach(function (attempt, index) { %>
+                <% let length = leaderboard.length > 10 ? 10 : leaderboard.length %>
 
-                    <div class="col-2 pb-2 pt-2 subheading rank"> <%= index + 1%> </div>
-                    <a class="col-6 pb-2 pt-2 subheading user" href="/view_profile/<%= attempt.user_id %>">
+                <% for (let i = 0; i < length; i++) { %>
+                    <div class="col-2 pb-2 pt-2 subheading rank"> <%= i + 1%> </div>
+                    <a class="col-6 pb-2 pt-2 subheading user" href="/view_profile/<%= leaderboard[i].user_id %>">
+                        <% if (bestIndex >= 0 && bestIndex === i) { %>
+                            &#11088;&#11088;&#11088;
+                        <% } %>
                         <% users.forEach(function (user) { %>
-                            <% if (user._id.equals(attempt.user_id)) { %>
+                            <% if (user._id.equals(leaderboard[i].user_id)) { %>
                                 <%= user.name %>
                             <% } %>
                         <% }) %>
+                        <% if (bestIndex >= 0 && bestIndex === i) { %>
+                            &#11088;&#11088;&#11088;
+                        <% } %>
                     </a>
-                    <div class="col-2 pb-2 pt-2 subheading accuracy"> <%= round(attempt.answered / total * 100) %>% </div>
-                    <div class="col-2 pb-2 pt-2 subheading time"> <%= toMinSec(attempt.attempt_time) %> e </div>
+                    <div class="col-2 pb-2 pt-2 subheading accuracy"> <%= round(leaderboard[i].answered / total * 100) %>% </div>
+                    <div class="col-2 pb-2 pt-2 subheading time"> <%= toMinSec(leaderboard[i].attempt_time) %> </div>
 
-                <% }) %>
+                <% } %>
+
             </div>
+
+            <% if (bestIndex === -1) { %>
+
+                <div style="height: 20px"></div>
+                <h4 class="subheading" style="text-align: center">You have no attempts for this game yet.</h4>
+                <h6 class="subheading" style="text-align: center">Try it now!</h6>
+
+            <% } %>
 
         <% } %>
         <div style="height: 20px"></div>
-        <a href="/play_game/<%= game._id %>"class="btn btn-custom btn-block">Back to Game</a>
+        <a href="/play_game/<%= game._id %>" class="btn btn-custom btn-block">Back to Game</a>
 
     </div>
 

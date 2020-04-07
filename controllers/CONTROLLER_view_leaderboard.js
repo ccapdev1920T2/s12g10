@@ -10,14 +10,19 @@ function round (num) {
 
 function toMinSec (mins) {
 
-    let str = mins.toString();
-    let pcs = str.split(".");
+    let str = mins.toString().split(".");
 
-    if (pcs[1] === undefined) {
-        return pcs[0] + ":00"
+    if (str[1] === undefined) {
+        return str[0] + ":00"
     } else {
-        let sec = (pcs[1] / 10 * 60).toString().substring(0, 2);
-        return pcs[0] + ":" + sec;
+        let sec;
+
+        if (str[1].substring(0, 1) === "0")
+            sec = "0" + (parseInt(str[1].substring(1)) * 60).toString().substring(0, 1);
+        else
+            sec = (parseInt(str[1]) * 60).toString().substring(0, 2)
+
+        return str[0] + ":" + sec;
     }
 
 }
@@ -26,50 +31,139 @@ const controller = {
     loadPage: function (req, res) {
 
         let game_id = req.params.id;
+        let attempt_id = req.params.attemptID;
 
         db.findOne(Game, { _id : game_id }, null, function (game) {
 
             if (game !== null) {
 
-                let creator_id = game.creator;
-                db.findOne(User, { _id : creator_id }, null, function (user) {
+                let creator_name, curr_id;
+                db.findMany(User, {}, null, function (allUsers) {
 
-                    if (user !== null) {
+                    if (allUsers !== null) {
 
-                        db.findMany(User, {}, null, function (allUsers) {
+                        allUsers.forEach(function (curr) {
+                            if (game.creator.equals(curr._id)) {
+                                creator_name = curr.name;
+                            }
+                            if (req.session.username === curr.email) {
+                                curr_id = curr._id;
+                            }
+                        });
 
-                            if (allUsers !== null) {
+                        db.count(Item, { game_id : game_id }, function(itemCount) {
 
-                                db.count(Item, { game_id : game_id}, function (itemCount) {
+                            if (itemCount !== null) {
 
-                                    if (itemCount !== null) {
+                                db.findLimitSort(Attempt, { game_id: game_id }, null, null, {answered : -1, attempt_time : 1},function (leaderboard) {
 
-                                        db.findLimitSort(Attempt, { game_id: game_id }, null, 10, {answered : -1, attempt_time : 1},function (leaderboard) {
+                                    if (leaderboard.length !== 0) {
 
-                                            if (leaderboard.length !== 0) {
+                                        if (req.session.guest) {
 
-                                                res.render("pages/view_leaderboard", {
-                                                    game : game,
-                                                    leaderboard : leaderboard,
-                                                    users : allUsers,
-                                                    total : itemCount,
-                                                    creator : user.name,
-                                                    noLead : false,
-                                                    guest : req.session.guest,
-                                                    round : round,
-                                                    toMinSec : toMinSec
-                                                });
-                                            } else {
-                                                res.render("pages/view_leaderboard", {
-                                                    game : game,
-                                                    creator : user.name,
-                                                    noLead : true,
-                                                    guest : req.session.guest
-                                                });
-                                            }
-                                        });
+                                            res.render("pages/view_leaderboard", {
+                                                game : game,
+                                                leaderboard : leaderboard,
+                                                users : allUsers,
+                                                total : itemCount,
+                                                creator : creator_name,
+                                                noLead : false,
+                                                guest : req.session.guest,
+                                                round : round,
+                                                toMinSec : toMinSec,
+                                                bestIndex : -2,
+                                                currIndex : -1
+                                            });
+
+                                        } else {
+
+                                            db.findOne(Attempt, { user_id: curr_id, game_id: game_id }, null, function (currUser) {
+
+                                                if (currUser !== null) {
+
+                                                    let bestAttempt = null;
+                                                    let bestIndex;
+                                                    for (let i = 0; i < leaderboard.length; i++) {
+                                                        let curr = leaderboard[i];
+                                                        if (curr.user_id.equals(curr_id)) {
+                                                            bestAttempt = curr;
+                                                            bestIndex = i;
+                                                            break;
+                                                        }
+                                                    }
+
+                                                    if (attempt_id !== undefined) {
+
+                                                        let currAttempt;
+                                                        let currIndex;
+                                                        for (let i = 0; i < leaderboard.length; i++) {
+                                                            let curr = leaderboard[i];
+                                                            if (curr._id.equals(attempt_id)) {
+                                                                currAttempt = curr;
+                                                                currIndex = i;
+                                                                break;
+                                                            }
+                                                        }
+
+                                                        res.render("pages/view_leaderboard", {
+                                                            game: game,
+                                                            leaderboard: leaderboard,
+                                                            users: allUsers,
+                                                            total: itemCount,
+                                                            creator: creator_name,
+                                                            noLead: false,
+                                                            guest: req.session.guest,
+                                                            round: round,
+                                                            toMinSec: toMinSec,
+                                                            bestIndex: bestIndex,
+                                                            bestAttempt: bestAttempt,
+                                                            currIndex: currIndex,
+                                                            currAttempt: currAttempt
+                                                        });
+
+                                                    } else {
+
+                                                        res.render("pages/view_leaderboard", {
+                                                            game: game,
+                                                            leaderboard: leaderboard,
+                                                            users: allUsers,
+                                                            total: itemCount,
+                                                            creator: creator_name,
+                                                            noLead: false,
+                                                            guest: req.session.guest,
+                                                            round: round,
+                                                            toMinSec: toMinSec,
+                                                            bestIndex: bestIndex,
+                                                            bestAttempt: bestAttempt,
+                                                            currIndex : -1
+                                                        });
+
+                                                    }
+
+                                                } else {
+                                                    res.render("pages/view_leaderboard", {
+                                                        game: game,
+                                                        leaderboard: leaderboard,
+                                                        users: allUsers,
+                                                        total: itemCount,
+                                                        creator: creator_name,
+                                                        noLead: false,
+                                                        guest: req.session.guest,
+                                                        round: round,
+                                                        toMinSec: toMinSec,
+                                                        bestIndex : -1,
+                                                        currIndex : -1
+                                                    });
+                                                }
+                                            });
+                                        }
                                     } else {
-                                        res.render("pages/error", { guest : req.session.guest });
+                                        res.render("pages/view_leaderboard", {
+                                            game : game,
+                                            creator : creator_name,
+                                            noLead : true,
+                                            guest : req.session.guest
+                                        });
                                     }
                                 });
                             } else {
@@ -81,10 +175,9 @@ const controller = {
                     }
                 });
             } else {
-                res.render("pages/error", { guest : req.sessions.guest });
+                res.render("pages/error", { guest : req.session.guest });
             }
         });
-
     }
 };
 

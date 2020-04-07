@@ -1,15 +1,3 @@
-// window.onscroll = function () {
-//
-//     let height = document.body.scrollTop;
-//
-//     if (height > 50)
-//         $("body").css("background-color", "cornflower");
-//     else
-//         $("body").css("background-color", "white");
-//
-// };
-//
-
 let none = $("#filter-by-none");
 let art = $("#filter-by-art");
 let business = $("#filter-by-business");
@@ -97,7 +85,6 @@ scitech.on("click", function () {
     check();
 });
 
-
 history.on("click", function () {
     if (history.hasClass("active")) {
         history.removeClass("active");
@@ -125,7 +112,6 @@ sports.on("click", function () {
     check();
 });
 
-
 others.on("click", function () {
     if (others.hasClass("active")) {
         others.removeClass("active");
@@ -136,7 +122,12 @@ others.on("click", function () {
 });
 
 $("#playModal").on("show.bs.modal", function (event) {
-    let button = $(event.relatedTarget);
+    let button;
+
+    if ($("#main-box").attr("data-admin") === "true")
+        button = $(event.relatedTarget).parent();
+    else
+        button = $(event.relatedTarget);
 
     let title = button.parent().find(".card-title").text();
     let desc = button.parent().find(".card-text").text();
@@ -179,5 +170,23 @@ $("#playModal").on("show.bs.modal", function (event) {
     modal.find("#modal-cats").html(holder);
 
     modal.find("#play-btn").attr("href", "play_game/" + id);
+    modal.find("#lead-btn").attr("href", "leaderboard/" + id);
+
+});
+
+$("#deleteModal").on("show.bs.modal", function (event) {
+    let button = $(event.relatedTarget).parent();
+
+    let title = button.parent().find(".card-title").text();
+    let id = button.parent().parent().find("#game_id").text();
+
+    let modal = $(this);
+
+    modal.find("#modal-desc").html(
+        "The following game will be deleted: " +
+        "<div class='subheading' style='font-size: 20px'>" + title + "</div>" +
+        "Proceed? <br>");
+    modal.find("#modal-id").text("Game ID: " + id);
+    modal.find("a.btn").attr("href", "view_games/" + id + "/delete");
 
 });

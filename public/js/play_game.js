@@ -228,12 +228,16 @@ $("#answer").on("keyup", function (event) {
             let selector = "div" + idString + " > div.answer-holder";
             let holder = $(selector);
 
-            holder.text(wrapper.attr("data-answer"));
-            wrapper.removeClass("answer-wrapper").addClass("answer-wrapper-final");
-            field.val("");
+            if (wrapper.hasClass("answer-wrapper-final") === false) {
+                holder.text(wrapper.attr("data-answer"));
+                wrapper.removeClass("answer-wrapper").addClass("answer-wrapper-final");
+                field.val("");
 
-            count++;
-            $("#quiz").attr("data-score", count.toString());
+                count++;
+                $("#quiz").attr("data-score", count.toString());
+            } else {
+                field.val("");
+            }
 
         }
 

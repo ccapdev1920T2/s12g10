@@ -1115,7 +1115,7 @@ data = {
             game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b0c")
         },
         {
-            question: "The Big Bang was not an _______, not an explosion.",
+            question: "The Big Bang was an _______, not an explosion.",
             answer: "expansion",
             game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b0c")
         },

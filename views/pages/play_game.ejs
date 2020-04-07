@@ -40,13 +40,17 @@
         </div>
 
         <div class="row" id="quiz" data-score="0" data-length="<%= items.length %>">
-            <div class="col-3 pb-3 pt-3 mb-4 subheading answer-wrapper">
-                <div class="answer-holder" style="color: white">Enter answer here:</div>
-            </div>
-            <div class="col-9 pb-3 pt-3 mb-4 subheading answer-wrapper">
-                <input type="text" class="form-control answer-holder" id="answer" placeholder="press start to enable" disabled>
-            </div>
 
+            <div class="col-12 container" id="answer-container">
+                <div class="row">
+                    <div class="col-3 pb-3 pt-3 mb-4 subheading answer-wrapper">
+                        <div class="answer-holder" style="color: white">Enter answer here:</div>
+                    </div>
+                    <div class="col-9 pb-3 pt-3 mb-4 subheading answer-wrapper">
+                        <input type="text" class="form-control answer-holder" id="answer" placeholder="press start to enable" disabled>
+                    </div>
+                </div>
+            </div>
             <div class="col-9 pb-2 pt-2 mb-2 border subheading" style="background-color: #EEB5EB; display: flex">
                 <div class="question-holder">Questions</div>
             </div>

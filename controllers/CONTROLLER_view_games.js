@@ -6,15 +6,55 @@ const controller = {
     getGames: function (req, res) {
         let searchQuery = req.query.query;
 
-        db.findOne(User, {email: req.session.username}, null, function (isAdmin) {
+        db.findMany(User, {}, null, function (users) {
 
-            if (isAdmin !== null) {
+            if (users !== null) {
 
-                db.findMany(User, {}, null, function (users) {
+                let isAdmin = false;
 
-                    if (users !== null) {
+                for (let i = 0; i < users.length; i++) {
+                    let curr = users[i];
+                    if (curr.email === req.session.username) {
+                        isAdmin = curr.is_admin;
+                    }
+                }
 
-                        if (!searchQuery) {
+                if (!searchQuery) {
+
+                    db.findMany(Game, {}, null, function (games) {
+
+                        if (games.length !== 0) {
+                            res.render("pages/view_games", {
+                                games: games,
+                                users: users,
+                                admin: isAdmin,
+                                guest: req.session.guest,
+                                noResults: false
+                            });
+                        } else {
+                            res.render("pages/error", {guest: req.session.guest});
+                        }
+
+                    });
+
+                } else {
+
+                    db.findMany(Game, { $or: [
+                            {title: {$regex: searchQuery, $options: "i"}},
+                            {description: {$regex: searchQuery, $options: "i"}},
+                            {genres: {$regex: searchQuery, $options: "i"}},
+                        ]}, null, function (games) {
+                        if (games.length !== 0) {
+
+                            res.render("pages/view_games", {
+                                games: games,
+                                users: users,
+                                admin: isAdmin,
+                                guest: req.session.guest,
+                                noResults: false
+                            });
+
+                        } else {
 
                             db.findMany(Game, {}, null, function (games) {
 
@@ -22,53 +62,17 @@ const controller = {
                                     res.render("pages/view_games", {
                                         games: games,
                                         users: users,
-                                        admin: isAdmin.is_admin,
-                                        guest: req.session.guest
-                                    });
+                                        admin: isAdmin,
+                                        guest: req.session.guest,
+                                        noResults: true
+                                    }); //TODO something here to tell user that no game exists with that query.
                                 } else {
                                     res.render("pages/error", {guest: req.session.guest});
                                 }
-
-                            });
-
-                        } else {
-
-                            db.findMany(Game, { $or: [
-                                    {title: {$regex: searchQuery, $options: "i"}},
-                                    {description: {$regex: searchQuery, $options: "i"}},
-                                    {genres: {$regex: searchQuery, $options: "i"}},
-                                ]}, null, function (games) {
-                                if (games.length !== 0) {
-
-                                    res.render("pages/view_games", {
-                                        games: games,
-                                        users: users,
-                                        admin: isAdmin.is_admin,
-                                        guest: req.session.guest
-                                    });
-
-                                } else {
-
-                                    db.findMany(Game, {}, null, function (games) {
-
-                                        if (games.length !== 0) {
-                                            res.render("pages/view_games", {
-                                                games: games,
-                                                users: users,
-                                                admin: isAdmin.is_admin,
-                                                guest: req.session.guest
-                                            }); //TODO something here to tell user that no game exists with that query.
-                                        } else {
-                                            res.render("pages/error", {guest: req.session.guest});
-                                        }
-                                    });
-                                }
                             });
                         }
-                    } else {
-                        res.render("pages/error", {guest: req.session.guest});
-                    }
-                });
+                    });
+                }
             } else {
                 res.render("pages/error", {guest: req.session.guest});
             }

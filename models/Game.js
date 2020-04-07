@@ -1,7 +1,4 @@
 const mongoose = require("mongoose");
-const User = require("./User");
-const Item = require("./Item");
-const Attempt = require("./Attempt");
 
 const schema = {
     title: {

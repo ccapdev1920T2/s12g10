@@ -6,6 +6,10 @@ body {
     transition: 2s;
 }
 
-.card-body {
+.card-body.card-body-reg {
     height: 100px;
+}
+
+.card-body.card-body-admin {
+    height: 200px;
 }

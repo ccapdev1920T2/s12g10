@@ -5,7 +5,7 @@ var upload = multer({ dest: 'media/game_images/' })
 
 const controller = require("../controllers/CONTROLLER_modify_game");
 
-app.use(fileUpload());
+// app.use(fileUpload());
 
 app.get("/:id", controller.getGame);
 
