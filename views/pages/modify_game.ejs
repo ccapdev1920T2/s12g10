@@ -9,12 +9,12 @@
 <body>
     <%- include ("../partials/header.ejs") %>
     <div class="grid card heading mt-5 mb-5" style="padding-top: 10px; padding-bottom: 10px; ">
-        <div class="prof_title "><%= game.title %></div>
-        <div class="prof_pic"><img src="<%= game.game_image %>" height="180px" width="180px"></div>
+        <div class="row"><div class="col-sm-12"><%= game.title %></div></div>
+        <div class="row"><div class="col-sm-12"><img src="<%= game.game_image %>" height="180px" width="180px"></div></div>
         <div class="prof_hemail"><%= game.description %></div>
         <div class="prof_hage">Genres:</div>
         <div class="prof_hgender">Time:</div>
-        <div class="prof_email subheading"><%= game.num_attempts %></div>
+        <div class="prof_email subheading"># of Times Played: <%= game.num_attempts %></div>
         <form action = "<%= game._id %>/upload/new_image" method = "POST" enctype = "multipart/form-data">
             <div class="input-group mb-3 prof_file">
                 <div class="input-group-prepend">
