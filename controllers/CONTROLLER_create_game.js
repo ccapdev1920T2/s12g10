@@ -98,7 +98,7 @@ const controller = {
         if (req.body.question49) items.splice(items.length, 0, {question: req.body.question49, answer: req.body.answer49, game_id: id});
         if (req.body.question50) items.splice(items.length, 0, {question: req.body.question50, answer: req.body.answer50, game_id: id});
         db.insertMany(Item, items);
-        res.redirect("/homepage");
+        res.redirect("/play_game" + id);
     }
 
 };

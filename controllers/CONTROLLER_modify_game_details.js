@@ -31,7 +31,7 @@ const controller = {
         if (req.body.others) genres.splice(genres.length, 0, req.body.others);
         db.findOne(User, {email: req.session.username}, '_id', function(creator){
             db.updateOne(Game, {_id: id}, {_id: id, title: title, description: description, genres: genres, time: time, creator: creator._id, num_attempts: 0});
-        })
+        });
         db.deleteMany(Attempt, {game_id: id});
         db.deleteMany(Item, {game_id: id});
         var items = [];
@@ -86,7 +86,7 @@ const controller = {
         if (req.body.question49) items.splice(items.length, 0, {question: req.body.question49, answer: req.body.answer49, game_id: id});
         if (req.body.question50) items.splice(items.length, 0, {question: req.body.question50, answer: req.body.answer50, game_id: id});
         db.insertMany(Item, items);
-        res.redirect("/modify_game/" + id);
+        res.redirect("/play_game/" + id);
     }
 
 };
