@@ -2,8 +2,8 @@ const port = 3000;
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const db = require("./models/db");
 
+const db = require("./models/db");
 const addData = require("./models/data");
 
 const app = express();
