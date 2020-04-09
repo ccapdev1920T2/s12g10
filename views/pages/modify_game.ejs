@@ -8,15 +8,11 @@
 </head>
 <body>
     <%- include ("../partials/header.ejs") %>
-    <div class="grid card heading mt-5 mb-5" style="padding-top: 10px; padding-bottom: 10px; ">
-        <div class="row"><div class="col-sm-12"><%= game.title %></div></div>
-        <div class="row"><div class="col-sm-12"><img src="<%= game.game_image %>" height="180px" width="180px"></div></div>
-        <div class="prof_hemail"><%= game.description %></div>
-        <div class="prof_hage">Genres:</div>
-        <div class="prof_hgender">Time:</div>
-        <div class="prof_email subheading"># of Times Played: <%= game.num_attempts %></div>
-        <form action = "<%= game._id %>/upload/new_image" method = "POST" enctype = "multipart/form-data">
-            <div class="input-group mb-3 prof_file">
+    <div class="card heading mt-5 mb-5" >
+        <h2 class="heading text-center mt-3"><%= game.title %></h2>
+        <img class="card-img-top" src="<%= game.game_image %>" id="game_image" >
+        <form action = "<%= game._id %>/upload" method = "POST" enctype = "multipart/form-data">
+            <div class="input-group mb-3 subheading">
                 <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary btn-custom" type="submit" id="upload">Upload</button>
                 </div>
@@ -26,6 +22,22 @@
                 </div>
             </div>
         </form>
+        <p class="subheading">Game Description:<br><%= game.description %></p>
+        <br>
+        <div class="form-inline">
+            <div class="col-4"><center>Genres:</center>
+                <% if (game.genres.includes("art")) { %> <label for="art" class="subheading bg-art">Art</label> <% } %>
+                <% if (game.genres.includes("business")) { %> <label for="business" class="subheading bg-business">Business</label> <% } %>
+                <% if (game.genres.includes("scitech")) { %> <label for="scitech" class="subheading bg-scitech">Science and Technology</label> <% } %>
+                <% if (game.genres.includes("history")) { %> <label for="history" class="subheading bg-history">History</label> <% } %>
+                <% if (game.genres.includes("trivia")) { %> <label for="trivia" class="subheading bg-trivia">Trivia</label> <% } %>
+                <% if (game.genres.includes("sports")) { %> <label for="sports" class="subheading bg-sports">Sports</label> <% } %>
+                <% if (game.genres.includes("others")) { %> <label for="others" class="subheading bg-others">Others</label> <% } %>
+            </div>
+            <div class="col-4"><center>Time: <%= game.time %> minutes</center></div>
+            <div class="col-4"><center># of Times Played: <%= game.num_attempts %></center></div>
+        </div>
+        <br>
         <div class="row"><div class="col-sm-12"><br></div></div>
         <a href="/modify_game_details/<%= game._id %>" class="btn btn-custom btn-block mb-5" id="modify">Modify Game Details</a>
         <div class="row"><div class="col-sm-12"><br></div></div>

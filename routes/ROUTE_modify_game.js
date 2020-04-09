@@ -8,6 +8,6 @@ app.use(fileUpload());
 
 app.get("/:id", controller.getGame);
 
-app.post("/:id/upload/new_image", controller.uploadPic);
+app.post("/:id/upload", controller.uploadPic);
 
 module.exports = app;
