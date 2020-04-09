@@ -21,7 +21,8 @@ app.use(bodyParser.json());
 const createRoute = require("./routes/ROUTE_create_game");
 const homeRoute = require("./routes/ROUTE_homepage");
 const loginRoute = require("./routes/ROUTE_login_and_register");
-const modifyRoute = require("./routes/ROUTE_modify_game");
+const modifyPhotoRoute = require("./routes/ROUTE_modify_game");
+const modifyDetailsRoute = require("./routes/ROUTE_modify_game_details");
 const playRoute = require("./routes/ROUTE_play_game");
 const viewGamesRoute = require("./routes/ROUTE_view_games");
 const viewLeaderboard = require("./routes/ROUTE_view_leaderboard");
@@ -40,7 +41,8 @@ app.use(function(req, res, next) {
 
 app.use("/create_game", createRoute);
 app.use("/homepage", homeRoute);
-app.use("/modify_game", modifyRoute);
+app.use("/modify_game", modifyPhotoRoute);
+app.use("/modify_game_details", modifyDetailsRoute);
 app.use("/play_game", playRoute);
 app.use("/view_games", viewGamesRoute);
 app.use("/leaderboard", viewLeaderboard);
