@@ -10,7 +10,13 @@
     <%- include ("../partials/header.ejs") %>
     <div class="grid card heading mt-5 mb-5" style="padding-top: 10px; padding-bottom: 10px; ">
         <div class="prof_title ">My Profile</div>
-        <div class="prof_pic"><img src="<%= details.user.user_image %>" height="180px" width="180px"></div>
+        <div class="prof_pic"><img src="
+            <% if (details.user.user_image !== undefined) { %>
+                <%= details.user.user_image %>
+            <% } else { %>
+                /media/Icon.png
+            <% } %>
+        " height="180px" width="180px"></div>
         <div class="prof_hemail">Email:</div>
         <div class="prof_hage">Birthday:</div>
         <div class="prof_hgender">Gender:</div>
@@ -53,13 +59,13 @@
         </div>
         <div class="prof_name"><%= details.user.name %></div>
         <form action="view_profile/upload/pic" method="POST" enctype="multipart/form-data">
-            <div class="input-group mb-3 prof_file">
+            <div class="input-group mb-3 prof_file subheading">
                 <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary btn-custom" type="submit" id="upload">Upload</button>
+                    <button class="btn btn-outline-secondary btn-custom" type="submit" id="upload" disabled>Upload</button>
                 </div>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="file" aria-describedby="upload" name = "pic">
-                    <label class=" custom-file-label" for="file">Choose file</label>
+                    <input type="file" class="custom-file-input" id="file" aria-describedby="upload" name = "pic" accept="image/x-png, image/jpeg, image/jpg">
+                    <label class=" custom-file-label" for="file" id="file-label">Choose file</label>
                 </div>
             </div>
         </form>

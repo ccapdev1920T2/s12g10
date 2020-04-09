@@ -10,7 +10,13 @@
     <%- include ("../partials/header.ejs") %>
     <div class="grid card heading mt-5 mb-5" style="padding-top: 10px; padding-bottom: 10px; ">
         <div class="prof_title "><%= details.user.name%>'s Profile</div>
-        <div class="prof_pic"><img src="<%= details.user.user_image %>" height="180px" width="180px"></div>
+        <div class="prof_pic"><img src="
+            <% if (details.user.user_image !== undefined) { %>
+                <%= details.user.user_image %>
+            <% } else { %>
+                /media/Icon.png
+            <% } %>
+        " height="180px" width="180px"></div>
         <div class="prof_hemail">Email:</div>
         <div class="prof_hage">Birthday:</div>
         <div class="prof_hgender">Gender:</div>

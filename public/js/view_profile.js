@@ -34,58 +34,7 @@ $( document ).ready(function() {
 
         }
     })
-    // $(".delete").click(function (){
-    //     $(".prof_subtext1").text(parseInt($(".prof_subtext1").text())-1);
-    //     if ($(this).parent().parent().parent().hasClass('game-created')){
-    //         $(this).parent().parent().parent().hide();
 
-    //     }
-    //     else if ($(this).parent().parent().parent().next().hasClass('game-created')){
-    //         console.log('1');
-    //         $(this).parent().parent().parent().next().removeClass('game-created');
-    //         $(this).parent().parent().parent().hide();
-    //     }
-    //     else if ($(this).parent().parent().parent().next().next().hasClass('game-created')){
-    //         console.log('1');
-    //         $(this).parent().parent().parent().next().next().removeClass('game-created');
-    //         $(this).parent().parent().parent().hide();
-    //     }
-    //     else if ($(this).parent().parent().parent().next().next().next().hasClass('game-created')){
-    //         console.log('1');
-    //         $(this).parent().parent().parent().next().next().next().removeClass('game-created');
-    //         $(this).parent().parent().parent().hide();
-    //     }
-    //     else{
-    //         $(this).parent().parent().parent().hide();
-    //     }
-
-    // })
-    // $(".delete2").click(function (){
-    //     $(".prof_subtext2").text(parseInt($(".prof_subtext2").text())-1);
-    //     if ($(this).parent().parent().parent().hasClass('game-completed')){
-    //         $(this).parent().parent().parent().hide();
-
-    //     }
-    //     else if ($(this).parent().parent().parent().next().hasClass('game-completed')){
-    //         console.log('1');
-    //         $(this).parent().parent().parent().next().removeClass('game-completed');
-    //         $(this).parent().parent().parent().hide();
-    //     }
-    //     else if ($(this).parent().parent().parent().next().next().hasClass('game-completed')){
-    //         console.log('1');
-    //         $(this).parent().parent().parent().next().next().removeClass('game-completed');
-    //         $(this).parent().parent().parent().hide();
-    //     }
-    //     else if ($(this).parent().parent().parent().next().next().next().hasClass('game-completed')){
-    //         console.log('1');
-    //         $(this).parent().parent().parent().next().next().next().removeClass('game-completed');
-    //         $(this).parent().parent().parent().hide();
-    //     }
-    //     else{
-    //         $(this).parent().parent().parent().hide();
-    //     }
-
-    // })
     $("#playModal").on("show.bs.modal", function (event) {
         let button = $(event.relatedTarget).parent();
     
@@ -148,4 +97,16 @@ $( document ).ready(function() {
         modal.find("#modal-id").text("Game ID: " + id);
         modal.find("a.btn").attr("href","/view_profile/"+ id + "/delete");
     });
+});
+
+$("#file").on("change", function () {
+
+    if ($("#file")[0].files.length === 0) {
+        $("#file-label").text("Please select a different file.");
+        $("#upload").prop("disabled", true);
+    } else {
+        $("#file-label").text("File: " + $("#file")[0].files[0].name + ". Press upload to continue.");
+        $("#upload").prop("disabled", false);
+    }
+
 });

@@ -77,7 +77,7 @@ const controller = {
     },
     getProfile: function (req, res) {
         
-        let id= req.param("id");
+        let id = req.param("id");
         let curr = null;
         db.findOne(User, {_id: id}, null, function (result) {
 
@@ -165,7 +165,7 @@ const controller = {
     },
     uploadPic:function(req,res){
         var image = req.files.pic;
-        image.mv("public/media/profile_pictures/"+ image.name, function(error){
+        image.mv("public/media/profile_pictures/" + image.name, function(error){
             if (error) {
                 
                 console.log("file unsuccessfully uploaded");
