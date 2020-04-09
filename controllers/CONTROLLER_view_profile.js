@@ -77,7 +77,7 @@ const controller = {
     },
     getProfile: function (req, res) {
         
-        let id = req.param("id");
+        let id = req.params.id;
         let curr = null;
         db.findOne(User, {_id: id}, null, function (result) {
 
@@ -159,7 +159,7 @@ const controller = {
     },
 
     makeAdmin: function(req,res){
-        db.updateOne(User, {_id: req.param("id")},{is_admin:true});
+        db.updateOne(User, {_id: req.params.id},{is_admin:true});
         res.redirect("back");
 
     },
