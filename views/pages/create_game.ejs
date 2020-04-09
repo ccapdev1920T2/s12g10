@@ -11,7 +11,7 @@
     <%- include ("../partials/header.ejs") %>
     <div class="container mt-5 mb-5" id="main-box">
         <h2 class="subheading" style="text-align: center">Creating a Game</h2>
-        <form action="create_game/create" method="post" enctype="multipart/form-data">
+        <form action="create_game/create" method="post">
             <div class="form-group">
                 <label for="game_title" class="subheading">Game Title:</label>
                 <input class="form-control subheading" type="text" placeholder="Your title" minlength="5" maxlength="50" id="game_title" name="title" required>
