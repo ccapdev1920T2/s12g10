@@ -65,7 +65,7 @@ const controller = {
                                         admin: isAdmin,
                                         guest: req.session.guest,
                                         noResults: true
-                                    }); //TODO something here to tell user that no game exists with that query.
+                                    });
                                 } else {
                                     res.render("pages/error", {guest: req.session.guest});
                                 }

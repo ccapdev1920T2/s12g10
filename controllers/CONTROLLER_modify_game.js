@@ -1,8 +1,5 @@
 const db = require("../models/db");
 const Game = require("../models/Game");
-const User = require("../models/User");
-const Item = require("../models/Item");
-const Attempt = require("../models/Attempt");
 
 const controller = {
 
@@ -17,7 +14,7 @@ const controller = {
         var image = req.files.new_image;
         image.mv("public/media/game_images/"+ image.name, function(error){
             if (error) {
-                
+
                 console.log("file unsuccessfully uploaded");
                 res.render("pages/error", {guest: req.session.guest});
             } 
