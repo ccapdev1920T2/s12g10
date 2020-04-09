@@ -22,7 +22,7 @@ const controller = {
                 res.render("pages/error", {guest: req.session.guest});
             } 
             else {
-                db.updateOne(Game, {_id: req.params.id},{game_image:"/media/profile_pictures/"+image.name}); 
+                db.updateOne(Game, {_id: req.params.id},{game_image:"/media/game_images/"+image.name}); 
                 console.log("file successfully uploaded");
                 res.redirect("back");
             } 

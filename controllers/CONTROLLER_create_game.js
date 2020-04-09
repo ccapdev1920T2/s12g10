@@ -11,24 +11,7 @@ const controller = {
         var title = req.body.title;
         var description = req.body.description;
         var time = req.body.time;
-        var image;
-        console.log(req.file);
-        if (req.file){
-            console.log("in");
-            image = req.file;
-            image.mv("public/media/game_images/"+ image.name, function(error){
-                if (error) {
-                    console.log("file unsuccessfully uploaded");
-                    image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".png";
-                } 
-                else {
-                    console.log("file successfully uploaded");
-                } 
-            });
-        }
-        else{
-            image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".png";
-        }
+        var image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".jpg";;
             
         
         var genres = [];
@@ -40,10 +23,7 @@ const controller = {
         if (req.body.sports) genres.splice(genres.length, 0, req.body.sports);
         if (req.body.others) genres.splice(genres.length, 0, req.body.others);
         db.findOne(User, {email: req.session.username}, '_id', function(creator){
-            if (req.file)
-                db.insertOne(Game, {_id: id, title: title, description: description, game_image: game_image, genres: genres, time: time, creator: creator._id, num_attempts: 0});
-            else
-                db.insertOne(Game, {_id: id, title: title, description: description, genres: genres, time: time, creator: creator._id, num_attempts: 0});
+            db.insertOne(Game, {_id: id, title: title, description: description, game_image: image, genres: genres, time: time, creator: creator._id, num_attempts: 0});
         })
         
         var items = [];
@@ -98,7 +78,7 @@ const controller = {
         if (req.body.question49) items.splice(items.length, 0, {question: req.body.question49, answer: req.body.answer49, game_id: id});
         if (req.body.question50) items.splice(items.length, 0, {question: req.body.question50, answer: req.body.answer50, game_id: id});
         db.insertMany(Item, items);
-        res.redirect("/play_game" + id);
+        res.redirect("/modify_game/" + id);
     }
 
 };

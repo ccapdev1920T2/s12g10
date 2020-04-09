@@ -10,7 +10,7 @@
     <%- include ("../partials/header.ejs") %>
     <div class="card heading mt-5 mb-5" >
         <h2 class="heading text-center mt-3"><%= game.title %></h2>
-        <img class="card-img-top" src="<%= game.game_image %>" id="game_image" >
+        <img class="card-img-top" src="<%= game.game_image %>" id="game_image">
         <form action = "<%= game._id %>/upload" method = "POST" enctype = "multipart/form-data">
             <div class="input-group mb-3 subheading">
                 <div class="input-group-prepend">
@@ -40,6 +40,7 @@
         <br>
         <div class="row"><div class="col-sm-12"><br></div></div>
         <a href="/modify_game_details/<%= game._id %>" class="btn btn-custom btn-block mb-5" id="modify">Modify Game Details</a>
+        <a href="/play_game/<%= game._id%>" class="btn btn-custom btn-block mb-5" id="play">Play Game</a>
         <div class="row"><div class="col-sm-12"><br></div></div>
     </div>
     <%- include ("../partials/footer.ejs") %>
