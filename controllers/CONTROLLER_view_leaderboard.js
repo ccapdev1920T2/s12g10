@@ -68,7 +68,7 @@ const controller = {
                                                 total : itemCount,
                                                 creator : creator_name,
                                                 noLead : false,
-                                                guest : req.session.guest,
+                                                guest: req.session.guest, user_image: req.session.photo,
                                                 round : round,
                                                 toMinSec : toMinSec,
                                                 bestIndex : -2,
@@ -112,7 +112,7 @@ const controller = {
                                                             total: itemCount,
                                                             creator: creator_name,
                                                             noLead: false,
-                                                            guest: req.session.guest,
+                                                            guest: req.session.guest, user_image: req.session.photo,
                                                             round: round,
                                                             toMinSec: toMinSec,
                                                             bestIndex: bestIndex,
@@ -130,7 +130,7 @@ const controller = {
                                                             total: itemCount,
                                                             creator: creator_name,
                                                             noLead: false,
-                                                            guest: req.session.guest,
+                                                            guest: req.session.guest, user_image: req.session.photo,
                                                             round: round,
                                                             toMinSec: toMinSec,
                                                             bestIndex: bestIndex,
@@ -148,7 +148,7 @@ const controller = {
                                                         total: itemCount,
                                                         creator: creator_name,
                                                         noLead: false,
-                                                        guest: req.session.guest,
+                                                        guest: req.session.guest, user_image: req.session.photo,
                                                         round: round,
                                                         toMinSec: toMinSec,
                                                         bestIndex : -1,
@@ -162,20 +162,20 @@ const controller = {
                                             game : game,
                                             creator : creator_name,
                                             noLead : true,
-                                            guest : req.session.guest
+                                            guest: req.session.guest, user_image: req.session.photo
                                         });
                                     }
                                 });
                             } else {
-                                res.render("pages/error", { guest : req.session.guest });
+                                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                             }
                         });
                     } else {
-                        res.render("pages/error", { guest : req.session.guest });
+                        res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                     }
                 });
             } else {
-                res.render("pages/error", { guest : req.session.guest });
+                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
             }
         });
     }

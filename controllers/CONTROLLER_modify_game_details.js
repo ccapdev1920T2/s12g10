@@ -10,7 +10,7 @@ const controller = {
         var id = req.params.id;
         db.findOne(Game, {_id: id}, null, function(game){
             db.findMany(Item, {game_id: id}, null, function(items){
-                res.render("pages/modify_game_details", {game: game, items: items, guest: req.session.guest});
+                res.render("pages/modify_game_details", {game: game, items: items, guest: req.session.guest, user_image: req.session.photo});
             })
             
         })

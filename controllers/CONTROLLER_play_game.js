@@ -35,21 +35,21 @@ const controller = {
 
                                 res.render("pages/play_game", {
                                     items: items,
-                                    guest: req.session.guest,
+                                    guest: req.session.guest, user_image: req.session.photo,
                                     game: game,
                                     creator: user.name,
                                 });
 
                             } else {
-                                res.render("pages/error", {guest: req.session.guest});
+                                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                             }
                         });
                     } else {
-                        res.render("pages/error", {guest: req.session.guest});
+                        res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                     }
                 });
             } else {
-                res.render("pages/error", {guest: req.session.guest});
+                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
             }
         });
     },
@@ -74,7 +74,7 @@ const controller = {
                 res.redirect("/leaderboard/" + req.params.id + "/" + objID);
 
             } else {
-                res.render("pages/error", {guest: req.session.guest});
+                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
             }
         });
     }

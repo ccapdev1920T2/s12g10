@@ -8,6 +8,7 @@ const controller = {
         req.session.loggedin = false;
         req.session.username = null;
         req.session.guest = null;
+        req.session.photo = null;
         res.render("pages/login_and_register");
     },
 
@@ -16,6 +17,7 @@ const controller = {
         req.session.loggedin = true;
         req.session.username = null;
         req.session.guest = true;
+        req.session.photo = "/media/Icon.png";
 
         console.log("logged in as guest: " + req.session.guest);
         res.redirect("/homepage");
@@ -34,6 +36,7 @@ const controller = {
                     req.session.loggedin = true;
                     req.session.username = email;
                     req.session.guest = false;
+                    req.session.photo = result.user_image;
                     res.redirect("/homepage");
                 } else {
                     console.log("user found but password incorrect");
@@ -70,6 +73,7 @@ const controller = {
                 req.session.loggedin = true;
                 req.session.username = email;
                 req.session.guest = false;
+                req.session.photo = "/media/Icon.png";
                 res.redirect("/homepage");
             }
         });
@@ -79,6 +83,7 @@ const controller = {
         req.session.loggedin = false;
         req.session.username = null;
         req.session.guest = null;
+        req.session.photo = null;
         res.render("pages/login_and_register");
     }
 };

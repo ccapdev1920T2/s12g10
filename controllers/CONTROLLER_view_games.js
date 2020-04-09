@@ -28,11 +28,11 @@ const controller = {
                                 games: games,
                                 users: users,
                                 admin: isAdmin,
-                                guest: req.session.guest,
+                                guest: req.session.guest, user_image: req.session.photo,
                                 noResults: false
                             });
                         } else {
-                            res.render("pages/error", {guest: req.session.guest});
+                            res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                         }
 
                     });
@@ -50,7 +50,7 @@ const controller = {
                                 games: games,
                                 users: users,
                                 admin: isAdmin,
-                                guest: req.session.guest,
+                                guest: req.session.guest, user_image: req.session.photo,
                                 noResults: false
                             });
 
@@ -63,18 +63,18 @@ const controller = {
                                         games: games,
                                         users: users,
                                         admin: isAdmin,
-                                        guest: req.session.guest,
+                                        guest: req.session.guest, user_image: req.session.photo,
                                         noResults: true
                                     });
                                 } else {
-                                    res.render("pages/error", {guest: req.session.guest});
+                                    res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                                 }
                             });
                         }
                     });
                 }
             } else {
-                res.render("pages/error", {guest: req.session.guest});
+                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
             }
         });
     },

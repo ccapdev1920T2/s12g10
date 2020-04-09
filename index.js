@@ -48,7 +48,7 @@ app.use("/view_games", viewGamesRoute);
 app.use("/leaderboard", viewLeaderboard);
 app.use("/view_profile", viewProfile);
 app.use(function (req, res) {
-    res.render("pages/error", {guest: req.session.guest});
+    res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
 });
 
 db.connect();

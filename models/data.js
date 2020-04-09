@@ -26,6 +26,7 @@ data = {
             gender: "Female",
             email: "rocky@hfpa.com",
             password: "goldenglobes",
+            user_image: "/media/Icon.png",
             is_admin: false
         },
         {
@@ -35,6 +36,7 @@ data = {
             gender: "Female",
             email: "ellen@ellen.com",
             password: "iloveportia",
+            user_image: "/media/Icon.png",
             is_admin: false
         },
         {
@@ -44,6 +46,7 @@ data = {
             gender: "Male",
             email: "nyronbill@gmail.com",
             password: "p@55w0rd",
+            user_image: "/media/Icon.png",
             is_admin: false
         },
         {
@@ -53,6 +56,7 @@ data = {
             gender: "Male",
             email: "joseph_uy@gmail.com",
             password: "zyxwvutsrqp",
+            user_image: "/media/Icon.png",
             is_admin: false
         },
         {
@@ -62,6 +66,7 @@ data = {
             gender: "Male",
             email: "dustin.blumentritt@gmail.com",
             password: "6!is120",
+            user_image: "/media/Icon.png",
             is_admin: false
         },
     ],

@@ -24,7 +24,7 @@ const schema = {
     },
     user_image: {
         type: String,
-        required: false
+        required: true
     },
     is_admin: {
         type: Boolean,

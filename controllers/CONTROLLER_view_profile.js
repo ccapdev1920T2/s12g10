@@ -23,51 +23,51 @@ const controller = {
                 profEmail = details.user.email;
                 
             } else {
-                res.render("pages/error", {guest: req.session.guest});
+                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
             }
             db.findMany(User, {}, null, function (result) {
                 if (result != null) {
                     details.users = result;
                     
                 } else {
-                    res.render("pages/error", {guest: req.session.guest});
+                    res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                 }
                 db.findMany(Game, {}, null, function (result) {
                     if (result != null) {
                         details.games = result;
                         
                     } else {
-                        res.render("pages/error", {guest: req.session.guest});
+                        res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                     }
                     db.findMany(Item, {}, null, function (result) {
                         if (result != null) {
                             details.items = result;
                         } else {
-                            res.render("pages/error", {guest: req.session.guest});
+                            res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                         }  
                         db.findMany(Attempt, {} , null, function (result) {
                             if (result != null) {
                                 details.attempts = result;
                                 
                             } else {
-                                res.render("pages/error", {guest: req.session.guest});
+                                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                             }
                             if (details.user!= null && details.games!=null){
                                 if (details.user.email == email){
                                     if ( details.user.is_admin == true )
-                                        res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest});
+                                        res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest, user_image: req.session.photo});
                                     else 
-                                        res.render("pages/view_profile_self", {details:details, guest: req.session.guest});
+                                        res.render("pages/view_profile_self", {details:details, guest: req.session.guest, user_image: req.session.photo});
                                 }
                                 else {
                                     if (  details.user.is_admin == true )
-                                        res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest});
+                                        res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest, user_image: req.session.photo});
                                     else 
-                                        res.render("pages/view_profile_user", {details:details, guest: req.session.guest});
+                                        res.render("pages/view_profile_user", {details:details, guest: req.session.guest, user_image: req.session.photo});
                                 }
                             }
                             else {
-                                res.render("pages/error", {guest: req.session.guest});
+                                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                             }
                         }); 
                     });
@@ -87,58 +87,58 @@ const controller = {
                 profEmail = details.user.email;
                 
             } else {
-                res.render("pages/error", {guest: req.session.guest});
+                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
             }
             db.findOne(User, {email: req.session.username}, null, function (result) {
 
                 if (result != null) {
                     curr = result;
                 } else {
-                    res.render("pages/error", {guest: req.session.guest});
+                    res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                 }
                 db.findMany(User, {}, null, function (result) {
                     if (result != null) {
                         details.users = result;
                         
                     } else {
-                        res.render("pages/error", {guest: req.session.guest});
+                        res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                     }
                     db.findMany(Game, {}, null, function (result) {
                         if (result != null) {
                             details.games = result;
                             
                         } else {
-                            res.render("pages/error", {guest: req.session.guest});
+                            res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                         }
                         db.findMany(Item, {}, null, function (result) {
                             if (result != null) {
                                 details.items = result;
                             } else {
-                                res.render("pages/error", {guest: req.session.guest});
+                                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                             }  
                             db.findMany(Attempt, {}, null, function (result) {
                                 if (result != null) {
                                     details.attempts = result;
                                     
                                 } else {
-                                    res.render("pages/error", {guest: req.session.guest});
+                                    res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                                 }
                                 if (details.user!= null && details.games!=null){
                                     if (req.session.username == details.user.email){
                                         if ( details.user.is_admin == true )
-                                            res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest});
+                                            res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest, user_image: req.session.photo});
                                         else 
-                                            res.render("pages/view_profile_self", {details:details, guest: req.session.guest});
+                                            res.render("pages/view_profile_self", {details:details, guest: req.session.guest, user_image: req.session.photo});
                                     }
                                     else {
                                         if ( curr.is_admin == true )
-                                            res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest});
+                                            res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest, user_image: req.session.photo});
                                         else 
-                                            res.render("pages/view_profile_user", {details:details, guest: req.session.guest});
+                                            res.render("pages/view_profile_user", {details:details, guest: req.session.guest, user_image: req.session.photo});
                                     }
                                 }
                                 else {
-                                    res.render("pages/error", {guest: req.session.guest});
+                                    res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                                 }
                             }); 
                         });
@@ -167,12 +167,12 @@ const controller = {
         var image = req.files.pic;
         image.mv("public/media/profile_pictures/" + image.name, function(error){
             if (error) {
-                
                 console.log("file unsuccessfully uploaded");
-                res.render("pages/error", {guest: req.session.guest});
+                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
             } 
             else {
-                db.updateOne(User, {email: req.session.username},{user_image:"/media/profile_pictures/"+image.name}); 
+                db.updateOne(User, {email: req.session.username},{user_image:"/media/profile_pictures/"+image.name});
+                req.session.photo = "/media/profile_pictures/" + image.name;
                 console.log("file successfully uploaded");
                 res.redirect("back");
             } 

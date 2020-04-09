@@ -29,7 +29,7 @@ const controller = {
                                 if (count !== null) {
                                     db.updateOne(Game, {_id: curr._id}, {num_attempts: count});
                                 } else {
-                                    res.render("pages/error", {guest: req.session.guest});
+                                    res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                                 }
                             });
 
@@ -42,17 +42,17 @@ const controller = {
                                 res.render("pages/homepage", {
                                             games: topGames,
                                             users: allUsers,
-                                            guest: req.session.guest});
+                                            guest: req.session.guest, user_image: req.session.photo});
                             } else {
-                                res.render("pages/error", {guest: req.session.guest});
+                                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                             }
                         });
                     } else {
-                        res.render("pages/error", {guest: req.session.guest});
+                        res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                     }
                 });
             } else {
-                res.render("pages/error", {guest: req.session.guest});
+                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
             }
         });
     }

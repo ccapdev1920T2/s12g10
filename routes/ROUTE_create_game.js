@@ -3,9 +3,7 @@ const app = express();
 
 const controller = require("../controllers/CONTROLLER_create_game");
 
-app.get("/", function(req, res) {
-    res.render("../views/pages/create_game", {guest: req.session.guest});
-});
+app.get("/", controller.loadPage);
 
 app.post("/create", controller.createGame);
 

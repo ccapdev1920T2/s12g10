@@ -5,6 +5,10 @@ const Item = require("../models/Item");
 const mongoose = require('mongoose');
 
 const controller = {
+    
+    loadPage: function (req, res) {
+        res.render("../views/pages/create_game", {guest: req.session.guest, user_image: req.session.photo});
+    },
 
     createGame: function (req, res){
         var id = mongoose.Types.ObjectId();
@@ -12,7 +16,6 @@ const controller = {
         var description = req.body.description;
         var time = req.body.time;
         var image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".jpg";
-            
         
         var genres = [];
         if (req.body.art) genres.splice(genres.length, 0, req.body.art);
