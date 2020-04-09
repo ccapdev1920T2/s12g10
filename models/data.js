@@ -34,6 +34,7 @@ data = {
             birthday: new Date ("March 3, 1990"),
             gender: "Female",
             email: "ellen@ellen.com",
+            password: "iloveportia",
             is_admin: false
         },
         {

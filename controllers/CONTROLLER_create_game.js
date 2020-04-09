@@ -11,7 +11,7 @@ const controller = {
         var title = req.body.title;
         var description = req.body.description;
         var time = req.body.time;
-        var image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".jpg";;
+        var image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".jpg";
             
         
         var genres = [];
@@ -24,7 +24,7 @@ const controller = {
         if (req.body.others) genres.splice(genres.length, 0, req.body.others);
         db.findOne(User, {email: req.session.username}, '_id', function(creator){
             db.insertOne(Game, {_id: id, title: title, description: description, game_image: image, genres: genres, time: time, creator: creator._id, num_attempts: 0});
-        })
+        });
         
         var items = [];
         if (req.body.question1) items.splice(items.length, 0, {question: req.body.question1, answer: req.body.answer1, game_id: id});
