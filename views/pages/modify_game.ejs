@@ -3,66 +3,35 @@
 <head>
     <%- include ("../partials/head.ejs") %>
 
-    <title>Mnemosis | Modify Game</title>
+    <title>Mnemosis | Profile</title>
     <link rel="stylesheet" href="../../css/modify_game.css">
 </head>
 <body>
-    <script src="../../js/modify_game_ready.js"></script>
     <%- include ("../partials/header.ejs") %>
-    <div class="container mt-5 mb-5" id="main-box">
-        <h2 class="subheading" style="text-align: center">Modifying a Game</h2>
-        <form action="<%= game._id %>/modify" method="post">
-            <div class="form-group">
-                <label for="game_title" class="subheading">Game Title:</label>
-                <input class="form-control subheading" type="text" placeholder="Your title" min="5" max="50" id="game_title" value="<%= game.title %>" name="title" required>
-            </div>
-            <div class="form-group">
-                <label for="game_description" class="subheading">Description:</label>
-                <textarea class="form-control subheading" placeholder="Your description" minlength="10" maxlength="1000" id="game_description" name="description" required><%= game.description %></textarea>
-            </div>
-            <div class="form-group">
-                <label for="game_duration" class="subheading">Game Duration (minutes):</label>
-                <input class="subheading" type="number" id="game_duration" min="3" max="10" placeholder="*" value="<%= game.time %>" name="time" required>
-            </div>
-            <div class="form-group">
-                <label for="genre-buttons" class="subheading">Genre(s):</label>
-                <div id="genre-buttons" class="text-center">
-                    <div class="btn-group" style="display: block; margin: auto">
-                        <input type="checkbox" id="check-art" class="btn subheading bg-art" name="art" value="art"<% if (game.genres.includes("art")) { %> checked<% } %>><label for="art" class="btn subheading bg-art mr-4 <% if (game.genres.includes("art")) { %>active<% } %>" id="filter-by-art" >Art</label>
-                        <input type="checkbox" id="check-business" class="btn subheading bg-business" name="business" value="business"<% if (game.genres.includes("business")) { %> checked<% } %>><label for="business" class="btn subheading bg-business mr-4 <% if (game.genres.includes("business")) { %>active<% } %>" id="filter-by-business">Business</label>
-                        <input type="checkbox" id="check-scitech" class="btn subheading bg-scitech" name="scitech" value="scitech"<% if (game.genres.includes("scitech")) { %> checked<% } %>><label for="scitech" class="btn subheading bg-scitech mr-4 <% if (game.genres.includes("scitech")) { %>active<% } %>" id="filter-by-scitech">Science and Technology</label>
-                        <input type="checkbox" id="check-history" class="btn subheading bg-history" name="history" value="history"<% if (game.genres.includes("history")) { %> checked<% } %>><label for="history" class="btn subheading bg-history mr-4 <% if (game.genres.includes("history")) { %>active<% } %>" id="filter-by-history">History</label>
-                        <input type="checkbox" id="check-trivia" class="btn subheading bg-trivia" name="trivia" value="trivia"<% if (game.genres.includes("trivia")) { %> checked<% } %>><label for="trivia" class="btn subheading bg-trivia mr-4 <% if (game.genres.includes("trivia")) { %>active<% } %>" id="filter-by-trivia">Trivia</label>
-                        <input type="checkbox" id="check-sports" class="btn subheading bg-sports" name="sports" value="sports"<% if (game.genres.includes("sports")) { %> checked<% } %>><label for="sports" class="btn subheading bg-sports mr-4 <% if (game.genres.includes("sports")) { %>active<% } %>" id="filter-by-sports">Sports</label>
-                        <input type="checkbox" id="check-others" class="btn subheading bg-others" name="others" value="others"<% if (game.genres.includes("others")) { %> checked<% } %>><label for="others" class="btn subheading bg-others mr-4 <% if (game.genres.includes("others")) { %>active<% } %>" id="filter-by-others">Others</label>
-                    </div>
+    <div class="grid card heading mt-5 mb-5" style="padding-top: 10px; padding-bottom: 10px; ">
+        <div class="prof_title "><%= game.title %></div>
+        <div class="prof_pic"><img src="<%= game.game_image %>" height="180px" width="180px"></div>
+        <div class="prof_hemail"><%= game.description %></div>
+        <div class="prof_hage">Genres:</div>
+        <div class="prof_hgender">Time:</div>
+        <div class="prof_email subheading"><%= game.num_attempts %></div>
+        <form action = "<%= game._id %>/upload/new_image" method = "POST" enctype = "multipart/form-data">
+            <div class="input-group mb-3 prof_file">
+                <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary btn-custom" type="submit" id="upload">Upload</button>
+                </div>
+                <div class="custom-file">
+                <input type="file" class="custom-file-input" id="file" aria-describedby="upload" name = "new_image">
+                <label class=" custom-file-label" for="file">Choose file</label>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="game_description" class="subheading">Image:</label>
-                <input class="form-control subheading" type="file" id="game_image" name="game_image">
-            </div>
-            <div id="questions_form">
-                <% items.forEach(function(item, index) { %>
-                <div class="form-inline row mb-1" id="form<%= index+1 %>">
-                    <div class="col-2"><label class="subheading">Question <%= index+1 %>:</label></div>
-                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question<%= index+1 %>" name="question<%= index+1 %>" value="<%= item.question %>" required></div>
-                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer<%= index+1 %>" name="answer<%= index+1 %>" value="<%= item.answer %>" required></div>
-                    <div class="col"><button type="button" class="btn btn-danger delete" id="delete<%= index+1 %>">&times;</button></div>
-                </div>
-                <% }) %>
-                <div class="form-inline row justify-content-center">
-                    <button type="button" class="btn btn-block" id="add_question">+</button>
-                </div>
-            </div>
-            <div class="row"><div class="col-sm-12"><br></div></div>
-            <button type="submit" class="btn btn-custom btn-block subheading" id="modify_game">Save Changes</button>
-            <div class="row"><div class="col-sm-12"><br></div></div>
         </form>
+        <div class="row"><div class="col-sm-12"><br></div></div>
+        <a href="/modify_game_details/<%= game._id %>" class="btn btn-custom btn-block mb-5" id="modify">Modify Game Details</a>
+        <div class="row"><div class="col-sm-12"><br></div></div>
     </div>
-
     <%- include ("../partials/footer.ejs") %>
 
-    <script src="../../js/modify_game.js"></script>
+    <script src="../../js/view_profile.js"></script>
 </body>
 </html>
