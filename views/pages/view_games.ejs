@@ -68,7 +68,7 @@
                             <% if (admin) { %>
                                 <div class="mt-auto">
                                     <button type="button" class="btn btn-custom btn-block" data-toggle="modal" data-target="#playModal">Play Game</button>
-                                    <a href="modify_game" class="btn btn-custom btn-block">Modify Game</a>
+                                    <a href="modify_game/<%= game._id %>" class="btn btn-custom btn-block">Modify Game</a>
                                     <button type="button" class="btn btn-custom2 btn-block" data-toggle="modal" data-target="#deleteModal">Delete Game</button>
                                 </div>
                             <% } else { %>
