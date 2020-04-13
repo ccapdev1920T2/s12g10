@@ -1,6 +1,6 @@
 const db = require("../models/db");
-const Game = require("../models/Game");
 const User = require("../models/User");
+const mongoose = require("mongoose");
 
 const controller = {
 
@@ -9,7 +9,7 @@ const controller = {
         req.session.username = null;
         req.session.guest = null;
         req.session.photo = null;
-        res.render("pages/login_and_register");
+        res.render("pages/login_and_register", {status: 0});
     },
 
     loginGuest: function (req, res) {
@@ -40,16 +40,27 @@ const controller = {
                     res.redirect("/homepage");
                 } else {
                     console.log("user found but password incorrect");
-                    res.redirect("back");
+                    res.render("pages/login_and_register", {status: 1, errMessage: "Incorrect password"});
                 }
             } else {
                 console.log("no user found");
-                res.redirect("back");
+                res.render("pages/login_and_register", {status: 2, errMessage: "Username not found"});
             }
         });
     },
 
+    checkDupe: function (req, res) {
+
+        let email = req.query.email;
+
+        db.findOne(User, {email : email}, null, function (result) {
+            res.send(result);
+        });
+
+    },
+
     addUser: function (req, res) {
+        let id = mongoose.Types.ObjectId();
         let fname = req.body.fname;
         let lname = req.body.lname;
         let bday = req.body.bday;
@@ -57,34 +68,22 @@ const controller = {
         let email = req.body.email;
         let pass = req.body.pass;
 
-        db.findOne(User, { email: email }, null, function(result) {
-            if (result) {
-                res.redirect("back"); //email already exists
-            } else {
-                db.insertOne(User, {
-                    name: fname + " " + lname,
-                    birthday: bday,
-                    gender: gender,
-                    email: email,
-                    password: pass,
-                    user_image: "/media/Icon.png",
-                    is_admin: false,
-                });
-                req.session.loggedin = true;
-                req.session.username = email;
-                req.session.guest = false;
-                req.session.photo = "/media/Icon.png";
-                res.redirect("/homepage");
-            }
+        db.insertOne(User, {
+            _id: id,
+            name: fname + " " + lname,
+            birthday: bday,
+            gender: gender,
+            email: email,
+            password: pass,
+            user_image: "/media/Icon.png",
+            is_admin: false,
         });
-    },
+        req.session.loggedin = true;
+        req.session.username = email;
+        req.session.guest = false;
+        req.session.photo = "/media/Icon.png";
+        res.redirect("/view_profile");
 
-    logout: function (req, res) {
-        req.session.loggedin = false;
-        req.session.username = null;
-        req.session.guest = null;
-        req.session.photo = null;
-        res.render("pages/login_and_register");
     }
 };
 

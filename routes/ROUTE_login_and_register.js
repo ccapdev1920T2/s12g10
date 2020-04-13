@@ -9,6 +9,8 @@ app.get("/guest", controller.loginGuest);
 
 app.post("/auth", controller.authenticateUser);
 
+app.get("/checkDupe", controller.checkDupe);
+
 app.post("/register", controller.addUser);
 
 app.get("/logout", controller.loadPage);
