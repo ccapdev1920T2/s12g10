@@ -3,6 +3,7 @@ const Game = require("../models/Game");
 
 const controller = {
 
+    //load game's initial details
     getGame: function(req, res){
         var id = req.params.id;
         db.findOne(Game, {_id: id}, null, function(game){
@@ -10,6 +11,7 @@ const controller = {
         })
     },
 
+    //POST request for changing game image
     uploadPic:function(req,res){
         var image = req.files.new_image;
         image.mv("public/media/game_images/" + image.name, function(error){

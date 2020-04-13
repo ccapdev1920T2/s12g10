@@ -3,7 +3,7 @@ const User = require("../models/User");
 const mongoose = require("mongoose");
 
 const controller = {
-
+    //instantiate login and register page
     loadPage: function (req, res) {
         req.session.loggedin = false;
         req.session.username = null;
@@ -12,6 +12,7 @@ const controller = {
         res.render("pages/login_and_register", {status: 0});
     },
 
+    //logs in as guest with restricted accessibility
     loginGuest: function (req, res) {
 
         req.session.loggedin = true;
@@ -24,6 +25,7 @@ const controller = {
 
     },
 
+    //login authentication
     authenticateUser: function (req, res) {
         let email = req.body.email;
         let password = req.body.password;
@@ -49,6 +51,7 @@ const controller = {
         });
     },
 
+    //checking for duplicate email
     checkDupe: function (req, res) {
 
         let email = req.query.email;
@@ -59,6 +62,7 @@ const controller = {
 
     },
 
+    //register function
     addUser: function (req, res) {
         let id = mongoose.Types.ObjectId();
         let fname = req.body.fname;

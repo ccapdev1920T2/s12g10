@@ -11,7 +11,7 @@ var details = {
             items:null
     };
 const controller = {
-    
+    //view profile for own profile
     getOwn: function(req, res) {
         let email= req.session.username;
 
@@ -75,6 +75,8 @@ const controller = {
             });
         });
     },
+
+    //view profile for another user's
     getProfile: function (req, res) {
         
         let id = req.params.id;
@@ -147,22 +149,28 @@ const controller = {
             });
         });
     },
+
+    //POST request for deleting a specific game
     deleteGame: function (req, res) {
         db.deleteOne(Game, {_id: req.params.id});
         res.redirect("back");
     },
 
+    //POST request for removing admin rights
     removeAdmin: function(req,res){
         console.log("before update");
         db.updateOne(User, {email: req.session.username},{is_admin:false});
         res.redirect("back");
     },
 
+    //POST request for adding admin rights
     makeAdmin: function(req,res){
         db.updateOne(User, {_id: req.params.id},{is_admin:true});
         res.redirect("back");
 
     },
+
+    //POST request for changing profile picture
     uploadPic:function(req,res){
         var image = req.files.pic;
         image.mv("public/media/profile_pictures/" + image.name, function(error){

@@ -5,18 +5,22 @@ const Item = require("../models/Item");
 const mongoose = require('mongoose');
 
 const controller = {
-    
+
+    //displays an empty form for the user to fill up
     loadPage: function (req, res) {
         res.render("../views/pages/create_game", {guest: req.session.guest, user_image: req.session.photo});
     },
 
+    //POST request for creating game
     createGame: function (req, res){
         var id = mongoose.Types.ObjectId();
         var title = req.body.title;
         var description = req.body.description;
         var time = req.body.time;
+        //randomizing a template image for the game
         var image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".jpg";
         
+        //getting genres if req.body has certain genre variable
         var genres = [];
         if (req.body.art) genres.splice(genres.length, 0, req.body.art);
         if (req.body.business) genres.splice(genres.length, 0, req.body.business);
@@ -25,10 +29,13 @@ const controller = {
         if (req.body.trivia) genres.splice(genres.length, 0, req.body.trivia);
         if (req.body.sports) genres.splice(genres.length, 0, req.body.sports);
         if (req.body.others) genres.splice(genres.length, 0, req.body.others);
+
+        //creating the game along with finding the user's id
         db.findOne(User, {email: req.session.username}, '_id', function(creator){
             db.insertOne(Game, {_id: id, title: title, description: description, game_image: image, genres: genres, time: time, creator: creator._id, num_attempts: 0});
         });
         
+        //insertion of items to an array
         var items = [];
         if (req.body.question1) items.splice(items.length, 0, {question: req.body.question1, answer: req.body.answer1, game_id: id});
         if (req.body.question2) items.splice(items.length, 0, {question: req.body.question2, answer: req.body.answer2, game_id: id});
@@ -80,6 +87,7 @@ const controller = {
         if (req.body.question48) items.splice(items.length, 0, {question: req.body.question48, answer: req.body.answer48, game_id: id});
         if (req.body.question49) items.splice(items.length, 0, {question: req.body.question49, answer: req.body.answer49, game_id: id});
         if (req.body.question50) items.splice(items.length, 0, {question: req.body.question50, answer: req.body.answer50, game_id: id});
+        //insert the array into Item collection
         db.insertMany(Item, items);
         res.redirect("/modify_game/" + id);
     }

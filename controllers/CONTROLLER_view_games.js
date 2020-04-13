@@ -3,6 +3,7 @@ const Game = require("../models/Game");
 const User = require("../models/User");
 
 const controller = {
+    //finding games with consideration if user is admin or not
     getGames: function (req, res) {
         let searchQuery = req.query.query;
 
@@ -79,6 +80,7 @@ const controller = {
         });
     },
 
+    //POST request to delete specific game
     deleteGame: function (req, res) {
         db.deleteOne(Game, {_id: req.params.id});
         res.redirect("back");

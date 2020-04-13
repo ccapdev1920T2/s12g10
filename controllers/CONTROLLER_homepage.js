@@ -13,6 +13,7 @@ function shuffle (array) {
 }
 
 const controller = {
+    //displays the games based on most attempts then shuffled
     loadPage: function (req, res) {
 
         db.findMany(Game, {}, null, function (allGames) {

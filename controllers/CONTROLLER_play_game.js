@@ -16,6 +16,7 @@ function shuffle (array) {
 }
 
 const controller = {
+    //finding specific game details and its items
     findGame: function (req, res) {
         let game_id = req.params.id;
 
@@ -54,6 +55,7 @@ const controller = {
         });
     },
 
+    //POST request to add new attempt
     recordRun: function (req, res) {
 
         db.findOne(User, { email : req.session.username }, null, function (user) {

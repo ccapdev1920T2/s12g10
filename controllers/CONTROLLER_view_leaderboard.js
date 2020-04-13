@@ -28,6 +28,7 @@ function toMinSec (mins) {
 }
 
 const controller = {
+    //displays attempts available as well as your own attempt and the best attempts
     loadPage: function (req, res) {
 
         let game_id = req.params.id;
