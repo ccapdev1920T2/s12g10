@@ -38,6 +38,7 @@
             <%= created %></div>
         <div class="prof_subtext2 subheading">
             <%var completed = 0%>
+            <% var comp = []%>
             <% details.games.forEach(function (game) { %>
                 <% details.attempts.forEach(function (attempt) { %>
                     <% if (attempt.user_id.equals(details.user._id)){%> 
@@ -49,7 +50,26 @@
                                 <%}%>
                             <% }) %>
                             <% if (attempt.answered == count){%>
-                                <%completed = completed +1%>
+                                <%if (completed > 0 ){%>
+                                    <%var count2 = 0 %>
+                                    <%for (var x = 0; x < completed; x++ ){%>
+                                        <%if (attempt.game_id.equals(comp[x].game_id)){%>
+                                            <%if (attempt.attempt_time < comp[x].attempt_time){%>
+                                                <%comp[x] = attempt%>
+                                            <%}%>
+                                            <%count2 = count2 + 1 %>
+                                        <%}%>
+                                    <%}%>
+                                    <%if (count2 == 0){%>
+                                        <%completed = completed +1%>
+                                        <%comp.push(attempt)%>
+                                    <%}%>
+                                <%}%>
+                                <%if (completed == 0){%>
+                                    <%comp.push(attempt)%>
+                                    <%completed = completed +1%>
+                                <%}%>
+                            
                             <%}%>
                         <%}%>
                     <%}%>
@@ -70,7 +90,11 @@
             </div>
         </form>
     </div>
+    
+    
+    
     <%var playing = 0%>
+    <% var attempts = []%>
     <% details.games.forEach(function (game) { %>
         <% details.attempts.forEach(function (attempt) { %>
             <% if (attempt.user_id.equals(details.user._id)){%> 
@@ -82,12 +106,39 @@
                         <%}%>
                     <% }) %>
                     <% if (attempt.answered != count){%>
-                        <%playing = playing +1%>
+                        <%var count3 = 0%>
+                        <%for (var i =0 ; i< completed; i++){%>
+                            <%if (comp[i].game_id.equals(attempt.game_id)){%>
+                                <%count3 = count3+1%>
+                            <%}%>
+                        <%}%>
+                        <%if (count3 == 0){%>
+                            <%if (playing > 0){%>
+                                <%var count2 = 0 %>
+                                <%for (var x = 0; x < playing; x++ ){%>
+                                    <%if (attempt.game_id.equals(attempts[x].game_id)){%>
+                                        <%if (attempt.answered> attempts[x].answered){%>
+                                            <%attempts[x] = attempt%>
+                                        <%}%>
+                                        <%count2 = count2 + 1 %>
+                                    <%}%>
+                                <%}%>
+                                <%if (count2 == 0){%>
+                                    <%playing = playing +1%>
+                                    <%attempts.push(attempt)%>
+                                <%}%>
+                            <%}%>
+                            <%if (playing == 0){%>
+                                <%attempts.push(attempt)%>
+                                <%playing = playing +1%>
+                            <%}%>
+                        <%}%>
                     <%}%>
                 <%}%>
             <%}%>
         <% }) %>
     <% }) %>
+
     <div class="container mt-5 mb-5" id="2-main-box">
         <button type="button" class="btn btn-custom btn-block" id="admin"  onclick="window.location.href = '/view_profile/remove/admin/access';">Drop Admin Status</button>
         <a href="/create_game" class="btn btn-custom btn-block mb-5" id="create">Create Game</a>
@@ -96,73 +147,69 @@
             <div class="row">
                 <%var see3 = 0 %>
                 <% details.games.forEach(function (game) { %>
-                    <% details.attempts.forEach(function (attempt) { %>
-                        <% if (attempt.user_id.equals(details.user._id)){%> 
-                        <% if (game._id.equals(attempt.game_id)){%>
-                            <% var count = 0 %>
-                            <% details.items.forEach(function (item) { %>
-                                <% if (item.game_id.equals( game._id)){%>
-                                    <%count = count+1 %>
-                                <%}%>
-                            <% }) %>
-                            <% if (attempt.answered != count){%>
-                                <%see3 = see3+1 %>
-                                <div class="col-sm-4 mb-4 <%if (see3 >= 4){%> recently-played <%}%>">
-                                    <div class="card
-                                        <% for (let i = 0; i < game.genres.length; i++ ) { %>
-                                        <%= 'card-' + game.genres[i] %>
-                                        <% } %>" >
+                    <% for (var j = 0; j < playing;  j++) { %>
+                        <% if (game._id.equals(attempts[j].game_id)){%>
+                            <%see3 = see3+1 %>
+                            <div class="col-sm-4 mb-4 <%if (see3 >= 4){%> recently-played <%}%>">
+                                <div class="card
+                                    <% for (let i = 0; i < game.genres.length; i++ ) { %>
+                                    <%= 'card-' + game.genres[i] %>
+                                    <% } %>" >
 
-                                        <div class="card-header pt-2 pb-1">
-                                            <div class="container row m-0" style="height:15px;">
-                                                <% var len = game.genres.length %>
-                                                <% for (i = 0; i < len; i++ ) { %>
-                                                    <div class="col border <%= 'bg-' + game.genres[i] %>
-                                                        <% if (i < len - 1) { %>
-                                                        <%= 'mr-1' %>
-                                                        <% } %>">
-                                                    </div>
-                                                <% } %>
-                                            </div>
-                                        </div>
-
-                                        <img class="card-img-top card-img-custom" src="<%= game.game_image %>">
-
-                                        <div class="card-body ">
-                                            <div class="grid-small card-title heading">
-                                                <div class="accuracy">
-                                                    <%var acc = attempt.answered / count *100 %>
-                                                    <%= acc.toFixed(2)%>%
+                                    <div class="card-header pt-2 pb-1">
+                                        <div class="container row m-0" style="height:15px;">
+                                            <% var len = game.genres.length %>
+                                            <% for (i = 0; i < len; i++ ) { %>
+                                                <div class="col border <%= 'bg-' + game.genres[i] %>
+                                                    <% if (i < len - 1) { %>
+                                                    <%= 'mr-1' %>
+                                                    <% } %>">
                                                 </div>
-                                                <div class="time">
-                                                    <%= attempt.attempt_time%> mins
-                                                </div>
-                                            </div>
-                                            <h5 class="card-title heading"><%= game.title %></h5>
-                                            <p class="card-text subheading" style="display: none"><%= game.description %></p>
-                                            <div class="mt-auto">
-                                                <button type="button" class="btn btn-custom btn-block" data-toggle="modal" data-target="#playModal">Play Game</button>
-                                                <a href="/modify_game/<%= game._id %>" class="btn btn-custom btn-block">Modify Game</a>
-                                                <button type="button" class="btn btn-custom2 btn-block" data-toggle="modal" data-target="#deleteModal">Delete Game</button>
-                                            </div>
-                                        </div>
-                
-                                        <div class="card-footer">
-                                            <p id="game_id" style="display: none"><%= game._id %></p>
-                                            <small id="author" class="text-muted subheading">Created by <a href="/view_profile/<%= game.creator %>">
-                                                <% details.users.forEach(function (user) { %>
-                                                    <%if (game.creator.equals(user._id)){%>
-                                                        <%=user.name%>
-                                                    <%}%>    
-                                                <% }) %>    
-                                            </a></small>
+                                            <% } %>
                                         </div>
                                     </div>
+
+                                    <img class="card-img-top card-img-custom" src="<%= game.game_image %>">
+
+                                    <div class="card-body ">
+                                        <div class="grid-small card-title heading">
+                                            <div class="accuracy">
+                                                <% var count = 0 %>
+                                                <% details.items.forEach(function (item) { %>
+                                                    <% if (item.game_id.equals( game._id)){%>
+                                                        <%count = count+1 %>
+                                                    <%}%>
+                                                <% }) %>
+                                                <%var acc = attempts[j].answered / count *100 %>
+                                                <%= acc.toFixed(2)%>%
+                                            </div>
+                                            <div class="time">
+                                                <%= Math.floor(attempts[j].attempt_time)  %> mins <%= Math.round(attempts[j].attempt_time*60)% 60 %> sec 
+                                            </div>
+                                        </div>
+                                        <h5 class="card-title heading"><%= game.title %></h5>
+                                        <p class="card-text subheading" style="display: none"><%= game.description %></p>
+                                        <div class="mt-auto">
+                                            <button type="button" class="btn btn-custom btn-block" data-toggle="modal" data-target="#playModal">Play Game</button>
+                                            <a href="/modify_game/<%= game._id %>" class="btn btn-custom btn-block">Modify Game</a>
+                                            <button type="button" class="btn btn-custom btn-block" data-toggle="modal" data-target="#playModal">Play Game</button>
+                                        </div>
+                                    </div>
+            
+                                    <div class="card-footer">
+                                        <p id="game_id" style="display: none"><%= game._id %></p>
+                                        <small id="author" class="text-muted subheading">Created by <a href="/view_profile/<%= game.creator %>">
+                                            <% details.users.forEach(function (user) { %>
+                                                <%if (game.creator.equals(user._id)){%>
+                                                    <%=user.name%>
+                                                <%}%>    
+                                            <% }) %>    
+                                        </a></small>
+                                    </div>
                                 </div>
-                            <%}%>
+                            </div>
                         <%}%>
-                        <%}%>
-                    <% }) %>
+                    <%}%>
                 <% }) %>
             </div>
             <%if (see3 >= 4){%> <button type="button" class="btn btn-custom btn-block subheading" id="button3">Show More</button> <%}%>
@@ -201,7 +248,19 @@
                                 <%var att = null%>
                                 <% details.attempts.forEach(function (attempt) { %>
                                     <% if (attempt.game_id.equals(game._id) && attempt.user_id.equals(details.user._id)){%>
-                                        <%att = attempt%>
+                                        <%if (att == null){%>
+                                            <%att = attempt%>
+                                        <%}%>
+                                        <%if (att != null){%>
+                                            <%if (att.answered < attempt.answered){%>
+                                                <%att = attempt%>
+                                            <%}%>
+                                            <%if (att.answered == attempt.answered){%>
+                                                <%if (att.attempt_time > attempt.attempt_time){%>
+                                                    <%att = attempt%>
+                                                <%}%>
+                                            <%}%>
+                                        <%}%>
                                     <%}%>
                                 <% }) %>
                                 <% var count = 0 %>
@@ -217,7 +276,7 @@
                                         <%}%>
                                         <%if (att != null){%>
                                             <%var acc = att.answered / count *100 %>
-                                            <%= acc%>%
+                                            <%= acc.toFixed(2)%>%
                                         <%}%>
                                     
                                     </div>
@@ -226,7 +285,7 @@
                                             -- mins
                                         <%}%>
                                         <%if (att != null){%>
-                                            <%= att.attempt_time %> mins
+                                            <%= Math.floor(att.attempt_time)  %> mins <%= Math.round(att.attempt_time * 60)%60 %> sec
                                         <%}%>
                                     </div>
                                 </div>
@@ -266,16 +325,8 @@
         <div class="row">
             <%var see2 = 0 %>
             <% details.games.forEach(function (game) { %>
-                <% details.attempts.forEach(function (attempt) { %>
-                    <% if (attempt.user_id.equals(details.user._id)){%> 
-                    <% if (game._id.equals(attempt.game_id)){%>
-                        <% var count = 0 %>
-                        <% details.items.forEach(function (item) { %>
-                            <% if (item.game_id.equals( game._id)){%>
-                                <%count = count+1 %>
-                            <%}%>
-                        <% }) %>
-                        <% if (attempt.answered == count){%>
+                <% for (var j = 0; j < completed;  j++) { %>
+                    <% if (game._id.equals(comp[j].game_id)){%>
                             <%see2 = see2+1 %>
                             <div class="col-sm-4 mb-4 <%if (see2 >= 4){%> game-completed <%}%>">
                                 <div class="card
@@ -297,15 +348,20 @@
                                     </div>
 
                                     <img class="card-img-top card-img-custom" src="<%= game.game_image %>">
-
+                                    <% var count = 0 %>
+                                    <% details.items.forEach(function (item) { %>
+                                        <% if (item.game_id.equals(game._id)){%>
+                                            <%count = count+1 %>
+                                        <%}%>
+                                    <% }) %>
                                     <div class="card-body ">
                                         <div class="grid-small card-title heading">
                                             <div class="accuracy">
-                                                <%var acc = attempt.answered / count *100 %>
+                                                <%var acc = comp[j].answered / count *100 %>
                                                 <%= acc.toFixed(2)%>%
                                             </div>
                                             <div class="time">
-                                                <%= attempt.attempt_time%> mins
+                                                <%= Math.floor(comp[j].attempt_time)  %> mins <%= Math.round(comp[j].attempt_time*60)% 60 %> sec 
                                             </div>
                                         </div>
                                         <h5 class="card-title heading"><%= game.title %></h5>
@@ -330,9 +386,7 @@
                                 </div>
                             </div>
                         <%}%>
-                    <%}%>
-                    <%}%>
-                <% }) %>
+                <% } %>
             <% }) %>
         </div>
         <%if (see2 >= 4){%> <button type="button" class="btn btn-custom btn-block subheading" id="button2">Show More</button> <%}%>

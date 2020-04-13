@@ -157,6 +157,10 @@
     display: none;
 }
 
+.recently-played{
+    display: none;
+}
+
 #upload{
     height: 38px;
     margin-left: 18px;
