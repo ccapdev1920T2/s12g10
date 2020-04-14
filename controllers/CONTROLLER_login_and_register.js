@@ -70,7 +70,7 @@ const controller = {
         let gender = req.body.gender;
         let email = req.body.email;
         let pass = req.body.pass;
-
+        //add new user
         db.insertOne(User, {
             name: fname + " " + lname,
             birthday: bday,

@@ -55,7 +55,7 @@ const controller = {
                 db.findMany(User, {}, null, function (allUsers) {
 
                     if (allUsers !== null) {
-
+                        
                         allUsers.forEach(function (curr) {
                             if (game.creator.equals(curr._id)) {
                                 creator_name = curr.name;
@@ -64,11 +64,11 @@ const controller = {
                                 curr_id = curr._id;
                             }
                         });
-
+                        //find total number of items of game for accuracy
                         db.count(Item, { game_id : game_id }, function(itemCount) {
 
                             if (itemCount !== null) {
-
+                                //sort attempts based on best performance
                                 db.findLimitSort(Attempt, { game_id: game_id }, null, null, {answered : -1, attempt_time : 1},function (leaderboard) {
 
                                     if (leaderboard.length !== 0) {

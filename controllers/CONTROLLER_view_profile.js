@@ -15,7 +15,7 @@ const controller = {
     getOwn: function(req, res) {
         let email= req.session.username;
         let adminCount = 0;
-
+        //find current user
         db.findOne(User, {email: email}, null, function (result) {
 
             if (result != null) {
@@ -26,6 +26,7 @@ const controller = {
             } else {
                 res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
             }
+            //find user details
             db.findMany(User, {}, null, function (result) {
                 if (result != null) {
                     details.users = result;
@@ -38,6 +39,7 @@ const controller = {
                 } else {
                     res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                 }
+                //find game details
                 db.findMany(Game, {}, null, function (result) {
                     if (result != null) {
                         details.games = result;
@@ -45,12 +47,14 @@ const controller = {
                     } else {
                         res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                     }
+                    //find item details for games
                     db.findMany(Item, {}, null, function (result) {
                         if (result != null) {
                             details.items = result;
                         } else {
                             res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                         }  
+                        //find attempt details
                         db.findMany(Attempt, {} , null, function (result) {
                             if (result != null) {
                                 details.attempts = result;
@@ -92,6 +96,7 @@ const controller = {
         
         let id = req.params.id;
         let curr = null;
+        //find user being viewed
         db.findOne(User, {_id: id}, null, function (result) {
 
             if (result != null) {
@@ -102,6 +107,7 @@ const controller = {
             } else {
                 res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
             }
+            //find current user
             db.findOne(User, {email: req.session.username}, null, function (result) {
 
                 if (result != null) {
@@ -109,6 +115,7 @@ const controller = {
                 } else {
                     res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                 }
+                //find user details
                 db.findMany(User, {}, null, function (result) {
                     if (result != null) {
                         details.users = result;
@@ -116,6 +123,7 @@ const controller = {
                     } else {
                         res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                     }
+                    //find game details
                     db.findMany(Game, {}, null, function (result) {
                         if (result != null) {
                             details.games = result;
@@ -123,12 +131,14 @@ const controller = {
                         } else {
                             res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                         }
+                        //find item details
                         db.findMany(Item, {}, null, function (result) {
                             if (result != null) {
                                 details.items = result;
                             } else {
                                 res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
-                            }  
+                            }
+                            //find attempt details
                             db.findMany(Attempt, {}, null, function (result) {
                                 if (result != null) {
                                     details.attempts = result;
@@ -171,12 +181,14 @@ const controller = {
     removeAdmin: function(req,res){
         console.log("before update");
 
+        //find all admins
         db.findMany(User, {is_admin: true}, null, function (result) {
             if (result.length === 1) {
-
+                //admin access cannot be removed
                 res.redirect("/profile");
 
             } else {
+                //admin access removed
                 db.updateOne(User, {email: req.session.username},{is_admin:false});
                 res.redirect("back");
             }
@@ -187,7 +199,6 @@ const controller = {
     makeAdmin: function(req,res){
         db.updateOne(User, {_id: req.params.id},{is_admin:true});
         res.redirect("back");
-
     },
 
     //POST request for changing profile picture

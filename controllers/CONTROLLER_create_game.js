@@ -13,10 +13,13 @@ const controller = {
 
     //POST request for creating game
     createGame: function (req, res){
-        var id = mongoose.Types.ObjectId();
+        //instantiate new id
+        var id = new mongoose.Types.ObjectId();
+        
         var title = req.body.title;
         var description = req.body.description;
         var time = req.body.time;
+        
         //randomizing a template image for the game
         var image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".jpg";
         

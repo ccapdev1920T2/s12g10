@@ -23,7 +23,7 @@ const controller = {
                 db.findMany(User, {}, null, function (allUsers) {
 
                     if (allUsers !== null) {
-
+                        //initialize all games with count for attempts
                         allGames.forEach(function (curr, index) {
 
                             db.count(Attempt, {game_id: curr._id}, function (count) {
@@ -35,7 +35,7 @@ const controller = {
                             });
 
                         });
-
+                        //find the games with most attempts
                         db.findLimitSort(Game, {}, null, 9, {num_attempts: -1}, function (topGames) {
                             if (topGames !== null) {
                                 topGames = shuffle(topGames);

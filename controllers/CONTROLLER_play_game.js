@@ -25,10 +25,11 @@ const controller = {
             if (game !== null) {
 
                 let creator_id = game.creator;
+                //find current user
                 db.findOne(User, { _id: creator_id }, null, function (user) {
 
                     if (user !== null) {
-
+                        //get all items for the specific game
                         db.findMany(Item, { game_id : game_id }, null, function (items) {
 
                             if (items != null) {
@@ -57,11 +58,11 @@ const controller = {
 
     //POST request to add new attempt
     recordRun: function (req, res) {
-
+        //find current user
         db.findOne(User, { email : req.session.username }, null, function (user) {
 
             if (user !== null) {
-
+                //instantiate new id
                 let objID = new mongoose.Types.ObjectId();
 
                 let obj = {
@@ -71,7 +72,7 @@ const controller = {
                     game_id: req.params.id,
                     user_id: user._id
                 };
-
+                //insert attempt
                 db.insertOne(Attempt, obj);
                 res.redirect("/leaderboard/" + req.params.id + "/" + objID);
 

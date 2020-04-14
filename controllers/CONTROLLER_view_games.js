@@ -19,7 +19,7 @@ const controller = {
         db.findMany(User, {}, null, function (users) {
 
             if (users !== null) {
-
+                //initialize and get isAdmin status for page
                 let isAdmin = false;
 
                 for (let i = 0; i < users.length; i++) {
@@ -30,7 +30,7 @@ const controller = {
                 }
 
                 if (!searchQuery) {
-
+                    //viewing all games
                     db.findMany(Game, {}, null, function (games) {
 
                         if (games.length !== 0) {
@@ -50,7 +50,7 @@ const controller = {
                     });
 
                 } else {
-
+                    //find games based on search query
                     db.findLimitSort(Game, { $or: [
                             {title: {$regex: searchQuery, $options: "i"}},
                             {description: {$regex: searchQuery, $options: "i"}},
