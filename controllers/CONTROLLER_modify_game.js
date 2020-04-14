@@ -14,7 +14,7 @@ const controller = {
     //POST request for changing game image
     uploadPic:function(req,res){
         var image = req.files.new_image;
-        image.mv("public/media/game_images/" + image.name, function(error){
+        image.mv("assets/media/game_images/" + image.name, function(error){
             if (error) {
                 console.log("file unsuccessfully uploaded");
                 res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});

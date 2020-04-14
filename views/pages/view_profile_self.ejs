@@ -78,7 +78,7 @@
             <%= completed%>
         </div>
         <div class="prof_name "><%= details.user.name %></div>
-        <form action = "view_profile/upload/pic" method = "POST" enctype = "multipart/form-data">
+        <form action = "profile/upload/pic" method = "POST" enctype = "multipart/form-data">
             <div class="input-group mb-3 prof_file subheading">
                 <div class="input-group-prepend">
                 <button class="btn btn-outline-secondary btn-custom" type="submit" id="upload" disabled>Upload</button>
@@ -192,7 +192,7 @@
             
                                     <div class="card-footer">
                                         <p id="game_id" style="display: none"><%= game._id %></p>
-                                        <small id="author" class="text-muted subheading">Created by <a href="/view_profile/<%= game.creator %>">
+                                        <small id="author" class="text-muted subheading">Created by <a href="/profile/<%= game.creator %>">
                                             <% details.users.forEach(function (user) { %>
                                                 <%if (game.creator.equals(user._id)){%>
                                                     <%=user.name%>
@@ -211,7 +211,7 @@
     </div>
     <%if (created >0){%>
     <div class="container mt-5 mb-5" id="1-main-box">
-        <h2 class="heading" style="text-align: center"><%= details.user.name %>'s Games</h2>
+        <h2 class="heading" style="text-align: center">My Games</h2>
         <div class="row">
             <%var see = 0 %>
             <% details.games.forEach(function (game) { %>
@@ -294,7 +294,7 @@
     
                             <div class="card-footer">
                                 <p id="game_id" style="display: none"><%= game._id %></p>
-                                <small id="author" class="text-muted subheading">Created by <a href="/view_profile/<%= game.creator %>">
+                                <small id="author" class="text-muted subheading">Created by <a href="/profile/<%= game.creator %>">
                                     <% details.users.forEach(function (user) { %>
                                         <%if (game.creator.equals(user._id)){%>
                                             <%=user.name%>
@@ -367,7 +367,7 @@
             
                                     <div class="card-footer">
                                         <p id="game_id" style="display: none"><%= game._id %></p>
-                                        <small id="author" class="text-muted subheading">Created by <a href="/view_profile/<%= game.creator %>">
+                                        <small id="author" class="text-muted subheading">Created by <a href="/profile/<%= game.creator %>">
                                             <% details.users.forEach(function (user) { %>
                                                 <%if (game.creator.equals(user._id)){%>
                                                     <%=user.name%>

@@ -14,6 +14,7 @@ const controller = {
     //view profile for own profile
     getOwn: function(req, res) {
         let email= req.session.username;
+        let adminCount = 0;
 
         db.findOne(User, {email: email}, null, function (result) {
 
@@ -28,6 +29,11 @@ const controller = {
             db.findMany(User, {}, null, function (result) {
                 if (result != null) {
                     details.users = result;
+
+                    result.forEach(function (curr) {
+                        if (curr.is_admin === true)
+                            adminCount++;
+                    });
                     
                 } else {
                     res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
@@ -35,7 +41,7 @@ const controller = {
                 db.findMany(Game, {}, null, function (result) {
                     if (result != null) {
                         details.games = result;
-                        
+
                     } else {
                         res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
                     }
@@ -55,7 +61,12 @@ const controller = {
                             if (details.user!= null && details.games!=null){
                                 if (details.user.email == email){
                                     if ( details.user.is_admin == true )
-                                        res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest, user_image: req.session.photo});
+                                        res.render("pages/view_profile_self_admin", {
+                                            details: details,
+                                            guest: req.session.guest,
+                                            user_image: req.session.photo,
+                                            adminCount: adminCount
+                                        });
                                     else 
                                         res.render("pages/view_profile_self", {details:details, guest: req.session.guest, user_image: req.session.photo});
                                 }
@@ -150,7 +161,7 @@ const controller = {
         });
     },
 
-    //POST request for deleting a specific game
+    //GET request for deleting a specific game
     deleteGame: function (req, res) {
         db.deleteOne(Game, {_id: req.params.id});
         res.redirect("back");
@@ -159,8 +170,17 @@ const controller = {
     //POST request for removing admin rights
     removeAdmin: function(req,res){
         console.log("before update");
-        db.updateOne(User, {email: req.session.username},{is_admin:false});
-        res.redirect("back");
+
+        db.findMany(User, {is_admin: true}, null, function (result) {
+            if (result.length === 1) {
+
+                res.redirect("/profile");
+
+            } else {
+                db.updateOne(User, {email: req.session.username},{is_admin:false});
+                res.redirect("back");
+            }
+        });
     },
 
     //POST request for adding admin rights
@@ -173,7 +193,7 @@ const controller = {
     //POST request for changing profile picture
     uploadPic:function(req,res){
         var image = req.files.pic;
-        image.mv("public/media/profile_pictures/" + image.name, function(error){
+        image.mv("assets/media/profile_pictures/" + image.name, function(error){
             if (error) {
                 console.log("file unsuccessfully uploaded");
                 res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});

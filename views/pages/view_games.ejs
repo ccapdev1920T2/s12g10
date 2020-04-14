@@ -12,7 +12,8 @@
     <div class="container mt-5 mb-5" id="main-box" data-admin="<%= admin %>">
 
         <% if (noResults) { %>
-            <h4 class="subheading" style="text-align: center">No search results. Sorry &#128557;</h4>
+            <h3 class="subheading" style="text-align: center">No search results. Sorry &#128557;</h3>
+            <br>
         <% } %>
 
         <h2 class="subheading" style="text-align: center">Filters</h2>
@@ -78,7 +79,7 @@
 
                         <div class="card-footer">
                             <p id="game_id" style="display: none"><%= game._id %></p>
-                            <small class="text-muted subheading" id="author">Created by <a href="view_profile/<%= game.creator %>">
+                            <small class="text-muted subheading" id="author">Created by <a href="profile/<%= game.creator %>">
                                 <% users.forEach(function (user) { %>
                                     <% if (game.creator.equals(user._id)) { %>
                                         <%= user.name %>

@@ -95,7 +95,7 @@ $( document ).ready(function() {
             "<div class='subheading' style='font-size: 20px'>" + title + "</div>" +
             "Proceed? <br>");
         modal.find("#modal-id").text("Game ID: " + id);
-        modal.find("a.btn").attr("href","/view_profile/"+ id + "/delete");
+        modal.find("a.btn").attr("href","/profile/"+ id + "/delete");
     });
 });
 

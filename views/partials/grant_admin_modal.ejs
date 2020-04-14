@@ -3,7 +3,7 @@
 <head>
 </head>
 <body>
-    <div class="modal fade" id="deleteModal">
+    <div class="modal fade" id="grantModal">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -12,12 +12,11 @@
                 </div>
 
                 <div class="modal-body subheading pb-0">
-                    <div id="modal-desc"></div>
+                    <p>Grant <%= details.user.name %> admin status?</p>
                 </div>
 
                 <div class="modal-footer">
-                    <small id="modal-id" class="text-muted subheading"></small>
-                    <a type="button" class="btn btn-custom2 btn-block" href="/profile">Delete Game</a>
+                    <a type="button" class="btn btn-custom2 btn-block" href="/profile/<%= details.user._id %>/make/admin/access">Yes</a>
                 </div>
             </div>
         </div>

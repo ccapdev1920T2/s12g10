@@ -9,7 +9,7 @@ const addData = require("./models/data");
 const app = express();
 
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/assets'));
 app.use(session({
     secret: "topsecret",
     resave: true,
@@ -44,9 +44,9 @@ app.use("/homepage", homeRoute);
 app.use("/modify_game", modifyPhotoRoute);
 app.use("/modify_game_details", modifyDetailsRoute);
 app.use("/play_game", playRoute);
-app.use("/view_games", viewGamesRoute);
+app.use("/games", viewGamesRoute);
 app.use("/leaderboard", viewLeaderboard);
-app.use("/view_profile", viewProfile);
+app.use("/profile", viewProfile);
 app.use(function (req, res) {
     res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
 });

@@ -13,7 +13,10 @@ function toMinSec (mins) {
     let str = mins.toString().split(".");
 
     if (str[1] === undefined) {
-        return str[0] + ":00"
+        if (str[0] === "1")
+            return str[0] + " min 0 sec";
+        else
+            return str[0] + " mins 0 sec";
     } else {
         let sec;
 
@@ -22,7 +25,17 @@ function toMinSec (mins) {
         else
             sec = (parseInt(str[1]) * 60).toString().substring(0, 2)
 
-        return str[0] + ":" + sec;
+        if (str[0] === "1" || str[0] === "0") {
+            if (sec === "01" || sec === "00")
+                return str[0] + " min " + sec + " sec";
+            else
+                return str[0] + " min " + sec + " secs";
+        } else {
+            if (sec === "01" || sec === "00")
+                return str[0] + " mins " + sec + " sec";
+            else
+                return str[0] + " mins " + sec + " secs";
+        }
     }
 
 }

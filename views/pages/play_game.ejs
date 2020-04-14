@@ -13,7 +13,7 @@
         <img src="../<%= game.game_image %>" style="width: 100%; height: auto">
         <div style="height: 20px"></div>
         <h3 class="subheading"><%= game.description %></h3>
-        <p class="subheading">Created by: <a href="view_profile_user"><%= creator %></a></p>
+        <p class="subheading">Created by: <a href="/profile/<%= game.creator %>"><%= creator %></a></p>
 
         <div class="row" id="controls" style="display: flex; justify-content: center; align-items: center">
             <button class="col-8 btn btn-custom btn-block subheading" id="start-btn">Start Game</button>

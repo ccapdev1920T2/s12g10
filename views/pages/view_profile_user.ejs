@@ -165,7 +165,7 @@
             
                                     <div class="card-footer">
                                         <p id="game_id" style="display: none"><%= game._id %></p>
-                                        <small id="author" class="text-muted subheading">Created by <a href="/view_profile/<%= game.creator %>">
+                                        <small id="author" class="text-muted subheading">Created by <a href="/profile/<%= game.creator %>">
                                             <% details.users.forEach(function (user) { %>
                                                 <%if (game.creator.equals(user._id)){%>
                                                     <%=user.name%>
@@ -221,7 +221,7 @@
     
                             <div class="card-footer">
                                 <p id="game_id" style="display: none"><%= game._id %></p>
-                                <small id="author" class="text-muted subheading">Created by <a href="/view_profile/<%= game.creator %>">
+                                <small id="author" class="text-muted subheading">Created by <a href="/profile/<%= game.creator %>">
                                     <% details.users.forEach(function (user) { %>
                                         <%if (game.creator.equals(user._id)){%>
                                             <%=user.name%>
@@ -286,7 +286,7 @@
             
                                     <div class="card-footer">
                                         <p id="game_id" style="display: none"><%= game._id %></p>
-                                        <small id="author" class="text-muted subheading">Created by <a href="/view_profile/<%= game.creator %>">
+                                        <small id="author" class="text-muted subheading">Created by <a href="/profile/<%= game.creator %>">
                                             <% details.users.forEach(function (user) { %>
                                                 <%if (game.creator.equals(user._id)){%>
                                                     <%=user.name%>

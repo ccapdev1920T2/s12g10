@@ -86,7 +86,7 @@ const controller = {
         req.session.username = email;
         req.session.guest = false;
         req.session.photo = "/media/Icon.png";
-        res.redirect("/view_profile");
+        res.redirect("/profile");
 
     }
 };
