@@ -5,6 +5,14 @@
 - NILL, Byron Ethelbert
 - UY, Geosef Viktor
 
+## **Repository Contents**
+- [README_imgs](https://github.com/ccapdev1920T2/s12g10/tree/master/README_imgs) - contains the images used in `README.md` files
+- [controllers](https://github.com/ccapdev1920T2/s12g10/tree/master/controllers) - contains `.js` files that define callback functions for client-side requests
+- [models](https://github.com/ccapdev1920T2/s12g10/tree/master/models) - contains `.js` files that define functions for database connection and manipulation, also contains `data.js` which houses predefined data to be inserted to the database
+- [routes](https://github.com/ccapdev1920T2/s12g10/tree/master/routes) - contains `.js` files that define the server response dependent on the client-side request
+- [public](https://github.com/ccapdev1920T2/s12g10/tree/master/public) - contains static `.js`, `.css`, and `img` files that are used for front-end display manipulation
+- [views](https://github.com/ccapdev1920T2/s12g10/tree/master/views) - contains `.ejs` files that will be rendered and displayed upon request  
+
 ## **Setting up**
 1. Ensure that mongodb is installed and is running.
 2. Open the command prompt (Windows) or terminal (Mac) and `cd` to the project folder.
@@ -36,6 +44,8 @@ The server is already running. Go to `http://localhost:3000` on any browser or c
 This will render the `login_and_register.ejs` file.
 
 ![alt text](./README_imgs/login.png "Login Page")
+
+## **Logging in**
 
 Any of the following accounts may be used to log into the app.
 ```
@@ -72,5 +82,8 @@ Successfully logging into the application will render the `homepage.ejs` file an
 
 ![alt text](./README_imgs/homepage.png "Homepage")
 
-## **Contents**
-[ref link] ()
+## **Registering for an account**
+
+Clients may also choose to register for their own account. Successful registration will render the `view_profile_self.ejs` file and display the following page.
+
+![alt text](./README_imgs/profile.png "Profile")
