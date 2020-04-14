@@ -179,14 +179,13 @@ $("#deleteModal").on("show.bs.modal", function (event) {
 
     let title = button.parent().find(".card-title").text();
     let id = button.parent().parent().find("#game_id").text();
+    let img = button.parent().parent().find("img").attr("src");
 
     let modal = $(this);
 
-    modal.find("#modal-desc").html(
-        "The following game will be deleted: " +
-        "<div class='subheading' style='font-size: 20px'>" + title + "</div>" +
-        "Proceed? <br>");
+    modal.find(".modal-title").text(title);
+    modal.find("#modal-img").attr("src", img);
     modal.find("#modal-id").text("Game ID: " + id);
-    modal.find("a.btn").attr("href", "games/" + id + "/delete");
+    modal.find("a.btn").attr("href", "/games/" + id + "/delete");
 
 });

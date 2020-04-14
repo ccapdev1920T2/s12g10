@@ -64,7 +64,6 @@ const controller = {
 
     //register function
     addUser: function (req, res) {
-        let id = mongoose.Types.ObjectId();
         let fname = req.body.fname;
         let lname = req.body.lname;
         let bday = req.body.bday;
@@ -73,7 +72,6 @@ const controller = {
         let pass = req.body.pass;
 
         db.insertOne(User, {
-            _id: id,
             name: fname + " " + lname,
             birthday: bday,
             gender: gender,

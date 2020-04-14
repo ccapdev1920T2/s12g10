@@ -16,7 +16,7 @@ data = {
             gender: "Male",
             email: "seandoe@mnemosis.com",
             password: "admin",
-            user_image: "/media/Logo Full.png",
+            user_image: "/media/profile_pictures/Logo Full.png",
             is_admin: true
         },
         {
