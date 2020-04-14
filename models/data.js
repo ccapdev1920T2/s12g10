@@ -27,7 +27,7 @@ data = {
             email: "rocky@hfpa.com",
             password: "goldenglobes",
             user_image: "/media/Icon.png",
-            is_admin: false
+            is_admin: true
         },
         {
             _id: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703"),
