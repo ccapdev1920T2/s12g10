@@ -69,6 +69,16 @@ data = {
             user_image: "/media/Icon.png",
             is_admin: false
         },
+        {
+            _id: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a707"),
+            name: "Neo Manggagamit",
+            birthday: new Date ("June 6, 1990"),
+            gender: "Male",
+            email: "new_user@sims.com",
+            password: "newtothis",
+            user_image: "/media/Icon.png",
+            is_admin: false
+        },
     ],
     games: [
         {
@@ -87,7 +97,7 @@ data = {
             game_image: "/media/coversamples/2.jpg",
             genres: ["trivia", "others"],
             time: 4,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a701")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a702")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b03"),
@@ -96,7 +106,7 @@ data = {
             game_image: "/media/coversamples/3.jpg",
             genres: ["trivia"],
             time: 5,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a702")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b04"),
@@ -105,7 +115,7 @@ data = {
             game_image: "/media/coversamples/4.jpg",
             genres: ["trivia", "others"],
             time: 5,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a701")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a704")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b05"),
@@ -114,7 +124,7 @@ data = {
             game_image: "/media/coversamples/5.jpg",
             genres: ["trivia", "others"],
             time: 10,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a704")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b06"),
@@ -123,7 +133,7 @@ data = {
             game_image: "/media/coversamples/6.jpg",
             genres: ["history"],
             time: 8,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a705")
         },
         {
             
@@ -133,7 +143,7 @@ data = {
             game_image: "/media/coversamples/7.jpg",
             genres: ["business"],
             time: 3,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a706")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b08"),
@@ -151,7 +161,7 @@ data = {
             game_image: "/media/coversamples/9.jpg",
             genres: ["sports"],
             time: 4,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a702")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b0a"),
@@ -160,7 +170,7 @@ data = {
             game_image: "/media/coversamples/10.jpg",
             genres: ["others"],
             time: 5,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a701")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b0b"),
@@ -169,7 +179,7 @@ data = {
             game_image: "/media/coversamples/11.jpg",
             genres: ["art"],
             time: 7,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a702")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a704")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b0c"),
@@ -178,7 +188,7 @@ data = {
             game_image: "/media/coversamples/12.jpg",
             genres: ["scitech", "history", "trivia", "others"],
             time: 7,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a701")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a705")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b0d"),
@@ -187,7 +197,7 @@ data = {
             game_image: "/media/coversamples/13.jpg",
             genres: ["scitech"],
             time: 4,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a706")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b0e"),
@@ -196,7 +206,7 @@ data = {
             game_image: "/media/coversamples/14.jpg",
             genres: ["sports"],
             time: 9,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a701")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b0f"),
@@ -214,7 +224,7 @@ data = {
             game_image: "/media/coversamples/10.jpg",
             genres: ["business", "others"],
             time: 8,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a701")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b11"),
@@ -223,7 +233,7 @@ data = {
             game_image: "/media/coversamples/11.jpg",
             genres: ["art", "others"],
             time: 4,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a702")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a704")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b12"),
@@ -232,7 +242,7 @@ data = {
             game_image: "/media/coversamples/12.jpg",
             genres: ["scitech", "others"],
             time: 6,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a701")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a705")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b13"),
@@ -241,7 +251,7 @@ data = {
             game_image: "/media/coversamples/13.jpg",
             genres: ["sports", "others"],
             time: 4,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a706")
         },
         {
             _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b14"),
@@ -250,7 +260,16 @@ data = {
             game_image: "/media/coversamples/14.jpg",
             genres: ["history"],
             time: 9,
-            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a703")
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a701")
+        },
+        {
+            _id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b15"),
+            title: "Moh says the Cow",
+            description: "Can you name all the minerals in the Moh scale of mineral hardness?",
+            game_image: "/media/game_images/meme.jpeg",
+            genres: ["scitech"],
+            time: 5,
+            creator: new mongoose.Types.ObjectId("9485d240ef90d5d97b05a707")
         },
     ],
     items: [
@@ -1543,8 +1562,56 @@ data = {
             question: "Richard Nixon",
             answer: "C",
             game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b14")
+        },
+        {
+            question: "Moh Hardness 1",
+            answer: "Talc",
+            game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b15")
+        },
+        {
+            question: "Moh Hardness 2",
+            answer: "Gypsum",
+            game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b15")
+        },
+        {
+            question: "Moh Hardness 3",
+            answer: "Calcite",
+            game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b15")
+        },
+        {
+            question: "Moh Hardness 4",
+            answer: "Fluorite",
+            game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b15")
+        },{
+            question: "Moh Hardness 5",
+            answer: "Apatite",
+            game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b15")
+        },
+        {
+            question: "Moh Hardness 6",
+            answer: "Feldspar",
+            game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b15")
+        },
+        {
+            question: "Moh Hardness 7",
+            answer: "Quarts",
+            game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b15")
+        },
+        {
+            question: "Moh Hardness 8",
+            answer: "Topaz",
+            game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b15")
+        },
+        {
+            question: "Moh Hardness 9",
+            answer: "Corundum",
+            game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b15")
+        },
+        {
+            question: "Moh Hardness 10",
+            answer: "Diamond",
+            game_id: new mongoose.Types.ObjectId("ae2f233fe5f4095a7b167b15")
         }
-
     ],
     attempts: [
         {

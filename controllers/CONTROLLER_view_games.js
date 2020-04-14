@@ -2,6 +2,15 @@ const db = require("../models/db");
 const Game = require("../models/Game");
 const User = require("../models/User");
 
+function shuffle (array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let rnd = Math.floor(Math.random() * (i + 1));
+        [array[i], array[rnd]] = [array[rnd], array[i]];
+    }
+
+    return array;
+}
+
 const controller = {
     //finding games with consideration if user is admin or not
     getGames: function (req, res) {
@@ -25,6 +34,8 @@ const controller = {
                     db.findMany(Game, {}, null, function (games) {
 
                         if (games.length !== 0) {
+                            games = shuffle(games);
+
                             res.render("pages/view_games", {
                                 games: games,
                                 users: users,
@@ -40,11 +51,11 @@ const controller = {
 
                 } else {
 
-                    db.findMany(Game, { $or: [
+                    db.findLimitSort(Game, { $or: [
                             {title: {$regex: searchQuery, $options: "i"}},
                             {description: {$regex: searchQuery, $options: "i"}},
                             {genres: {$regex: searchQuery, $options: "i"}},
-                        ]}, null, function (games) {
+                        ]}, null, null, {num_attempts: -1}, function (games) {
                         if (games.length !== 0) {
 
                             res.render("pages/view_games", {
@@ -58,6 +69,7 @@ const controller = {
                         } else {
 
                             db.findMany(Game, {}, null, function (games) {
+                                games = shuffle(games);
 
                                 if (games.length !== 0) {
                                     res.render("pages/view_games", {

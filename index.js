@@ -9,7 +9,7 @@ const addData = require("./models/data");
 const app = express();
 
 app.set("view engine", "ejs");
-app.use(express.static(__dirname + '/assets'));
+app.use(express.static(__dirname + '/public'));
 app.use(session({
     secret: "topsecret",
     resave: true,

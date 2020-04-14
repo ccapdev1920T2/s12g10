@@ -193,7 +193,7 @@ const controller = {
     //POST request for changing profile picture
     uploadPic:function(req,res){
         var image = req.files.pic;
-        image.mv("assets/media/profile_pictures/" + image.name, function(error){
+        image.mv("public/media/profile_pictures/" + image.name, function(error){
             if (error) {
                 console.log("file unsuccessfully uploaded");
                 res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
