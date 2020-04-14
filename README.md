@@ -21,7 +21,7 @@
 ## **Starting the app**
 Upon successful installation, enter `node index.js` or `nodemon index.js` on the terminal. 
 
-If this is the first time that the application is initialized on the machine, the following will be displayed on the console window:
+If this is the first time that the application (and thus the database) is initialized on the machine or if the database has been dropped, the following will be displayed on the console window:
 ```
 Listening at http://localhost:3000
 Database connection successful. URL: mongodb://localhost:27017/mnemosis
