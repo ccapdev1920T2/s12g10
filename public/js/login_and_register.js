@@ -9,9 +9,7 @@ $("#email-login, #password-login").on("keyup", function() {
     }
 });
 
-$("#fname, #lname, #bday, #gender, #email-register, #password-register, #cpass").on("keyup", function() {
-    validator.trim($("#fName").val());
-
+function checkValid () {
     function continueCheck () {
         valid.push($("#password-register").val().length > 0);
         valid.push($("#cpass").val().length > 0);
@@ -38,7 +36,7 @@ $("#fname, #lname, #bday, #gender, #email-register, #password-register, #cpass")
     valid.push($("#fname").val().length > 0);
     valid.push($("#lname").val().length > 0);
     valid.push($("#bday").val().length > 0);
-    valid.push($("#gender").val() !== "Your gender");
+    valid.push($("#gender").val() !== null);
 
     valid.push($("#email-register").val().length > 0 && $("#email-register").is(":valid"));
     let email = $("#email-register").val();
@@ -60,6 +58,14 @@ $("#fname, #lname, #bday, #gender, #email-register, #password-register, #cpass")
 
         }
     });
+}
+
+$("#fname, #lname, #bday, #email-register, #password-register, #cpass").on("keyup", function() {
+    checkValid();
+});
+
+$("#gender").on("change", function () {
+    checkValid();
 });
 
 $("#email-login, #password-login").on("focus", function () {
