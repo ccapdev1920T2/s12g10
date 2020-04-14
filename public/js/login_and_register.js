@@ -10,6 +10,8 @@ $("#email-login, #password-login").on("keyup", function() {
 });
 
 $("#fname, #lname, #bday, #gender, #email-register, #password-register, #cpass").on("keyup", function() {
+    validator.trim($("#fName").val());
+
     function continueCheck () {
         valid.push($("#password-register").val().length > 0);
         valid.push($("#cpass").val().length > 0);
