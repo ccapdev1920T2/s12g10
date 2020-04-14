@@ -95,7 +95,8 @@ function endGame (status) {
 
     $("#answer-header").removeClass("answer-wrapper").addClass("answer-wrapper-final");
     $("#answer").prop("disabled", true).attr("placeholder", "game over");
-    $("#quit-btn, #pause-btn").hide();
+    $("#quit-btn, #pause-btn, #resume-btn").hide();
+    $(".question-wrapper").css("filter", "blur(0px)");
     $(window).scrollTop(900);
 
     let timeFinished = $("#record-btn").attr("data-time") - $("#clock-holder").attr("data-time");
