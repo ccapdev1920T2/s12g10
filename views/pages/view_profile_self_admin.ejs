@@ -33,7 +33,7 @@
         <div class="prof_text1 ">Total Games Created</div>
         <div class="prof_text2 ">Total Games Completed</div>
         <div class="prof_subtext1 subheading">
-            
+            <%//created is an integer that stores how many games the user created%>
             <%var created=0%> 
             <% details.games.forEach(function (game) { %>
                 <% if (game.creator.equals(details.user._id)){%>
@@ -42,6 +42,7 @@
             <% }) %>
             <%= created %></div>
         <div class="prof_subtext2 subheading">
+            <%//completed is an integer that stores how many games the user has completed. comp on the other hand is an array that contains the perfect attemts of the user with the lest amount of time%>
             <%var completed = 0%>
             <% var comp = []%>
             <% details.games.forEach(function (game) { %>
@@ -95,9 +96,7 @@
             </div>
         </form>
     </div>
-    
-    
-    
+    <%//playing is an integer that stores how many games the user has attemoted but not completed. attempts on the other hand is an array that contains the best attempts of the user on a game that has not been completed yet%>
     <%var playing = 0%>
     <% var attempts = []%>
     <% details.games.forEach(function (game) { %>
