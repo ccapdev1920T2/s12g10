@@ -1,5 +1,6 @@
 const db = require("./db");
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const Game = require("./Game");
 const User = require("./User");
@@ -1805,11 +1806,18 @@ data = {
     
 };
 
+function hashAndInsert (user) {
+    bcrypt.hash(user.password, 10, function (err, hashedPass) {
+       user.password = hashedPass;
+       db.insertOne(User, user);
+    });
+}
+
 module.exports = function () {
 
     db.findMany(User, {}, null, function (result) {
         if (result.length === 0) {
-            db.insertMany(User, data.users);
+            data.users.forEach(hashAndInsert);
         } else {
             console.log("User data found");
         }

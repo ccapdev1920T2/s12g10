@@ -1,6 +1,7 @@
 const db = require("../models/db");
 const User = require("../models/User");
-const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 
 const controller = {
     //instantiate login and register page
@@ -31,20 +32,29 @@ const controller = {
         let password = req.body.password;
 
         db.findOne(User, { email: email }, null, function (result) {
-            if (result) {
-                let status = result.password === password ? 1 : 0;
-                if (status === 1) {
-                    console.log("login successful");
-                    req.session.loggedin = true;
-                    req.session.username = email;
-                    req.session.guest = false;
-                    req.session.photo = result.user_image;
-                    res.redirect("/homepage");
-                } else {
-                    console.log("user found but password incorrect");
-                    res.render("pages/login_and_register", {status: 1, errMessage: "Incorrect password"});
-                }
-            } else {
+            if (result) { //user exists in the system
+
+                //comparison of hashed password
+                bcrypt.compare(password, result.password, function (err, isEqual) {
+
+                    if (isEqual) { //password entered is correct
+                        console.log("login successful");
+                        req.session.loggedin = true;
+                        req.session.username = email;
+                        req.session.guest = false;
+                        req.session.photo = result.user_image;
+                        res.redirect("/homepage");
+
+                    } else { //password is incorrect
+
+                        console.log("user found but password incorrect");
+                        res.render("pages/login_and_register", {status: 1, errMessage: "Incorrect password"});
+
+                    }
+
+                });
+
+            } else { //no user of the entered email address exists
                 console.log("no user found");
                 res.render("pages/login_and_register", {status: 2, errMessage: "Username not found"});
             }
@@ -64,27 +74,34 @@ const controller = {
 
     //register function
     addUser: function (req, res) {
+
         let fname = req.body.fname;
         let lname = req.body.lname;
         let bday = req.body.bday;
         let gender = req.body.gender;
         let email = req.body.email;
         let pass = req.body.pass;
-        //add new user
-        db.insertOne(User, {
-            name: fname + " " + lname,
-            birthday: bday,
-            gender: gender,
-            email: email,
-            password: pass,
-            user_image: "/media/Icon.png",
-            is_admin: false,
+
+        //getting hash equivalent of pass
+        bcrypt.hash(pass, saltRounds, function (err, hashedPass) {
+            pass = hashedPass;
+
+            //add new user
+            db.insertOne(User, {
+                name: fname + " " + lname,
+                birthday: bday,
+                gender: gender,
+                email: email,
+                password: pass,
+                user_image: "/media/Icon.png",
+                is_admin: false,
+            });
+            req.session.loggedin = true;
+            req.session.username = email;
+            req.session.guest = false;
+            req.session.photo = "/media/Icon.png";
+            res.redirect("/profile");
         });
-        req.session.loggedin = true;
-        req.session.username = email;
-        req.session.guest = false;
-        req.session.photo = "/media/Icon.png";
-        res.redirect("/profile");
 
     }
 };
