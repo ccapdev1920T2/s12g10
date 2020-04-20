@@ -17,11 +17,13 @@ const controller = {
 
     logout: function (req, res) {
 
-        req.session.loggedin = false;
-        req.session.username = null;
-        req.session.guest = null;
-        req.session.photo = null;
-        res.render("pages/login_and_register", {status: 0});
+        req.session.destroy(function (err) {
+
+            if (err) throw err;
+
+            res.redirect("/");
+
+        });
 
     },
 
