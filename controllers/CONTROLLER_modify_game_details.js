@@ -8,13 +8,21 @@ const controller = {
 
     //display game details by finding in both Game and Item collection
     getGameDetails: function(req, res){
-        var id = req.params.id;
-        db.findOne(Game, {_id: id}, null, function(game){
-            db.findMany(Item, {game_id: id}, null, function(items){
-                res.render("pages/modify_game_details", {game: game, items: items, guest: req.session.guest, user_image: req.session.photo});
-            })
-            
-        })
+        if (req.session.guest) {
+            res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
+        } else {
+            var id = req.params.id;
+            db.findOne(Game, {_id: id}, null, function (game) {
+                db.findMany(Item, {game_id: id}, null, function (items) {
+                    res.render("pages/modify_game_details", {
+                        game: game,
+                        items: items,
+                        guest: req.session.guest,
+                        user_image: req.session.photo
+                    });
+                });
+            });
+        }
     },
 
     //POST request for modifying game

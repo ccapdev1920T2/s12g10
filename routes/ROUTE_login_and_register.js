@@ -13,6 +13,6 @@ app.get("/checkDupe", controller.checkDupe);
 
 app.post("/register", controller.addUser);
 
-app.get("/logout", controller.loadPage);
+app.get("/logout", controller.logout);
 
 module.exports = app;

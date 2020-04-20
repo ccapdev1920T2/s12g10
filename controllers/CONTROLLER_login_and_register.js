@@ -6,23 +6,39 @@ const saltRounds = 10;
 const controller = {
     //instantiate login and register page
     loadPage: function (req, res) {
+
+        if (req.session.loggedin) {
+            res.redirect("/homepage");
+        } else {
+            res.render("pages/login_and_register", {status: 0});
+        }
+
+    },
+
+    logout: function (req, res) {
+
         req.session.loggedin = false;
         req.session.username = null;
         req.session.guest = null;
         req.session.photo = null;
         res.render("pages/login_and_register", {status: 0});
+
     },
 
     //logs in as guest with restricted accessibility
     loginGuest: function (req, res) {
 
-        req.session.loggedin = true;
-        req.session.username = null;
-        req.session.guest = true;
-        req.session.photo = "/media/Icon.png";
+        if (req.session.loggedin) {
+            res.redirect("/homepage");
+        } else {
+            req.session.loggedin = true;
+            req.session.username = null;
+            req.session.guest = true;
+            req.session.photo = "/media/Icon.png";
 
-        console.log("logged in as guest: " + req.session.guest);
-        res.redirect("/homepage");
+            console.log("logged in as guest: " + req.session.guest);
+            res.redirect("/homepage");
+        }
 
     },
 
@@ -64,11 +80,15 @@ const controller = {
     //checking for duplicate email
     checkDupe: function (req, res) {
 
-        let email = req.query.email;
+        if (req.session.loggedin) {
+            res.redirect("/homepage");
+        } else {
+            let email = req.query.email;
 
-        db.findOne(User, {email : email}, null, function (result) {
-            res.send(result);
-        });
+            db.findOne(User, {email: email}, null, function (result) {
+                res.send(result);
+            });
+        }
 
     },
 

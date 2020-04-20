@@ -8,7 +8,13 @@ const controller = {
 
     //displays an empty form for the user to fill up
     loadPage: function (req, res) {
-        res.render("../views/pages/create_game", {guest: req.session.guest, user_image: req.session.photo});
+
+        if (req.session.guest) {
+            res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
+        } else {
+            res.render("pages/create_game", {guest: req.session.guest, user_image: req.session.photo});
+        }
+
     },
 
     //POST request for creating game

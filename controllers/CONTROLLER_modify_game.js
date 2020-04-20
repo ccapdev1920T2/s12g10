@@ -5,10 +5,19 @@ const controller = {
 
     //load game's initial details
     getGame: function(req, res){
-        var id = req.params.id;
-        db.findOne(Game, {_id: id}, null, function(game){
-            res.render("pages/modify_game", {game: game, guest: req.session.guest, user_image: req.session.photo});
-        })
+        if (req.session.guest) {
+            res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
+        } else {
+            var id = req.params.id;
+            db.findOne(Game, {_id: id}, null, function (game) {
+                res.render("pages/modify_game", {
+                    game: game,
+                    guest:
+                    req.session.guest,
+                    user_image: req.session.photo
+                });
+            });
+        }
     },
 
     //POST request for changing game image
