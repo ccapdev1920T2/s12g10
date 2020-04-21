@@ -28,15 +28,10 @@ const viewGamesRoute = require("./routes/ROUTE_view_games");
 const viewLeaderboard = require("./routes/ROUTE_view_leaderboard");
 const viewProfile = require("./routes/ROUTE_view_profile");
 
-app.use("/login", loginRoute);
 app.use("/", loginRoute);
 
 app.use(function(req, res, next) {
-    if(!req.session.loggedin) {
-        res.redirect('/login');
-    } else {
-        next();
-    }
+    req.session.loggedin ? next() : res.redirect("/");
 });
 
 app.use("/create_game", createRoute);
@@ -47,6 +42,7 @@ app.use("/play_game", playRoute);
 app.use("/games", viewGamesRoute);
 app.use("/leaderboard", viewLeaderboard);
 app.use("/profile", viewProfile);
+
 app.use(function (req, res) {
     res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
 });

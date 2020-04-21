@@ -26,9 +26,23 @@ const controller = {
         req.session.destroy(function (err) {
 
             if (err) throw err;
+
+            console.log("logged out successfully");
             res.redirect("/");
 
         });
+
+    },
+
+    errLogin: function (req, res) {
+
+        let status = req.query.status;
+
+        if (status === "incorrectPassword") {
+            res.render("pages/login_and_register", {status: 1, errMessage: "Incorrect password"});
+        } else {
+            res.render("pages/login_and_register", {status: 2, errMessage: "User not found"});
+        }
 
     },
 
@@ -78,10 +92,7 @@ const controller = {
                     } else { //password is incorrect
 
                         console.log("user found but password incorrect");
-                        res.render("pages/login_and_register", {
-                            status: 1,
-                            errMessage: "Incorrect password"
-                        });
+                        res.redirect("/authFail?status=incorrectPassword");
 
                     }
 
@@ -90,10 +101,7 @@ const controller = {
             } else { //no user of the entered email address exists
 
                 console.log("no user found");
-                res.render("pages/login_and_register", {
-                    status: 2,
-                    errMessage: "Username not found"
-                });
+                res.redirect("/authFail?status=userNotFound");
 
             }
 
