@@ -10,27 +10,38 @@ const controller = {
     loadPage: function (req, res) {
 
         if (req.session.guest) {
-            res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
+
+            res.render("pages/error", {
+                guest: req.session.guest,
+                user_image: req.session.photo
+            });
+
         } else {
-            res.render("pages/create_game", {guest: req.session.guest, user_image: req.session.photo});
+
+            res.render("pages/create_game", {
+                guest: req.session.guest,
+                user_image: req.session.photo
+            });
+
         }
 
     },
 
     //POST request for creating game
-    createGame: function (req, res){
+    createGame: function (req, res) {
+
         //instantiate new id
-        var id = new mongoose.Types.ObjectId();
+        let id = new mongoose.Types.ObjectId();
         
-        var title = req.body.title;
-        var description = req.body.description;
-        var time = req.body.time;
+        let title = req.body.title;
+        let description = req.body.description;
+        let time = req.body.time;
         
         //randomizing a template image for the game
-        var image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".jpg";
+        let image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".jpg";
         
         //getting genres if req.body has certain genre variable
-        var genres = [];
+        let genres = [];
         if (req.body.art) genres.splice(genres.length, 0, req.body.art);
         if (req.body.business) genres.splice(genres.length, 0, req.body.business);
         if (req.body.scitech) genres.splice(genres.length, 0, req.body.scitech);
@@ -40,12 +51,24 @@ const controller = {
         if (req.body.others) genres.splice(genres.length, 0, req.body.others);
 
         //creating the game along with finding the user's id
-        db.findOne(User, {email: req.session.username}, '_id', function(creator){
-            db.insertOne(Game, {_id: id, title: title, description: description, game_image: image, genres: genres, time: time, creator: creator._id, num_attempts: 0});
+        db.findOne(User, {email : req.session.username}, '_id', function (creator) {
+
+            db.insertOne(Game, {
+                _id: id,
+                title: title,
+                description: description,
+                game_image: image,
+                genres: genres,
+                time: time,
+                creator: creator._id,
+                num_attempts: 0
+
+            });
+
         });
         
         //insertion of items to an array
-        var items = [];
+        let items = [];
         if (req.body.question1) items.splice(items.length, 0, {question: req.body.question1, answer: req.body.answer1, game_id: id});
         if (req.body.question2) items.splice(items.length, 0, {question: req.body.question2, answer: req.body.answer2, game_id: id});
         if (req.body.question3) items.splice(items.length, 0, {question: req.body.question3, answer: req.body.answer3, game_id: id});
@@ -96,9 +119,11 @@ const controller = {
         if (req.body.question48) items.splice(items.length, 0, {question: req.body.question48, answer: req.body.answer48, game_id: id});
         if (req.body.question49) items.splice(items.length, 0, {question: req.body.question49, answer: req.body.answer49, game_id: id});
         if (req.body.question50) items.splice(items.length, 0, {question: req.body.question50, answer: req.body.answer50, game_id: id});
+
         //insert the array into Item collection
         db.insertMany(Item, items);
         res.redirect("/modify_game/" + id);
+
     }
 
 };

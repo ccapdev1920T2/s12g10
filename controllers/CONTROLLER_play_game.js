@@ -6,6 +6,7 @@ const Attempt = require("../models/Attempt");
 
 const mongoose = require("mongoose");
 
+//basic array shuffling function
 function shuffle (array) {
     for (let i = array.length - 1; i > 0; i--) {
         let rnd = Math.floor(Math.random() * (i + 1));
@@ -16,8 +17,10 @@ function shuffle (array) {
 }
 
 const controller = {
+
     //finding specific game details and its items
     findGame: function (req, res) {
+
         let game_id = req.params.id;
 
         db.findOne(Game, { _id: game_id }, null, function (game) {
@@ -43,25 +46,37 @@ const controller = {
                                 });
 
                             } else {
-                                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
+                                res.render("pages/error", {
+                                    guest: req.session.guest,
+                                    user_image: req.session.photo
+                                });
                             }
                         });
                     } else {
-                        res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
+                        res.render("pages/error", {
+                            guest: req.session.guest,
+                            user_image: req.session.photo
+                        });
                     }
                 });
             } else {
-                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
+                res.render("pages/error", {
+                    guest: req.session.guest,
+                    user_image: req.session.photo
+                });
             }
         });
+
     },
 
-    //POST request to add new attempt
+    //GET request to add new attempt
     recordRun: function (req, res) {
+
         //find current user
         db.findOne(User, { email : req.session.username }, null, function (user) {
 
             if (user !== null) {
+
                 //instantiate new id
                 let objID = new mongoose.Types.ObjectId();
 
@@ -77,10 +92,17 @@ const controller = {
                 res.redirect("/leaderboard/" + req.params.id + "/" + objID);
 
             } else {
-                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
+
+                res.render("pages/error", {
+                    guest: req.session.guest,
+                    user_image: req.session.photo
+                });
+
             }
         });
+
     }
+
 };
 
 module.exports = controller;

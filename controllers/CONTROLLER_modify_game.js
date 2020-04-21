@@ -4,35 +4,54 @@ const Game = require("../models/Game");
 const controller = {
 
     //load game's initial details
-    getGame: function(req, res){
+    getGame: function (req, res) {
+
         if (req.session.guest) {
-            res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
+
+            res.render("pages/error", {
+                guest: req.session.guest,
+                user_image: req.session.photo
+            });
+
         } else {
-            var id = req.params.id;
+
+            let id = req.params.id;
+
             db.findOne(Game, {_id: id}, null, function (game) {
                 res.render("pages/modify_game", {
                     game: game,
-                    guest:
-                    req.session.guest,
+                    guest: req.session.guest,
                     user_image: req.session.photo
                 });
             });
+
         }
+
     },
 
     //POST request for changing game image
-    uploadPic:function(req,res){
-        var image = req.files.new_image;
-        image.mv("public/media/game_images/" + image.name, function(error){
+    uploadPic: function(req,res){
+
+        let image = req.files.new_image;
+
+        image.mv("public/media/game_images/" + image.name, function (error) {
+
             if (error) {
+
                 console.log("file unsuccessfully uploaded");
-                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
-            } 
-            else {
-                db.updateOne(Game, {_id: req.params.id},{game_image:"/media/game_images/"+image.name}); 
+                res.render("pages/error", {
+                    guest: req.session.guest,
+                    user_image: req.session.photo
+                });
+
+            } else {
+
+                db.updateOne(Game, {_id: req.params.id},{game_image: "/media/game_images/" + image.name});
                 console.log("file successfully uploaded");
                 res.redirect("back");
-            } 
+
+            }
+
         });
         
     }

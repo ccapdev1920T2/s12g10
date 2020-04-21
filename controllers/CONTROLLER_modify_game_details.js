@@ -7,11 +7,19 @@ const Attempt = require("../models/Attempt");
 const controller = {
 
     //display game details by finding in both Game and Item collection
-    getGameDetails: function(req, res){
+    getGameDetails: function (req, res) {
+
         if (req.session.guest) {
-            res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
+
+            res.render("pages/error", {
+                guest: req.session.guest,
+                user_image: req.session.photo
+            });
+
         } else {
-            var id = req.params.id;
+
+            let id = req.params.id;
+
             db.findOne(Game, {_id: id}, null, function (game) {
                 db.findMany(Item, {game_id: id}, null, function (items) {
                     res.render("pages/modify_game_details", {
@@ -22,19 +30,21 @@ const controller = {
                     });
                 });
             });
+
         }
+
     },
 
     //POST request for modifying game
     modifyGame: function (req, res){
 
-        var id = req.params.id;
-        var title = req.body.title;
-        var description = req.body.description;
-        var time = req.body.time;
+        let id = req.params.id;
+        let title = req.body.title;
+        let description = req.body.description;
+        let time = req.body.time;
 
         //getting genres if req.body has certain genre variable
-        var genres = [];
+        let genres = [];
         if (req.body.art) genres.splice(genres.length, 0, req.body.art);
         if (req.body.business) genres.splice(genres.length, 0, req.body.business);
         if (req.body.scitech) genres.splice(genres.length, 0, req.body.scitech);
@@ -45,7 +55,15 @@ const controller = {
 
         //get creator's id and updating info on game being modified
         db.findOne(User, {email: req.session.username}, '_id', function(creator){
-            db.updateOne(Game, {_id: id}, {_id: id, title: title, description: description, genres: genres, time: time, creator: creator._id, num_attempts: 0});
+            db.updateOne(Game, {_id: id}, {
+                _id: id,
+                title: title,
+                description: description,
+                genres: genres,
+                time: time,
+                creator: creator._id,
+                num_attempts: 0
+            });
         });
 
         //clear attempts
@@ -55,7 +73,7 @@ const controller = {
         db.deleteMany(Item, {game_id: id});
 
         //insert items into an array
-        var items = [];
+        let items = [];
         if (req.body.question1) items.splice(items.length, 0, {question: req.body.question1, answer: req.body.answer1, game_id: id});
         if (req.body.question2) items.splice(items.length, 0, {question: req.body.question2, answer: req.body.answer2, game_id: id});
         if (req.body.question3) items.splice(items.length, 0, {question: req.body.question3, answer: req.body.answer3, game_id: id});
@@ -110,6 +128,7 @@ const controller = {
         //insert the array into Item collection
         db.insertMany(Item, items);
         res.redirect("/modify_game/" + id);
+
     }
 
 };
