@@ -1,8 +1,12 @@
 $("#email-login, #password-login").on("keyup", function() {
-    let holder1 = $("#email-login").val().length;
-    let holder2 = $("#password-login").val().length;
+    let email = validator.trim($("#email-login").val());
+    let pw = validator.trim($("#password-login").val());
 
-    if (holder1 !== 0 && holder2 !== 0 && $("#email-login").is(":valid")) {
+    let emailEmpty = validator.isEmpty(email);
+    let emailValid = validator.isEmail(email);
+    let pwEmpty = validator.isEmpty(pw);
+
+    if (!emailEmpty && !pwEmpty && emailValid) {
         $("#submit-login").prop("disabled", false);
     } else {
         $("#submit-login").prop("disabled", true);
