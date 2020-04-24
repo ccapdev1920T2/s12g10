@@ -9,17 +9,43 @@
 }
 
 #login-box {
+    position: relative;
     background-color: #EEB5EB;
-    padding: 30px;
+    padding: 30px 30px 80px;
     flex-grow: 1;
     flex-shrink: 1;
     transition: all 400ms ease;
 }
 
 #register-box {
+    position: relative;
     background-color: #C26DBC;
-    padding: 30px;
+    padding: 30px 30px 80px;
     flex-grow: 1;
     flex-shrink: 1;
     transition: all 400ms ease;
+}
+
+.error:empty {
+    height: 10px;
+}
+
+.error {
+    height: 10px;
+    font-size: 12px;
+}
+
+.wrong {
+    background-color: #F7BBBB;
+}
+
+.buttons {
+    /*margin: auto;*/
+
+    position: absolute;
+    bottom: 30px;
+
+    width: 96%;
+    left: 50%;
+    transform: translateX(-50%);
 }

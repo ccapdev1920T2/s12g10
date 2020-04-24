@@ -1,7 +1,25 @@
-const db = require("../models/db");
-const User = require("../models/User");
+const { validationResult } = require("express-validator");
+
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+
+const db = require("../models/db");
+const User = require("../models/User");
+
+let details = {
+
+    emailLoginError: "",
+    passLoginError: "",
+
+    fnameError: "",
+    lnameError: "",
+    bdayError: "",
+    genderError: "",
+    emailRegisterError: "",
+    passRegisterError: "",
+    cpassError: ""
+
+};
 
 const controller = {
 
@@ -14,7 +32,7 @@ const controller = {
 
         } else {
 
-            res.render("pages/login_and_register", {status: 0});
+            res.render("pages/login_and_register", details);
 
         }
 
@@ -39,9 +57,17 @@ const controller = {
         let status = req.query.status;
 
         if (status === "incorrectPassword") {
-            res.render("pages/login_and_register", {status: 1, errMessage: "Incorrect password"});
+
+            details.passLoginError = "Incorrect password";
+            res.render("pages/login_and_register", details);
+            details.passLoginError = "";
+
         } else {
-            res.render("pages/login_and_register", {status: 2, errMessage: "User not found"});
+
+            details.emailLoginError = "User not found";
+            res.render("pages/login_and_register", details);
+            details.emailLoginError = "";
+
         }
 
     },
@@ -60,7 +86,7 @@ const controller = {
             req.session.guest = true;
             req.session.photo = "/media/Icon.png";
 
-            console.log("logged in as guest: " + req.session.guest);
+            console.log("logged in as guest");
             res.redirect("/homepage");
 
         }
@@ -70,8 +96,8 @@ const controller = {
     //login authentication
     authenticateUser: function (req, res) {
 
-        let email = req.body.email;
-        let password = req.body.password;
+        let email = req.body.emailLogin;
+        let password = req.body.passLogin;
 
         db.findOne(User, { email: email }, null, function (result) {
 
@@ -130,37 +156,71 @@ const controller = {
     //register function
     addUser: function (req, res) {
 
-        let fname = req.body.fname;
-        let lname = req.body.lname;
-        let bday = req.body.bday;
-        let gender = req.body.gender;
-        let email = req.body.email;
-        let pass = req.body.pass;
+        let errors = validationResult(req);
 
-        //getting hash equivalent of pass
-        bcrypt.hash(pass, saltRounds, function (err, hashedPass) {
+        if (!errors.isEmpty()) {
 
-            //convert password to hashed password string
-            pass = hashedPass;
+            errors = errors.errors;
+            // console.log(errors);
 
-            //add new user
-            db.insertOne(User, {
-                name: fname + " " + lname,
-                birthday: bday,
-                gender: gender,
-                email: email,
-                password: pass,
-                user_image: "/media/Icon.png",
-                is_admin: false,
+            let emailErrorDetected = false;
+            errors.forEach(function (currError) {
+
+                if (currError.param === "emailRegister" && emailErrorDetected) { /*skip*/ }
+                else if (currError.param === "emailRegister" && !emailErrorDetected) {
+                    emailErrorDetected = true;
+                    details.emailRegisterError = currError.msg;
+                } else {
+                    details[currError.param + "Error"] = currError.msg;
+                }
+
             });
-            req.session.loggedin = true;
-            req.session.username = email;
-            req.session.guest = false;
-            req.session.photo = "/media/Icon.png";
-            res.redirect("/profile");
 
-        });
+            res.redirect("/registerFail");
 
+        } else {
+
+            let fname = req.body.fname;
+            let lname = req.body.lname;
+            let bday = req.body.bday;
+            let gender = req.body.gender;
+            let email = req.body.emailRegister;
+            let pass = req.body.passRegister;
+
+            //getting hash equivalent of pass
+            bcrypt.hash(pass, saltRounds, function (err, hashedPass) {
+
+                //convert password to hashed password string
+                pass = hashedPass;
+
+                //add new user
+                db.insertOne(User, {
+                    name: fname + " " + lname,
+                    birthday: bday,
+                    gender: gender,
+                    email: email,
+                    password: pass,
+                    user_image: "/media/Icon.png",
+                    is_admin: false,
+                });
+                req.session.loggedin = true;
+                req.session.username = email;
+                req.session.guest = false;
+                req.session.photo = "/media/Icon.png";
+                res.redirect("/profile");
+
+            });
+
+        }
+
+    },
+
+    regFail: function (req, res) {
+        res.render("pages/login_and_register", details);
+
+        for (let key in details) {
+            details[key] = "";
+        }
     }
 
 };

@@ -18,50 +18,30 @@
 
                 <div class="row"><div class="col-sm-12"><br></div></div>
 
-                <form action="auth" method="post">
+                <form action="auth" method="post" class="parent">
 
-                    <% if (status === 1) { %>
-
-                        <div class="form-group">
-                            <label for="email-login" class="subheading" id="elogin">Email address:</label>
-                            <input type="email" class="form-control subheading" name="email" placeholder="Your email address" id="email-login">
-                        </div>
-                        <div class="form-group">
-                            <label for="password-login" class="subheading" id="plogin">Password: <%= errMessage %></label>
-                            <input type="password" class="form-control subheading" name="password" placeholder="Your password" id="password-login" style="background-color: lightcoral">
-                        </div>
-
-                    <% } else if (status === 2) { %>
-
-                        <div class="form-group">
-                            <label for="email-login" class="subheading">Email address: <%= errMessage %></label>
-                            <input type="email" class="form-control subheading" name="email" placeholder="Your email address" id="email-login" style="background-color: lightcoral">
-                        </div>
-                        <div class="form-group">
-                            <label for="password-login" class="subheading">Password:</label>
-                            <input type="password" class="form-control subheading" name="password" placeholder="Your password" id="password-login">
-                        </div>
-
-                    <% } else { %>
-
-                        <div class="form-group">
-                            <label for="email-login" class="subheading">Email address:</label>
-                            <input type="email" class="form-control subheading" name="email" placeholder="Your email address" id="email-login">
-                        </div>
-                        <div class="form-group">
-                            <label for="password-login" class="subheading">Password:</label>
-                            <input type="password" class="form-control subheading" name="password" placeholder="Your password" id="password-login">
-                        </div>
-
-                    <% } %>
+                    <div class="form-group">
+                        <label for="emailLogin" class="subheading">Email address:</label>
+                        <input type="email" class="form-control subheading <% if (emailLoginError !== "") { %> wrong <% } %>" name="emailLogin" placeholder="Your email address" id="emailLogin">
+                        <p id="emailLoginError" class="error subheading"><%= emailLoginError %></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordLogin" class="subheading">Password:</label>
+                        <input type="password" class="form-control subheading <% if (passLoginError !== "") { %> wrong <% } %>" name="passLogin" placeholder="Your password" id="passLogin">
+                        <p id="passLoginError" class="error subheading"><%= passLoginError %></p>
+                    </div>
 
                     <div class="row"><div class="col-sm-12"><br></div></div>
-                    <button type="submit" class="btn btn-custom btn-block subheading" id="submit-login" disabled>Log-in</button>
-                    <div class="row"><div class="col-sm-12"><br></div></div>
 
-                    <p class="subheading" style="text-align: center; margin-bottom: 0">----------- or -----------</p>
-                    <div class="row"><div class="col-sm-12"><br></div></div>
-                    <a href="guest" class="btn btn-custom btn-block subheading" role="button" id="guest">Continue as guest</a>
+                    <div class="buttons container">
+                        <button type="submit" class="btn btn-custom btn-block subheading" id="submitLogin" disabled>Log-in</button>
+                        <div class="row"><div class="col-sm-12"><br></div></div>
+
+                        <p class="subheading" style="text-align: center; margin-bottom: 0">----------- or -----------</p>
+                        <div class="row"><div class="col-sm-12"><br></div></div>
+                        <a href="guest" class="btn btn-custom btn-block subheading" role="button" id="guest">Continue as guest</a>
+                    </div>
+
                 </form>
             </div>
             <div class="col-sm-7" id="register-box">
@@ -69,54 +49,60 @@
 
                 <div class="row"><div class="col-sm-12"><br></div></div>
 
-                <form action="register" method="post">
-                    <div class="form-row form-group">
+                <form action="register" method="post" class="parent">
+                    <div class="form-row">
                         <div class="col">
-                            <label for="fname" class="subheading" id="fn-label">First name:</label>
-                            <input type="text" class="form-control subheading" placeholder="Your first name" id="fname" name="fname">
+                            <label for="fname" class="subheading" id="fname-label">First name:</label>
+                            <input type="text" class="form-control subheading <% if (fnameError !== "") { %> wrong <% } %>" placeholder="Your first name" id="fname" name="fname">
+                            <p id="fnameError" class="error subheading"><%= fnameError %></p>
                         </div>
                         <div class="col">
-                            <label for="lname" class="subheading" id="ln-label">Last name:</label>
-                            <input type="text" class="form-control subheading" placeholder="Your last name" id="lname" name="lname">
+                            <label for="lname" class="subheading" id="lname-label">Last name:</label>
+                            <input type="text" class="form-control subheading <% if (lnameError !== "") { %> wrong <% } %>" placeholder="Your last name" id="lname" name="lname">
+                            <p id="lnameError" class="error subheading"><%= lnameError %></p>
                         </div>
                     </div>
-                    <div class="form-row form-group">
+                    <div class="form-row">
                         <div class="col">
                             <label for="bday" class="subheading" id="bday-label">Birthday:</label>
-                            <input type="date" class="form-control subheading" id="bday" name="bday">
+                            <input type="date" class="form-control subheading <% if (bdayError !== "") { %> wrong <% } %>" id="bday" name="bday">
+                            <p id="bdayError" class="error subheading"><%= bdayError %></p>
                         </div>
                         <div class="col">
                             <label for="gender" class="subheading" id="gender-label">Gender:</label>
-                            <select class="form-control subheading" id="gender" name="gender">
+                            <select class="form-control subheading <% if (genderError !== "") { %> wrong <% } %>" id="gender" name="gender">
                                 <option selected disabled>Your gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
                                 <option>Prefer not to say</option>
                             </select>
+                            <p id="genderError" class="error subheading"><%= genderError %></p>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="email-register" class="subheading" id="email-label">Email address:</label>
-                        <input type="email" class="form-control subheading" placeholder="Your email address" id="email-register" name="email">
+                        <label for="emailRegister" class="subheading" id="email-label">Email address:</label>
+                        <input type="email" class="form-control subheading <% if (emailRegisterError !== "") { %> wrong <% } %>" placeholder="Your email address" id="emailRegister" name="emailRegister">
+                        <p id="emailRegisterError" class="error subheading"><%= emailRegisterError %></p>
                     </div>
-                    <div class="form-row form-group">
+                    <div class="form-row">
                         <div class="col">
-                            <label for="password-register" class="subheading" id="pw-label">Password:</label>
-                            <input type="password" class="form-control subheading" placeholder="Your password" id="password-register" name="pass">
+                            <label for="passwordRegister" class="subheading" id="pw-label">Password:</label>
+                            <input type="password" class="form-control subheading <% if (passRegisterError !== "") { %> wrong <% } %>" placeholder="Your password" id="passRegister" name="passRegister">
+                            <p id="passRegisterError" class="error subheading"><%= passRegisterError %></p>
                         </div>
                         <div class="col">
                             <label for="cpass" class="subheading" id="cpass-label">Confirm password:</label>
-                            <input type="password" class="form-control subheading" placeholder="Password confirmation" id="cpass" disabled>
+                            <input type="password" class="form-control subheading <% if (cpassError !== "") { %> wrong <% } %>" placeholder="Password confirmation" id="cpass" name="cpass" disabled>
+                            <p id="cpassError" class="error subheading"><%= cpassError %></p>
                         </div>
                     </div>
 
                     <div class="row"><div class="col-sm-12"><br></div></div>
 
-                    <div class="form-row form-group">
-                        <div class="col"><input type="submit" class="btn btn-custom btn-block subheading" disabled id="submit-register"></div>
-                        <div class="col"><input type="reset" class="btn btn-custom btn-block subheading" id="reset-register"></div>
+                    <div class="form-row buttons container">
+                        <div class="col"><input type="submit" class="btn btn-custom btn-block subheading" id="submitRegister" disabled></div>
+                        <div class="col"><input type="reset" class="btn btn-custom btn-block subheading" id="resetRegister"></div>
                     </div>
-                    <div class="row"><div class="col-sm-12"><br></div></div>
                 </form>
 
             </div>
