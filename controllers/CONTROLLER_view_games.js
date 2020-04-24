@@ -2,15 +2,7 @@ const db = require("../models/db");
 const Game = require("../models/Game");
 const User = require("../models/User");
 
-//basic shuffling function
-function shuffle (array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        let rnd = Math.floor(Math.random() * (i + 1));
-        [array[i], array[rnd]] = [array[rnd], array[i]];
-    }
-
-    return array;
-}
+const shuffle = require("../helpers/shuffle");
 
 const controller = {
 
@@ -41,7 +33,7 @@ const controller = {
 
                         if (games.length !== 0) {
 
-                            games = shuffle(games);
+                            games = shuffle.shuffleArray(games);
 
                             res.render("pages/view_games", {
                                 games: games,
@@ -87,7 +79,7 @@ const controller = {
                         } else {
 
                             db.findMany(Game, {}, null, function (games) {
-                                games = shuffle(games);
+                                games = shuffle.shuffleArray(games);
 
                                 if (games.length !== 0) {
 

@@ -6,15 +6,7 @@ const Attempt = require("../models/Attempt");
 
 const mongoose = require("mongoose");
 
-//basic array shuffling function
-function shuffle (array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        let rnd = Math.floor(Math.random() * (i + 1));
-        [array[i], array[rnd]] = [array[rnd], array[i]];
-    }
-
-    return array;
-}
+const shuffle = require("../helpers/shuffle");
 
 const controller = {
 
@@ -36,7 +28,7 @@ const controller = {
                         db.findMany(Item, { game_id : game_id }, null, function (items) {
 
                             if (items != null) {
-                                items = shuffle(items);
+                                items = shuffle.shuffleArray(items);
 
                                 res.render("pages/play_game", {
                                     items: items,

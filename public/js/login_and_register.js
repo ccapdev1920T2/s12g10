@@ -19,6 +19,27 @@ function checkFilled (field) {
     return !bool;
 }
 
+function checkBDay (changeDisp = false) {
+    let bday = validator.trim($("#bday").val());
+
+    let isEmpty = validator.isEmpty(bday);
+    let isAfter = validator.isAfter(bday, new Date().toDateString());
+
+    let valid = !isEmpty && !isAfter;
+
+    if (changeDisp) {
+        if (!valid) {
+            $("#bday").css("background-color", "lightcoral");
+            $("#bday-label").text("Birthday: Birthday must be valid");
+        } else {
+            $("#bday").css("background-color", "");
+            $("#bday-label").text("Birthday:");
+        }
+    }
+
+    return valid;
+}
+
 function checkGender (changeDisp = false) {
 
     let valid = $("#gender").val() !== null;
@@ -128,12 +149,12 @@ function confirmPass (changeDisp = false) {
 
 }
 
-function checkValid (cb) {
+function checkValid () {
 
     let valid = [];
     valid.push(checkFilled($("#fname")));
     valid.push(checkFilled($("#lname")));
-    valid.push(checkFilled($("#bday")));
+    valid.push(checkBDay());
     valid.push(checkGender());
 
     let pass = validPass();
@@ -148,15 +169,9 @@ function checkValid (cb) {
         valid.push(val);
 
         if (valid.indexOf(false) === -1) {
-
             $("#submit-register").prop("disabled", false);
-            return cb(false);
-
         } else {
-
             $("#submit-register").prop("disabled", true);
-            return cb(true);
-
         }
 
     });
@@ -177,7 +192,7 @@ $("#fname").on("keyup", function () {
 
 });
 
-$("#lname").on("keyup", function () {
+$("#lname").on("keyup",function () {
 
     if (!checkFilled($(this))) {
         $(this).css("background-color", "lightcoral");
@@ -193,14 +208,15 @@ $("#lname").on("keyup", function () {
 
 $("#bday").on("keyup change", function () {
 
-    if (!checkFilled($(this))) {
-        $(this).css("background-color", "lightcoral");
-        $("#bday-label").text("Birthday: Birthday cannot be empty");
-    } else {
-        $(this).css("background-color", "");
-        $("#bday-label").text("Birthday:");
-    }
+    // if (!checkFilled($(this))) {
+    //     $(this).css("background-color", "lightcoral");
+    //     $("#bday-label").text("Birthday: Birthday must be valid");
+    // } else {
+    //     $(this).css("background-color", "");
+    //     $("#bday-label").text("Birthday:");
+    // }
 
+    checkBDay(true);
     checkValid();
 
 });
@@ -226,7 +242,15 @@ $("#cpass").on("keyup", function () {
 
 });
 
-$("#gender").on("click change", function () {
+$("#gender").on("click change focus", function () {
+
+    $("#login-box").removeClass();
+    $("#login-box").addClass("col-sm-4");
+
+    $("#register-box").removeClass();
+    $("#register-box").addClass("col-sm-8");
+
+    clearIncorrectsLogin();
 
     checkGender(true);
     checkValid();
@@ -235,20 +259,18 @@ $("#gender").on("click change", function () {
 
 function clearIncorrectsSignup () {
 
-    checkValid(function (invalidExists) {
-        $("#fname, #lname, #bday, #email-register, #password-register, #cpass").css("background-color", "").val("");
-        $("#gender").css("background-color", "").val("Your gender");
+    $("#fname, #lname, #bday, #email-register, #password-register, #cpass").css("background-color", "").val("");
+    $("#gender").css("background-color", "").val("Your gender");
 
-        $("#fn-label").text("First name:");
-        $("#ln-label").text("Last name:");
-        $("#bday-label").text("Birthday:");
-        $("#gender-label").text("Gender:");
-        $("#email-label").text("Email address:");
-        $("#pw-label").text("Password:");
-        $("#cpass-label").text("Confirm password:");
-    });
+    $("#fn-label").text("First name:");
+    $("#ln-label").text("Last name:");
+    $("#bday-label").text("Birthday:");
+    $("#gender-label").text("Gender:");
+    $("#email-label").text("Email address:");
+    $("#pw-label").text("Password:");
+    $("#cpass-label").text("Confirm password:");
 
-}
+};
 
 function clearIncorrectsLogin () {
     $("#email-login, #password-login").css("background-color", "");
@@ -268,7 +290,7 @@ $("#email-login, #password-login, #submit-login, #guest").on("focus", function (
 
 });
 
-$("#fname, #lname, #bday, #gender, #email-register, #password-register, #cpass, #submit-register, #reset-register").on("focus", function () {
+$("#fname, #lname, #gender, #email-register, #password-register, #cpass, #submit-register, #reset-register").on("focus", function () {
 
     $("#login-box").removeClass();
     $("#login-box").addClass("col-sm-4");
