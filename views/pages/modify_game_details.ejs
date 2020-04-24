@@ -7,22 +7,24 @@
     <link rel="stylesheet" href="../../css/modify_game.css">
 </head>
 <body>
-    <script src="../../js/modify_game_details_ready.js"></script>
     <%- include ("../partials/header.ejs") %>
     <div class="container mt-5 mb-5" id="main-box">
         <h2 class="subheading" style="text-align: center">Modifying a Game</h2>
         <form action="<%= game._id %>/modify" method="post">
             <div class="form-group">
                 <label for="game_title" class="subheading">Game Title:</label>
-                <input class="form-control subheading" type="text" placeholder="Your title" min="5" max="50" id="game_title" value="<%= game.title %>" name="title" required>
+                <input class="form-control subheading" type="text" placeholder="Your title" id="game_title" name="title" value="<%= game.title %>" required>
+                <p id="game_title_error" class="error"></p>
             </div>
             <div class="form-group">
                 <label for="game_description" class="subheading">Description:</label>
-                <textarea class="form-control subheading" placeholder="Your description" minlength="10" maxlength="1000" id="game_description" name="description" required><%= game.description %></textarea>
+                <textarea class="form-control subheading" placeholder="Your description" id="game_description" name="description" required><%= game.description %></textarea>
+                <p id="game_description_error" class="error"></p>
             </div>
             <div class="form-group">
                 <label for="game_duration" class="subheading">Game Duration (minutes):</label>
-                <input class="subheading" type="number" id="game_duration" min="3" max="10" placeholder="*" value="<%= game.time %>" name="time" required>
+                <input class="subheading" type="number" id="game_duration" min="3" max="10" placeholder="*" name="time" value="<%= game.time %>" required>
+                <p id="game_duration_error" class="error"></p>
             </div>
             <div class="form-group">
                 <label for="genre-buttons" class="subheading">Genre(s):</label>
@@ -42,8 +44,8 @@
                 <% items.forEach(function(item, index) { %>
                 <div class="form-inline row mb-1" id="form<%= index+1 %>">
                     <div class="col-2"><label class="subheading">Question <%= index+1 %>:</label></div>
-                    <div class="col-6"><input type="text" class="form-control subheading" size="60" placeholder="Your question" id="question<%= index+1 %>" name="question<%= index+1 %>" value="<%= item.question %>" required></div>
-                    <div class="col-3"><input type="text" class="form-control subheading" size="25" placeholder="Your answer" id="answer<%= index+1 %>" name="answer<%= index+1 %>" value="<%= item.answer %>" required></div>
+                    <div class="col-6"><input type="text" class="form-control subheading question" size="60" placeholder="Your question" id="question<%= index+1 %>" name="question<%= index+1 %>" value="<%= item.question %>" required></div>
+                    <div class="col-3"><input type="text" class="form-control subheading answer" size="25" placeholder="Your answer" id="answer<%= index+1 %>" name="answer<%= index+1 %>" value="<%= item.answer %>" required></div>
                     <div class="col"><button type="button" class="btn btn-danger delete" id="delete<%= index+1 %>">&times;</button></div>
                 </div>
                 <% }) %>
@@ -51,8 +53,9 @@
                     <button type="button" class="btn btn-block" id="add_question">+</button>
                 </div>
             </div>
+            <p id="questions_form_error" class="error"></p>
             <div class="row"><div class="col-sm-12"><br></div></div>
-            <button type="submit" class="btn btn-custom btn-block subheading" id="modify_game">Save Changes</button>
+            <input type="submit" class="btn btn-custom btn-block subheading" id="modify_game" value="Save Changes">
             <div class="row"><div class="col-sm-12"><br></div></div>
         </form>
     </div>
@@ -60,5 +63,6 @@
     <%- include ("../partials/footer.ejs") %>
 
     <script src="../../js/modify_game_details.js"></script>
+    <script src="/js/validator.min.js" type="text/javascript"></script>
 </body>
 </html>
