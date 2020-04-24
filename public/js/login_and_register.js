@@ -13,10 +13,50 @@ $("#email-login, #password-login").on("keyup", function() {
     }
 });
 
-function checkFilled (field) {
-    let bool = validator.isEmpty(validator.trim(field.val()));
+function checkFN (changeDisp) {
 
-    return !bool;
+    let empty = validator.isEmpty(validator.trim($("#fname").val()));
+
+    if (empty) {
+        $("#fname").val("");
+    }
+
+    if (changeDisp) {
+
+        if (empty) {
+            $("#fname").css("background-color", "lightcoral");
+            $("#fn-label").text("First name: Name cannot be empty");
+        } else {
+            $("#fname").css("background-color", "");
+            $("#fn-label").text("First name:");
+        }
+
+    }
+
+    return !empty;
+
+}
+
+function checkLN (changeDisp) {
+
+    let empty = validator.isEmpty(validator.trim($("#lname").val()));
+
+    if (empty) {
+        $("#lname").val("");
+    }
+
+    if (changeDisp) {
+        if (empty) {
+            $("#lname").css("background-color", "lightcoral");
+            $("#ln-label").text("Last name: Name cannot be empty");
+        } else {
+            $("#lname").css("background-color", "");
+            $("#ln-label").text("Last name:");
+        }
+    }
+
+    return !empty;
+
 }
 
 function checkBDay (changeDisp = false) {
@@ -46,15 +86,11 @@ function checkGender (changeDisp = false) {
 
     if (changeDisp) {
         if (valid) {
-
             $("#gender").css("background-color", "");
             $("#gender-label").text("Gender:");
-
         } else {
-
             $("#gender").css("background-color", "lightcoral");
             $("#gender-label").text("Gender: Please pick one");
-
         }
     }
 
@@ -64,37 +100,50 @@ function checkGender (changeDisp = false) {
 function validEmail (cb, changeDisp = false) {
 
     let email = validator.trim($("#email-register").val());
+    let empty = validator.isEmpty(email);
     let valid = validator.isEmail(email);
 
-    if (valid) {
+    if (!empty) {
 
-        $.get("/checkDupe", {email: email}, function (result) {
+        if (valid) {
 
-            if (result.email === email) {
+            $.get("/checkDupe", {email: email}, function (result) {
 
-                if (changeDisp) {
-                    $("#email-register").css("background-color", "lightcoral");
-                    $("#email-label").text("Email address: This email is already in use.");
+                if (result.email === email) {
+
+                    if (changeDisp) {
+                        $("#email-register").css("background-color", "lightcoral");
+                        $("#email-label").text("Email address: This email is already in use.");
+                    }
+                    return cb(false);
+
+                } else {
+
+                    if (changeDisp) {
+                        $("#email-register").css("background-color", "");
+                        $("#email-label").text("Email address:");
+                    }
+                    return cb(true);
+
                 }
-                return cb(false);
 
-            } else {
+            });
 
-                if (changeDisp) {
-                    $("#email-register").css("background-color", "");
-                    $("#email-label").text("Email address:");
-                }
-                return cb(true);
+        } else {
 
+            if (changeDisp) {
+                $("#email-register").css("background-color", "lightcoral");
+                $("#email-label").text("Email address: Invalid email");
             }
+            return cb(false);
 
-        });
+        }
 
     } else {
 
         if (changeDisp) {
             $("#email-register").css("background-color", "lightcoral");
-            $("#email-label").text("Email address: Invalid email");
+            $("#email-label").text("Email address: Email cannot be empty");
         }
         return cb(false);
 
@@ -149,19 +198,19 @@ function confirmPass (changeDisp = false) {
 
 }
 
-function checkValid () {
+function checkValid (changeDisp = false) {
 
     let valid = [];
-    valid.push(checkFilled($("#fname")));
-    valid.push(checkFilled($("#lname")));
-    valid.push(checkBDay());
-    valid.push(checkGender());
+    valid.push(checkFN(changeDisp));
+    valid.push(checkLN(changeDisp));
+    valid.push(checkBDay(changeDisp));
+    valid.push(checkGender(changeDisp));
 
-    let pass = validPass();
+    let pass = validPass(changeDisp);
     valid.push(pass);
 
     if (pass) {
-        valid.push(confirmPass());
+        valid.push(confirmPass(changeDisp));
     }
 
     validEmail(function (val) {
@@ -174,47 +223,25 @@ function checkValid () {
             $("#submit-register").prop("disabled", true);
         }
 
-    });
+    }, changeDisp);
 
 }
 
 $("#fname").on("keyup", function () {
 
-    if (!checkFilled($(this))) {
-        $(this).css("background-color", "lightcoral");
-        $("#fn-label").text("First name: Name cannot be empty");
-    } else {
-        $(this).css("background-color", "");
-        $("#fn-label").text("First name:");
-    }
-
+    checkFN(true);
     checkValid();
 
 });
 
 $("#lname").on("keyup",function () {
 
-    if (!checkFilled($(this))) {
-        $(this).css("background-color", "lightcoral");
-        $("#ln-label").text("Last name: Name cannot be empty");
-    } else {
-        $(this).css("background-color", "");
-        $("#ln-label").text("Last name:");
-    }
-
+    checkLN(true);
     checkValid();
 
 });
 
 $("#bday").on("keyup change", function () {
-
-    // if (!checkFilled($(this))) {
-    //     $(this).css("background-color", "lightcoral");
-    //     $("#bday-label").text("Birthday: Birthday must be valid");
-    // } else {
-    //     $(this).css("background-color", "");
-    //     $("#bday-label").text("Birthday:");
-    // }
 
     checkBDay(true);
     checkValid();
@@ -259,7 +286,7 @@ $("#gender").on("click change focus", function () {
 
 function clearIncorrectsSignup () {
 
-    $("#fname, #lname, #bday, #email-register, #password-register, #cpass").css("background-color", "").val("");
+    $("#fname, #lname, #bday, #email-register, #password-register, #cpass").css("background-color", "");
     $("#gender").css("background-color", "").val("Your gender");
 
     $("#fn-label").text("First name:");
