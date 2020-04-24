@@ -1,15 +1,15 @@
-$("#email-login, #password-login").on("keyup", function() {
-    let email = validator.trim($("#email-login").val());
-    let pw = validator.trim($("#password-login").val());
+$("#emailLogin, #passLogin").on("keyup", function() {
+    let email = validator.trim($("#emailLogin").val());
+    let pw = validator.trim($("#passLogin").val());
 
     let emailEmpty = validator.isEmpty(email);
     let emailValid = validator.isEmail(email);
     let pwEmpty = validator.isEmpty(pw);
 
     if (!emailEmpty && !pwEmpty && emailValid) {
-        $("#submit-login").prop("disabled", false);
+        $("#submitLogin").prop("disabled", false);
     } else {
-        $("#submit-login").prop("disabled", true);
+        $("#submitLogin").prop("disabled", true);
     }
 });
 
@@ -24,11 +24,11 @@ function checkFN (changeDisp) {
     if (changeDisp) {
 
         if (empty) {
-            $("#fname").css("background-color", "lightcoral");
-            $("#fn-label").text("First name: Name cannot be empty");
+            $("#fname").css("background-color", "#f7bbbb");
+            $("#fnameError").text("Name cannot be empty");
         } else {
             $("#fname").css("background-color", "");
-            $("#fn-label").text("First name:");
+            $("#fnameError").text("");
         }
 
     }
@@ -47,11 +47,11 @@ function checkLN (changeDisp) {
 
     if (changeDisp) {
         if (empty) {
-            $("#lname").css("background-color", "lightcoral");
-            $("#ln-label").text("Last name: Name cannot be empty");
+            $("#lname").css("background-color", "#f7bbbb");
+            $("#lnameError").text("Name cannot be empty");
         } else {
             $("#lname").css("background-color", "");
-            $("#ln-label").text("Last name:");
+            $("#lnameError").text("");
         }
     }
 
@@ -69,11 +69,11 @@ function checkBDay (changeDisp = false) {
 
     if (changeDisp) {
         if (!valid) {
-            $("#bday").css("background-color", "lightcoral");
-            $("#bday-label").text("Birthday: Birthday must be valid");
+            $("#bday").css("background-color", "#f7bbbb");
+            $("#bdayError").text("Birthday must be valid");
         } else {
             $("#bday").css("background-color", "");
-            $("#bday-label").text("Birthday:");
+            $("#bdayError").text("");
         }
     }
 
@@ -87,10 +87,10 @@ function checkGender (changeDisp = false) {
     if (changeDisp) {
         if (valid) {
             $("#gender").css("background-color", "");
-            $("#gender-label").text("Gender:");
+            $("#genderError").text("");
         } else {
-            $("#gender").css("background-color", "lightcoral");
-            $("#gender-label").text("Gender: Please pick one");
+            $("#gender").css("background-color", "#f7bbbb");
+            $("#genderError").text("Please pick one");
         }
     }
 
@@ -99,7 +99,7 @@ function checkGender (changeDisp = false) {
 
 function validEmail (cb, changeDisp = false) {
 
-    let email = validator.trim($("#email-register").val());
+    let email = validator.trim($("#emailRegister").val());
     let empty = validator.isEmpty(email);
     let valid = validator.isEmail(email);
 
@@ -112,16 +112,16 @@ function validEmail (cb, changeDisp = false) {
                 if (result.email === email) {
 
                     if (changeDisp) {
-                        $("#email-register").css("background-color", "lightcoral");
-                        $("#email-label").text("Email address: This email is already in use.");
+                        $("#emailRegister").css("background-color", "#f7bbbb");
+                        $("#emailRegisterError").text("This email is already in use.");
                     }
                     return cb(false);
 
                 } else {
 
                     if (changeDisp) {
-                        $("#email-register").css("background-color", "");
-                        $("#email-label").text("Email address:");
+                        $("#emailRegister").css("background-color", "");
+                        $("#emailRegisterError").text("");
                     }
                     return cb(true);
 
@@ -132,8 +132,8 @@ function validEmail (cb, changeDisp = false) {
         } else {
 
             if (changeDisp) {
-                $("#email-register").css("background-color", "lightcoral");
-                $("#email-label").text("Email address: Invalid email");
+                $("#emailRegister").css("background-color", "#f7bbbb");
+                $("#emailRegisterError").text("Invalid email");
             }
             return cb(false);
 
@@ -142,8 +142,8 @@ function validEmail (cb, changeDisp = false) {
     } else {
 
         if (changeDisp) {
-            $("#email-register").css("background-color", "lightcoral");
-            $("#email-label").text("Email address: Email cannot be empty");
+            $("#emailRegister").css("background-color", "#f7bbbb");
+            $("#emailRegisterError").text("Email cannot be empty");
         }
         return cb(false);
 
@@ -153,21 +153,21 @@ function validEmail (cb, changeDisp = false) {
 
 function validPass (changeDisp = false) {
 
-    let valid = validator.isLength(validator.trim($("#password-register").val()), {min : 8});
+    let valid = validator.isLength(validator.trim($("#passRegister").val()), {min : 8});
 
     if (valid) {
 
         if (changeDisp) {
-            $("#password-register").css("background-color", "");
-            $("#pw-label").text("Password:");
+            $("#passRegister").css("background-color", "");
+            $("#passRegisterError").text("");
         }
         $("#cpass").prop("disabled", false);
 
     } else {
 
         if (changeDisp) {
-            $("#password-register").css("background-color", "lightcoral");
-            $("#pw-label").text("Password: Should be at least 8 characters");
+            $("#passRegister").css("background-color", "#f7bbbb");
+            $("#passRegisterError").text("Should be at least 8 characters");
         }
         $("#cpass").prop("disabled", true).val("");
 
@@ -179,17 +179,17 @@ function validPass (changeDisp = false) {
 
 function confirmPass (changeDisp = false) {
 
-    let pw = validator.trim($("#password-register").val());
+    let pw = validator.trim($("#passRegister").val());
     let cpw = validator.trim($("#cpass").val());
 
     if (changeDisp) {
 
         if (pw !== cpw) {
-            $("#password-register, #cpass").css("background-color", "lightcoral");
-            $("#cpass-label").text("Confirm password: Passwords do not match");
+            $("#passRegister, #cpass").css("background-color", "#f7bbbb");
+            $("#cpassError").text("Passwords do not match");
         } else {
-            $("#password-register, #cpass").css("background-color", "");
-            $("#cpass-label").text("Confirm password:");
+            $("#passRegister, #cpass").css("background-color", "");
+            $("#cpassError").text("");
         }
 
     }
@@ -218,9 +218,9 @@ function checkValid (changeDisp = false) {
         valid.push(val);
 
         if (valid.indexOf(false) === -1) {
-            $("#submit-register").prop("disabled", false);
+            $("#submitRegister").prop("disabled", false);
         } else {
-            $("#submit-register").prop("disabled", true);
+            $("#submitRegister").prop("disabled", true);
         }
 
     }, changeDisp);
@@ -248,14 +248,14 @@ $("#bday").on("keyup change", function () {
 
 });
 
-$("#email-register").on("keyup", function () {
+$("#emailRegister").on("keyup", function () {
 
     validEmail(function (val) {}, true);
     checkValid();
 
 });
 
-$("#password-register").on("keyup", function () {
+$("#passRegister").on("keyup", function () {
 
     validPass( true);
     checkValid();
@@ -286,26 +286,22 @@ $("#gender").on("click change focus", function () {
 
 function clearIncorrectsSignup () {
 
-    $("#fname, #lname, #bday, #email-register, #password-register, #cpass").css("background-color", "");
-    $("#gender").css("background-color", "").val("Your gender");
+    $("#fname, #lname, #bday, #emailRegister, #passRegister, #cpass").css("background-color", "").removeClass("wrong");
+    $("#gender").css("background-color", "").val("Your gender").removeClass("wrong");
 
-    $("#fn-label").text("First name:");
-    $("#ln-label").text("Last name:");
-    $("#bday-label").text("Birthday:");
-    $("#gender-label").text("Gender:");
-    $("#email-label").text("Email address:");
-    $("#pw-label").text("Password:");
-    $("#cpass-label").text("Confirm password:");
+    $("#fnameError, #lnameError, #bdayError, #genderError, #emailRegisterError, #passRegisterError, #cpassError").text("");
 
-};
-
-function clearIncorrectsLogin () {
-    $("#email-login, #password-login").css("background-color", "");
-    $("#elogin").text("Email address:");
-    $("#plogin").text("Password:");
 }
 
-$("#email-login, #password-login, #submit-login, #guest").on("focus", function () {
+function clearIncorrectsLogin () {
+
+    $("#emailLogin, #passLogin").css("background-color", "").removeClass("wrong");
+
+    $("#emailLoginError, #passLoginError").text("");
+
+}
+
+$("#emailLogin, #passLogin, #submitLogin, #guest").on("focus", function () {
 
     $("#login-box").removeClass();
     $("#login-box").addClass("col-sm-8");
@@ -317,7 +313,7 @@ $("#email-login, #password-login, #submit-login, #guest").on("focus", function (
 
 });
 
-$("#fname, #lname, #gender, #email-register, #password-register, #cpass, #submit-register, #reset-register").on("focus", function () {
+$("#fname, #lname, #gender, #emailRegister, #passRegister, #cpass, #submitRegister, #resetRegister").on("focus", function () {
 
     $("#login-box").removeClass();
     $("#login-box").addClass("col-sm-4");
@@ -329,7 +325,7 @@ $("#fname, #lname, #gender, #email-register, #password-register, #cpass, #submit
 
 });
 
-$("#email-login, #password-login, #submit-login, #guest, #fname, #lname, #bday, #gender, #email-register, #password-register, #cpass, #submit-register, #reset-register").on("blur", function () {
+$("#emailLogin, #passLogin, #submitLogin, #guest, #fname, #lname, #bday, #gender, #emailRegister, #passRegister, #cpass, #submitRegister, #resetRegister").on("blur", function () {
 
     $("#login-box").removeClass();
     $("#login-box").addClass("col-sm-5");
@@ -339,7 +335,7 @@ $("#email-login, #password-login, #submit-login, #guest, #fname, #lname, #bday, 
 
 });
 
-$("#reset-register").on("click", function () {
-    $("#submit-register").prop("disabled","true");
+$("#resetRegister").on("click", function () {
+    $("#submitRegister").prop("disabled","true");
     clearIncorrectsSignup();
 });
