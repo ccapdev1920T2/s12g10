@@ -161,7 +161,6 @@ const controller = {
         if (!errors.isEmpty()) {
 
             errors = errors.errors;
-            // console.log(errors);
 
             let emailErrorDetected = false;
             errors.forEach(function (currError) {
