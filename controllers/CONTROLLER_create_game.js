@@ -5,6 +5,15 @@ const User = require("../models/User");
 const Item = require("../models/Item");
 const mongoose = require('mongoose');
 
+let details = {
+
+    titleError: "",
+    descriptionError: "",
+    timeError: "",
+    genreError: "",
+    formError: ""
+
+};
 
 const controller = {
 
@@ -22,7 +31,8 @@ const controller = {
 
             res.render("pages/create_game", {
                 guest: req.session.guest,
-                user_image: req.session.photo
+                user_image: req.session.photo,
+                details: details
             });
 
         }
@@ -41,7 +51,11 @@ const controller = {
             for(i = 0; i < errors.length; i++)
                 details[errors[i].param + 'Error'] = errors[i].msg;
 
-            res.render('pages/create_game', details);
+            res.render('pages/create_game', {
+                guest: req.session.guest,
+                user_image: req.session.photo,
+                details: details
+            });
         }
         else{
             //instantiate new id

@@ -267,6 +267,7 @@ $(document).ready(function() {
         validateField($(this));
         console.log("genre");     
     });
+    $('#create_game').prop('disabled', true);
 });
 
 $(document).on('keyup', '.question', function(){
