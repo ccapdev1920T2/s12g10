@@ -10,4 +10,6 @@ app.get("/", controller.loadPage);
 
 app.post('/create', validation.gameValidation(), controller.createGame);
 
+app.get("/createFail", controller.createFail);
+
 module.exports = app;

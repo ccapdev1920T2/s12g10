@@ -6,11 +6,11 @@ const validation = {
 
         var validation = [
 
-            check('title', 'First name should not be empty.').isLength({min: 5, max: 50}),
+            check('title', 'Game title should contain at least 5 characters and at most 50 characters.').isLength({min: 5, max: 50}),
 
-            check('description', 'Last name should not be empty.').isLength({min: 10, max: 1000}),
+            check('description', 'Game description should contain at least 10 characters and at most 1000 characters.').isLength({min: 10, max: 1000}),
 
-            check('time', 'ID number should contain 8 digits.').isInt({min: 3, max: 10}),
+            check('time', 'Game duration should be from 3 to 10 minutes only.').isInt({min: 3, max: 10}),
 
         ];
 

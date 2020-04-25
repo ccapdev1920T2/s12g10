@@ -51,11 +51,7 @@ const controller = {
             for(i = 0; i < errors.length; i++)
                 details[errors[i].param + 'Error'] = errors[i].msg;
 
-            res.render('pages/create_game', {
-                guest: req.session.guest,
-                user_image: req.session.photo,
-                details: details
-            });
+            res.redirect("/createFail");
         }
         else{
             //instantiate new id
@@ -151,6 +147,18 @@ const controller = {
             //insert the array into Item collection
             db.insertMany(Item, items);
             res.redirect("/modify_game/" + id);
+        }
+    },
+
+    createFail: function (req, res) {
+        res.render("pages/create_game", {
+            guest: req.session.guest,
+            user_image: req.session.photo,
+            details: details
+        });
+
+        for (let key in details) {
+            details[key] = "";
         }
     }
 
