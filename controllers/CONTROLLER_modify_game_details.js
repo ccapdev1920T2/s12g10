@@ -1,3 +1,4 @@
+const { validationResult } = require("express-validator");
 const db = require("../models/db");
 const Game = require("../models/Game");
 const User = require("../models/User");
@@ -55,23 +56,14 @@ const controller = {
         if (!errors.isEmpty()){
             errors = errors.errors;
 
-            var details = {};
+            details = {};
             for(i = 0; i < errors.length; i++)
                 details[errors[i].param + 'Error'] = errors[i].msg;
 
-            let id = req.params.id;
+            details['genreError'] = "";
+            details['formError'] = "";
 
-            db.findOne(Game, {_id: id}, null, function (game) {
-                db.findMany(Item, {game_id: id}, null, function (items) {
-                    res.render("pages/modify_game_details", {
-                        game: game,
-                        items: items,
-                        guest: req.session.guest,
-                        user_image: req.session.photo,
-                        details: details
-                    });
-                });
-            });
+            res.redirect("/modify_game_details/" + req.params.id);
         }
         else{
 

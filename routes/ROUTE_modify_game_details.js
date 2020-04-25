@@ -8,6 +8,6 @@ app.get("/:id", controller.getGameDetails);
 
 // app.post("/:id/modify", controller.modifyGame);
 
-app.post(":id/modify", validation.gameValidation(), controller.modifyGame);
+app.post("/:id/modify", validation.gameValidation(), controller.modifyGame);
 
 module.exports = app;
