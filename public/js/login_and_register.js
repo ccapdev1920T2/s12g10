@@ -9,10 +9,10 @@ function checkFN (changeDisp) {
     if (changeDisp) {
 
         if (empty) {
-            $("#fname").addClass("wrong");
+            $("#fname").css("background-color", "#F7BBBB");
             $("#fnameError").text("Name cannot be empty");
         } else {
-            $("#fname").removeClass("wrong");
+            $("#fname").css("background-color", "");
             $("#fnameError").text("");
         }
 
@@ -32,10 +32,10 @@ function checkLN (changeDisp) {
 
     if (changeDisp) {
         if (empty) {
-            $("#lname").addClass("wrong");
+            $("#lname").css("background-color", "#F7BBBB");
             $("#lnameError").text("Name cannot be empty");
         } else {
-            $("#lname").removeClass("wrong");
+            $("#lname").css("background-color", "");
             $("#lnameError").text("");
         }
     }
@@ -54,10 +54,10 @@ function checkBDay (changeDisp = false) {
 
     if (changeDisp) {
         if (!valid) {
-            $("#bday").addClass("wrong");
+            $("#bday").css("background-color", "#F7BBBB");
             $("#bdayError").text("Birthday must be valid");
         } else {
-            $("#bday").removeClass("wrong");
+            $("#bday").css("background-color", "");
             $("#bdayError").text("");
         }
     }
@@ -71,10 +71,10 @@ function checkGender (changeDisp = false) {
 
     if (changeDisp) {
         if (valid) {
-            $("#gender").removeClass("wrong");
+            $("#gender").css("background-color", "");
             $("#genderError").text("");
         } else {
-            $("#gender").addClass("wrong");
+            $("#gender").css("background-color", "#F7BBBB");
             $("#genderError").text("Please pick one");
         }
     }
@@ -97,7 +97,7 @@ function validEmail (cb, changeDisp = false) {
                 if (result.email === email) {
 
                     if (changeDisp) {
-                        $("#emailRegister").addClass("wrong");
+                        $("#emailRegister").css("background-color", "#F7BBBB");
                         $("#emailRegisterError").text("This email is already in use.");
                     }
                     return cb(false);
@@ -105,7 +105,7 @@ function validEmail (cb, changeDisp = false) {
                 } else {
 
                     if (changeDisp) {
-                        $("#emailRegister").removeClass("wrong");
+                        $("#emailRegister").css("background-color", "");
                         $("#emailRegisterError").text("");
                     }
                     return cb(true);
@@ -117,7 +117,7 @@ function validEmail (cb, changeDisp = false) {
         } else {
 
             if (changeDisp) {
-                $("#emailRegister").addClass("wrong");
+                $("#emailRegister").css("background-color", "#F7BBBB");
                 $("#emailRegisterError").text("Invalid email");
             }
             return cb(false);
@@ -127,7 +127,7 @@ function validEmail (cb, changeDisp = false) {
     } else {
 
         if (changeDisp) {
-            $("#emailRegister").addClass("wrong");
+            $("#emailRegister").css("background-color", "#F7BBBB");
             $("#emailRegisterError").text("Email cannot be empty");
         }
         return cb(false);
@@ -143,7 +143,7 @@ function validPass (changeDisp = false) {
     if (valid) {
 
         if (changeDisp) {
-            $("#passRegister").removeClass("wrong");
+            $("#passRegister").css("background-color", "");
             $("#passRegisterError").text("");
         }
         $("#cpass").prop("disabled", false);
@@ -151,7 +151,7 @@ function validPass (changeDisp = false) {
     } else {
 
         if (changeDisp) {
-            $("#passRegister").addClass("wrong");
+            $("#passRegister").css("background-color", "#F7BBBB");
             $("#passRegisterError").text("Should be at least 8 characters");
         }
         $("#cpass").prop("disabled", true).val("");
@@ -170,10 +170,10 @@ function confirmPass (changeDisp = false) {
     if (changeDisp) {
 
         if (pw !== cpw) {
-            $("#passRegister, #cpass").addClass("wrong");
+            $("#passRegister, #cpass").css("background-color", "#F7BBBB");
             $("#cpassError").text("Passwords do not match");
         } else {
-            $("#passRegister, #cpass").removeClass("wrong");
+            $("#passRegister, #cpass").css("background-color", "");
             $("#cpassError").text("");
         }
 
@@ -271,8 +271,8 @@ $("#gender").on("click change focus", function () {
 
 function clearIncorrectsSignup () {
 
-    $("#fname, #lname, #bday, #emailRegister, #passRegister, #cpass").css("background-color", "").removeClass("wrong");
-    $("#gender").css("background-color", "").val("Your gender").removeClass("wrong");
+    $("#fname, #lname, #bday, #emailRegister, #passRegister, #cpass").css("background-color", "").css("background-color", "");
+    $("#gender").css("background-color", "").val("Your gender").css("background-color", "");
 
     $("#fnameError, #lnameError, #bdayError, #genderError, #emailRegisterError, #passRegisterError, #cpassError").text("");
 
@@ -280,7 +280,7 @@ function clearIncorrectsSignup () {
 
 function clearIncorrectsLogin () {
 
-    $("#emailLogin, #passLogin").css("background-color", "").removeClass("wrong");
+    $("#emailLogin, #passLogin").css("background-color", "").css("background-color", "");
 
     $("#emailLoginError, #passLoginError").text("");
 

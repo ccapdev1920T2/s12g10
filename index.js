@@ -2,6 +2,7 @@ const port = process.env.PORT || 3000;
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const favicon = require("serve-favicon");
 
 const db = require("./models/db");
 const addData = require("./models/data");
@@ -17,6 +18,7 @@ app.use(session({
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(favicon(__dirname + "/favicon.ico"));
 
 const createRoute = require("./routes/ROUTE_create_game");
 const homeRoute = require("./routes/ROUTE_homepage");
