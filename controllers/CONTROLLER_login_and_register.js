@@ -62,6 +62,12 @@ const controller = {
             res.render("pages/login_and_register", details);
             details.passLoginError = "";
 
+        } else if (status === "noUserEntered") {
+
+            details.emailLoginError = "Please enter a user";
+            res.render("pages/login_and_register", details);
+            details.emailLoginError = "";
+
         } else {
 
             details.emailLoginError = "User not found";
@@ -99,39 +105,47 @@ const controller = {
         let email = req.body.emailLogin;
         let password = req.body.passLogin;
 
-        db.findOne(User, { email: email }, null, function (result) {
+        if (email === "") {
 
-            if (result) { //user exists in the system
+            res.redirect("/authFail?status=noUserEntered");
 
-                //comparison of hashed password
-                bcrypt.compare(password, result.password, function (err, isEqual) {
+        } else {
 
-                    if (isEqual) { //password entered is correct
+            db.findOne(User, {email: email}, null, function (result) {
 
-                        console.log("login successful");
-                        req.session.loggedin = true;
-                        req.session.username = email;
-                        req.session.guest = false;
-                        req.session.photo = result.user_image;
-                        res.redirect("/homepage");
+                if (result) { //user exists in the system
 
-                    } else { //password is incorrect
+                    //comparison of hashed password
+                    bcrypt.compare(password, result.password, function (err, isEqual) {
 
-                        console.log("user found but password incorrect");
-                        res.redirect("/authFail?status=incorrectPassword");
+                        if (isEqual) { //password entered is correct
 
-                    }
+                            console.log("login successful");
+                            req.session.loggedin = true;
+                            req.session.username = email;
+                            req.session.guest = false;
+                            req.session.photo = result.user_image;
+                            res.redirect("/homepage");
 
-                });
+                        } else { //password is incorrect
 
-            } else { //no user of the entered email address exists
+                            console.log("user found but password incorrect");
+                            res.redirect("/authFail?status=incorrectPassword");
 
-                console.log("no user found");
-                res.redirect("/authFail?status=userNotFound");
+                        }
 
-            }
+                    });
 
-        });
+                } else { //no user of the entered email address exists
+
+                    console.log("no user found");
+                    res.redirect("/authFail?status=userNotFound");
+
+                }
+
+            });
+
+        }
 
     },
 
