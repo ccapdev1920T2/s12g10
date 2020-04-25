@@ -14,17 +14,17 @@
             <div class="form-group">
                 <label for="game_title" class="subheading">Game Title:</label>
                 <input class="form-control subheading" type="text" placeholder="Your title" id="game_title" name="title" required>
-                <p id="game_title_error" class="error"><%= details.titleError %></p>
+                <p id="game_title_error" class="error subheading"><%= details.titleError %></p>
             </div>
             <div class="form-group">
                 <label for="game_description" class="subheading">Description:</label>
                 <textarea class="form-control subheading" placeholder="Your description" id="game_description" name="description" required></textarea>
-                <p id="game_description_error" class="error"><%= details.descriptionError %></p>
+                <p id="game_description_error" class="error subheading"><%= details.descriptionError %></p>
             </div>
             <div class="form-group">
                 <label for="game_duration" class="subheading">Game Duration (minutes):</label>
                 <input class="subheading" type="number" id="game_duration" min="3" max="10" placeholder="*" name="time" required>
-                <p id="game_duration_error" class="error"><%= details.timeError %></p>
+                <p id="game_duration_error" class="error subheading"><%= details.timeError %></p>
             </div>
             <div class="form-group">
                 <label for="genre-buttons" class="subheading">Genre(s):</label>
@@ -39,7 +39,7 @@
                         <input type="checkbox" id="check-others" class="btn subheading bg-others genre" name="others" value="others"><label for="others" class="btn subheading bg-others ml-1 mr-4 genre" id="filter-by-others">Others</label>
                     </div>
                 </div>
-                <p id="genre_error" class="error"><%= details.genreError %></p>
+                <p id="genre_error" class="error subheading"><%= details.genreError %></p>
             </div>
             <div id="questions_form">
                 <div class="form-inline row mb-1" id="form1">
@@ -76,7 +76,7 @@
                     <button type="button" class="btn btn-block" id="add_question">+</button>
                 </div>
             </div>    
-            <p id="questions_form_error" class="error"><%= details.formError %></p>
+            <p id="questions_form_error" class="error subheading"><%= details.formError %></p>
             <div class="row"><div class="col-sm-12"><br></div></div>
             <input type="submit" class="btn btn-custom btn-block subheading" id="create_game" value="Create Game">
             <div class="row"><div class="col-sm-12"><br></div></div>

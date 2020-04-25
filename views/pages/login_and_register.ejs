@@ -27,12 +27,12 @@
 
                     <div class="form-group">
                         <label for="emailLogin" class="subheading">Email address:</label>
-                        <input type="email" class="form-control subheading <% if (emailLoginError !== "") { %> wrong <% } %>" name="emailLogin" placeholder="Your email address" id="emailLogin">
+                        <input type="email" class="form-control subheading <% if (emailLoginError !== "") { %> wrong <% } %>" name="emailLogin" placeholder="Your email address" id="emailLogin" required>
                         <p id="emailLoginError" class="error subheading"><%= emailLoginError %></p>
                     </div>
                     <div class="form-group">
                         <label for="passwordLogin" class="subheading">Password:</label>
-                        <input type="password" class="form-control subheading <% if (passLoginError !== "") { %> wrong <% } %>" name="passLogin" placeholder="Your password" id="passLogin">
+                        <input type="password" class="form-control subheading <% if (passLoginError !== "") { %> wrong <% } %>" name="passLogin" placeholder="Your password" id="passLogin" required>
                         <p id="passLoginError" class="error subheading"><%= passLoginError %></p>
                     </div>
 
@@ -58,24 +58,24 @@
                     <div class="form-row">
                         <div class="col">
                             <label for="fname" class="subheading" id="fname-label">First name:</label>
-                            <input type="text" class="form-control subheading <% if (fnameError !== "") { %> wrong <% } %>" placeholder="Your first name" id="fname" name="fname">
+                            <input type="text" class="form-control subheading <% if (fnameError !== "") { %> wrong <% } %>" placeholder="Your first name" id="fname" name="fname" required>
                             <p id="fnameError" class="error subheading"><%= fnameError %></p>
                         </div>
                         <div class="col">
                             <label for="lname" class="subheading" id="lname-label">Last name:</label>
-                            <input type="text" class="form-control subheading <% if (lnameError !== "") { %> wrong <% } %>" placeholder="Your last name" id="lname" name="lname">
+                            <input type="text" class="form-control subheading <% if (lnameError !== "") { %> wrong <% } %>" placeholder="Your last name" id="lname" name="lname" required>
                             <p id="lnameError" class="error subheading"><%= lnameError %></p>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col">
                             <label for="bday" class="subheading" id="bday-label">Birthday:</label>
-                            <input type="date" class="form-control subheading <% if (bdayError !== "") { %> wrong <% } %>" id="bday" name="bday">
+                            <input type="date" class="form-control subheading <% if (bdayError !== "") { %> wrong <% } %>" id="bday" name="bday" required>
                             <p id="bdayError" class="error subheading"><%= bdayError %></p>
                         </div>
                         <div class="col">
                             <label for="gender" class="subheading" id="gender-label">Gender:</label>
-                            <select class="form-control subheading <% if (genderError !== "") { %> wrong <% } %>" id="gender" name="gender">
+                            <select class="form-control subheading <% if (genderError !== "") { %> wrong <% } %>" id="gender" name="gender" required>
                                 <option selected disabled>Your gender</option>
                                 <option>Male</option>
                                 <option>Female</option>
@@ -86,18 +86,18 @@
                     </div>
                     <div class="form-group">
                         <label for="emailRegister" class="subheading" id="email-label">Email address:</label>
-                        <input type="email" class="form-control subheading <% if (emailRegisterError !== "") { %> wrong <% } %>" placeholder="Your email address" id="emailRegister" name="emailRegister">
+                        <input type="email" class="form-control subheading <% if (emailRegisterError !== "") { %> wrong <% } %>" placeholder="Your email address" id="emailRegister" name="emailRegister" required>
                         <p id="emailRegisterError" class="error subheading"><%= emailRegisterError %></p>
                     </div>
                     <div class="form-row">
                         <div class="col">
                             <label for="passwordRegister" class="subheading" id="pw-label">Password:</label>
-                            <input type="password" class="form-control subheading <% if (passRegisterError !== "") { %> wrong <% } %>" placeholder="Your password" id="passRegister" name="passRegister">
+                            <input type="password" class="form-control subheading <% if (passRegisterError !== "") { %> wrong <% } %>" placeholder="Your password" id="passRegister" name="passRegister" required>
                             <p id="passRegisterError" class="error subheading"><%= passRegisterError %></p>
                         </div>
                         <div class="col">
                             <label for="cpass" class="subheading" id="cpass-label">Confirm password:</label>
-                            <input type="password" class="form-control subheading <% if (cpassError !== "") { %> wrong <% } %>" placeholder="Password confirmation" id="cpass" name="cpass">
+                            <input type="password" class="form-control subheading <% if (cpassError !== "") { %> wrong <% } %>" placeholder="Password confirmation" id="cpass" name="cpass" required>
                             <p id="cpassError" class="error subheading"><%= cpassError %></p>
                         </div>
                     </div>
