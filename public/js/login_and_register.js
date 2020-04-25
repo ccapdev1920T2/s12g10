@@ -1,18 +1,3 @@
-// $("#emailLogin, #passLogin").on("keyup", function() {
-//     let email = validator.trim($("#emailLogin").val());
-//     let pw = validator.trim($("#passLogin").val());
-//
-//     let emailEmpty = validator.isEmpty(email);
-//     let emailValid = validator.isEmail(email);
-//     let pwEmpty = validator.isEmpty(pw);
-//
-//     if (!emailEmpty && !pwEmpty && emailValid) {
-//         $("#submitLogin").prop("disabled", false);
-//     } else {
-//         $("#submitLogin").prop("disabled", true);
-//     }
-// });
-
 function checkFN (changeDisp) {
 
     let empty = validator.isEmpty(validator.trim($("#fname").val()));

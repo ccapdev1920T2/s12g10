@@ -1,4 +1,6 @@
 const { validationResult } = require("express-validator");
+const validation = require("../helpers/game_validation");
+
 const db = require("../models/db");
 const Game = require("../models/Game");
 const User = require("../models/User");
@@ -42,19 +44,30 @@ const controller = {
     //POST request for creating game
     createGame: function (req, res) {
 
-        let errors = validationResult(req);
+        let detErrors = validationResult(req);
+        let qAndAErrors = validation.qAndAValidation(req);
+        console.log(qAndAErrors);
 
-        if (!errors.isEmpty()){
-            errors = errors.errors;
+        if (!detErrors.isEmpty() || qAndAErrors) {
 
-            details = {};
-            for(i = 0; i < errors.length; i++)
-                details[errors[i].param + 'Error'] = errors[i].msg;
+            if (!detErrors.isEmpty()) {
+
+                detErrors = detErrors.errors;
+
+                details = {};
+                for (let i = 0; i < detErrors.length; i++)
+                    details[detErrors[i].param + 'Error'] = detErrors[i].msg;
+
+            }
+
+            if (qAndAErrors) {
+                details['formError'] = "Make sure there are no empty questions and answers.";
+            }
 
             details['genreError'] = "";
-            details['formError'] = "";
 
             res.redirect("/create_game");
+
         }
         else{
             //instantiate new id
