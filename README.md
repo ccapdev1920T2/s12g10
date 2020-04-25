@@ -14,7 +14,9 @@
 - [views](https://github.com/ccapdev1920T2/s12g10/tree/master/views) - contains `.ejs` files that will be rendered and displayed upon request  
 
 ## **Running the app (Heroku)**
-Go to https://mnemosis.herokuapp.com to access the deployed application.
+Go to https://mnemosis.herokuapp.com to access the deployed application. 
+
+Proceed to [logging in](#logging-in) to check available log-in credentials or to [registering for an account](#registering-for-an-account) to make your own.
 
 ## **Setting up (Local)**
 1. Ensure that mongodb is installed and is running.
@@ -24,7 +26,7 @@ Go to https://mnemosis.herokuapp.com to access the deployed application.
    - Windows: `SET MNEMOSIS_URI=mongodb+srv://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true^&w=majority`
    - Mac / Linux: `export MNEMOSIS_URI="mongodb+srv://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true&w=majority"`
 
-## **Starting the app (Local)**
+## **Starting the app (Local, with Hosted DB)**
 Upon successful installation, enter `node index.js` or `nodemon index.js` on the terminal. 
 
 If the environment variable `MNEMOSIS_URI` was set successfully, the console will display the following:
@@ -48,7 +50,7 @@ To fix this, run the following to change the value of the `MNEMOSIS_URI` environ
  - Windows: `SET MNEMOSIS_URI=mongodb://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true^&w=majority`
  - Mac / Linux: `export MNEMOSIS_URI="mongodb://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true&w=majority"` 
 
-
+## **Starting the app (Local, with Local DB)**
 If there is no `MNEMOSIS_URI` environment variable and this is the first time that the application (and thus the database) is initialized on the machine or if the database has been dropped, the following will be displayed on the console window:
 ```
 Listening at http://localhost:3000
