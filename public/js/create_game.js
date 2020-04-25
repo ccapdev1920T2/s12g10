@@ -202,12 +202,28 @@ function isValidForm(formCheck){
 
 }
 
+function checkGenre(){
+    if ($('.genre:checked').length > 0)
+        return true;
+    return false;
+}
+
+function isvalidGenre(genreCheck){
+    if (genreCheck){
+        $('#genre_error').text('');
+    }
+    else{
+        $('#genre_error').text(`Have at least one genre checked.`);
+    }
+}
+
 function validateField(field) {
 
     let validTitle = checkTitle();
     let validDesc = checkDesc();
     let validTime = checkTime();
     let validForm = checkForm();
+    let validGenre = checkGenre();
     if (field.attr('id') == $('#game_title').attr('id')){
         isValidTitle(validTitle);
     }
@@ -217,11 +233,14 @@ function validateField(field) {
     else if (field.attr('id') == $('#game_duration').attr('id')){
         isValidTime(validTime);
     }
+    else if (field.hasClass('genre')){
+        isvalidGenre(validGenre);
+    }
     else if (field.hasClass('question') || field.hasClass('answer')){
         isValidForm(validForm);
     }
 
-    if (validTitle && validDesc && validTime && validForm)
+    if (validTitle && validDesc && validTime && validGenre && validForm)
         $('#create_game').prop('disabled', false);
     else
         $('#create_game').prop('disabled', true);
@@ -240,6 +259,14 @@ $('#game_description').keyup(function(){
 $('#game_duration').keyup(function(){
     validateField($('#game_duration'));
     console.log("time")
+});
+
+$(document).ready(function() {
+
+    $(document).on('click', '.genre', function() {
+        validateField($(this));
+        console.log("genre");     
+    });
 });
 
 $(document).on('keyup', '.question', function(){
