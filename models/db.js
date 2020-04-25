@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const connection = "mongodb://localhost:27017/mnemosis";
+const connection = process.env.MNEMOSIS_URI || "mongodb://localhost:27017/mnemosis";
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -11,6 +11,7 @@ const db = {
 
     connect:
         function () {
+            console.log(connection);
             mongoose.connect(connection, options, function (err) {
                if (err) throw err;
                console.log("Database connection successful. URL: " + connection);
