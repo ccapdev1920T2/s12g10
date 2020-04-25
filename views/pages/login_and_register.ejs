@@ -58,35 +58,35 @@
                     <div class="form-row">
                         <div class="col">
                             <label for="fname" class="subheading" id="fname-label">First name:</label>
-                            <input type="text" class="form-control subheading <% if (fnameError !== "") { %> wrong <% } %>" placeholder="Your first name" id="fname" name="fname" required>
+                            <input type="text" class="form-control subheading <% if (fnameError !== "") { %> wrong <% } %>" placeholder="Your first name" id="fname" name="fname" <% if (hasReq) { %> value="<%= reqBody.fname %>" <% } %> required>
                             <p id="fnameError" class="error subheading"><%= fnameError %></p>
                         </div>
                         <div class="col">
                             <label for="lname" class="subheading" id="lname-label">Last name:</label>
-                            <input type="text" class="form-control subheading <% if (lnameError !== "") { %> wrong <% } %>" placeholder="Your last name" id="lname" name="lname" required>
+                            <input type="text" class="form-control subheading <% if (lnameError !== "") { %> wrong <% } %>" placeholder="Your last name" id="lname" name="lname" <% if (hasReq) { %> value="<%= reqBody.lname %>" <% } %> required>
                             <p id="lnameError" class="error subheading"><%= lnameError %></p>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col">
                             <label for="bday" class="subheading" id="bday-label">Birthday:</label>
-                            <input type="date" class="form-control subheading <% if (bdayError !== "") { %> wrong <% } %>" id="bday" name="bday" required>
+                            <input type="date" class="form-control subheading <% if (bdayError !== "") { %> wrong <% } %>" id="bday" name="bday" <% if (hasReq) { %> value="<%= reqBody.bday %>" <% } %> required>
                             <p id="bdayError" class="error subheading"><%= bdayError %></p>
                         </div>
                         <div class="col">
                             <label for="gender" class="subheading" id="gender-label">Gender:</label>
                             <select class="form-control subheading <% if (genderError !== "") { %> wrong <% } %>" id="gender" name="gender" required>
                                 <option selected disabled>Your gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Prefer not to say</option>
+                                <option <% if (hasReq && reqBody.gender === "Male") { %> selected <% } %> >Male</option>
+                                <option <% if (hasReq && reqBody.gender === "Female") { %> selected <% } %>>Female</option>
+                                <option <% if (hasReq && reqBody.gender === "Prefer not to say") { %> selected <% } %>>Prefer not to say</option>
                             </select>
                             <p id="genderError" class="error subheading"><%= genderError %></p>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="emailRegister" class="subheading" id="email-label">Email address:</label>
-                        <input type="email" class="form-control subheading <% if (emailRegisterError !== "") { %> wrong <% } %>" placeholder="Your email address" id="emailRegister" name="emailRegister" required>
+                        <input type="email" class="form-control subheading <% if (emailRegisterError !== "") { %> wrong <% } %>" placeholder="Your email address" id="emailRegister" name="emailRegister" <% if (hasReq) { %> value="<%= reqBody.emailRegister %>" <% } %> required>
                         <p id="emailRegisterError" class="error subheading"><%= emailRegisterError %></p>
                     </div>
                     <div class="form-row">

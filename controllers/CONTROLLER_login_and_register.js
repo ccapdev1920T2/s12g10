@@ -17,7 +17,9 @@ let details = {
     genderError: "",
     emailRegisterError: "",
     passRegisterError: "",
-    cpassError: ""
+    cpassError: "",
+    hasReq: false,
+    reqBody: {}
 
 };
 
@@ -189,6 +191,8 @@ const controller = {
 
             });
 
+            details.hasReq = true;
+            details.reqBody = req.body;
             res.redirect("/registerFail");
 
         } else {
@@ -231,9 +235,12 @@ const controller = {
     regFail: function (req, res) {
         res.render("pages/login_and_register", details);
 
+        // refreshing the page after this will return it to the original state (no errors)
         for (let key in details) {
             details[key] = "";
         }
+        details.hasReq = false;
+        details.reqBody = {};
     }
 
 };
