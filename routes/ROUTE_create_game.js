@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const validation = require('../helpers/create_validation.js')
+const validation = require('../helpers/game_validation.js')
 
 const controller = require("../controllers/CONTROLLER_create_game");
 

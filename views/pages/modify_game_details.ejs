@@ -14,17 +14,17 @@
             <div class="form-group">
                 <label for="game_title" class="subheading">Game Title:</label>
                 <input class="form-control subheading" type="text" placeholder="Your title" id="game_title" name="title" value="<%= game.title %>" required>
-                <p id="game_title_error" class="error"></p>
+                <p id="game_title_error" class="error"><%= details.titleError %></p>
             </div>
             <div class="form-group">
                 <label for="game_description" class="subheading">Description:</label>
                 <textarea class="form-control subheading" placeholder="Your description" id="game_description" name="description" required><%= game.description %></textarea>
-                <p id="game_description_error" class="error"></p>
+                <p id="game_description_error" class="error"><%= details.descriptionError %></p>
             </div>
             <div class="form-group">
                 <label for="game_duration" class="subheading">Game Duration (minutes):</label>
                 <input class="subheading" type="number" id="game_duration" min="3" max="10" placeholder="*" name="time" value="<%= game.time %>" required>
-                <p id="game_duration_error" class="error"></p>
+                <p id="game_duration_error" class="error"><%= details.timeError %></p>
             </div>
             <div class="form-group">
                 <label for="genre-buttons" class="subheading">Genre(s):</label>
@@ -39,7 +39,7 @@
                         <input type="checkbox" id="check-others" class="btn subheading bg-others genre" name="others" value="others"<% if (game.genres.includes("others")) { %> checked<% } %>><label for="others" class="btn subheading bg-others ml-1 mr-4 genre <% if (game.genres.includes("others")) { %>active<% } %>" id="filter-by-others">Others</label>
                     </div>
                 </div>
-                <p id="genre_error" class="error"><!--  genreError  --></p>
+                <p id="genre_error" class="error"><%= details.genreError %></p>
             </div>
             <div id="questions_form">
                 <% items.forEach(function(item, index) { %>
@@ -54,7 +54,7 @@
                     <button type="button" class="btn btn-block" id="add_question">+</button>
                 </div>
             </div>
-            <p id="questions_form_error" class="error"></p>
+            <p id="questions_form_error" class="error"><%= details.formError %></p>
             <div class="row"><div class="col-sm-12"><br></div></div>
             <input type="submit" class="btn btn-custom btn-block subheading" id="modify_game" value="Save Changes">
             <div class="row"><div class="col-sm-12"><br></div></div>
