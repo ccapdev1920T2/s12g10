@@ -37,7 +37,19 @@ Item data found
 Database connection successful. URL: mongodb+srv://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true^&w=majority
 ``` 
 
-If not, and if this is the first time that the application (and thus the database) is initialized on the machine or if the database has been dropped, the following will be displayed on the console window:
+An error in setting the environment variable might displays the following (or something similar):
+```
+Listening at http://localhost:3000
+(node:14816) UnhandledPromiseRejectionWarning: Error: querySrv ENODATA _mongodb._tcp.mnemosis-dxmyx.gcp.mongodb.net
+    at QueryReqWrap.onresolve [as oncomplete] (dns.js:202:19)
+...
+```
+To fix this, run the following to change the value of the `MNEMOSIS_URI` environment variable to a more appropriate one.
+ - Windows: `SET MNEMOSIS_URI=mongodb://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true^&w=majority`
+ - Mac / Linux: `export MNEMOSIS_URI="mongodb://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true&w=majority"` 
+
+
+If there is no `MNEMOSIS_URI` environment variable and this is the first time that the application (and thus the database) is initialized on the machine or if the database has been dropped, the following will be displayed on the console window:
 ```
 Listening at http://localhost:3000
 Database connection successful. URL: mongodb://localhost:27017/mnemosis
