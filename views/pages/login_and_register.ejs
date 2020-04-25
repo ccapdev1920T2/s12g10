@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="css/login_and_register.css">
 </head>
 <body>
+    <script>
+        $(function () {
+            $("#submitRegister, #submitLogin, #cpass").prop("disabled", true);
+        });
+    </script>
     <%- include ("../partials/header_login.ejs") %>
 
     <div class="container mt-3" id="startup-box">
@@ -34,7 +39,7 @@
                     <div class="row"><div class="col-sm-12"><br></div></div>
 
                     <div class="buttons container">
-                        <button type="submit" class="btn btn-custom btn-block subheading" id="submitLogin" disabled>Log-in</button>
+                        <button type="submit" class="btn btn-custom btn-block subheading" id="submitLogin">Log-in</button>
                         <div class="row"><div class="col-sm-12"><br></div></div>
 
                         <p class="subheading" style="text-align: center; margin-bottom: 0">----------- or -----------</p>
@@ -92,7 +97,7 @@
                         </div>
                         <div class="col">
                             <label for="cpass" class="subheading" id="cpass-label">Confirm password:</label>
-                            <input type="password" class="form-control subheading <% if (cpassError !== "") { %> wrong <% } %>" placeholder="Password confirmation" id="cpass" name="cpass" disabled>
+                            <input type="password" class="form-control subheading <% if (cpassError !== "") { %> wrong <% } %>" placeholder="Password confirmation" id="cpass" name="cpass">
                             <p id="cpassError" class="error subheading"><%= cpassError %></p>
                         </div>
                     </div>
@@ -100,7 +105,7 @@
                     <div class="row"><div class="col-sm-12"><br></div></div>
 
                     <div class="form-row buttons container">
-                        <div class="col"><input type="submit" class="btn btn-custom btn-block subheading" id="submitRegister" disabled></div>
+                        <div class="col"><input type="submit" class="btn btn-custom btn-block subheading" id="submitRegister"></div>
                         <div class="col"><input type="reset" class="btn btn-custom btn-block subheading" id="resetRegister"></div>
                     </div>
                 </form>
