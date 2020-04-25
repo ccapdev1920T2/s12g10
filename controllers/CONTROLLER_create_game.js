@@ -36,7 +36,16 @@ const controller = {
                 user_image: req.session.photo,
                 details: details
             });
+            
+            details = {
 
+                titleError: "",
+                descriptionError: "",
+                timeError: "",
+                genreError: "",
+                formError: ""
+            
+            };
         }
 
     },
@@ -64,8 +73,6 @@ const controller = {
                 details['formError'] = "Make sure there are no empty questions and answers.";
             }
 
-            details['genreError'] = "";
-
             res.redirect("/create_game");
 
         }
@@ -81,14 +88,13 @@ const controller = {
             let image = "/media/coversamples/" + String(Math.floor(Math.random() * (16 - 1) ) + 1) + ".jpg";
             
             //getting genres if req.body has certain genre variable
-            let genres = [];
-            if (req.body.art) genres.splice(genres.length, 0, req.body.art);
-            if (req.body.business) genres.splice(genres.length, 0, req.body.business);
-            if (req.body.scitech) genres.splice(genres.length, 0, req.body.scitech);
-            if (req.body.history) genres.splice(genres.length, 0, req.body.history);
-            if (req.body.trivia) genres.splice(genres.length, 0, req.body.trivia);
-            if (req.body.sports) genres.splice(genres.length, 0, req.body.sports);
-            if (req.body.others) genres.splice(genres.length, 0, req.body.others);
+            let genres;
+            if (Array.isArray(req.body.genre)){
+                genres = req.body.genre;
+            }
+            else{
+                genres = [req.body.genre];
+            }
 
             //creating the game along with finding the user's id
             db.findOne(User, {email : req.session.username}, '_id', function (creator) {

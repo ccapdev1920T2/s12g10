@@ -1,4 +1,6 @@
 const { validationResult } = require("express-validator");
+const validation = require("../helpers/game_validation");
+
 const db = require("../models/db");
 const Game = require("../models/Game");
 const User = require("../models/User");
@@ -43,6 +45,15 @@ const controller = {
                 });
             });
 
+            details = {
+
+                titleError: "",
+                descriptionError: "",
+                timeError: "",
+                genreError: "",
+                formError: ""
+            
+            };
         }
 
     },
@@ -51,17 +62,25 @@ const controller = {
     modifyGame: function (req, res){
 
 
-        let errors = validationResult(req);
+        let detErrors = validationResult(req);
+        let qAndAErrors = validation.qAndAValidation(req);
+        console.log(qAndAErrors);
 
-        if (!errors.isEmpty()){
-            errors = errors.errors;
+        if (!detErrors.isEmpty() || qAndAErrors) {
 
-            details = {};
-            for(i = 0; i < errors.length; i++)
-                details[errors[i].param + 'Error'] = errors[i].msg;
+            if (!detErrors.isEmpty()) {
 
-            details['genreError'] = "";
-            details['formError'] = "";
+                detErrors = detErrors.errors;
+
+                details = {};
+                for (let i = 0; i < detErrors.length; i++)
+                    details[detErrors[i].param + 'Error'] = detErrors[i].msg;
+
+            }
+
+            if (qAndAErrors) {
+                details['formError'] = "Make sure there are no empty questions and answers.";
+            }
 
             res.redirect("/modify_game_details/" + req.params.id);
         }
@@ -73,14 +92,13 @@ const controller = {
             let time = req.body.time;
 
             //getting genres if req.body has certain genre variable
-            let genres = [];
-            if (req.body.art) genres.splice(genres.length, 0, req.body.art);
-            if (req.body.business) genres.splice(genres.length, 0, req.body.business);
-            if (req.body.scitech) genres.splice(genres.length, 0, req.body.scitech);
-            if (req.body.history) genres.splice(genres.length, 0, req.body.history);
-            if (req.body.trivia) genres.splice(genres.length, 0, req.body.trivia);
-            if (req.body.sports) genres.splice(genres.length, 0, req.body.sports);
-            if (req.body.others) genres.splice(genres.length, 0, req.body.others);
+            let genres;
+            if (Array.isArray(req.body.genre)){
+                genres = req.body.genre;
+            }
+            else{
+                genres = [req.body.genre];
+            }
 
             //get creator's id and updating info on game being modified
             db.findOne(User, {email: req.session.username}, '_id', function(creator){
