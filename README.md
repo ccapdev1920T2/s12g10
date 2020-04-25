@@ -13,19 +13,41 @@
 - [public](https://github.com/ccapdev1920T2/s12g10/tree/master/public) - contains static `.js`, `.css`, and `img` files that are used for front-end display manipulation
 - [views](https://github.com/ccapdev1920T2/s12g10/tree/master/views) - contains `.ejs` files that will be rendered and displayed upon request  
 
-## **Setting up**
+## **Running the app (Heroku)**
+Go to https://mnemosis.herokuapp.com to access the deployed application.
+
+## **Setting up (Local)**
 1. Ensure that mongodb is installed and is running.
 2. Open the command prompt (Windows) or terminal (Mac) and `cd` to the project folder.
-3. Run `npm install` to initialize and install the modules defined in `package.json`.
+3. Run `npm install` to initialize and install the necessary modules.
+4. Enter the appropriate command to create the environment variable `MNEMOSIS_URI` which allows access to the database hosted in MongoDB Atlas.
+   - Windows: `SET MNEMOSIS_URI=mongodb+srv://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true^&w=majority`
+   - Mac / Linux: `export MNEMOSIS_URI="mongodb+srv://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true&w=majority"`
 
-## **Starting the app**
+## **Starting the app (Local)**
 Upon successful installation, enter `node index.js` or `nodemon index.js` on the terminal. 
 
-If this is the first time that the application (and thus the database) is initialized on the machine or if the database has been dropped, the following will be displayed on the console window:
+If the environment variable `MNEMOSIS_URI` was set successfully, the console will display the following:
+```
+Listening at http://localhost:3000
+User data found
+Game data found
+Attempt data found
+Item data found
+Database connection successful. URL: mongodb+srv://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true^&w=majority
+``` 
+
+If not, and if this is the first time that the application (and thus the database) is initialized on the machine or if the database has been dropped, the following will be displayed on the console window:
 ```
 Listening at http://localhost:3000
 Database connection successful. URL: mongodb://localhost:27017/mnemosis
-Added 7 documents to users
+Added 1 document to users
+Added 1 document to users
+Added 1 document to users
+Added 1 document to users
+Added 1 document to users
+Added 1 document to users
+Added 1 document to users
 Added 21 documents to games
 Added 268 documents to items
 Added 31 documents to attempts

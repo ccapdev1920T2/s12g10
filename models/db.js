@@ -11,7 +11,6 @@ const db = {
 
     connect:
         function () {
-            console.log(connection);
             mongoose.connect(connection, options, function (err) {
                if (err) throw err;
                console.log("Database connection successful. URL: " + connection);
