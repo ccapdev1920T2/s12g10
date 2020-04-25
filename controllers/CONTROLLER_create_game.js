@@ -47,11 +47,14 @@ const controller = {
         if (!errors.isEmpty()){
             errors = errors.errors;
 
-            var details = {};
+            details = {};
             for(i = 0; i < errors.length; i++)
                 details[errors[i].param + 'Error'] = errors[i].msg;
 
-            res.redirect("/createFail");
+            details['genreError'] = "";
+            details['formError'] = "";
+
+            res.redirect("/create_game");
         }
         else{
             //instantiate new id
@@ -149,18 +152,6 @@ const controller = {
             res.redirect("/modify_game/" + id);
         }
     },
-
-    createFail: function (req, res) {
-        res.render("pages/create_game", {
-            guest: req.session.guest,
-            user_image: req.session.photo,
-            details: details
-        });
-
-        for (let key in details) {
-            details[key] = "";
-        }
-    }
 
 };
 
