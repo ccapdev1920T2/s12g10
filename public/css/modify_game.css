@@ -6,3 +6,9 @@
     width: 1100px;
     height: 400px;
 }
+
+.error {
+    margin-top: 5px;
+    height: 10px;
+    font-size: 12px;
+}

@@ -1,6 +1,8 @@
 const db = require("../models/db");
 const Game = require("../models/Game");
 
+let error = ""
+
 const controller = {
 
     //load game's initial details
@@ -21,9 +23,12 @@ const controller = {
                 res.render("pages/modify_game", {
                     game: game,
                     guest: req.session.guest,
-                    user_image: req.session.photo
+                    user_image: req.session.photo,
+                    error: error
                 });
             });
+
+            error = "";
 
         }
 
@@ -34,25 +39,37 @@ const controller = {
 
         let image = req.files.new_image;
 
-        image.mv("public/media/game_images/" + image.name, function (error) {
+        let fileExtn = path.extname(image.name).toLowerCase();
 
-            if (error) {
+        if (fileExtn === ".jpg" || fileExtn === ".jpeg" || fileExtn === ".png") {
 
-                console.log("file unsuccessfully uploaded");
-                res.render("pages/error", {
-                    guest: req.session.guest,
-                    user_image: req.session.photo
-                });
+            image.mv("public/media/game_images/" + image.name, function (error) {
 
-            } else {
+                if (error) {
 
-                db.updateOne(Game, {_id: req.params.id},{game_image: "/media/game_images/" + image.name});
-                console.log("file successfully uploaded");
-                res.redirect("back");
+                    console.log("file unsuccessfully uploaded");
+                    res.render("pages/error", {
+                        guest: req.session.guest,
+                        user_image: req.session.photo
+                    });
 
-            }
+                } else {
 
-        });
+                    db.updateOne(Game, {_id: req.params.id},{game_image: "/media/game_images/" + image.name});
+                    console.log("file successfully uploaded");
+                    res.redirect("back");
+
+                }
+
+            });
+
+        } else {
+
+            console.log("file uploaded not of image type");
+            error = "Please upload an image file of type .jpg, .jpeg, or .png.";
+            res.redirect("back");
+
+        }
         
     }
 
