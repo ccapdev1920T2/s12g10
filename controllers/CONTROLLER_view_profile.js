@@ -5,7 +5,7 @@ const Attempt = require("../models/Attempt");
 const Item = require("../models/Item");
 const path = require("path");
 
-let error = ""
+let error = "";
 
 var details = {
             user:null,

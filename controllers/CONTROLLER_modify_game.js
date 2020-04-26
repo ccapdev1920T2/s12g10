@@ -2,7 +2,7 @@ const db = require("../models/db");
 const Game = require("../models/Game");
 const path = require("path");
 
-let error = ""
+let error = "";
 
 const controller = {
 
@@ -27,9 +27,8 @@ const controller = {
                     user_image: req.session.photo,
                     error: error
                 });
+                error = "";
             });
-
-            error = "";
 
         }
 
@@ -68,7 +67,7 @@ const controller = {
 
             console.log("file uploaded not of image type");
             error = "Please upload an image file of type .jpg, .jpeg, or .png.";
-            res.redirect("/modify_game/"+ req.params.id);
+            res.redirect("back");
 
         }
         
