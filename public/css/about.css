@@ -1,0 +1,31 @@
+#text1 {
+    padding: 30px 90px;
+    background-color: #EEB5EB;
+    font-size: 15px;
+    text-align: center;
+}
+
+#text2 {
+    padding: 30px 90px;
+    background-color: #C26DBC;
+    font-size: 15px;
+    text-align: center;
+}
+
+b {
+    font-size: 20px;
+}
+
+a.ack {
+    color: initial;
+    margin: 9px;
+}
+
+a.ack:hover {
+    text-decoration: none;
+    color: black;
+}
+
+#app-title {
+    font-size: 30px;
+}

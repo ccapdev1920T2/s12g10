@@ -34,6 +34,6 @@ window.onscroll = function () {
     if($(window).scrollTop() + $(window).height() === $(document).height()) {
         $("#footer").text("Back to Top").attr("href", "#").css("font-size", "17px");
     } else {
-        $("#footer").text("All Rights Reserved 2020").removeAttr("href").css("font-size", "10px");
+        $("#footer").html("About Mnemosis &bull; All Rights Reserved 2020").attr("href", "/about").css("font-size", "10px");
     }
 };
