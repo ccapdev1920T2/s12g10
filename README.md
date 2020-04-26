@@ -10,6 +10,7 @@
 ### Subdirectories
 - [README_imgs](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/README_imgs) - contains the images used in `README.md` files
 - [controllers](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/controllers) - contains `.js` files that define callback functions called in `routes` used for client-side requests
+- [helpers](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/helpers) - contains supplementary `.js` files that aid in validating form input and rendering pages
 - [models](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/models) - contains `.js` files that define functions for database connection and manipulation, also contains `data.js` which houses predefined data to be inserted to the database
 - [routes](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/routes) - contains `.js` files that define the server responses through functions dependent on client-side requests
 - [public](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/public) - contains static `.js`, `.css`, and `img` files that are used for front-end display manipulation

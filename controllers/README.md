@@ -1,6 +1,8 @@
 # **Mnemosis - Controllers**
 
-## **Directory Contents**
+This directory contains `.js` files that define callback functions called in `routes` used for client-side requests.
+
+### **Directory Contents**
 
 - [`CONTROLLER_create_game.js`](https://github.com/ccapdev1920T2/s12g10/blob/Phase_3/controllers/CONTROLLER_create_game.js) - callback functions for client requests related to `game` creation
 - [`CONTROLLER_homepage.js`](https://github.com/ccapdev1920T2/s12g10/blob/Phase_3/controllers/CONTROLLER_homepage.js) - callback functions for client requests related to homepage viewing and arrangement
