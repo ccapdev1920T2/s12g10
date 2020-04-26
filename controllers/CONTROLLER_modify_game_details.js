@@ -100,17 +100,14 @@ const controller = {
                 genres = [req.body.genre];
             }
 
-            //get creator's id and updating info on game being modified
-            db.findOne(User, {email: req.session.username}, '_id', function(creator){
-                db.updateOne(Game, {_id: id}, {
-                    _id: id,
-                    title: title,
-                    description: description,
-                    genres: genres,
-                    time: time,
-                    creator: creator._id,
-                    num_attempts: 0
-                });
+            //update info on game being modified
+            db.updateOne(Game, {_id: id}, {
+                _id: id,
+                title: title,
+                description: description,
+                genres: genres,
+                time: time,
+                num_attempts: 0
             });
 
             //clear attempts
