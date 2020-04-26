@@ -3,7 +3,7 @@
 <head>
     <%- include ("../partials/head.ejs") %>
 
-    <title>Mnemosis | Profile</title>
+    <title>Mnemosis | Modify Game</title>
     <link rel="stylesheet" href="../../css/modify_game.css">
 </head>
 <body>
@@ -21,8 +21,8 @@
                     <label class="custom-file-label" for="file" id="file-label">Choose file</label>
                 </div>
             </div>
+            <p class="error subheading"><%= error %></p>
         </form>
-        <p class="error subheading"><% if (error != "") { %><%= error %><% } %></p>
         <p class="subheading">Game Description:<br><%= game.description %></p>
         <br>
         <div class="form-inline">

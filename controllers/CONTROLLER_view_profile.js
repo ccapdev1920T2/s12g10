@@ -3,6 +3,10 @@ const Game = require("../models/Game");
 const User = require("../models/User");
 const Attempt = require("../models/Attempt");
 const Item = require("../models/Item");
+const path = require("path");
+
+let error = ""
+
 var details = {
             user:null,
             users:null,
@@ -64,21 +68,38 @@ const controller = {
                             }
                             if (details.user!= null && details.games!=null){
                                 if (details.user.email == email){
-                                    if ( details.user.is_admin == true )
+                                    if ( details.user.is_admin == true ){
                                         res.render("pages/view_profile_self_admin", {
                                             details: details,
                                             guest: req.session.guest,
                                             user_image: req.session.photo,
-                                            adminCount: adminCount
+                                            adminCount: adminCount,
+                                            error: error
                                         });
-                                    else 
-                                        res.render("pages/view_profile_self", {details:details, guest: req.session.guest, user_image: req.session.photo});
+                                        error = ""
+                                    }
+                                    else{
+                                        res.render("pages/view_profile_self", {
+                                            details:details, 
+                                            guest: req.session.guest, 
+                                            user_image: req.session.photo, 
+                                            error: error});
+                                        error = ""
+                                    } 
                                 }
                                 else {
-                                    if (  details.user.is_admin == true )
-                                        res.render("pages/view_profile_user_admin", {details:details, guest: req.session.guest, user_image: req.session.photo});
-                                    else 
-                                        res.render("pages/view_profile_user", {details:details, guest: req.session.guest, user_image: req.session.photo});
+                                    if (  details.user.is_admin == true ){
+                                        res.render("pages/view_profile_user_admin", {
+                                            details:details, 
+                                            guest: req.session.guest, 
+                                            user_image: req.session.photo});
+                                    }
+                                    else{
+                                        res.render("pages/view_profile_user", {
+                                            details:details, 
+                                            guest: req.session.guest, 
+                                            user_image: req.session.photo});
+                                    }
                                 }
                             }
                             else {
@@ -148,10 +169,14 @@ const controller = {
                                 }
                                 if (details.user!= null && details.games!=null){
                                     if (req.session.username == details.user.email){
-                                        if ( details.user.is_admin == true )
-                                            res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest, user_image: req.session.photo});
-                                        else 
-                                            res.render("pages/view_profile_self", {details:details, guest: req.session.guest, user_image: req.session.photo});
+                                        if ( details.user.is_admin == true ){
+                                            res.render("pages/view_profile_self_admin",{details:details, guest: req.session.guest, user_image: req.session.photo, error: error});
+                                            error = ""
+                                        }
+                                        else{
+                                            res.render("pages/view_profile_self", {details:details, guest: req.session.guest, user_image: req.session.photo, error: error});
+                                            error = ""
+                                        } 
                                     }
                                     else {
                                         if ( curr.is_admin == true )
@@ -204,19 +229,29 @@ const controller = {
     //POST request for changing profile picture
     uploadPic:function(req,res){
         var image = req.files.pic;
-        image.mv("public/media/profile_pictures/" + image.name, function(error){
-            if (error) {
-                console.log("file unsuccessfully uploaded");
-                res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
-            } 
-            else {
-                db.updateOne(User, {email: req.session.username},{user_image:"/media/profile_pictures/"+image.name});
-                req.session.photo = "/media/profile_pictures/" + image.name;
-                console.log("file successfully uploaded");
-                res.redirect("back");
-            } 
-        });
-        
+
+        let fileExtn = path.extname(image.name).toLowerCase();
+
+        if (fileExtn === ".jpg" || fileExtn === ".jpeg" || fileExtn === ".png") {
+            image.mv("public/media/profile_pictures/" + image.name, function(err){
+                if (err) {
+                    console.log("file unsuccessfully uploaded");
+                    res.render("pages/error", {guest: req.session.guest, user_image: req.session.photo});
+                } 
+                else {
+                    db.updateOne(User, {email: req.session.username},{user_image:"/media/profile_pictures/"+image.name});
+                    req.session.photo = "/media/profile_pictures/" + image.name;
+                    console.log("file successfully uploaded");
+                    res.redirect("back");
+                } 
+            });
+        }
+        else{
+
+            console.log("file uploaded not of image type");
+            error = "Please upload an image file of type .jpg, .jpeg, or .png.";
+            res.redirect("back");
+        }
     }
 };
 

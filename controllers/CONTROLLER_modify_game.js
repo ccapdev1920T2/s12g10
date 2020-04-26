@@ -1,5 +1,6 @@
 const db = require("../models/db");
 const Game = require("../models/Game");
+const path = require("path");
 
 let error = ""
 
@@ -43,9 +44,9 @@ const controller = {
 
         if (fileExtn === ".jpg" || fileExtn === ".jpeg" || fileExtn === ".png") {
 
-            image.mv("public/media/game_images/" + image.name, function (error) {
+            image.mv("public/media/game_images/" + image.name, function (err) {
 
-                if (error) {
+                if (err) {
 
                     console.log("file unsuccessfully uploaded");
                     res.render("pages/error", {
@@ -67,7 +68,7 @@ const controller = {
 
             console.log("file uploaded not of image type");
             error = "Please upload an image file of type .jpg, .jpeg, or .png.";
-            res.redirect("back");
+            res.redirect("/modify_game/"+ req.params.id);
 
         }
         

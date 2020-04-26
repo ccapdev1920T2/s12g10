@@ -169,3 +169,9 @@
 .custom-file-label{
     width: 280px;
 }
+
+.error {
+    margin-top: 5px;
+    height: 10px;
+    font-size: 12px;
+}
