@@ -104,7 +104,7 @@ const controller = {
     //login authentication
     authenticateUser: function (req, res) {
 
-        let email = req.body.emailLogin;
+        let email = (req.body.emailLogin).trim();
         let password = req.body.passLogin;
 
         if (email === "") {
@@ -122,7 +122,7 @@ const controller = {
 
                         if (isEqual) { //password entered is correct
 
-                            console.log("login successful");
+                            console.log("logged in as " + email);
                             req.session.loggedin = true;
                             req.session.username = email;
                             req.session.guest = false;
@@ -197,11 +197,11 @@ const controller = {
 
         } else {
 
-            let fname = req.body.fname;
-            let lname = req.body.lname;
+            let fname = (req.body.fname).trim();
+            let lname = (req.body.lname).trim();
             let bday = req.body.bday;
             let gender = req.body.gender;
-            let email = req.body.emailRegister;
+            let email = (req.body.emailRegister).trim();
             let pass = req.body.passRegister;
 
             //getting hash equivalent of pass

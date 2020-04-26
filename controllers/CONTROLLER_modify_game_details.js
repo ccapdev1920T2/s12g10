@@ -3,7 +3,6 @@ const validation = require("../helpers/game_validation");
 
 const db = require("../models/db");
 const Game = require("../models/Game");
-const User = require("../models/User");
 const Item = require("../models/Item");
 const Attempt = require("../models/Attempt");
 
