@@ -79,9 +79,10 @@ Item data found
 The server is already running. Go to `http://localhost:3000` on any browser or click the link provided in the terminal. 
 This will render the `login_and_register.ejs` file.
 
-![alt text](./README_imgs/login.png "Login Page")
+## **Starting a session**
+### Logging in
 
-## **Logging in**
+![alt text](./README_imgs/login.png "Login Page")
 
 Any of the following accounts may be used to log into the app.
 ```
@@ -112,13 +113,13 @@ email:      new_user@sims.com
 password:   newtothis
 ```
 
-Alternatively, `Continue as guest` may be chosen to proceed to the application's homepage.
+Alternatively, `Continue as guest` may be chosen to start a guest session and proceed to the application homepage.
 
-Successfully logging into the application will render the `homepage.ejs` file and display the following page.
+Successfully logging into the application will initialize a session, render the `homepage.ejs` file, and display the following page.
 
 ![alt text](./README_imgs/homepage.png "Homepage")
 
-## **Registering for an account**
+### **Registering for an account**
 
 Clients may also choose to register for their own account. Successful registration will render the `view_profile_self.ejs` file and display the following page.
 
