@@ -104,7 +104,7 @@ $("#file").on("change", function () {
         $("#file-label").text("Please select a different file.");
         $("#upload").prop("disabled", true);
     } else {
-        $("#file-label").text("File: " + $("#file")[0].files[0].name + ". Press upload to continue.");
+        $("#file-label").text($("#file")[0].files[0].name);
         $("#upload").prop("disabled", false);
     }
 
