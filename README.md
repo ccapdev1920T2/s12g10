@@ -29,10 +29,20 @@ Go to https://mnemosis.herokuapp.com to access the deployed application.
 Proceed to [logging in](#logging-in) to check available log-in credentials or to [registering for an account](#registering-for-an-account) to make your own.
 
 ## **Setting up (Local)**
-1. Ensure that mongodb is installed and is running.
-2. Open the command prompt (Windows) or terminal (Mac) and `cd` to the project folder.
-3. Run `npm install` to initialize and install the necessary modules.
-4. Enter the appropriate command to create the environment variable `MNEMOSIS_URI` which allows access to the database hosted in MongoDB Atlas.
+1. Ensure that mongodb is installed and is running. Also ensure that `node`, `npm`, and `git` are installed in the system.
+2. Open the command prompt (Windows) or terminal (Mac) and `cd` to the desired parent directory.
+3. Clone the `Phase_3` branch of this repository. 
+
+```
+$ git clone -b Phase_3 https://github.com/ccapdev1920T2/s12g10.git
+Cloning into 's12g10'...
+...
+$ git branch
+Phase_3
+```
+
+4. Run `npm install` to initialize and install the necessary modules.
+5. Enter the appropriate command from below to create the environment variable `MNEMOSIS_URI` which allows access to the database hosted in MongoDB Atlas.
    - Windows: `SET MNEMOSIS_URI=mongodb+srv://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true^&w=majority`
    - Mac / Linux: `export MNEMOSIS_URI="mongodb+srv://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true&w=majority"`
 
