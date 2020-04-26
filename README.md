@@ -6,12 +6,21 @@
 - UY, Geosef Viktor
 
 ## **Repository Contents**
-- [README_imgs](https://github.com/ccapdev1920T2/s12g10/tree/master/README_imgs) - contains the images used in `README.md` files
-- [controllers](https://github.com/ccapdev1920T2/s12g10/tree/master/controllers) - contains `.js` files that define callback functions for client-side requests
-- [models](https://github.com/ccapdev1920T2/s12g10/tree/master/models) - contains `.js` files that define functions for database connection and manipulation, also contains `data.js` which houses predefined data to be inserted to the database
-- [routes](https://github.com/ccapdev1920T2/s12g10/tree/master/routes) - contains `.js` files that define the server response dependent on the client-side request
-- [public](https://github.com/ccapdev1920T2/s12g10/tree/master/public) - contains static `.js`, `.css`, and `img` files that are used for front-end display manipulation
-- [views](https://github.com/ccapdev1920T2/s12g10/tree/master/views) - contains `.ejs` files that will be rendered and displayed upon request  
+
+### Subdirectories
+- [README_imgs](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/README_imgs) - contains the images used in `README.md` files
+- [controllers](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/controllers) - contains `.js` files that define callback functions called in `routes` used for client-side requests
+- [models](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/models) - contains `.js` files that define functions for database connection and manipulation, also contains `data.js` which houses predefined data to be inserted to the database
+- [routes](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/routes) - contains `.js` files that define the server responses through functions dependent on client-side requests
+- [public](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/public) - contains static `.js`, `.css`, and `img` files that are used for front-end display manipulation
+- [views](https://github.com/ccapdev1920T2/s12g10/tree/Phase_3/views) - contains `.ejs` files that will be rendered and displayed upon request
+
+### Significant Files
+- [`index.js`](https://github.com/ccapdev1920T2/s12g10/blob/Phase_3/index.js) - requisitions most modules and routes used in the project, assigns the assets that will be utilized in the application, connects to the database, and initializes the application server
+- [`package.json`](https://github.com/ccapdev1920T2/s12g10/blob/Phase_3/package.json) - defines all details that are significant to the project such as its dependencies, version, engines, scrips, etc.
+- [`.gitignore`](https://github.com/ccapdev1920T2/s12g10/blob/Phase_3/.gitignore) - specifies files and directories in the repository that are not tracked by version control (i.e. .env files, node_modules directory)
+- [`Procfile`](https://github.com/ccapdev1920T2/s12g10/blob/Phase_3/Procfile) - specifies the `web: node index.js` command executed by the application when launched using Heroku
+- [`favicon.ico`](https://raw.githubusercontent.com/ccapdev1920T2/s12g10/Phase_3/favicon.ico) - used in `index.js` to display an icon on browser tabs (if applicable)
 
 ## **Running the app (Heroku)**
 Go to https://mnemosis.herokuapp.com to access the deployed application. 
@@ -80,9 +89,8 @@ The server is already running. Go to `http://localhost:3000` on any browser or c
 This will render the `login_and_register.ejs` file.
 
 ## **Starting a session**
-### Logging in
-
 ![alt text](./README_imgs/login.png "Login Page")
+### Logging in
 
 Any of the following accounts may be used to log into the app.
 ```
