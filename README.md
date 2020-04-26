@@ -49,7 +49,7 @@ Item data found
 Database connection successful. URL: mongodb+srv://testUser:ETadYrrFQ6Gl0gS3@mnemosis-dxmyx.gcp.mongodb.net/Mnemosis?retryWrites=true^&w=majority
 ``` 
 
-An error in setting the environment variable might displays the following (or something similar):
+An error in setting the environment variable might display the following (or something similar):
 ```
 Listening at http://localhost:3000
 (node:14816) UnhandledPromiseRejectionWarning: Error: querySrv ENODATA _mongodb._tcp.mnemosis-dxmyx.gcp.mongodb.net
