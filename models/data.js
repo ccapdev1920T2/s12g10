@@ -16,7 +16,7 @@ data = {
             birthday: new Date ("January 1, 1990"),
             gender: "Male",
             email: "seandoe@mnemosis.com",
-            password: "admin",
+            password: "iamadmin",
             user_image: "/media/profile_pictures/Logo Full.png",
             is_admin: true
         },

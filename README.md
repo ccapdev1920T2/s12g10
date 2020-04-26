@@ -98,7 +98,7 @@ Any of the following accounts may be used to log into the app.
 Administrator access:
 
 email:      seandoe@mnemosis.com
-password:   admin
+password:   iamadmin
 
 email:      rocky@hfpa.com
 password:   goldenglobes
