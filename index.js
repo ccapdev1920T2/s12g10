@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(favicon(__dirname + "/favicon.ico"));
 
+const aboutRoute = require("./routes/ROUTE_about");
 const createRoute = require("./routes/ROUTE_create_game");
 const homeRoute = require("./routes/ROUTE_homepage");
 const loginRoute = require("./routes/ROUTE_login_and_register");
@@ -31,6 +32,7 @@ const viewLeaderboard = require("./routes/ROUTE_view_leaderboard");
 const viewProfile = require("./routes/ROUTE_view_profile");
 
 app.use("/", loginRoute);
+app.use("/about", aboutRoute);
 
 app.use(function(req, res, next) {
     req.session.loggedin ? next() : res.redirect("/");
